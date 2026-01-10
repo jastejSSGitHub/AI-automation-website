@@ -1,0 +1,1156 @@
+<html lang="en" class="light"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus - Ship Faster</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
+    <style>
+      html, body {
+          scroll-behavior: smooth;
+          scrollbar-width: none;
+          -ms-overflow-style: none;
+      }
+      ::-webkit-scrollbar {
+          display: none;
+          width: 0;
+          background: transparent;
+      }
+      body {
+          font-family: 'Inter', sans-serif;
+          background-color: #ffffff;
+          color: #1d1d1f;
+          -webkit-font-smoothing: antialiased;
+          overflow-x: hidden;
+          width: 100%;
+      }
+      .font-sf {
+          font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+          letter-spacing: -0.025em;
+      }
+      .perspective-1000 { perspective: 1000px; }
+      .transform-style-3d { transform-style: preserve-3d; }
+      .backface-hidden { backface-visibility: hidden; }
+      .rotate-y-180 { transform: rotateY(180deg); }
+      .ease-out-expo { transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1); }
+      .card-flipped { transform: rotateY(180deg); }
+      .cursor-grab { cursor: grab; }
+      .cursor-grabbing { cursor: grabbing; }
+
+      .glass-nav {
+          background: rgba(255, 255, 255, 0.7);
+          backdrop-filter: blur(20px) saturate(180%);
+          -webkit-backdrop-filter: blur(20px) saturate(180%);
+          border: 1px solid rgba(255,255,255,0.5);
+          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+      }
+      .pricing-card { transition: all 0.3s ease; }
+      .pricing-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px -5px rgba(0,0,0,0.08); }
+
+      .control-glass {
+          background: rgba(230, 230, 230, 0.6);
+          backdrop-filter: blur(16px) saturate(180%);
+          -webkit-backdrop-filter: blur(16px) saturate(180%);
+          border: 1px solid rgba(255,255,255,0.3);
+          box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      }
+      .indicator-dot { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+      .indicator-dot.active { width: 24px; background-color: #1d1d1f; }
+
+      @property --gradient-angle { syntax: "<angle>"; initial-value: 0deg; inherits: false; }
+      @property --gradient-angle-offset { syntax: "<angle>"; initial-value: 0deg; inherits: false; }
+      @property --gradient-shine { syntax: "<color>"; initial-value: #f97316; inherits: false; }
+      .shiny-cta {
+          --gradient-angle: 0deg; --gradient-angle-offset: 0deg; --gradient-shine: #f97316;
+          position: relative; overflow: hidden; border-radius: 9999px; padding: 0.625rem 1.25rem;
+          font-size: 0.875rem; line-height: 1.2; font-weight: 500; color: #ffffff;
+          background: linear-gradient(#000000, #000000) padding-box, conic-gradient( from calc(var(--gradient-angle) - var(--gradient-angle-offset)), transparent 0%, #ea580c 5%, var(--gradient-shine) 15%, #ea580c 30%, transparent 40%, transparent 100% ) border-box;
+          border: 2px solid transparent; box-shadow: inset 0 0 0 1px #1a1818; outline: none;
+          transition: all 0.3s; cursor: pointer; isolation: isolate; outline-offset: 4px;
+          font-family: 'Inter', sans-serif; animation: border-spin 2.5s linear infinite;
+      }
+      @media (min-width: 768px) { .shiny-cta { padding: 0.75rem 1.75rem; font-size: 0.95rem; } }
+      .shiny-cta-light {
+          color: #000000; --gradient-shine: #fb923c;
+          background: linear-gradient(#ffffff, #ffffff) padding-box, conic-gradient( from calc(var(--gradient-angle) - var(--gradient-angle-offset)), transparent 0%, #cbd5e1 5%, var(--gradient-shine) 15%, #cbd5e1 30%, transparent 40%, transparent 100% ) border-box;
+          box-shadow: inset 0 0 0 1px #e2e8f0, 0 4px 12px rgba(0,0,0,0.05);
+      }
+      @keyframes border-spin { to { --gradient-angle: 360deg; } }
+      .shiny-cta:active { transform: translateY(1px); }
+      .shiny-cta::before {
+          content: ''; pointer-events: none; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+          width: calc(100% - 6px); height: calc(100% - 6px);
+          background: radial-gradient(circle at 2px 2px, white 0.5px, transparent 0) padding-box;
+          background-size: 4px 4px; mask-image: conic-gradient( from calc(var(--gradient-angle) + 45deg), black, transparent 10% 90%, black );
+          opacity: 0.4;
+      }
+      .shiny-cta-light::before { background: radial-gradient(circle at 2px 2px, #000 0.5px, transparent 0) padding-box; opacity: 0.1; }
+      .shiny-cta::after {
+          content: ''; pointer-events: none; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); z-index: 1; width: 100%; aspect-ratio: 1;
+          background: linear-gradient(-50deg, transparent, #ea580c, transparent); mask-image: radial-gradient(circle at bottom, transparent 40%, black); opacity: 0.6; animation: shimmer 4s linear infinite;
+      }
+      .shiny-cta-light::after { background: linear-gradient(-50deg, transparent, #fb923c, transparent); opacity: 0.3; }
+      .shiny-cta span { position: relative; z-index: 2; }
+      .shiny-cta span::before {
+          content: ''; pointer-events: none; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); z-index: -1;
+          width: calc(100% + 1rem); height: calc(100% + 1rem); box-shadow: inset 0 -1ex 2rem 4px #ea580c; opacity: 0;
+          transition: opacity 0.8s; animation: breathe 4.5s linear infinite;
+      }
+      .shiny-cta-light span::before { box-shadow: inset 0 -1ex 2rem 4px #fdba74; }
+      @keyframes shimmer { to { transform: translate(-50%, -50%) rotate(360deg);} }
+      @keyframes breathe { 0%, 100% { transform: translate(-50%, -50%) scale(1);} 50% { transform: translate(-50%, -50%) scale(1.20);} }
+      .shiny-cta.nav-cta { padding: 0.5rem 1rem; font-size: 0.825rem; }
+      .shiny-cta.w-full { width: 100%; display: flex; justify-content: center; }
+
+      /* Modified Beam Border for Mobile - Vertical Scan */
+      .card-beam-border {
+          position: absolute; inset: 0; border-radius: 24px; pointer-events: none; z-index: 0;
+          padding: 2px;
+          background: linear-gradient(180deg, transparent 0%, #60a5fa 50%, transparent 100%);
+          background-size: 100% 200%;
+          -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+          -webkit-mask-composite: xor;
+          mask-composite: exclude;
+          animation: beam-scan 3s ease-in-out infinite alternate;
+          display: none;
+      }
+      @keyframes beam-scan {
+          0% { background-position: 0% 0%; }
+          100% { background-position: 0% 100%; }
+      }
+      @media (max-width: 1023px) { .card-beam-border { display: block; } }
+
+      /* Beam Animation for Pricing CTA */
+      @keyframes beam-rotate {
+          0% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
+      }
+      .cta-beam-animation {
+          background-size: 200% 200%;
+          animation: beam-rotate 3s linear infinite;
+      }
+
+      .no-scrollbar::-webkit-scrollbar { display: none; }
+      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+      .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+      .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+      .custom-scrollbar::-webkit-scrollbar-thumb { background-color: rgba(0,0,0,0.1); border-radius: 20px; }
+
+      .mobile-menu-wrapper { transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease; }
+      .menu-closed { transform: translateY(-100%); opacity: 0; pointer-events: none; }
+      .menu-open { transform: translateY(0); opacity: 1; pointer-events: auto; }
+
+      .animate-in { animation: fade-up 0.8s ease-out forwards; opacity: 0; transform: translateY(20px); }
+      @keyframes fade-up { to { opacity: 1; transform: translateY(0); } }
+
+      .stagger-delay-1 { animation-delay: 0.1s; }
+      .stagger-delay-2 { animation-delay: 0.3s; }
+      .stagger-delay-3 { animation-delay: 0.5s; }
+
+      @keyframes gradient-flow {
+          0% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
+      }
+      .group\/item:hover .hover-gradient-text {
+          background: linear-gradient(to right, #2563eb, #9333ea, #2563eb);
+          background-size: 200% auto;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+          color: transparent;
+          animation: gradient-flow 3s linear infinite;
+      }
+      iconify-icon.icon-gradient { display: inline-block; }
+    </style>
+  </head>
+  <body class="bg-white text-slate-900 overflow-x-hidden">
+    <!-- Background component -->
+    <div class="aura-background-component fixed top-0 w-full h-screen -z-10" data-alpha-mask="80" style="; mask-image: linear-gradient(to bottom, transparent, black 0%, black 80%, transparent); -webkit-mask-image: linear-gradient(to bottom, transparent, black 0%, black 80%, transparent)">
+      <div class="aura-background-component top-0 w-full -z-10 absolute h-full">
+        <div data-us-project="HzcaAbRLaALMhHJp8gLY" class="absolute w-full h-full left-0 top-0 -z-10"></div>
+        <script type="text/javascript">
+          !function(){if(!window.UnicornStudio){window.UnicornStudio={isInitialized:!1};var i=document.createElement("script");i.src="https://cdn.jsdelivr.net/gh/hiunicornstudio/unicornstudio.js@v1.4.29/dist/unicornStudio.umd.js",i.onload=function(){window.UnicornStudio.isInitialized||(UnicornStudio.init(),window.UnicornStudio.isInitialized=!0)},(document.head || document.body).appendChild(i)}}();
+        </script>
+      </div>
+    </div>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 z-[60] bg-white/95 backdrop-blur-3xl menu-closed mobile-menu-wrapper flex flex-col justify-center items-center">
+      <button id="close-menu-btn" class="absolute top-6 right-6 p-3 rounded-full bg-slate-100 hover:bg-slate-200 transition-colors z-50">
+        <iconify-icon icon="lucide:x" width="24" stroke-width="1.5" class="text-slate-900"></iconify-icon>
+      </button>
+      <nav class="flex flex-col gap-8 text-center relative z-10">
+        <a href="#solutions" class="text-4xl font-sf font-semibold text-slate-900 tracking-tight hover:text-blue-600 transition-colors" onclick="closeMenuAndNavigate()">
+          Solutions
+        </a>
+        <a href="#process" class="text-4xl font-sf font-semibold text-slate-900 tracking-tight hover:text-blue-600 transition-colors" onclick="closeMenuAndNavigate()">
+          Process
+        </a>
+        <a href="#results" class="text-4xl font-sf font-semibold text-slate-900 tracking-tight hover:text-blue-600 transition-colors" onclick="closeMenuAndNavigate()">
+          Results
+        </a>
+        <a href="#pricing" class="text-4xl font-sf font-semibold text-slate-900 tracking-tight hover:text-blue-600 transition-colors" onclick="closeMenuAndNavigate()">
+          Pricing
+        </a>
+      </nav>
+      <div class="mt-14 w-full px-12 max-w-sm relative z-10">
+        <button class="shiny-cta w-full focus:outline-none justify-center" onclick="closeMenuAndNavigate()">
+          <span>Book Free Call</span>
+        </button>
+      </div>
+      <div class="absolute top-1/4 left-1/4 w-64 h-64 bg-blue-400/20 rounded-full blur-[100px] pointer-events-none"></div>
+      <div class="absolute bottom-1/4 right-1/4 w-64 h-64 bg-violet-400/20 rounded-full blur-[100px] pointer-events-none"></div>
+    </div>
+
+    <!-- Navbar -->
+    <div id="navbar-container" class="fixed top-0 left-0 right-0 z-50 pt-4 px-6 transition-transform duration-300 ease-in-out">
+      <div class="max-w-5xl mx-auto rounded-full glass-nav px-2 py-2 relative">
+        <div class="flex items-center justify-between whitespace-nowrap">
+          <div class="justify-self-start pl-4">
+            <a href="#" class="text-base font-semibold text-slate-900 tracking-tight hover:text-slate-600 transition-colors">
+              Nexus
+            </a>
+          </div>
+          <div class="hidden md:flex justify-self-center">
+            <ul class="flex items-center gap-1 text-[13px] font-medium text-slate-600">
+              <li class="relative group">
+                <button class="flex items-center gap-1.5 hover:text-slate-900 transition-colors duration-300 px-3 py-1.5 rounded-full hover:bg-slate-100/50 cursor-pointer">
+                  Solutions
+                  <iconify-icon icon="lucide:chevron-down" width="12" class="group-hover:rotate-180 transition-transform duration-300 opacity-70"></iconify-icon>
+                </button>
+                <div class="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-[360px] p-2 bg-white rounded-2xl shadow-xl border border-slate-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible translate-y-2 group-hover:translate-y-0 transition-all duration-200 ease-out z-50 overflow-hidden ring-1 ring-black/5 whitespace-normal">
+                  <div class="flex flex-col gap-1">
+                    <a href="#solutions" class="flex items-start gap-4 p-3 rounded-xl hover:bg-slate-50 transition-colors group/item" onclick="closeMenuAndNavigate()">
+                      <div class="w-9 h-9 flex-shrink-0 flex items-center justify-center rounded-lg bg-slate-100 border border-slate-200/50 mt-0.5 transition-colors group-hover/item:bg-white group-hover/item:shadow-sm">
+                        <iconify-icon icon="lucide:workflow" width="16" stroke-width="1.5" class="text-slate-500 transition-colors duration-300 group-hover/item:text-blue-600"></iconify-icon>
+                      </div>
+                      <div class="flex flex-col">
+                        <span class="text-sm font-semibold text-slate-900 leading-tight hover-gradient-text">
+                          AI Workflow Automation
+                        </span>
+                        <span class="text-[11px] text-slate-500 font-medium mt-1 leading-snug">
+                          Streamline operations
+                        </span>
+                      </div>
+                    </a>
+                    <a href="#solutions" class="flex items-start gap-4 p-3 rounded-xl hover:bg-slate-50 transition-colors group/item" onclick="closeMenuAndNavigate()">
+                      <div class="w-9 h-9 flex-shrink-0 flex items-center justify-center rounded-lg bg-slate-100 border border-slate-200/50 mt-0.5 transition-colors group-hover/item:bg-white group-hover/item:shadow-sm">
+                        <iconify-icon icon="lucide:rocket" width="16" stroke-width="1.5" class="text-slate-500 transition-colors duration-300 group-hover/item:text-blue-600"></iconify-icon>
+                      </div>
+                      <div class="flex flex-col">
+                        <span class="text-sm font-semibold text-slate-900 leading-tight hover-gradient-text">
+                          Rapid MVP Development
+                        </span>
+                        <span class="text-[11px] text-slate-500 font-medium mt-1 leading-snug">
+                          Launch fast
+                        </span>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              </li>
+              <li class="">
+                <a href="#process" class="hover:text-slate-900 transition-colors duration-300 px-3 py-1.5 rounded-full hover:bg-slate-100/50">
+                  How It Works
+                </a>
+              </li>
+              <li>
+                <a href="#results" class="hover:text-slate-900 transition-colors duration-300 px-3 py-1.5 rounded-full hover:bg-slate-100/50">
+                  Case Studies
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="flex items-center justify-self-end gap-2 pr-1">
+            <div class="hidden md:inline-block">
+              <button class="shiny-cta nav-cta focus:outline-none">
+                <span>Book Free Call</span>
+              </button>
+            </div>
+            <button id="hamburger-btn" class="inline-flex md:hidden hover:bg-slate-100 p-2 rounded-full transition-all duration-300" aria-label="Menu">
+              <iconify-icon icon="lucide:menu" width="20" stroke-width="1.5" class="text-slate-900"></iconify-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="px-4 md:px-6 flex flex-col justify-center items-center py-12 md:py-20 relative overflow-hidden bg-white">
+      <div id="hero-card" class="relative w-full h-[80vh] rounded-[32px] overflow-hidden flex flex-col items-center justify-center text-center shadow-2xl group/hero">
+        <div id="hero-glow" class="pointer-events-none absolute inset-0 z-30 transition-opacity duration-300 opacity-0" style="mix-blend-mode: overlay; background: radial-gradient(600px circle at 50% 50%, rgba(255, 255, 255, 0.15), transparent 40%);"></div>
+
+        <div class="absolute inset-0 z-0 overflow-hidden select-none bg-slate-900">
+          <div id="hero-carousel" class="flex w-[300%] h-full transition-transform duration-1000 ease-in-out will-change-transform">
+            <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/03ded32e-7e7d-4e7d-9060-e6e958328ee2_1600w.png" alt="Hero Background 1" class="flex-shrink-0 w-1/3 h-full object-cover" onload="(function(){
+        const txt = document.querySelector('.relative.w-full .z-20');
+        if(txt) {
+            txt.innerHTML = `&lt;h1 class='text-[3.5rem] md:text-[5.5rem] font-sf leading-[1.05] mb-6 drop-shadow-lg font-extrabold tracking-tight text-white text-center'&gt;&lt;span id='tl1' class='block min-h-[1.1em]'&gt;&lt;/span&gt;&lt;span id='tl2' class='block min-h-[1.1em]'&gt;&lt;/span&gt;&lt;/h1&gt;&lt;p class='text-base md:text-[1.5rem] font-normal max-w-xl mx-auto leading-snug drop-shadow-md text-white/90 mb-8 px-4 text-center'&gt;We build AI-powered MVPs and automation for ambitious founders. Launch in weeks, save 15+ hours weekly.&lt;/p&gt;&lt;div class='flex flex-col sm:flex-row items-center justify-center gap-3 w-full'&gt;&lt;button class='shiny-cta shiny-cta-light focus:outline-none whitespace-nowrap'&gt;&lt;span&gt;Book Strategy Call&lt;/span&gt;&lt;/button&gt;&lt;a href='#solutions' class='px-5 py-2.5 md:px-7 md:py-3 rounded-full font-medium text-sm transition-all hover:bg-white/10 text-white border border-white/30 backdrop-blur-sm flex items-center justify-center min-h-[44px]'&gt;See Solutions&lt;/a&gt;&lt;/div&gt;&lt;style&gt;.tc::after{content:'|';animation:b 1s step-start infinite;color:#fff;margin-left:2px}@keyframes b{50%{opacity:0}}&lt;/style&gt;`;
+            const type = (id, str, d, cb) =&gt; {
+                setTimeout(() =&gt; {
+                    const el = document.getElementById(id);
+                    if(el){
+                        el.classList.add('tc');
+                        let i = 0;
+                        const t = setInterval(() =&gt; {
+                            el.innerText = str.slice(0, ++i);
+                            if(i === str.length){ clearInterval(t); el.classList.remove('tc'); if(cb) cb(); }
+                        }, 80);
+                    }
+                }, d);
+            };
+            type('tl1', 'Ship Faster.', 500, () =&gt; type('tl2', 'Automate Smarter.', 200));
+        }
+        const c = document.getElementById('hero-carousel');
+        if(c) {
+            if(window.hInt) clearInterval(window.hInt);
+            let p = 0;
+            window.hInt = setInterval(() =&gt; {
+                p = (p + 1) % 3;
+                c.style.transform = `translateX(-${p * 33.333}%)`;
+            }, 5000);
+        }
+    })()">
+            <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/21df84ff-aff5-497c-a92a-8cf2aa08de6e_1600w.png" alt="Hero Background 2" class="w-1/3 h-full object-cover flex-shrink-0">
+            <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/328086bd-9382-4fac-8d29-7de362a24f32_1600w.png" alt="Hero Background 3" class="w-1/3 h-full object-cover flex-shrink-0">
+          </div>
+          <div class="absolute inset-0 bg-black/40 mix-blend-multiply z-10 pointer-events-none"></div>
+          <div class="bg-gradient-to-t via-transparent to-transparent from-black/60 absolute top-0 right-0 bottom-0 left-0 z-10 pointer-events-none"></div>
+        </div>
+
+        <div class="z-20 max-w-5xl mt-8 mr-auto ml-auto pr-6 pl-6 relative group"></div>
+      </div>
+    </section>
+
+    <!-- Problem Section (Challenge) -->
+    <section class="flex flex-col overflow-hidden text-slate-900 bg-[#F6F6F7] z-10 py-12 md:py-20 pr-6 pl-6 relative justify-center" id="results">
+      <div class="w-full max-w-7xl mx-auto h-full flex flex-col justify-center relative">
+        <div class="text-center mb-10 max-w-3xl mx-auto flex-shrink-0">
+          <span class="inline-flex items-center justify-center px-3 py-1 rounded-full bg-white border border-blue-100 shadow-sm text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-violet-600 text-[10px] font-bold uppercase tracking-wider mb-5">
+            The Challenge
+          </span>
+          <h2 class="text-3xl md:text-[2.75rem] leading-tight font-extrabold text-slate-900 tracking-tight font-sf">
+            The Challenge Every
+            <br>
+            Founder Faces
+          </h2>
+        </div>
+
+        <div id="challengesContainer" class="drag-scroll-container flex lg:grid lg:grid-cols-2 overflow-x-auto gap-4 md:gap-6 w-full pb-12 cursor-grab scroll-smooth snap-x snap-mandatory lg:snap-none no-scrollbar">
+          <!-- Card 1 -->
+          <div class="group h-[320px] md:h-[340px] min-w-[78vw] md:min-w-[45vw] lg:min-w-0 lg:max-w-none w-full lg:w-auto perspective-1000 flex-shrink-0 select-none snap-center">
+            <div class="flip-card-inner relative w-full h-full duration-700 transform-style-3d transition-transform ease-out-expo shadow-lg rounded-[24px]">
+              <div class="absolute inset-0 w-full h-full backface-hidden bg-white rounded-[24px] border border-black/5 flex flex-col justify-between overflow-hidden">
+                <div class="absolute inset-0 z-0">
+                  <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/f1c830a9-6b54-411e-90d6-1f3e1eb67eaa_1600w.png" alt="Development constraints" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 pointer-events-none">
+                  <div class="absolute inset-0 bg-gradient-to-b from-white via-white/80 to-transparent"></div>
+                </div>
+                <div class="flex flex-col md:p-8 h-full z-10 pt-6 pr-6 pb-6 pl-6 relative justify-between">
+                  <div class="flex flex-col items-center text-center md:items-start md:text-left">
+                    <span class="inline-flex items-center gap-1 rounded-full bg-white/90 backdrop-blur-sm border border-blue-100 px-2.5 py-0.5 text-[10px] font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-violet-600 tracking-wide mb-3">
+                      PROBLEM 01
+                    </span>
+                    <h3 class="text-xl md:text-2xl font-semibold tracking-tight text-slate-900 leading-tight">
+                      Development Takes Forever
+                    </h3>
+                    <p class="text-xs font-medium text-slate-600 mt-2 hidden md:block">
+                      Months of building, and still no momentum.
+                    </p>
+                  </div>
+                  <button onclick="event.stopPropagation(); flipCard(this)" class="absolute bottom-5 right-5 z-20 w-8 h-8 bg-slate-900 rounded-full shadow-lg flex items-center justify-center text-white hover:bg-slate-800 transition-colors" aria-label="Flip Card">
+                    <iconify-icon icon="lucide:plus" width="18" stroke-width="1.5"></iconify-icon>
+                  </button>
+                </div>
+              </div>
+              <div class="absolute inset-0 w-full h-full backface-hidden rotate-y-180 bg-white rounded-[24px] border border-black/5 p-6 md:p-8 flex flex-col overflow-hidden">
+                <div class="flex flex-col items-center text-center md:items-start md:text-left flex-shrink-0 mb-2">
+                  <span class="inline-flex items-center gap-1 w-fit rounded-full bg-white border border-blue-100 px-2.5 py-0.5 text-[10px] font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-violet-600 tracking-wide mb-3">
+                    PROBLEM 01
+                  </span>
+                  <h3 class="text-xl md:text-2xl font-semibold tracking-tight text-slate-900 leading-tight">
+                    Development Takes Forever
+                  </h3>
+                </div>
+                <div class="overflow-y-auto custom-scrollbar flex-grow pr-1 pb-10">
+                  <p class="text-sm text-slate-500 leading-relaxed font-medium mb-3">
+                    Traditional agencies quote $50,000-$100,000 and take 6+
+                    months to build your MVP. By the time they deliver, your
+                    competitors have already launched.
+                  </p>
+                  <p class="text-sm text-slate-500 leading-relaxed font-medium mb-3">
+                    Weeks of discovery calls. Months waiting for designs.
+                    Meanwhile, you're burning runway.
+                  </p>
+                </div>
+                <button onclick="event.stopPropagation(); unflipCard(this)" class="absolute bottom-5 right-5 z-20 w-8 h-8 bg-slate-200 rounded-full shadow-lg flex items-center justify-center text-slate-900 hover:bg-slate-300 transition-colors" aria-label="Flip Back">
+                  <iconify-icon icon="lucide:x" width="16" stroke-width="1.5"></iconify-icon>
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- Card 2 -->
+          <div class="group h-[320px] md:h-[340px] min-w-[78vw] md:min-w-[45vw] lg:min-w-0 lg:max-w-none w-full lg:w-auto perspective-1000 flex-shrink-0 select-none snap-center">
+            <div class="flip-card-inner relative w-full h-full duration-700 transform-style-3d transition-transform ease-out-expo shadow-lg rounded-[24px]">
+              <div class="absolute inset-0 w-full h-full backface-hidden bg-white rounded-[24px] border border-black/5 p-6 md:p-8 flex flex-col justify-between overflow-hidden">
+                <div class="z-10 flex flex-col items-center text-center md:items-start md:text-left">
+                  <span class="inline-flex items-center gap-1 rounded-full bg-white border border-blue-100 px-2.5 py-0.5 text-[10px] font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-violet-600 tracking-wide mb-3">
+                    PROBLEM 02
+                  </span>
+                  <h3 class="text-xl md:text-2xl font-semibold tracking-tight text-slate-900 leading-tight">
+                    Manual Work Drains Team
+                  </h3>
+                  <p class="text-xs font-medium text-slate-500 mt-2 hidden md:block">
+                    Your team spends time on work that shouldn’t exist.
+                  </p>
+                </div>
+                <div class="absolute bottom-0 left-0 right-0 h-[60%] overflow-hidden rounded-b-[24px]">
+                  <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/468521cb-bdaf-45e5-a32c-1892c6dde73b_1600w.png" alt="Manual work dashboard" class="object-top transition-transform duration-700 group-hover:scale-105 w-full h-full object-cover pointer-events-none">
+                </div>
+                <button onclick="event.stopPropagation(); flipCard(this)" class="absolute bottom-5 right-5 z-20 w-8 h-8 bg-slate-900 rounded-full shadow-lg flex items-center justify-center text-white hover:bg-slate-800 transition-colors" aria-label="Flip Card">
+                  <iconify-icon icon="lucide:plus" width="18" stroke-width="1.5"></iconify-icon>
+                </button>
+              </div>
+              <div class="absolute inset-0 w-full h-full backface-hidden rotate-y-180 bg-white rounded-[24px] border border-black/5 p-6 md:p-8 flex flex-col overflow-hidden">
+                <div class="flex flex-col items-center text-center md:items-start md:text-left flex-shrink-0 mb-2">
+                  <span class="inline-flex items-center gap-1 w-fit rounded-full bg-white border border-blue-100 px-2.5 py-0.5 text-[10px] font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-violet-600 tracking-wide mb-3">
+                    PROBLEM 02
+                  </span>
+                  <h3 class="text-xl md:text-2xl font-semibold tracking-tight text-slate-900 leading-tight">
+                    Manual Work Drains Team
+                  </h3>
+                </div>
+                <div class="overflow-y-auto custom-scrollbar flex-grow pr-1 pb-10">
+                  <p class="text-sm text-slate-500 leading-relaxed font-medium mb-3">
+                    Your team spends 20+ hours every week on repetitive tasks.
+                    That's $4,000-$8,000 per month in wasted labor.
+                  </p>
+                  <p class="text-sm text-slate-500 leading-relaxed font-medium mb-3">
+                    Manually copying leads into your CRM. Answering the same
+                    questions repeatedly. Automation frees humans to do human
+                    work.
+                  </p>
+                </div>
+                <button onclick="event.stopPropagation(); unflipCard(this)" class="absolute bottom-5 right-5 z-20 w-8 h-8 bg-slate-200 rounded-full shadow-lg flex items-center justify-center text-slate-900 hover:bg-slate-300 transition-colors" aria-label="Flip Back">
+                  <iconify-icon icon="lucide:x" width="16" stroke-width="1.5"></iconify-icon>
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- Card 3 -->
+          <div class="group h-[320px] md:h-[340px] min-w-[78vw] md:min-w-[45vw] lg:min-w-0 lg:max-w-none w-full lg:w-auto perspective-1000 flex-shrink-0 select-none snap-center">
+            <div class="flip-card-inner relative w-full h-full duration-700 transform-style-3d transition-transform ease-out-expo shadow-lg rounded-[24px]">
+              <div class="absolute inset-0 w-full h-full backface-hidden bg-stone-900 rounded-[24px] border border-black/5 flex flex-col justify-between overflow-hidden">
+                <div class="absolute inset-0 z-0">
+                  <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/dd4f3d66-119e-4390-b012-07c1df683c78_1600w.png" alt="Inflexible tools" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 brightness-[0.8] pointer-events-none">
+                </div>
+                <div class="relative z-10 flex flex-col justify-between h-full p-6 md:p-8">
+                  <div class="flex flex-col md:items-start md:text-left text-center items-center">
+                    <span class="inline-flex items-center gap-1 rounded-full bg-black/20 backdrop-blur-md border border-white/20 px-2.5 py-0.5 text-[10px] font-bold text-white uppercase tracking-wide mb-3">
+                      Problem 03
+                    </span>
+                    <h3 class="text-xl md:text-2xl font-semibold tracking-tight text-white leading-tight drop-shadow-sm">
+                      Generic Tools Don't Fit
+                    </h3>
+                    <p class="hidden md:block text-xs font-semibold text-white/90 mt-2 drop-shadow-sm">
+                      Off-the-shelf tools never quite match how you work.
+                    </p>
+                  </div>
+                  <button onclick="event.stopPropagation(); flipCard(this)" class="absolute bottom-5 right-5 z-20 w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center text-slate-900 hover:bg-slate-100 transition-colors" aria-label="Flip Card">
+                    <iconify-icon icon="lucide:plus" width="20" stroke-width="1.5"></iconify-icon>
+                  </button>
+                </div>
+              </div>
+              <div class="absolute inset-0 w-full h-full backface-hidden rotate-y-180 bg-white rounded-[24px] border border-black/5 p-6 md:p-8 flex flex-col overflow-hidden">
+                <div class="flex flex-col items-center text-center md:items-start md:text-left flex-shrink-0 mb-2">
+                  <span class="inline-flex items-center gap-1 w-fit rounded-full bg-white border border-blue-100 px-2.5 py-0.5 text-[10px] font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-violet-600 tracking-wide mb-3">
+                    PROBLEM 03
+                  </span>
+                  <h3 class="text-xl md:text-2xl font-semibold tracking-tight text-slate-900 leading-tight">
+                    Generic Tools Don't Fit
+                  </h3>
+                </div>
+                <div class="overflow-y-auto custom-scrollbar flex-grow pr-1 pb-10">
+                  <p class="text-sm text-slate-500 leading-relaxed font-medium mb-3">
+                    Off-the-shelf platforms are limited. You need custom
+                    solutions that actually match your unique business
+                    processes.
+                  </p>
+                  <p class="text-sm text-slate-500 leading-relaxed font-medium mb-3">
+                    You've tried the popular all-in-one platforms. Within weeks
+                    you hit limitations. "That workflow isn't supported."
+                  </p>
+                </div>
+                <button onclick="event.stopPropagation(); unflipCard(this)" class="absolute bottom-5 right-5 z-20 w-8 h-8 bg-slate-200 rounded-full shadow-lg flex items-center justify-center text-slate-900 hover:bg-slate-300 transition-colors" aria-label="Flip Back">
+                  <iconify-icon icon="lucide:x" width="16" stroke-width="1.5"></iconify-icon>
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- Card 4 -->
+          <div class="group h-[320px] md:h-[340px] min-w-[78vw] md:min-w-[45vw] lg:min-w-0 lg:max-w-none w-full lg:w-auto perspective-1000 flex-shrink-0 select-none snap-center">
+            <div class="flip-card-inner relative w-full h-full duration-700 transform-style-3d transition-transform ease-out-expo shadow-lg rounded-[24px]">
+              <div class="absolute inset-0 w-full h-full backface-hidden bg-white rounded-[24px] border border-black/5 p-6 md:p-8 flex flex-col justify-between overflow-hidden">
+                <div class="z-10 flex flex-col items-center text-center md:items-start md:text-left">
+                  <span class="inline-flex items-center gap-1 rounded-full bg-white border border-blue-100 px-2.5 py-0.5 text-[10px] font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-violet-600 tracking-wide mb-3">
+                    PROBLEM 04
+                  </span>
+                  <h3 class="text-xl md:text-2xl font-semibold tracking-tight text-slate-900 leading-tight">
+                    Technical Debt Kills Momentum
+                  </h3>
+                  <p class="text-xs font-medium text-slate-500 mt-2 hidden md:block">
+                    Every new feature feels harder than the last.
+                  </p>
+                </div>
+                <div class="absolute bottom-0 left-0 right-0 h-[60%] overflow-hidden rounded-b-[24px]">
+                  <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/d038e0eb-c854-409c-8229-64c1a950b129_1600w.png" alt="Technical debt" class="object-center transition-transform duration-700 group-hover:scale-105 w-full h-full object-cover pointer-events-none">
+                </div>
+                <button onclick="event.stopPropagation(); flipCard(this)" class="absolute bottom-5 right-5 z-20 w-8 h-8 bg-slate-900 rounded-full shadow-lg flex items-center justify-center text-white hover:bg-slate-800 transition-colors" aria-label="Flip Card">
+                  <iconify-icon icon="lucide:plus" width="18" stroke-width="1.5"></iconify-icon>
+                </button>
+              </div>
+              <div class="absolute inset-0 w-full h-full backface-hidden rotate-y-180 bg-white rounded-[24px] border border-black/5 p-6 md:p-8 flex flex-col overflow-hidden">
+                <div class="flex flex-col items-center text-center md:items-start md:text-left flex-shrink-0 mb-2">
+                  <span class="inline-flex items-center gap-1 w-fit rounded-full bg-white border border-blue-100 px-2.5 py-0.5 text-[10px] font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-violet-600 tracking-wide mb-3">
+                    PROBLEM 04
+                  </span>
+                  <h3 class="text-xl md:text-2xl font-semibold tracking-tight text-slate-900 leading-tight">
+                    Technical Debt Kills Momentum
+                  </h3>
+                </div>
+                <div class="overflow-y-auto custom-scrollbar flex-grow pr-1 pb-10">
+                  <p class="text-sm text-slate-500 leading-relaxed font-medium mb-3">
+                    Quick fixes and rushed builds pile up, turning your system
+                    into a house of cards. Every new feature feels harder.
+                  </p>
+                  <p class="text-sm text-slate-500 leading-relaxed font-medium mb-3">
+                    That "temporary workaround" from 6 months ago is still
+                    there. Simple changes require touching 12 files because
+                    nothing was built to scale.
+                  </p>
+                </div>
+                <button onclick="event.stopPropagation(); unflipCard(this)" class="absolute bottom-5 right-5 z-20 w-8 h-8 bg-slate-200 rounded-full shadow-lg flex items-center justify-center text-slate-900 hover:bg-slate-300 transition-colors" aria-label="Flip Back">
+                  <iconify-icon icon="lucide:x" width="16" stroke-width="1.5"></iconify-icon>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex items-center justify-center gap-3 mt-4 w-full z-20 lg:hidden" id="challengeControls">
+          <button class="prev-btn control-glass w-10 h-10 rounded-full flex items-center justify-center text-slate-900 hover:bg-white/40 transition-colors">
+            <iconify-icon icon="lucide:chevron-left" width="20" stroke-width="2"></iconify-icon>
+          </button>
+          <div class="flex items-center gap-2 control-glass px-4 py-2.5 rounded-full">
+            <button class="indicator-dot active h-2 rounded-full bg-slate-800" data-index="0" style="width: 24px; background-color: rgb(29, 29, 31);"></button>
+            <button class="indicator-dot w-2 h-2 rounded-full bg-slate-400" data-index="1" style="width: 6px; background-color: rgb(203, 213, 225);"></button>
+            <button class="indicator-dot w-2 h-2 rounded-full bg-slate-400" data-index="2" style="width: 6px; background-color: rgb(203, 213, 225);"></button>
+            <button class="indicator-dot w-2 h-2 rounded-full bg-slate-400" data-index="3" style="width: 6px; background-color: rgb(203, 213, 225);"></button>
+          </div>
+          <button class="next-btn control-glass w-10 h-10 rounded-full flex items-center justify-center text-slate-900 hover:bg-white/40 transition-colors">
+            <iconify-icon icon="lucide:chevron-right" width="20" stroke-width="2"></iconify-icon>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Solutions Section -->
+    <section id="solutions" class="flex flex-col justify-center py-12 md:py-20 bg-white overflow-hidden relative">
+      <div class="w-full max-w-7xl mx-auto px-6 mb-10 md:mb-14">
+        <div class="flex flex-col items-start w-full">
+          <span class="inline-flex items-center justify-center px-3 py-1 rounded-full bg-white border border-blue-100 shadow-sm text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-violet-600 text-[10px] font-bold uppercase tracking-wider mb-5">
+            Our AI-Powered Solutions
+          </span>
+          <h2 class="text-3xl md:text-[2.75rem] font-extrabold tracking-tight text-slate-900 leading-tight font-sf mb-3">
+            Solutions that work from day one.
+          </h2>
+          <p class="text-base md:text-xl font-medium text-[#6e6e73] tracking-tight leading-snug max-w-3xl">
+            We combine cutting-edge AI technology with 6+ years of enterprise
+            product design experience.
+          </p>
+        </div>
+      </div>
+
+      <div class="w-full overflow-hidden">
+        <div id="solutionsTrack" class="flex gap-6 overflow-x-auto pb-10 pl-6 xl:pl-[calc((100vw-80rem)/2+1.5rem)] pr-6 cursor-grab select-none no-scrollbar snap-x snap-mandatory scroll-smooth">
+          <div class="w-[85vw] md:w-[26rem] lg:w-[28rem] h-[520px] flex-shrink-0 relative rounded-[32px] overflow-hidden group snap-center border border-black/5 bg-black">
+            <div class="absolute inset-0 z-0 bg-black"></div>
+            <div class="relative z-10 flex flex-col h-full p-8 md:p-10 justify-between">
+              <div class="flex flex-col">
+                <span class="text-[13px] font-semibold text-slate-300 tracking-wide mb-3">
+                  Product Development
+                </span>
+                <h3 class="text-2xl md:text-3xl font-sf font-semibold text-white tracking-tight leading-tight">
+                  Ship your product in weeks, not months.
+                </h3>
+                <p class="text-[15px] font-medium text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-violet-400 mt-4 leading-relaxed">
+                  From idea to revenue in 30 days.
+                </p>
+              </div>
+              <button onclick="openModal('Product Development')" class="absolute bottom-8 right-8 w-10 h-10 rounded-full bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all duration-300 group-hover:scale-110 shadow-lg">
+                <iconify-icon icon="lucide:plus" width="20" stroke-width="1.5"></iconify-icon>
+              </button>
+            </div>
+          </div>
+          <div class="w-[85vw] md:w-[26rem] lg:w-[28rem] h-[520px] flex-shrink-0 relative rounded-[32px] overflow-hidden group snap-center border border-black/5 bg-black">
+            <div class="absolute inset-0 z-0 bg-black"></div>
+            <div class="relative z-10 flex flex-col h-full p-8 md:p-10 justify-between">
+              <div class="flex flex-col">
+                <span class="text-[13px] font-semibold text-slate-300 tracking-wide mb-3">
+                  AI Automation
+                </span>
+                <h3 class="text-2xl md:text-3xl font-sf font-semibold text-white tracking-tight leading-tight">
+                  Your operations, running on autopilot.
+                </h3>
+                <p class="text-[15px] font-medium text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400 mt-4 leading-relaxed">
+                  Save 15-20 hours every week.
+                </p>
+              </div>
+              <button onclick="openModal('AI Automation')" class="absolute bottom-8 right-8 w-10 h-10 rounded-full bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all duration-300 group-hover:scale-110 shadow-lg">
+                <iconify-icon icon="lucide:plus" width="20" stroke-width="1.5"></iconify-icon>
+              </button>
+            </div>
+          </div>
+          <div class="w-[85vw] md:w-[26rem] lg:w-[28rem] h-[520px] flex-shrink-0 relative rounded-[32px] overflow-hidden group snap-center border border-black/5 bg-black">
+            <div class="absolute inset-0 z-0 bg-black"></div>
+            <div class="relative z-10 flex flex-col h-full p-8 md:p-10 justify-between">
+              <div class="flex flex-col">
+                <span class="text-[13px] font-semibold text-slate-300 tracking-wide mb-3">
+                  Customer Experience
+                </span>
+                <h3 class="text-2xl md:text-3xl font-sf font-semibold text-white tracking-tight leading-tight">
+                  Support that never sleeps.
+                </h3>
+                <p class="text-[15px] font-medium text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-cyan-400 mt-4 leading-relaxed">
+                  Instant answers. Happy customers.
+                </p>
+              </div>
+              <button onclick="openModal('Customer Experience')" class="absolute bottom-8 right-8 w-10 h-10 rounded-full bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all duration-300 group-hover:scale-110 shadow-lg">
+                <iconify-icon icon="lucide:plus" width="20" stroke-width="1.5"></iconify-icon>
+              </button>
+            </div>
+          </div>
+          <div class="w-[85vw] md:w-[26rem] lg:w-[28rem] h-[520px] flex-shrink-0 relative rounded-[32px] overflow-hidden group snap-center border border-black/5 bg-black">
+            <div class="absolute inset-0 z-0 bg-black"></div>
+            <div class="relative z-10 flex flex-col h-full p-8 md:p-10 justify-between">
+              <div class="flex flex-col">
+                <span class="text-[13px] font-semibold text-slate-300 tracking-wide mb-3">
+                  Premium Package
+                </span>
+                <h3 class="text-2xl md:text-3xl font-sf font-semibold text-white tracking-tight leading-tight">
+                  Everything you need to dominate your market.
+                </h3>
+                <p class="text-[15px] font-medium text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-400 to-rose-400 mt-4 leading-relaxed">
+                  Product + Automation + Support. All-in-one.
+                </p>
+              </div>
+              <button onclick="openModal('Premium Package')" class="absolute bottom-8 right-8 w-10 h-10 rounded-full bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all duration-300 group-hover:scale-110 shadow-lg">
+                <iconify-icon icon="lucide:plus" width="20" stroke-width="1.5"></iconify-icon>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- From Idea to Empire Section (Horizontal Carousel) -->
+    <section id="process" class="py-20 md:py-32 bg-slate-50 overflow-hidden">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="text-start max-w-3xl mb-12">
+          <span class="inline-flex items-center justify-center px-3 py-1 rounded-full bg-white border border-blue-100 shadow-sm text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-violet-600 text-[10px] font-bold uppercase tracking-wider mb-5">
+            How It Works
+          </span>
+          <h2 class="text-3xl md:text-[2.75rem] font-extrabold tracking-tight text-slate-900 leading-tight font-sf mb-3">
+            From Idea to Empire.
+          </h2>
+          <p class="text-base md:text-xl font-medium text-[#6e6e73] tracking-tight leading-snug">
+            Our simple 4-step process.
+          </p>
+        </div>
+      </div>
+      <div class="relative w-full">
+        <div id="processContainer" class="flex gap-6 overflow-x-auto pb-10 pl-6 xl:pl-[calc((100vw-80rem)/2+1.5rem)] pr-6 cursor-grab select-none no-scrollbar snap-x snap-mandatory scroll-smooth">
+          <!-- Step 1 -->
+          <div class="w-[85vw] md:w-[400px] flex-shrink-0 snap-center group">
+            <div class="relative h-[240px] md:h-[260px] rounded-3xl overflow-hidden mb-6 shadow-sm border border-slate-200/50">
+              <img src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Discovery" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+              <div class="absolute top-4 left-4 w-10 h-10 bg-white/90 backdrop-blur-md rounded-full flex items-center justify-center font-bold text-slate-900 shadow-sm border border-white/50">
+                1
+              </div>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 mb-2 font-sf">
+              Discovery &amp; Strategy.
+            </h3>
+            <p class="text-slate-600 leading-relaxed text-sm md:text-base">
+              We deep dive into requirements to identify high-impact
+              opportunities before writing code.
+            </p>
+          </div>
+          <!-- Step 2 -->
+          <div class="w-[85vw] md:w-[400px] flex-shrink-0 snap-center group">
+            <div class="relative h-[240px] md:h-[260px] rounded-3xl overflow-hidden mb-6 shadow-sm border border-slate-200/50">
+              <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Development" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+              <div class="absolute top-4 left-4 w-10 h-10 bg-white/90 backdrop-blur-md rounded-full flex items-center justify-center font-bold text-slate-900 shadow-sm border border-white/50">
+                2
+              </div>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 mb-2 font-sf">
+              Rapid Development.
+            </h3>
+            <p class="text-slate-600 leading-relaxed text-sm md:text-base">
+              Robust, scalable architecture using cutting-edge models. We
+              iterate fast.
+            </p>
+          </div>
+          <!-- Step 3 -->
+          <div class="w-[85vw] md:w-[400px] flex-shrink-0 snap-center group">
+            <div class="relative h-[240px] md:h-[260px] rounded-3xl overflow-hidden mb-6 shadow-sm border border-slate-200/50">
+              <img src="https://images.unsplash.com/photo-1636819488524-1f019c4e1c44?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Launch" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+              <div class="absolute top-4 left-4 w-10 h-10 bg-white/90 backdrop-blur-md rounded-full flex items-center justify-center font-bold text-slate-900 shadow-sm border border-white/50">
+                3
+              </div>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 mb-2 font-sf">
+              Seamless Launch.
+            </h3>
+            <p class="text-slate-600 leading-relaxed text-sm md:text-base">
+              Deployment with blue-green strategies for zero downtime. Real-time
+              metrics from day one.
+            </p>
+          </div>
+          <!-- Step 4 -->
+          <div class="w-[85vw] md:w-[400px] flex-shrink-0 snap-center group">
+            <div class="relative h-[240px] md:h-[260px] rounded-3xl overflow-hidden mb-6 shadow-sm border border-slate-200/50">
+              <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Scale" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+              <div class="absolute top-4 left-4 w-10 h-10 bg-white/90 backdrop-blur-md rounded-full flex items-center justify-center font-bold text-slate-900 shadow-sm border border-white/50">
+                4
+              </div>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 mb-2 font-sf">
+              Scale &amp; Optimize.
+            </h3>
+            <p class="text-slate-600 leading-relaxed text-sm md:text-base">
+              We optimize infrastructure costs and performance, ensuring speed
+              at any scale.
+            </p>
+          </div>
+        </div>
+        <div class="flex items-center justify-between mt-8 w-full max-w-7xl mx-auto px-6">
+          <div class="flex items-center gap-2 control-glass px-4 py-2.5 rounded-full md:hidden">
+            <button class="indicator-dot active h-2 rounded-full bg-slate-800 w-6" data-process-index="0"></button>
+            <button class="indicator-dot h-2 rounded-full bg-slate-300 w-1.5" data-process-index="1"></button>
+            <button class="indicator-dot h-2 rounded-full bg-slate-300 w-1.5" data-process-index="2"></button>
+            <button class="indicator-dot h-2 rounded-full bg-slate-300 w-1.5" data-process-index="3"></button>
+          </div>
+          <div class="flex gap-4 ml-auto">
+            <button onclick="document.getElementById('processContainer').scrollBy({left: -320, behavior: 'smooth'})" class="w-12 h-12 rounded-full border border-slate-200 bg-white flex items-center justify-center text-slate-900 hover:bg-slate-50 transition-colors">
+              <iconify-icon icon="lucide:arrow-left" width="20" stroke-width="1.5"></iconify-icon>
+            </button>
+            <button onclick="document.getElementById('processContainer').scrollBy({left: 320, behavior: 'smooth'})" class="w-12 h-12 rounded-full border border-slate-200 bg-white flex items-center justify-center text-slate-900 hover:bg-slate-50 transition-colors">
+              <iconify-icon icon="lucide:arrow-right" width="20" stroke-width="1.5"></iconify-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- NEW Animated Integrations Section -->
+    <section class="py-24 bg-slate-950 text-white relative overflow-hidden">
+      <!-- Background Glow -->
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-indigo-500/10 blur-[100px] rounded-full pointer-events-none"></div>
+
+      <div class="sm:px-6 lg:px-8 max-w-7xl mx-auto px-4 relative z-10">
+        <div class="animate-in text-center">
+          <span class="inline-flex items-center gap-1 rounded-full bg-indigo-500/10 px-2 py-1 text-[11px] text-indigo-300 ring-1 ring-indigo-500/30 uppercase tracking-tight font-semibold">
+            <iconify-icon icon="lucide:plug" width="14" class="text-indigo-300"></iconify-icon>
+            Integrations
+          </span>
+          <h2 class="sm:text-5xl text-4xl font-semibold tracking-tight mt-6">
+            Connect your entire
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-violet-400">tech stack</span>
+          </h2>
+          <p class="mx-auto mt-4 max-w-2xl text-sm sm:text-base text-slate-400">
+            One platform, infinite possibilities. Sync with all your favorite
+            tools instantly.
+          </p>
+        </div>
+
+        <div class="relative mx-auto mt-16 max-w-4xl">
+          <!-- Animated Icons Row -->
+          <div class="animate-in stagger-delay-1 flex flex-wrap items-center justify-center gap-6 sm:gap-8">
+            <!-- Notion -->
+            <div class="group flex flex-col items-center gap-2 transition-transform hover:-translate-y-1">
+              <span class="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-white/5 ring-1 ring-white/10 group-hover:bg-white/10 group-hover:ring-indigo-500/50 transition-all duration-300 shadow-lg">
+                <iconify-icon icon="logos:notion-icon" width="28"></iconify-icon>
+              </span>
+            </div>
+            <!-- Gmail -->
+            <div class="group flex flex-col items-center gap-2 transition-transform hover:-translate-y-1">
+              <span class="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-white/5 ring-1 ring-white/10 group-hover:bg-white/10 group-hover:ring-indigo-500/50 transition-all duration-300 shadow-lg">
+                <iconify-icon icon="logos:google-gmail" width="28"></iconify-icon>
+              </span>
+            </div>
+            <!-- Drive -->
+            <div class="group flex flex-col items-center gap-2 transition-transform hover:-translate-y-1">
+              <span class="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-white/5 ring-1 ring-white/10 group-hover:bg-white/10 group-hover:ring-indigo-500/50 transition-all duration-300 shadow-lg">
+                <iconify-icon icon="logos:google-drive" width="28"></iconify-icon>
+              </span>
+            </div>
+            <!-- OpenAI -->
+            <div class="group flex flex-col items-center gap-2 transition-transform hover:-translate-y-1">
+              <span class="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-white/5 ring-1 ring-white/10 group-hover:bg-white/10 group-hover:ring-indigo-500/50 transition-all duration-300 shadow-lg">
+                <iconify-icon icon="simple-icons:openai" width="28" class="text-white"></iconify-icon>
+              </span>
+            </div>
+            <!-- Anthropic -->
+            <div class="group flex flex-col items-center gap-2 transition-transform hover:-translate-y-1">
+              <span class="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-white/5 ring-1 ring-white/10 group-hover:bg-white/10 group-hover:ring-indigo-500/50 transition-all duration-300 shadow-lg">
+                <iconify-icon icon="simple-icons:anthropic" width="28" class="text-white"></iconify-icon>
+              </span>
+            </div>
+            <!-- HubSpot -->
+            <div class="group flex flex-col items-center gap-2 transition-transform hover:-translate-y-1">
+              <span class="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-white/5 ring-1 ring-white/10 group-hover:bg-white/10 group-hover:ring-indigo-500/50 transition-all duration-300 shadow-lg">
+                <iconify-icon icon="logos:hubspot" width="28"></iconify-icon>
+              </span>
+            </div>
+            <!-- Salesforce -->
+            <div class="group flex flex-col items-center gap-2 transition-transform hover:-translate-y-1">
+              <span class="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-white/5 ring-1 ring-white/10 group-hover:bg-white/10 group-hover:ring-indigo-500/50 transition-all duration-300 shadow-lg">
+                <iconify-icon icon="logos:salesforce" width="32"></iconify-icon>
+              </span>
+            </div>
+            <!-- Slack -->
+            <div class="group flex flex-col items-center gap-2 transition-transform hover:-translate-y-1">
+              <span class="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-white/5 ring-1 ring-white/10 group-hover:bg-white/10 group-hover:ring-indigo-500/50 transition-all duration-300 shadow-lg">
+                <iconify-icon icon="logos:slack-icon" width="28"></iconify-icon>
+              </span>
+            </div>
+          </div>
+
+          <!-- Animated SVG Beam -->
+          <div class="animate-in stagger-delay-2 relative mt-8 h-48 md:h-64">
+            <svg viewBox="0 0 900 360" class="absolute inset-0 w-full h-full opacity-60" fill="none" preserveAspectRatio="xMidYMid meet">
+              <!-- Moving Dots -->
+              <circle cx="150" cy="30" r="4" fill="#8b5cf6" filter="url(#glow)" class="">
+                <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite" class=""></animate>
+              </circle>
+              <circle cx="270" cy="30" r="4" fill="#8b5cf6" filter="url(#glow)" class="">
+                <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" begin="0.2s" repeatCount="indefinite" class=""></animate>
+              </circle>
+              <circle cx="390" cy="30" r="4" fill="#8b5cf6" filter="url(#glow)" class="">
+                <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" begin="0.4s" repeatCount="indefinite" class=""></animate>
+              </circle>
+              <circle cx="510" cy="30" r="4" fill="#8b5cf6" filter="url(#glow)" class="">
+                <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" begin="0.6s" repeatCount="indefinite" class=""></animate>
+              </circle>
+              <circle cx="630" cy="30" r="4" fill="#8b5cf6" filter="url(#glow)" class="">
+                <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" begin="0.8s" repeatCount="indefinite" class=""></animate>
+              </circle>
+              <circle cx="750" cy="30" r="4" fill="#8b5cf6" filter="url(#glow)" class="">
+                <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" begin="1s" repeatCount="indefinite" class=""></animate>
+              </circle>
+
+              <!-- Connection Lines -->
+              <path d="M450 300 C 450 200, 300 120, 150 30" stroke="#6366f1" stroke-width="1.5" stroke-linecap="round" fill="none" style="stroke-dasharray: 600; stroke-dashoffset: 600" class="">
+                <animate attributeName="stroke-dashoffset" values="600;0;600" dur="3s" begin="0s" repeatCount="indefinite" calcMode="spline" keySplines="0.42 0 0.58 1; 0.42 0 0.58 1" class=""></animate>
+              </path>
+              <path d="M450 300 C 450 210, 360 130, 270 30" stroke="#8b5cf6" stroke-width="1.5" stroke-linecap="round" fill="none" style="stroke-dasharray: 520; stroke-dashoffset: 520" class="">
+                <animate attributeName="stroke-dashoffset" values="520;0;520" dur="3s" begin="0.2s" repeatCount="indefinite" calcMode="spline" keySplines="0.42 0 0.58 1; 0.42 0 0.58 1" class=""></animate>
+              </path>
+              <path d="M450 300 C 450 150, 420 80, 390 30" stroke="#a855f7" stroke-width="1.5" stroke-linecap="round" fill="none" style="stroke-dasharray: 450; stroke-dashoffset: 450" class="">
+                <animate attributeName="stroke-dashoffset" values="450;0;450" dur="3s" begin="0.4s" repeatCount="indefinite" calcMode="spline" keySplines="0.42 0 0.58 1; 0.42 0 0.58 1" class=""></animate>
+              </path>
+              <path d="M450 300 C 450 150, 480 80, 510 30" stroke="#a855f7" stroke-width="1.5" stroke-linecap="round" fill="none" style="stroke-dasharray: 450; stroke-dashoffset: 450" class="">
+                <animate attributeName="stroke-dashoffset" values="450;0;450" dur="3s" begin="0.6s" repeatCount="indefinite" calcMode="spline" keySplines="0.42 0 0.58 1; 0.42 0 0.58 1" class=""></animate>
+              </path>
+              <path d="M450 300 C 450 210, 540 130, 630 30" stroke="#8b5cf6" stroke-width="1.5" stroke-linecap="round" fill="none" style="stroke-dasharray: 520; stroke-dashoffset: 520" class="">
+                <animate attributeName="stroke-dashoffset" values="520;0;520" dur="3s" begin="0.8s" repeatCount="indefinite" calcMode="spline" keySplines="0.42 0 0.58 1; 0.42 0 0.58 1" class=""></animate>
+              </path>
+              <path d="M450 300 C 450 200, 600 120, 750 30" stroke="#6366f1" stroke-width="1.5" stroke-linecap="round" fill="none" style="stroke-dasharray: 600; stroke-dashoffset: 600" class="">
+                <animate attributeName="stroke-dashoffset" values="600;0;600" dur="3s" begin="1s" repeatCount="indefinite" calcMode="spline" keySplines="0.42 0 0.58 1; 0.42 0 0.58 1" class=""></animate>
+              </path>
+
+              <!-- Glow Filter -->
+              <defs>
+                <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+                  <feGaussianBlur in="SourceGraphic" stdDeviation="2" result="blur"></feGaussianBlur>
+                  <feMerge>
+                    <feMergeNode in="blur"></feMergeNode>
+                    <feMergeNode in="SourceGraphic"></feMergeNode>
+                  </feMerge>
+                </filter>
+              </defs>
+            </svg>
+
+            <div class="absolute bottom-2 left-1/2 -translate-x-1/2">
+              <span class="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-indigo-500/20 ring-2 ring-indigo-500/40 backdrop-blur-sm" style="box-shadow: 0 0 30px rgba(99, 102, 241, 0.4), 0 0 60px rgba(139, 92, 246, 0.2);">
+                <iconify-icon icon="lucide:zap" width="28" class="text-indigo-300"></iconify-icon>
+              </span>
+            </div>
+          </div>
+
+          <div class="animate-in stagger-delay-3 mx-auto mt-12 max-w-4xl">
+            <div class="flex items-center justify-center gap-3 flex-wrap text-sm">
+              <div class="inline-flex items-center gap-2">
+                <iconify-icon icon="lucide:workflow" width="16" class="text-indigo-400"></iconify-icon>
+                <span class="font-medium text-slate-300">Instant sync</span>
+              </div>
+              <div class="hidden sm:block w-24 h-px border-t border-dashed border-slate-700"></div>
+              <div class="inline-flex items-center gap-2">
+                <iconify-icon icon="lucide:shield-check" width="16" class="text-indigo-400"></iconify-icon>
+                <span class="font-medium text-slate-300">Enterprise security</span>
+              </div>
+              <div class="hidden sm:block w-24 h-px border-t border-dashed border-slate-700"></div>
+              <div class="inline-flex items-center gap-2">
+                <iconify-icon icon="lucide:gauge" width="16" class="text-indigo-400"></iconify-icon>
+                <span class="font-medium text-slate-300">Real-time updates</span>
+              </div>
+              <div class="hidden sm:block w-24 h-px border-t border-dashed border-slate-700"></div>
+              <div class="inline-flex items-center gap-2">
+                <iconify-icon icon="lucide:mouse-pointer-click" width="16" class="text-indigo-400"></iconify-icon>
+                <span class="font-medium text-slate-300">One-click setup</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-24 md:py-32 bg-slate-50 relative overflow-hidden">
+      <div class="max-w-7xl mx-auto px-6 relative z-10">
+        <div class="text-center max-w-3xl mx-auto mb-20">
+          <span class="inline-flex items-center justify-center px-3 py-1 rounded-full bg-white border border-blue-100 shadow-sm text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-violet-600 text-[10px] font-bold uppercase tracking-wider mb-5">
+            Full Code Ownership &amp; Money Back Guarantee
+          </span>
+          <h2 class="text-3xl md:text-[2.75rem] font-extrabold tracking-tight text-slate-900 leading-tight font-sf mb-3">
+            Simple, transparent pricing.
+          </h2>
+          <p class="text-base md:text-xl font-medium text-[#6e6e73] tracking-tight leading-snug">
+            Choose the plan that fits your stage of growth.
+          </p>
+        </div>
+
+        <div class="grid lg:grid-cols-3 gap-8 items-start">
+          <!-- Tier 1 -->
+          <div class="pricing-card bg-white rounded-[32px] p-8 border border-slate-200 relative overflow-hidden flex flex-col h-full">
+            <div class="card-beam-border"></div>
+            <div class="mb-8 relative z-10">
+              <h3 class="text-xl font-bold text-slate-900 mb-2">
+                AI Workflow Automation
+              </h3>
+              <p class="text-slate-500 text-sm h-10">
+                Automate repetitive tasks and save hours.
+              </p>
+              <div class="mt-6 flex items-baseline gap-1">
+                <span class="text-4xl font-bold text-slate-900">$3,999</span>
+                <span class="text-slate-500 font-medium">/one-time</span>
+              </div>
+            </div>
+            <ul class="space-y-4 mb-8 flex-grow relative z-10">
+              <li class="flex items-start gap-3 text-sm text-slate-600">
+                <iconify-icon icon="lucide:check-circle" class="text-blue-600 mt-0.5 flex-shrink-0" width="16"></iconify-icon>
+                Custom AI Agents
+              </li>
+              <li class="flex items-start gap-3 text-sm text-slate-600">
+                <iconify-icon icon="lucide:check-circle" class="text-blue-600 mt-0.5 flex-shrink-0" width="16"></iconify-icon>
+                Process Analysis
+              </li>
+              <li class="flex items-start gap-3 text-sm text-slate-600">
+                <iconify-icon icon="lucide:check-circle" class="text-blue-600 mt-0.5 flex-shrink-0" width="16"></iconify-icon>
+                N8n / Make Integration
+              </li>
+            </ul>
+            <button class="shiny-cta w-full focus:outline-none justify-center cta-beam-animation relative z-10">
+              <span>Get Started</span>
+            </button>
+          </div>
+
+          <!-- Tier 2 -->
+          <div class="pricing-card bg-slate-900 rounded-[32px] p-8 border border-slate-800 relative overflow-hidden flex flex-col h-full transform lg:-translate-y-4 shadow-2xl">
+            <div class="absolute inset-0 pointer-events-none rounded-[32px] border border-blue-500/30"></div>
+            <div class="mb-8 relative z-10">
+              <span class="inline-block px-3 py-1 rounded-full bg-blue-600/20 text-blue-400 text-xs font-bold mb-4 border border-blue-500/20">
+                MOST POPULAR
+              </span>
+              <h3 class="text-xl font-bold text-white mb-2">
+                Rapid MVP Development
+              </h3>
+              <p class="text-slate-400 text-sm h-10">
+                From idea to functional product.
+              </p>
+              <div class="mt-6 flex items-baseline gap-1">
+                <span class="text-4xl font-bold text-white">$7,999</span>
+                <span class="text-slate-400 font-medium">/project</span>
+              </div>
+            </div>
+            <ul class="space-y-4 mb-8 flex-grow relative z-10">
+              <li class="flex items-start gap-3 text-sm text-slate-300">
+                <iconify-icon icon="lucide:check-circle" class="text-blue-400 mt-0.5 flex-shrink-0" width="16"></iconify-icon>
+                Full Stack Development
+              </li>
+              <li class="flex items-start gap-3 text-sm text-slate-300">
+                <iconify-icon icon="lucide:check-circle" class="text-blue-400 mt-0.5 flex-shrink-0" width="16"></iconify-icon>
+                Auth, Payments &amp; Database
+              </li>
+              <li class="flex items-start gap-3 text-sm text-slate-300">
+                <iconify-icon icon="lucide:check-circle" class="text-blue-400 mt-0.5 flex-shrink-0" width="16"></iconify-icon>
+                2 Weeks Delivery
+              </li>
+            </ul>
+            <button class="shiny-cta w-full justify-center relative z-10 cta-beam-animation">
+              <span>Start Building</span>
+            </button>
+          </div>
+
+          <!-- Tier 3 -->
+          <div class="pricing-card bg-white rounded-[32px] p-8 border border-slate-200 relative overflow-hidden flex flex-col h-full">
+            <div class="card-beam-border"></div>
+            <div class="mb-8 relative z-10">
+              <h3 class="text-xl font-bold text-slate-900 mb-2">
+                Complete AI Solution
+              </h3>
+              <p class="text-slate-500 text-sm h-10">
+                Full scale platform for established teams.
+              </p>
+              <div class="mt-6 flex items-baseline gap-1">
+                <span class="text-4xl font-bold text-slate-900">Custom</span>
+              </div>
+            </div>
+            <ul class="space-y-4 mb-8 flex-grow relative z-10">
+              <li class="flex items-start gap-3 text-sm text-slate-600">
+                <iconify-icon icon="lucide:check-circle" class="text-blue-600 mt-0.5 flex-shrink-0" width="16"></iconify-icon>
+                Custom LLM Training
+              </li>
+              <li class="flex items-start gap-3 text-sm text-slate-600">
+                <iconify-icon icon="lucide:check-circle" class="text-blue-600 mt-0.5 flex-shrink-0" width="16"></iconify-icon>
+                Dedicated Engineer
+              </li>
+              <li class="flex items-start gap-3 text-sm text-slate-600">
+                <iconify-icon icon="lucide:check-circle" class="text-blue-600 mt-0.5 flex-shrink-0" width="16"></iconify-icon>
+                Enterprise SLA
+              </li>
+            </ul>
+            <button class="shiny-cta w-full focus:outline-none justify-center cta-beam-animation relative z-10">
+              <span>Contact Sales</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="py-24 px-6 bg-white relative overflow-hidden">
+      <div class="max-w-5xl mx-auto relative rounded-[3rem] bg-slate-900 overflow-hidden text-center py-20 px-8 shadow-2xl">
+        <div class="absolute top-0 left-1/4 w-96 h-96 bg-blue-600/30 rounded-full blur-[128px] pointer-events-none"></div>
+        <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-600/30 rounded-full blur-[128px] pointer-events-none"></div>
+
+        <div class="relative z-10 flex flex-col items-center">
+          <h2 class="text-4xl md:text-6xl font-sf font-bold text-white tracking-tight mb-6">
+            Ready to ship faster?
+          </h2>
+          <p class="text-lg md:text-xl text-slate-300 max-w-2xl mb-10">
+            Stop wasting time on manual work. Let's build your AI-powered future
+            today.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4">
+            <button class="shiny-cta shiny-cta-light">
+              <span>Book Strategy Call</span>
+            </button>
+            <a href="#process" class="px-8 py-3 rounded-full text-white border border-white/20 hover:bg-white/10 transition-colors font-medium">
+              View Process
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      const heroCard = document.getElementById('hero-card');
+      const heroGlow = document.getElementById('hero-glow');
+
+      if(heroCard && heroGlow) {
+          heroCard.addEventListener('mousemove', (e) => {
+              const rect = heroCard.getBoundingClientRect();
+              const x = e.clientX - rect.left;
+              const y = e.clientY - rect.top;
+
+              heroGlow.style.background = `radial-gradient(600px circle at ${x}px ${y}px, rgba(255, 255, 255, 0.15), transparent 40%)`;
+              heroGlow.style.opacity = '1';
+          });
+
+          heroCard.addEventListener('mouseleave', () => {
+              heroGlow.style.opacity = '0';
+          });
+      }
+
+      // Process Carousel Status Bar Logic
+      const processContainer = document.getElementById('processContainer');
+      const processDots = document.querySelectorAll('[data-process-index]');
+
+      if (processContainer && processDots.length > 0) {
+        processContainer.addEventListener('scroll', () => {
+            const scrollLeft = processContainer.scrollLeft;
+            const width = processContainer.offsetWidth;
+            const scrollWidth = processContainer.scrollWidth;
+
+            // Calculate current index based on scroll position
+            const itemWidth = processContainer.firstElementChild.offsetWidth + 24; // 24 is gap
+            const index = Math.round(scrollLeft / itemWidth);
+
+            processDots.forEach((dot, i) => {
+                if (i === index) {
+                    dot.classList.add('active');
+                    dot.style.width = '24px';
+                    dot.style.backgroundColor = 'rgb(29, 29, 31)';
+                } else {
+                    dot.classList.remove('active');
+                    dot.style.width = '6px';
+                    dot.style.backgroundColor = 'rgb(203, 213, 225)';
+                }
+            });
+        });
+      }
+
+      // Flip Card Logic
+      function flipCard(btn) {
+        const card = btn.closest('.flip-card-inner');
+        if (card) card.classList.add('card-flipped');
+      }
+
+      function unflipCard(btn) {
+        const card = btn.closest('.flip-card-inner');
+        if (card) card.classList.remove('card-flipped');
+      }
+
+      // Mobile Menu Logic
+      const mobileMenu = document.getElementById('mobile-menu');
+      const hamburgerBtn = document.getElementById('hamburger-btn');
+      const closeMenuBtn = document.getElementById('close-menu-btn');
+
+      function openMenu() {
+          if(mobileMenu) {
+              mobileMenu.classList.remove('menu-closed');
+              mobileMenu.classList.add('menu-open');
+          }
+      }
+
+      function closeMenuAndNavigate() {
+          if(mobileMenu) {
+              mobileMenu.classList.remove('menu-open');
+              mobileMenu.classList.add('menu-closed');
+          }
+      }
+
+      if(hamburgerBtn) hamburgerBtn.addEventListener('click', openMenu);
+      if(closeMenuBtn) closeMenuBtn.addEventListener('click', closeMenuAndNavigate);
+
+      // Placeholder
+      function openModal(title) { console.log('Open modal:', title); }
+    </script>
+  
+</body></html>

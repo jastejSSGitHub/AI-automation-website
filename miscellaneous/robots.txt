@@ -1,0 +1,51 @@
+# robots.txt for Nexus AI Automation Agency
+# Last updated: 2025-12-28
+
+# Allow all search engines
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://nexusai.agency/sitemap.xml
+
+# Google Bot
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+# Bing Bot
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 0
+
+# OpenAI GPTBot (ChatGPT)
+User-agent: GPTBot
+Allow: /
+Crawl-delay: 1
+
+# Anthropic ClaudeBot
+User-agent: Claude-Web
+Allow: /
+Crawl-delay: 1
+
+# Perplexity Bot
+User-agent: PerplexityBot
+Allow: /
+Crawl-delay: 1
+
+# Google Extended (Bard/Gemini training)
+User-agent: Google-Extended
+Allow: /
+
+# Block bad bots
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /

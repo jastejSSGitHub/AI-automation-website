@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glassmorphism CTA Reference - Apple iPad Air Style</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Apple iPad Air Style Glassmorphism Button */
+        .glass-cta {
+            position: relative;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow:
+                0 8px 32px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.5);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-cta:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-2px);
+            box-shadow:
+                0 12px 40px rgba(0, 0, 0, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.6);
+        }
+
+        .glass-cta:active {
+            transform: translateY(0);
+            box-shadow:
+                0 4px 16px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.4);
+        }
+
+        /* Blue Icon Variant */
+        .glass-cta-blue {
+            background: rgba(59, 130, 246, 0.2);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+        }
+
+        .glass-cta-blue:hover {
+            background: rgba(59, 130, 246, 0.3);
+        }
+
+        /* Sticky Bottom Center Positioning */
+        .sticky-bottom-center {
+            position: sticky;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 50;
+        }
+
+        /* Demo Background */
+        .demo-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 200vh;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="demo-bg">
+        <!-- Header -->
+        <div class="text-center pt-20 pb-10 px-6">
+            <h1 class="text-5xl md:text-7xl font-bold text-white mb-4 tracking-tight">
+                Glassmorphism CTA Reference
+            </h1>
+            <p class="text-xl text-white/80 max-w-2xl mx-auto">
+                Apple iPad Air-style button with glassmorphism effect, sticky positioning, and high z-index
+            </p>
+        </div>
+
+        <!-- Content Section -->
+        <div class="max-w-6xl mx-auto px-6 pb-40">
+            <div class="bg-white/10 backdrop-blur-md rounded-3xl p-8 md:p-12 border border-white/20">
+                <h2 class="text-3xl md:text-5xl font-semibold text-white mb-6">
+                    Two sizes. Infinite possibilities.
+                </h2>
+                <p class="text-lg text-white/90 mb-8 max-w-2xl">
+                    Scroll down to see the sticky glassmorphism button in action. This design is inspired by Apple's
+                    iPad Air landing page.
+                </p>
+
+                <!-- Demo Content -->
+                <div class="space-y-6 text-white/80">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut
+                        labore et dolore magna aliqua.</p>
+                    <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                        consequat.</p>
+                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                        pariatur.</p>
+                    <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
+                        est laborum.</p>
+                </div>
+            </div>
+
+            <!-- More content to enable scrolling -->
+            <div class="mt-12 space-y-8">
+                <div class="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
+                    <h3 class="text-2xl font-semibold text-white mb-4">Keep scrolling...</h3>
+                    <p class="text-white/70">The button stays at the bottom center with high z-index.</p>
+                </div>
+                <div class="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
+                    <h3 class="text-2xl font-semibold text-white mb-4">Glassmorphism Effect</h3>
+                    <p class="text-white/70">Notice the frosted glass effect with blur and transparency.</p>
+                </div>
+                <div class="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
+                    <h3 class="text-2xl font-semibold text-white mb-4">Smooth Interactions</h3>
+                    <p class="text-white/70">Hover and click the button to see the smooth transitions.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sticky Glassmorphism CTA Button (Default Style) -->
+        <div class="sticky-bottom-center w-max mx-auto">
+            <button class="glass-cta rounded-full px-6 py-3 flex items-center gap-3 text-white font-medium">
+                <iconify-icon icon="lucide:play-circle" width="24" class="text-white"></iconify-icon>
+                <span>Dive into the display</span>
+            </button>
+        </div>
+
+        <!-- Alternative: Blue Icon Variant (Commented out - uncomment to use) -->
+        <!-- 
+    <div class="sticky-bottom-center w-max mx-auto">
+      <button class="glass-cta glass-cta-blue rounded-full px-6 py-3 flex items-center gap-3 text-white font-medium">
+        <iconify-icon icon="lucide:sparkles" width="24" class="text-blue-300"></iconify-icon>
+        <span>Explore features</span>
+      </button>
+    </div>
+    -->
+    </div>
+
+    <!-- Code Reference Section -->
+    <div class="bg-slate-900 text-white py-20 px-6">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-3xl font-bold mb-8">CSS Code Reference</h2>
+
+            <div class="bg-slate-800 rounded-xl p-6 overflow-x-auto">
+                <pre class="text-sm"><code>/* Apple iPad Air Style Glassmorphism Button */
+.glass-cta {
+  position: relative;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-cta:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-2px);
+  box-shadow: 
+    0 12px 40px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+/* Sticky Bottom Center Positioning */
+.sticky-bottom-center {
+  position: sticky;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 50;
+}</code></pre>
+            </div>
+
+            <div class="mt-8">
+                <h3 class="text-xl font-semibold mb-4">HTML Usage</h3>
+                <div class="bg-slate-800 rounded-xl p-6 overflow-x-auto">
+                    <pre class="text-sm"><code>&lt;div class="sticky-bottom-center w-max mx-auto"&gt;
+  &lt;button class="glass-cta rounded-full px-6 py-3 flex items-center gap-3 text-white font-medium"&gt;
+    &lt;iconify-icon icon="lucide:play-circle" width="24"&gt;&lt;/iconify-icon&gt;
+    &lt;span&gt;Dive into the display&lt;/span&gt;
+  &lt;/button&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+
+            <div class="mt-8 p-6 bg-blue-900/30 rounded-xl border border-blue-500/30">
+                <h3 class="text-xl font-semibold mb-3 flex items-center gap-2">
+                    <iconify-icon icon="lucide:lightbulb" width="24" class="text-yellow-400"></iconify-icon>
+                    Usage Notes
+                </h3>
+                <ul class="space-y-2 text-sm text-white/80">
+                    <li>• Works best on colorful or image backgrounds</li>
+                    <li>• Adjust opacity values (0.15, 0.25) based on background darkness</li>
+                    <li>• The blur(20px) creates the frosted glass effect</li>
+                    <li>• saturate(180%) enhances colors behind the glass</li>
+                    <li>• Use high z-index (50+) to ensure button stays on top</li>
+                    <li>• Sticky positioning keeps it visible while scrolling</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
