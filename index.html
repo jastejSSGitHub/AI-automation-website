@@ -806,12 +806,12 @@
       height: 800px;
       transform: translate(-50%, -50%);
       background: radial-gradient(circle at center,
-          rgba(59, 130, 246, 0.9) 0%,
-          rgba(147, 51, 234, 0.8) 25%,
-          rgba(236, 72, 153, 0.7) 50%,
-          rgba(59, 130, 246, 0.5) 75%,
+          rgba(59, 130, 246, 0.15) 0%,
+          rgba(147, 51, 234, 0.12) 25%,
+          rgba(236, 72, 153, 0.1) 50%,
+          rgba(59, 130, 246, 0.08) 75%,
           transparent 100%);
-      filter: blur(60px);
+      filter: blur(120px);
       animation: gradient-rotate 20s ease-in-out infinite;
       pointer-events: none;
       z-index: 1;
@@ -826,11 +826,11 @@
       height: 700px;
       transform: translate(-50%, -50%);
       background: radial-gradient(circle at center,
-          rgba(147, 51, 234, 0.7) 0%,
-          rgba(236, 72, 153, 0.6) 30%,
-          rgba(59, 130, 246, 0.5) 60%,
+          rgba(147, 51, 234, 0.12) 0%,
+          rgba(236, 72, 153, 0.1) 30%,
+          rgba(59, 130, 246, 0.08) 60%,
           transparent 100%);
-      filter: blur(80px);
+      filter: blur(140px);
       animation: gradient-rotate 25s ease-in-out infinite reverse;
       pointer-events: none;
       z-index: 1;
@@ -845,11 +845,11 @@
       height: 650px;
       transform: translate(-50%, -50%);
       background: radial-gradient(circle at center,
-          rgba(236, 72, 153, 0.6) 0%,
-          rgba(59, 130, 246, 0.5) 40%,
-          rgba(147, 51, 234, 0.4) 70%,
+          rgba(236, 72, 153, 0.1) 0%,
+          rgba(59, 130, 246, 0.08) 40%,
+          rgba(147, 51, 234, 0.06) 70%,
           transparent 100%);
-      filter: blur(75px);
+      filter: blur(130px);
       animation: gradient-rotate 30s ease-in-out infinite;
       animation-delay: -10s;
       pointer-events: none;
@@ -1606,7 +1606,8 @@
 
             <div class="w-full md:w-1/2 relative order-1 md:order-2 perspective-1000">
               <div class="relative w-full aspect-square md:aspect-[4/3] flex items-center justify-center">
-                <img src="./solution-1-mvp.png" alt="Launch Product in 2 Weeks - Fintech and Note Taking App"
+                <img src="./Images/Solutions/solution1.png"
+                  alt="Launch Product in 2 Weeks - Fintech and Note Taking App"
                   class="w-full h-auto object-contain hover:scale-105 transition-transform duration-700 ease-out transform will-change-transform scroll-rotate-image"
                   style="transition: transform 0.1s linear; /* Smooth but responsive for scroll */">
               </div>
@@ -1617,7 +1618,7 @@
           <div class="flex flex-col md:flex-row items-center justify-between gap-12 md:gap-24 group">
             <div class="w-full md:w-1/2 relative order-1 md:order-1 perspective-1000">
               <div class="relative w-full aspect-square md:aspect-[4/3] flex items-center justify-center">
-                <img src="./solution-2-refined.png" alt="Automated Sales Workflows"
+                <img src="./Images/Solutions/solution2 alt.png" alt="Automated Sales Workflows"
                   class="w-full h-auto object-contain hover:scale-105 transition-transform duration-700 ease-out transform will-change-transform scroll-rotate-image-reverse"
                   style="transition: transform 0.1s linear;">
               </div>
@@ -1662,7 +1663,7 @@
 
             <div class="w-full md:w-1/2 relative order-1 md:order-2 perspective-1000">
               <div class="relative w-full aspect-square md:aspect-[4/3] flex items-center justify-center">
-                <img src="./solution-2-refined.png" alt="App Screens Stack"
+                <img src="./Images/Solutions/solution3 alt.png" alt="Operations at Light Speed"
                   class="w-full h-auto object-contain hover:scale-105 transition-transform duration-700 ease-out transform will-change-transform scroll-rotate-image"
                   style="transition: transform 0.1s linear;">
               </div>
@@ -1680,13 +1681,43 @@
       <div class="w-full overflow-hidden">
         <div id="solutionsTrack"
           class="flex gap-6 overflow-x-auto pb-10 pl-6 xl:pl-[calc((100vw-80rem)/2+1.5rem)] pr-6 cursor-grab select-none no-scrollbar snap-x snap-mandatory scroll-smooth">
-          <!-- MVP Card Removed - Showcased Above -->
+          <!-- Rapid MVP Development Card -->
           <div
             class="w-[85vw] md:w-[26rem] lg:w-[28rem] h-[520px] flex-shrink-0 relative rounded-[32px] overflow-hidden group snap-center border border-black/5 bg-black">
-            <img
-              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII="
-              alt="Background" class="absolute inset-0 w-full h-full object-cover z-0">
-            <div class="relative z-10 flex flex-col h-full p-8 md:p-10 justify-between">
+            <img src="./Images/Solutions/Capability1-updated.png" alt="Rapid MVP Development"
+              class="absolute inset-0 w-full h-full object-cover z-0 opacity-100 group-hover:opacity-100 transition-opacity duration-500"
+              style="image-rendering: -webkit-optimize-contrast; backface-visibility: hidden; transform: translateZ(0);">
+            <div
+              class="absolute inset-0 h-[60%] bg-gradient-to-b from-black/80 via-black/40 to-transparent z-10 pointer-events-none">
+            </div>
+            <div class="relative z-20 flex flex-col h-full p-8 md:p-10 justify-between">
+              <div class="flex flex-col">
+                <span class="text-[13px] font-semibold text-slate-300 tracking-wide mb-3">
+                  Product Development
+                </span>
+                <h3 class="text-2xl md:text-3xl font-sf font-semibold text-white tracking-tight leading-tight">
+                  Launch your product vision in weeks.
+                </h3>
+                <p
+                  class="text-[15px] font-medium text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400 mt-4 leading-relaxed">
+                  From Idea to Revenue in 30 Days.
+                </p>
+              </div>
+              <button onclick="openModal('rapid_mvp')"
+                class="absolute bottom-8 right-8 w-10 h-10 rounded-full bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all duration-300 group-hover:scale-110 shadow-lg">
+                <iconify-icon icon="lucide:plus" width="20" stroke-width="1.5"></iconify-icon>
+              </button>
+            </div>
+          </div>
+          <div
+            class="w-[85vw] md:w-[26rem] lg:w-[28rem] h-[520px] flex-shrink-0 relative rounded-[32px] overflow-hidden group snap-center border border-black/5 bg-black">
+            <img src="./Images/Solutions/Capability2.png" alt="AI Automation"
+              class="absolute inset-0 w-full h-full object-cover z-0 opacity-100 group-hover:opacity-100 transition-opacity duration-500"
+              style="image-rendering: -webkit-optimize-contrast; backface-visibility: hidden; transform: translateZ(0);">
+            <div
+              class="absolute inset-0 h-[60%] bg-gradient-to-b from-black/80 via-black/40 to-transparent z-10 pointer-events-none">
+            </div>
+            <div class="relative z-20 flex flex-col h-full p-8 md:p-10 justify-between">
               <div class="flex flex-col">
                 <span class="text-[13px] font-semibold text-slate-300 tracking-wide mb-3">
                   AI Automation
@@ -1707,10 +1738,13 @@
           </div>
           <div
             class="w-[85vw] md:w-[26rem] lg:w-[28rem] h-[520px] flex-shrink-0 relative rounded-[32px] overflow-hidden group snap-center border border-black/5 bg-black">
-            <img
-              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII="
-              alt="Background" class="absolute inset-0 w-full h-full object-cover z-0">
-            <div class="relative z-10 flex flex-col h-full p-8 md:p-10 justify-between">
+            <img src="./Images/Solutions/Capability 3.png" alt="Customer Experience"
+              class="absolute inset-0 w-full h-full object-cover z-0 opacity-100 group-hover:opacity-100 transition-opacity duration-500"
+              style="image-rendering: -webkit-optimize-contrast; backface-visibility: hidden; transform: translateZ(0);">
+            <div
+              class="absolute inset-0 h-[60%] bg-gradient-to-b from-black/80 via-black/40 to-transparent z-10 pointer-events-none">
+            </div>
+            <div class="relative z-20 flex flex-col h-full p-8 md:p-10 justify-between">
               <div class="flex flex-col">
                 <span class="text-[13px] font-semibold text-slate-300 tracking-wide mb-3">
                   Customer Experience
@@ -1731,10 +1765,13 @@
           </div>
           <div
             class="w-[85vw] md:w-[26rem] lg:w-[28rem] h-[520px] flex-shrink-0 relative rounded-[32px] overflow-hidden group snap-center border border-black/5 bg-black">
-            <img
-              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII="
-              alt="Background" class="absolute inset-0 w-full h-full object-cover z-0">
-            <div class="relative z-10 flex flex-col h-full p-8 md:p-10 justify-between">
+            <img src="./Images/Solutions/Capability4.png" alt="Premium Package"
+              class="absolute inset-0 w-full h-full object-cover z-0 opacity-100 group-hover:opacity-100 transition-opacity duration-500"
+              style="image-rendering: -webkit-optimize-contrast; backface-visibility: hidden; transform: translateZ(0);">
+            <div
+              class="absolute inset-0 h-[60%] bg-gradient-to-b from-black/80 via-black/40 to-transparent z-10 pointer-events-none">
+            </div>
+            <div class="relative z-20 flex flex-col h-full p-8 md:p-10 justify-between">
               <div class="flex flex-col">
                 <span class="text-[13px] font-semibold text-slate-300 tracking-wide mb-3">
                   Premium Package
@@ -1806,9 +1843,7 @@
           <div class="w-[85vw] md:w-[400px] flex-shrink-0 snap-center group">
             <div
               class="relative h-[240px] md:h-[260px] rounded-3xl overflow-hidden mb-6 shadow-sm border border-slate-200/50">
-              <img
-                src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&amp;fit=crop&amp;w=800&amp;q=80"
-                alt="Discovery"
+              <img src="./Images/idea_empire_d_discovery_1768136293624.png" alt="Discovery"
                 class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
               <div
                 class="absolute top-4 left-4 w-10 h-10 bg-white/90 backdrop-blur-md rounded-full flex items-center justify-center font-bold text-slate-900 shadow-sm border border-white/50">
@@ -1823,9 +1858,7 @@
           <div class="w-[85vw] md:w-[400px] flex-shrink-0 snap-center group">
             <div
               class="relative h-[240px] md:h-[260px] rounded-3xl overflow-hidden mb-6 shadow-sm border border-slate-200/50">
-              <img
-                src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&amp;fit=crop&amp;w=800&amp;q=80"
-                alt="Development"
+              <img src="./Images/idea_empire_d_dev_1768136309743.png" alt="Development"
                 class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
               <div
                 class="absolute top-4 left-4 w-10 h-10 bg-white/90 backdrop-blur-md rounded-full flex items-center justify-center font-bold text-slate-900 shadow-sm border border-white/50">
@@ -1840,9 +1873,8 @@
           <div class="w-[85vw] md:w-[400px] flex-shrink-0 snap-center group">
             <div
               class="relative h-[240px] md:h-[260px] rounded-3xl overflow-hidden mb-6 shadow-sm border border-slate-200/50">
-              <img
-                src="https://images.unsplash.com/photo-1636819488524-1f019c4e1c44?auto=format&amp;fit=crop&amp;w=800&amp;q=80"
-                alt="Launch" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+              <img src="./Images/idea_empire_d_launch_1768136329066.png" alt="Launch"
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
               <div
                 class="absolute top-4 left-4 w-10 h-10 bg-white/90 backdrop-blur-md rounded-full flex items-center justify-center font-bold text-slate-900 shadow-sm border border-white/50">
                 3</div>
@@ -1856,9 +1888,8 @@
           <div class="w-[85vw] md:w-[400px] flex-shrink-0 snap-center group">
             <div
               class="relative h-[240px] md:h-[260px] rounded-3xl overflow-hidden mb-6 shadow-sm border border-slate-200/50">
-              <img
-                src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&amp;fit=crop&amp;w=800&amp;q=80"
-                alt="Scale" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+              <img src="./Images/idea_empire_d_scale_optimize_1768166095664.png" alt="Scale"
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
               <div
                 class="absolute top-4 left-4 w-10 h-10 bg-white/90 backdrop-blur-md rounded-full flex items-center justify-center font-bold text-slate-900 shadow-sm border border-white/50">
                 4</div>
