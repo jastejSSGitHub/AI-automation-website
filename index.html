@@ -1287,27 +1287,28 @@
             <div
               class="flip-card-inner relative w-full h-full duration-700 transform-style-3d transition-transform ease-out-expo shadow-lg rounded-[24px]">
               <div onclick="flipCard(this)" style="cursor: pointer;"
-                class="absolute inset-0 w-full h-full backface-hidden bg-white rounded-[24px] border border-black/5 flex flex-col justify-between overflow-hidden">
-                <div class="absolute inset-0 z-0">
-                  <img src="./assets/calendar_delay_v2.png" alt="Development constraints"
-                    class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 pointer-events-none">
-                  <div class="absolute inset-0 bg-gradient-to-b from-white via-white/80 to-transparent"></div>
+                class="absolute inset-0 w-full h-full backface-hidden bg-[#2c1810] rounded-[24px] border border-white/10 flex flex-col justify-between overflow-hidden">
+                <div class="absolute inset-0 z-0 flex items-end justify-center">
+                  <img src="./Images/Solutions/calender.png" alt="Development constraints"
+                    class="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105 pointer-events-none drop-shadow-2xl opacity-90 translate-y-2">
+                  <div class="absolute inset-0 bg-gradient-to-b from-transparent via-[#2c1810]/10 to-[#2c1810]"></div>
                 </div>
                 <div class="flex flex-col md:p-8 h-full z-10 pt-6 pr-6 pb-6 pl-6 relative justify-between">
                   <div class="flex flex-col items-center text-center md:items-start md:text-left">
                     <span
-                      class="inline-flex items-center gap-1 rounded-full bg-white/90 backdrop-blur-sm border border-blue-100 px-2.5 py-0.5 text-[10px] font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-violet-600 tracking-wide mb-3 badge-animated">
+                      class="inline-flex items-center gap-1 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 px-2.5 py-0.5 text-[10px] font-bold text-orange-200 tracking-wide mb-3">
                       PROBLEM 01
                     </span>
-                    <h3 class="text-xl md:text-2xl font-semibold tracking-tight text-slate-900 leading-tight">
+                    <h3
+                      class="text-xl md:text-2xl font-semibold tracking-tight text-white leading-tight drop-shadow-md">
                       Development Takes Forever
                     </h3>
-                    <p class="text-xs font-medium text-slate-600 mt-2 hidden md:block">
+                    <p class="text-xs font-medium text-orange-100/80 mt-2 hidden md:block drop-shadow-sm">
                       Months of building, and still no momentum.
                     </p>
                   </div>
                   <button onclick="event.stopPropagation(); flipCard(this)"
-                    class="absolute bottom-5 right-5 z-20 w-8 h-8 bg-slate-900 rounded-full shadow-lg flex items-center justify-center text-white hover:bg-slate-800 transition-colors"
+                    class="absolute bottom-5 right-5 z-20 w-8 h-8 bg-white/20 backdrop-blur-md border border-white/30 rounded-full shadow-lg flex items-center justify-center text-white hover:bg-white hover:text-[#2c1810] transition-all"
                     aria-label="Flip Card">
                     <iconify-icon icon="lucide:plus" width="18" stroke-width="1.5"></iconify-icon>
                   </button>
