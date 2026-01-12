@@ -1556,7 +1556,7 @@
 
     <!-- Solutions Section -->
     <section id="solutions" data-theme="light"
-      class="flex flex-col justify-center py-12 md:py-20 bg-white overflow-visible relative">
+      class="flex flex-col justify-center py-12 md:py-20 bg-white overflow-hidden relative">
       <div class="w-full max-w-7xl mx-auto px-6 mb-6 md:mb-8">
         <div class="flex flex-col items-center w-full text-center mb-4">
           <span class="text-xl md:text-2xl font-semibold text-slate-900 mb-2 tracking-tight">
@@ -1768,8 +1768,8 @@
           </div>
           <div
             class="w-[85vw] md:w-[26rem] lg:w-[28rem] h-[520px] flex-shrink-0 relative rounded-[32px] overflow-hidden group snap-center border border-black/5 bg-black">
-            <!-- Premium Package Card with beam.png -->
-            <img src="./Images/Solutions/beam.png" alt="Premium Package"
+            <!-- Premium Package Card -->
+            <img src="./Images/Solutions/premium_solution_bg.png" alt="Premium Package"
               class="absolute inset-0 w-full h-full object-cover z-0 opacity-100 group-hover:opacity-100 transition-opacity duration-500"
               style="image-rendering: -webkit-optimize-contrast; backface-visibility: hidden; transform: translateZ(0);">
             <div
@@ -3685,28 +3685,22 @@
         </button>
 
         <!-- Left Column: Image Area -->
+        <!-- Left Column: Image Area -->
         <div
-          class="md:w-5/12 bg-slate-50 flex items-center justify-center p-8 relative overflow-hidden border-b md:border-b-0 md:border-r border-slate-100">
-          <!-- Decorative Glows -->
-          <div class="absolute inset-0 pointer-events-none">
-            <div class="absolute -top-10 -left-10 w-40 h-40 bg-blue-500/10 rounded-full blur-3xl"></div>
-            <div class="absolute -bottom-10 -right-10 w-40 h-40 bg-purple-500/10 rounded-full blur-3xl"></div>
-          </div>
-
-          <!-- Image Frame -->
-          <div
-            class="relative w-full max-w-[240px] aspect-square bg-white rounded-2xl shadow-sm border border-slate-100 p-6 flex items-center justify-center z-10 transition-transform duration-500 hover:scale-105">
-            <img src="thunder-3d-icon-new.png" alt="Challenge Playbook"
-              class="w-full h-full object-contain floating-icon drop-shadow-[0_20px_30px_rgba(0,0,0,0.15)]">
-          </div>
+          class="h-64 md:h-auto md:w-5/12 relative overflow-hidden border-b md:border-b-0 md:border-r border-slate-100 bg-white">
+          <img src="assets/lead-gen-calorie.png" alt="AI Calorie Tracker" style="box-shadow: none; filter: none;"
+            class="absolute inset-0 w-full h-full object-cover">
         </div>
 
         <!-- Right Column: Content -->
         <div class="flex-1 p-8 md:p-12 flex flex-col justify-center">
           <div class="text-left">
-            <h3 class="text-2xl md:text-3xl font-sf font-bold text-slate-900 mb-3 tracking-tight">
+            <h3 class="text-2xl md:text-3xl font-sf font-bold text-slate-900 mb-2 tracking-tight">
               Unlock the Challenge Playbook.
             </h3>
+            <p class="text-sm font-medium text-blue-600 mb-6">
+              Join 2,400+ founders & builders
+            </p>
             <p class="text-slate-600 mb-8 leading-relaxed text-[15px]">
               Get the exact blueprint we use to scale agencies to $50k/mo.
               Limited time access to our proprietary lead generation strategies.
@@ -3725,7 +3719,7 @@
               </button>
             </form>
 
-            <p class="mt-6 text-xs text-slate-600 font-semibold tracking-wide uppercase">
+            <p class="mt-6 text-xs text-slate-600 font-semibold tracking-wide uppercase text-center">
               No spam, unsubscribe at any time.
             </p>
           </div>
