@@ -54,6 +54,11 @@
   <!-- Scripts -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+
+  <!-- Calendly -->
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+  <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+
   <style>
     html,
     body {
@@ -1009,7 +1014,8 @@
       </a>
     </div>
     <div class="mt-14 w-full px-12 max-w-sm relative z-10">
-      <button class="shiny-cta w-full focus:outline-none justify-center" onclick="closeMenuAndNavigate()">
+      <button class="shiny-cta w-full focus:outline-none justify-center"
+        onclick="closeMenuAndNavigate(); openCalendly()">
         <span>Book Free Call</span>
       </button>
     </div>
@@ -1041,7 +1047,7 @@
               <div
                 class="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-[360px] p-2 bg-white rounded-2xl shadow-xl border border-slate-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible translate-y-2 group-hover:translate-y-0 transition-all duration-200 ease-out z-50 overflow-hidden ring-1 ring-black/5 whitespace-normal">
                 <div class="flex flex-col gap-1">
-                  <a href="#solutions"
+                  <a href="#solution-sales"
                     class="flex items-start gap-4 p-3 rounded-xl hover:bg-slate-50 transition-colors group/item"
                     onclick="closeMenuAndNavigate()">
                     <div
@@ -1058,7 +1064,7 @@
                       </span>
                     </div>
                   </a>
-                  <a href="#solutions"
+                  <a href="#solution-launch"
                     class="flex items-start gap-4 p-3 rounded-xl hover:bg-slate-50 transition-colors group/item"
                     onclick="closeMenuAndNavigate()">
                     <div
@@ -1075,7 +1081,7 @@
                       </span>
                     </div>
                   </a>
-                  <a href="#solutions"
+                  <a href="#solution-operations"
                     class="flex items-start gap-4 p-3 rounded-xl hover:bg-slate-50 transition-colors group/item"
                     onclick="closeMenuAndNavigate()">
                     <div
@@ -1092,7 +1098,7 @@
                       </span>
                     </div>
                   </a>
-                  <a href="#solutions"
+                  <a href="#package-premium"
                     class="flex items-start gap-4 p-3 rounded-xl hover:bg-slate-50 transition-colors group/item"
                     onclick="closeMenuAndNavigate()">
                     <div
@@ -1128,7 +1134,7 @@
         </div>
         <div class="flex items-center justify-self-end gap-2 pr-1">
           <div class="hidden md:inline-block">
-            <button class="shiny-cta nav-cta focus:outline-none">
+            <button class="shiny-cta nav-cta focus:outline-none" onclick="openCalendly()">
               <span>Book Free Call</span>
             </button>
           </div>
@@ -1587,7 +1593,8 @@
         <div class="space-y-8 md:space-y-16">
 
           <!-- Row 1: Left Text, Right Image -->
-          <div class="flex flex-col md:flex-row items-center justify-between gap-12 md:gap-24 group">
+          <div id="solution-launch"
+            class="flex flex-col md:flex-row items-center justify-between gap-12 md:gap-24 group scroll-mt-32">
             <div
               class="w-full md:w-1/2 flex flex-col items-center md:items-start text-center md:text-left order-2 md:order-1">
               <span
@@ -1617,7 +1624,8 @@
           </div>
 
           <!-- Row 2: Left Image, Right Text -->
-          <div class="flex flex-col md:flex-row items-center justify-between gap-12 md:gap-24 group">
+          <div id="solution-sales"
+            class="flex flex-col md:flex-row items-center justify-between gap-12 md:gap-24 group scroll-mt-32">
             <div class="w-full md:w-1/2 relative order-1 md:order-1 perspective-1000" style="overflow: visible;">
               <div class="relative w-full aspect-square md:aspect-[4/3] flex items-center justify-center"
                 style="transform: scale(1.3); transform-origin: center; overflow: visible;">
@@ -1646,7 +1654,8 @@
           </div>
 
           <!-- Row 3: Left Text, Right Image -->
-          <div class="flex flex-col md:flex-row items-center justify-between gap-12 md:gap-24 group">
+          <div id="solution-operations"
+            class="flex flex-col md:flex-row items-center justify-between gap-12 md:gap-24 group scroll-mt-32">
             <div
               class="w-full md:w-1/2 flex flex-col items-center md:items-start text-center md:text-left order-2 md:order-1">
               <span
@@ -1822,10 +1831,10 @@
             </span>
             <h2
               class="text-[30px] md:text-[2.75rem] font-medium tracking-tight text-slate-900 leading-tight font-sf mb-3">
-              From Idea to Empire.
+              From idea to exploration.
             </h2>
             <p class="text-[17px] md:text-xl font-medium text-[#6e6e73] tracking-tight leading-snug">
-              Our simple 4-step process.
+              Our simple 3-step process.
             </p>
           </div>
           <div class="hidden md:flex gap-4">
@@ -1884,25 +1893,12 @@
                 class="absolute top-4 left-4 w-10 h-10 bg-white/90 backdrop-blur-md rounded-full flex items-center justify-center font-bold text-slate-900 shadow-sm border border-white/50">
                 3</div>
             </div>
-            <h3 class="text-xl font-bold text-slate-900 mb-2 font-sf">Seamless Launch.</h3>
-            <p class="text-slate-600 leading-relaxed text-sm md:text-base">Deployment with blue-green strategies for
-              zero downtime. Real-time metrics from day one.</p>
+            <h3 class="text-xl font-bold text-slate-900 mb-2 font-sf">Launch & Automate.</h3>
+            <p class="text-slate-600 leading-relaxed text-sm md:text-base">We deploy scalable workflows that run
+              autonomously, freeing you to focus on growth.</p>
           </div>
 
-          <!-- Step 4 -->
-          <div class="w-[85vw] md:w-[400px] flex-shrink-0 snap-center group">
-            <div
-              class="relative h-[240px] md:h-[260px] rounded-3xl overflow-hidden mb-6 shadow-sm border border-slate-200/50">
-              <img src="./Images/idea_empire_d_scale_optimize_1768166095664.png" alt="Scale"
-                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-              <div
-                class="absolute top-4 left-4 w-10 h-10 bg-white/90 backdrop-blur-md rounded-full flex items-center justify-center font-bold text-slate-900 shadow-sm border border-white/50">
-                4</div>
-            </div>
-            <h3 class="text-xl font-bold text-slate-900 mb-2 font-sf">Scale &amp; Optimize.</h3>
-            <p class="text-slate-600 leading-relaxed text-sm md:text-base">We optimize infrastructure costs and
-              performance, ensuring speed at any scale.</p>
-          </div>
+
         </div>
 
         <div class="flex items-center justify-between mt-8 w-full max-w-7xl mx-auto px-6 md:hidden">
@@ -1910,7 +1906,7 @@
             <button class="indicator-dot active h-2 rounded-full bg-slate-800 w-6" data-process-index="0"></button>
             <button class="indicator-dot h-2 rounded-full bg-slate-300 w-1.5" data-process-index="1"></button>
             <button class="indicator-dot h-2 rounded-full bg-slate-300 w-1.5" data-process-index="2"></button>
-            <button class="indicator-dot h-2 rounded-full bg-slate-300 w-1.5" data-process-index="3"></button>
+
           </div>
 
           <div class="flex gap-4 ml-auto">
@@ -1923,6 +1919,115 @@
               <iconify-icon icon="lucide:arrow-right" width="20" stroke-width="1.5"></iconify-icon>
             </button>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- From Idea to exploration Section (New Vertical Layout) -->
+    <section id="exploration" data-theme="light" class="py-20 md:py-32 bg-slate-50 overflow-hidden">
+      <div class="max-w-7xl mx-auto px-6">
+
+        <!-- Header -->
+        <div class="mb-16 md:mb-24 text-center md:text-left">
+          <span
+            class="inline-flex items-center justify-center px-3 py-1 rounded-full bg-white border border-blue-100 shadow-sm text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-violet-600 text-[11px] font-bold uppercase tracking-wider mb-5 badge-animated">
+            Our Process
+          </span>
+          <h2 class="text-[34px] md:text-[3.5rem] font-bold tracking-tight text-slate-900 leading-tight font-sf mb-6">
+            From idea to <span
+              class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-violet-600">exploration</span>.
+          </h2>
+          <p class="text-[17px] md:text-xl font-medium text-[#6e6e73] leading-relaxed max-w-2xl mx-auto md:mx-0">
+            We streamline the path from concept to execution. No wasted motion, just pure efficiency powered by
+            intelligent automation.
+          </p>
+        </div>
+
+        <div class="flex flex-col lg:flex-row items-center gap-16 md:gap-24">
+
+          <!-- Left Column: Vertical Steps -->
+          <div class="w-full lg:w-1/2">
+            <div class="relative flex flex-col gap-12 pl-4">
+              <!-- Vertical Line Background -->
+              <div class="absolute left-[2.25rem] top-6 bottom-6 w-0.5 bg-slate-200/60 rounded-full lg:left-[2.25rem]">
+              </div>
+              <!-- Vertical Gradient Line (Progress) -->
+              <div
+                class="absolute left-[2.25rem] top-6 h-[80%] w-0.5 bg-gradient-to-b from-blue-600 via-purple-600 to-transparent rounded-full opacity-60 lg:left-[2.25rem]">
+              </div>
+
+              <!-- Step 1 -->
+              <div class="relative flex gap-8 group cursor-default">
+                <div class="relative flex-shrink-0 z-10">
+                  <div
+                    class="w-14 h-14 rounded-full bg-white border border-blue-100 shadow-[0_4px_20px_-5px_rgba(37,99,235,0.2)] flex items-center justify-center group-hover:scale-110 transition-transform duration-300 ring-4 ring-white">
+                    <span
+                      class="font-sf font-bold text-lg text-transparent bg-clip-text bg-gradient-to-br from-blue-600 to-violet-600">1</span>
+                  </div>
+                </div>
+                <div class="pt-2">
+                  <h3 class="text-xl font-bold text-slate-900 mb-3 font-sf group-hover:text-blue-600 transition-colors">
+                    Concept & Strategy</h3>
+                  <p class="text-slate-600 leading-relaxed text-base">
+                    We distill your complex ideas into a clear, actionable roadmap, identifying exactly where AI can
+                    drive the most value.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Step 2 -->
+              <div class="relative flex gap-8 group cursor-default">
+                <div class="relative flex-shrink-0 z-10">
+                  <div
+                    class="w-14 h-14 rounded-full bg-white border border-purple-100 shadow-[0_4px_20px_-5px_rgba(147,51,234,0.2)] flex items-center justify-center group-hover:scale-110 transition-transform duration-300 ring-4 ring-white">
+                    <span
+                      class="font-sf font-bold text-lg text-transparent bg-clip-text bg-gradient-to-br from-purple-600 to-pink-600">2</span>
+                  </div>
+                </div>
+                <div class="pt-2">
+                  <h3
+                    class="text-xl font-bold text-slate-900 mb-3 font-sf group-hover:text-purple-600 transition-colors">
+                    Rapid Exploration</h3>
+                  <p class="text-slate-600 leading-relaxed text-base">
+                    We build fast, functional prototypes to test your hypothesis in the real world, cutting development
+                    time by weeks.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Step 3 -->
+              <div class="relative flex gap-8 group cursor-default">
+                <div class="relative flex-shrink-0 z-10">
+                  <div
+                    class="w-14 h-14 rounded-full bg-white border border-pink-100 shadow-[0_4px_20px_-5px_rgba(236,72,153,0.2)] flex items-center justify-center group-hover:scale-110 transition-transform duration-300 ring-4 ring-white">
+                    <span
+                      class="font-sf font-bold text-lg text-transparent bg-clip-text bg-gradient-to-br from-pink-600 to-orange-600">3</span>
+                  </div>
+                </div>
+                <div class="pt-2">
+                  <h3 class="text-xl font-bold text-slate-900 mb-3 font-sf group-hover:text-pink-600 transition-colors">
+                    Launch & Automate</h3>
+                  <p class="text-slate-600 leading-relaxed text-base">
+                    Once validated, we deploy scalable workflows that run autonomously, freeing you to focus on the next
+                    big thing.
+                  </p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Right Column: Image -->
+          <div class="w-full lg:w-1/2 relative perspective-1000">
+            <div
+              class="relative aspect-square md:aspect-[4/3] flex items-center justify-center p-0 group transition-all duration-500">
+              <!-- Background Gradients (Removed as requested to remove background color) -->
+
+              <img src="./Images/ai_process_orbit.png" alt="AI Automation Process with 3D Orbit"
+                class="relative z-10 w-full h-auto object-contain hover:scale-105 transition-transform duration-700 floating-icon">
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
@@ -1947,25 +2052,29 @@
 
         <!-- Case Studies Grid - 2 Per Row -->
         <div class="grid md:grid-cols-2 gap-6 md:gap-8">
-          
+
           <!-- Case Study 1: TD Bank -->
           <div class="group cursor-pointer" onclick="window.location.href='case-study-td-bank.html'">
-            <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden hover:shadow-xl transition-all duration-500 h-full flex flex-col">
+            <div
+              class="bg-white rounded-2xl border border-slate-200 overflow-hidden hover:shadow-xl transition-all duration-500 h-full flex flex-col">
               <div class="relative overflow-hidden aspect-[16/10]">
                 <img src="./Images/CaseStudies/td_bank_case_study_1768257254398.png" alt="TD Bank Mobile Banking App"
                   class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
               </div>
               <div class="p-6 flex-1 flex flex-col">
-                <span class="inline-block px-3 py-1 rounded-full bg-blue-50 text-blue-600 text-xs font-bold uppercase tracking-wide mb-3 w-fit">
+                <span
+                  class="inline-block px-3 py-1 rounded-full bg-blue-50 text-blue-600 text-xs font-bold uppercase tracking-wide mb-3 w-fit">
                   MVP Development
                 </span>
                 <h3 class="text-xl md:text-2xl font-semibold text-slate-900 tracking-tight font-sf mb-3 leading-tight">
                   TD Bank — Mobile Banking Redesign
                 </h3>
                 <p class="text-sm md:text-base text-slate-600 leading-relaxed mb-4 flex-1">
-                  Enterprise mobile app redesign for millions of users. 21% increase in satisfaction, 43% reduction in support tickets.
+                  Enterprise mobile app redesign for millions of users. 21% increase in satisfaction, 43% reduction in
+                  support tickets.
                 </p>
-                <div class="flex items-center gap-2 text-blue-600 font-semibold text-sm group-hover:gap-3 transition-all">
+                <div
+                  class="flex items-center gap-2 text-blue-600 font-semibold text-sm group-hover:gap-3 transition-all">
                   Read Case Study
                   <iconify-icon icon="lucide:arrow-right" width="16"></iconify-icon>
                 </div>
@@ -1975,22 +2084,26 @@
 
           <!-- Case Study 2: AI Automation -->
           <div class="group cursor-pointer" onclick="window.location.href='case-study-ai-automation.html'">
-            <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden hover:shadow-xl transition-all duration-500 h-full flex flex-col">
+            <div
+              class="bg-white rounded-2xl border border-slate-200 overflow-hidden hover:shadow-xl transition-all duration-500 h-full flex flex-col">
               <div class="relative overflow-hidden aspect-[16/10]">
                 <img src="./Images/CaseStudies/ai_automation_case_study_1768257269326.png" alt="AI Automation Dashboard"
                   class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
               </div>
               <div class="p-6 flex-1 flex flex-col">
-                <span class="inline-block px-3 py-1 rounded-full bg-purple-50 text-purple-600 text-xs font-bold uppercase tracking-wide mb-3 w-fit">
+                <span
+                  class="inline-block px-3 py-1 rounded-full bg-purple-50 text-purple-600 text-xs font-bold uppercase tracking-wide mb-3 w-fit">
                   AI Automation
                 </span>
                 <h3 class="text-xl md:text-2xl font-semibold text-slate-900 tracking-tight font-sf mb-3 leading-tight">
                   Revive Air — Automated Lead Generation
                 </h3>
                 <p class="text-sm md:text-base text-slate-600 leading-relaxed mb-4 flex-1">
-                  200+ qualified leads daily, 95% faster response time, 18 hours saved weekly with AI automation workflows.
+                  200+ qualified leads daily, 95% faster response time, 18 hours saved weekly with AI automation
+                  workflows.
                 </p>
-                <div class="flex items-center gap-2 text-blue-600 font-semibold text-sm group-hover:gap-3 transition-all">
+                <div
+                  class="flex items-center gap-2 text-blue-600 font-semibold text-sm group-hover:gap-3 transition-all">
                   Read Case Study
                   <iconify-icon icon="lucide:arrow-right" width="16"></iconify-icon>
                 </div>
@@ -2000,13 +2113,15 @@
 
           <!-- Case Study 3: TurboContent -->
           <div class="group cursor-pointer" onclick="window.location.href='case-study-turbocontent.html'">
-            <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden hover:shadow-xl transition-all duration-500 h-full flex flex-col">
+            <div
+              class="bg-white rounded-2xl border border-slate-200 overflow-hidden hover:shadow-xl transition-all duration-500 h-full flex flex-col">
               <div class="relative overflow-hidden aspect-[16/10]">
                 <img src="./Images/CaseStudies/turbocontent_case_study_1768257286200.png" alt="TurboContent AI Platform"
                   class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
               </div>
               <div class="p-6 flex-1 flex flex-col">
-                <span class="inline-block px-3 py-1 rounded-full bg-indigo-50 text-indigo-600 text-xs font-bold uppercase tracking-wide mb-3 w-fit">
+                <span
+                  class="inline-block px-3 py-1 rounded-full bg-indigo-50 text-indigo-600 text-xs font-bold uppercase tracking-wide mb-3 w-fit">
                   SaaS MVP
                 </span>
                 <h3 class="text-xl md:text-2xl font-semibold text-slate-900 tracking-tight font-sf mb-3 leading-tight">
@@ -2015,7 +2130,8 @@
                 <p class="text-sm md:text-base text-slate-600 leading-relaxed mb-4 flex-1">
                   Complete AI SaaS platform with 7 tools in 6 weeks. 85% cheaper than traditional agencies.
                 </p>
-                <div class="flex items-center gap-2 text-blue-600 font-semibold text-sm group-hover:gap-3 transition-all">
+                <div
+                  class="flex items-center gap-2 text-blue-600 font-semibold text-sm group-hover:gap-3 transition-all">
                   Read Case Study
                   <iconify-icon icon="lucide:arrow-right" width="16"></iconify-icon>
                 </div>
@@ -2025,13 +2141,16 @@
 
           <!-- Case Study 4: Client Onboarding -->
           <div class="group cursor-pointer" onclick="window.location.href='case-study-client-onboarding.html'">
-            <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden hover:shadow-xl transition-all duration-500 h-full flex flex-col">
+            <div
+              class="bg-white rounded-2xl border border-slate-200 overflow-hidden hover:shadow-xl transition-all duration-500 h-full flex flex-col">
               <div class="relative overflow-hidden aspect-[16/10]">
-                <img src="./Images/CaseStudies/client_onboarding_case_study_1768257339984.png" alt="Client Onboarding Dashboard"
+                <img src="./Images/CaseStudies/client_onboarding_case_study_1768257339984.png"
+                  alt="Client Onboarding Dashboard"
                   class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
               </div>
               <div class="p-6 flex-1 flex flex-col">
-                <span class="inline-block px-3 py-1 rounded-full bg-green-50 text-green-600 text-xs font-bold uppercase tracking-wide mb-3 w-fit">
+                <span
+                  class="inline-block px-3 py-1 rounded-full bg-green-50 text-green-600 text-xs font-bold uppercase tracking-wide mb-3 w-fit">
                   AI Automation
                 </span>
                 <h3 class="text-xl md:text-2xl font-semibold text-slate-900 tracking-tight font-sf mb-3 leading-tight">
@@ -2040,7 +2159,8 @@
                 <p class="text-sm md:text-base text-slate-600 leading-relaxed mb-4 flex-1">
                   Automated onboarding from 5-7 days to 4 hours. Scaled from 12 to 35 clients without hiring.
                 </p>
-                <div class="flex items-center gap-2 text-blue-600 font-semibold text-sm group-hover:gap-3 transition-all">
+                <div
+                  class="flex items-center gap-2 text-blue-600 font-semibold text-sm group-hover:gap-3 transition-all">
                   Read Case Study
                   <iconify-icon icon="lucide:arrow-right" width="16"></iconify-icon>
                 </div>
@@ -2050,13 +2170,15 @@
 
           <!-- Case Study 5: MVP Development -->
           <div class="group cursor-pointer" onclick="window.location.href='case-study-mvp.html'">
-            <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden hover:shadow-xl transition-all duration-500 h-full flex flex-col">
+            <div
+              class="bg-white rounded-2xl border border-slate-200 overflow-hidden hover:shadow-xl transition-all duration-500 h-full flex flex-col">
               <div class="relative overflow-hidden aspect-[16/10]">
                 <img src="./Images/CaseStudies/mvp_case_study_1768257308084.png" alt="MVP Development Showcase"
                   class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
               </div>
               <div class="p-6 flex-1 flex flex-col">
-                <span class="inline-block px-3 py-1 rounded-full bg-orange-50 text-orange-600 text-xs font-bold uppercase tracking-wide mb-3 w-fit">
+                <span
+                  class="inline-block px-3 py-1 rounded-full bg-orange-50 text-orange-600 text-xs font-bold uppercase tracking-wide mb-3 w-fit">
                   Rapid MVP
                 </span>
                 <h3 class="text-xl md:text-2xl font-semibold text-slate-900 tracking-tight font-sf mb-3 leading-tight">
@@ -2065,7 +2187,8 @@
                 <p class="text-sm md:text-base text-slate-600 leading-relaxed mb-4 flex-1">
                   Production-ready MVP enabling seed funding and 1,000 users. Complete design system in 3 weeks.
                 </p>
-                <div class="flex items-center gap-2 text-blue-600 font-semibold text-sm group-hover:gap-3 transition-all">
+                <div
+                  class="flex items-center gap-2 text-blue-600 font-semibold text-sm group-hover:gap-3 transition-all">
                   Read Case Study
                   <iconify-icon icon="lucide:arrow-right" width="16"></iconify-icon>
                 </div>
@@ -2075,13 +2198,15 @@
 
           <!-- Case Study 6: Compliance -->
           <div class="group cursor-pointer" onclick="window.location.href='case-study-compliance.html'">
-            <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden hover:shadow-xl transition-all duration-500 h-full flex flex-col">
+            <div
+              class="bg-white rounded-2xl border border-slate-200 overflow-hidden hover:shadow-xl transition-all duration-500 h-full flex flex-col">
               <div class="relative overflow-hidden aspect-[16/10]">
                 <img src="./Images/CaseStudies/compliance_case_study_1768257324618.png" alt="Compliance Dashboard"
                   class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
               </div>
               <div class="p-6 flex-1 flex flex-col">
-                <span class="inline-block px-3 py-1 rounded-full bg-teal-50 text-teal-600 text-xs font-bold uppercase tracking-wide mb-3 w-fit">
+                <span
+                  class="inline-block px-3 py-1 rounded-full bg-teal-50 text-teal-600 text-xs font-bold uppercase tracking-wide mb-3 w-fit">
                   AI Automation
                 </span>
                 <h3 class="text-xl md:text-2xl font-semibold text-slate-900 tracking-tight font-sf mb-3 leading-tight">
@@ -2090,7 +2215,8 @@
                 <p class="text-sm md:text-base text-slate-600 leading-relaxed mb-4 flex-1">
                   1,200+ documents monthly, 95% faster processing, 99.7% accuracy. 3x client growth enabled.
                 </p>
-                <div class="flex items-center gap-2 text-blue-600 font-semibold text-sm group-hover:gap-3 transition-all">
+                <div
+                  class="flex items-center gap-2 text-blue-600 font-semibold text-sm group-hover:gap-3 transition-all">
                   Read Case Study
                   <iconify-icon icon="lucide:arrow-right" width="16"></iconify-icon>
                 </div>
@@ -2348,7 +2474,7 @@
               </p>
             </div>
 
-            <button
+            <button onclick="openCalendly()"
               class="shiny-cta w-full focus:outline-none justify-center relative z-10 mb-8 max-w-xs mx-auto text-white bg-black shadow-lg group border border-orange-500/20">
               <span>Book Your Strategy Call</span>
             </button>
@@ -2430,7 +2556,8 @@
               </p>
             </div>
 
-            <button class="shiny-cta shiny-cta-light w-full justify-center relative z-10 mb-8 max-w-xs mx-auto">
+            <button onclick="openCalendly()"
+              class="shiny-cta shiny-cta-light w-full justify-center relative z-10 mb-8 max-w-xs mx-auto">
               <span>Book Your Strategy Call</span>
             </button>
 
@@ -2477,8 +2604,8 @@
           </div>
 
           <!-- Card 3: Premium -->
-          <div
-            class="pricing-card bg-[#FAF5FF] rounded-[32px] p-8 border border-slate-300 relative overflow-hidden flex flex-col h-full shadow-xl hover:shadow-2xl transition-shadow duration-300">
+          <div id="package-premium"
+            class="pricing-card bg-[#FAF5FF] rounded-[32px] p-8 border border-slate-300 relative overflow-hidden flex flex-col h-full shadow-xl hover:shadow-2xl transition-shadow duration-300 scroll-mt-32">
             <div class="flex justify-center mb-6">
               <span
                 class="inline-flex items-center justify-center gap-1.5 px-4 py-1.5 rounded-full bg-purple-100 text-purple-600 text-[10px] font-extrabold uppercase tracking-wide">
@@ -2497,7 +2624,7 @@
               </p>
             </div>
 
-            <button
+            <button onclick="openCalendly()"
               class="shiny-cta w-full focus:outline-none justify-center relative z-10 mb-8 max-w-xs mx-auto text-white bg-black shadow-lg group border border-orange-500/20">
               <span>Schedule Enterprise Call</span>
             </button>
@@ -3086,7 +3213,7 @@
             today.
           </p>
           <div class="flex flex-col sm:flex-row gap-4">
-            <button class="shiny-cta shiny-cta-light">
+            <button class="shiny-cta shiny-cta-light" onclick="openCalendly()">
               <span>Book Strategy Call</span>
             </button>
           </div>
@@ -3347,8 +3474,7 @@
 
             <!-- CTA Footer -->
             <div class="flex flex-col items-center justify-center pt-8 md:pt-16 pb-8 md:pb-4 text-center">
-              <button class="shiny-cta hover:scale-105 transition-transform duration-300 mb-4"
-                onclick="location.href='#contact'">
+              <button class="shiny-cta hover:scale-105 transition-transform duration-300 mb-4" onclick="openCalendly()">
                 <span>Book Your Strategy Call</span>
               </button>
               <p class="text-sm text-slate-400">Fixed packages. No hidden fees.</p>
@@ -3774,7 +3900,7 @@
 
             <!-- Book Free Call CTA - Aligned Left/Center on mobile -->
             <div class="pt-4 flex justify-center lg:justify-start">
-              <button onclick="openLeadGenModal()"
+              <button onclick="openCalendly()"
                 class="shiny-cta shiny-cta-light focus:outline-none group relative overflow-hidden transition-all duration-300 hover:scale-105">
                 <div
                   class="absolute inset-0 bg-gradient-to-r from-transparent via-blue-200 to-transparent opacity-0 group-hover:opacity-100 animate-footer-beam"
@@ -3906,6 +4032,21 @@
     </div>
 
     <script>
+      function openCalendly() {
+        // TODO: Replace with your actual Calendly URL
+        // Example: 'https://calendly.com/your-username/30min'
+        const calendlyUrl = 'https://calendly.com/your-username/30min';
+
+        // Use the native Calendly popup widget
+        if (typeof Calendly !== 'undefined') {
+          Calendly.initPopupWidget({ url: calendlyUrl });
+        } else {
+          console.warn("Calendly script not loaded");
+          window.open(calendlyUrl, '_blank');
+        }
+        return false;
+      }
+
       function openLeadGenModal() {
         const modal = document.getElementById('lead-gen-modal');
         const backdrop = document.getElementById('lead-gen-backdrop');

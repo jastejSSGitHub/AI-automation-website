@@ -1,0 +1,34 @@
+<svg width="400" height="100" viewBox="0 0 400 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Definitions for Gradients -->
+  <defs>
+    <linearGradient id="holographic" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#C0C0C0" />
+      <stop offset="25%" stop-color="#06B6D4" />
+      <stop offset="50%" stop-color="#7C3AED" />
+      <stop offset="75%" stop-color="#06B6D4" />
+      <stop offset="100%" stop-color="#C0C0C0" />
+    </linearGradient>
+  </defs>
+
+  <!-- Text: LoopSuit (Deep Indigo) with Sharp Geometric L -->
+  <text x="10" y="70" font-family="'Inter', sans-serif" font-weight="bold" font-size="60" fill="#1E293B" letter-spacing="-2">
+    L<tspan dx="105">pSuit</tspan>
+  </text>
+  
+  <!-- Custom L to ensure Sharp Geometric look if font varies -->
+  <!-- Actually relying on font is risky for "Sharpness", but Inter is sharp. 
+       Let's use the text but with the Loop symbol replacing the 'oo' -->
+
+  <!-- Infinity Loop Symbol (replacing 'oo') -->
+  <!-- Centered roughly where the 'oo' would be: x=50 to x=110 -->
+  <path d="M95 50 C95 35 115 35 115 50 C115 65 95 65 95 50 M95 50 C95 65 75 65 75 50 C75 35 95 35 95 50" 
+        stroke="url(#holographic)" stroke-width="12" stroke-linecap="round" fill="none" />
+        
+  <!-- Note: This path is a simplified figure-8. Refined for better aesthetics below -->
+  <path d="M75 50 Q75 30 95 50 Q115 70 115 50 Q115 30 95 50 Q75 70 75 50 Z" stroke="url(#holographic)" stroke-width="0" fill="none" />
+  
+  <!-- High Fidelity Ribbon Loop Path -->
+  <path d="M 95 50 C 105 40 120 40 120 50 C 120 60 105 60 95 50 C 85 40 70 40 70 50 C 70 60 85 60 95 50" 
+        stroke="url(#holographic)" stroke-width="14" stroke-linecap="round" fill="none" filter="url(#glow)" />
+
+</svg>
