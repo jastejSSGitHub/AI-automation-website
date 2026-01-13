@@ -998,7 +998,7 @@
         onclick="closeMenuAndNavigate()">
         Solutions
       </a>
-      <a href="#process"
+      <a href="#exploration"
         class="text-4xl font-sf font-semibold text-slate-900 tracking-tight hover:text-blue-600 transition-colors"
         onclick="closeMenuAndNavigate()">
         Process
@@ -1119,7 +1119,7 @@
               </div>
             </li>
             <li class="">
-              <a href="#process"
+              <a href="#exploration"
                 class="hover:text-slate-900 transition-colors duration-300 px-3 py-1.5 rounded-full hover:bg-slate-100/50">
                 How It Works
               </a>
@@ -1170,7 +1170,7 @@
               in 48
               Hours.</span>
           </h1>
-          <p class="text-[17px] md:text-lg text-gray-300 mb-8 md:mb-14 max-w-lg leading-relaxed mx-auto md:mx-0">
+          <p class="text-base md:text-lg text-gray-300 mb-8 md:mb-14 max-w-lg leading-relaxed mx-auto md:mx-0">
             We build your MVP and deploy AI workflows that handle lead generation, proposals, and customer support
             automatically—so you can focus on growth, not busywork.
           </p>
@@ -1605,7 +1605,7 @@
                 Launch your product <br> in <span
                   class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">2 weeks.</span>
               </h3>
-              <p class="text-[17px] md:text-xl text-slate-500 font-medium leading-relaxed max-w-md">
+              <p class="text-base md:text-xl text-slate-500 font-medium leading-relaxed max-w-md">
                 Get a fully functional, scalable product—not just a prototype. We use modern frameworks to ensure your
                 app is robust, secure, and ready for growth.
               </p>
@@ -1645,7 +1645,7 @@
                 Sales running on <br> <span
                   class="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600">Autopilot.</span>
               </h3>
-              <p class="text-[17px] md:text-xl text-slate-500 font-medium leading-relaxed max-w-md">
+              <p class="text-base md:text-xl text-slate-500 font-medium leading-relaxed max-w-md">
                 Deploy AI agents that scout 200+ leads daily, personalize cold outreach, and land meetings on your
                 calendar. It's like hiring a sales team overnight.
               </p>
@@ -1666,7 +1666,7 @@
                 Operations at <br> <span
                   class="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-cyan-500">Light Speed.</span>
               </h3>
-              <p class="text-[17px] md:text-xl text-slate-500 font-medium leading-relaxed max-w-md">
+              <p class="text-base md:text-xl text-slate-500 font-medium leading-relaxed max-w-md">
                 From customer support to internal workflows—automate the busywork. Save 15+ hours a week and focus on
                 high-impact strategy while AI handles the rest.
               </p>
@@ -1684,6 +1684,10 @@
         </div>
       </div>
 
+    </section>
+
+    <!-- More Capabilities Section -->
+    <section id="more-capabilities" data-theme="light" class="py-16 md:py-24 bg-slate-50 overflow-hidden relative">
       <div class="w-full max-w-7xl mx-auto px-6 mb-10 text-center md:text-left">
         <h2 class="text-[30px] md:text-[2.75rem] font-medium tracking-tight text-slate-900 leading-tight font-sf mb-6">
           More
@@ -1819,109 +1823,6 @@
       </div>
     </section>
 
-    <!-- Reverted: From Idea to Empire Section (Horizontal Carousel) -->
-    <section id="process" data-theme="light" class="py-20 md:py-32 bg-slate-50 overflow-hidden">
-      <div class="max-w-7xl mx-auto px-6">
-        <div class="flex flex-col md:flex-row md:items-end md:justify-between mb-12">
-          <div class="text-center md:text-start max-w-3xl mx-auto md:mx-0">
-            <span
-              class="inline-flex items-center justify-center px-3 py-1 rounded-full bg-white border border-blue-100 shadow-sm text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-violet-600 text-[11px] font-bold uppercase tracking-wider mb-5 badge-animated">
-              How It Works
-            </span>
-            <h2
-              class="text-[30px] md:text-[2.75rem] font-medium tracking-tight text-slate-900 leading-tight font-sf mb-3">
-              From idea to exploration.
-            </h2>
-            <p class="text-[17px] md:text-xl font-medium text-[#6e6e73] tracking-tight leading-snug">
-              Our simple 3-step process.
-            </p>
-          </div>
-          <div class="hidden md:flex gap-4">
-            <button onclick="document.getElementById('processContainer').scrollBy({left: -320, behavior: 'smooth'})"
-              class="w-12 h-12 rounded-full bg-slate-900 flex items-center justify-center text-white hover:bg-slate-800 transition-colors focus:outline-none">
-              <iconify-icon icon="lucide:arrow-left" width="20" stroke-width="1.5"></iconify-icon>
-            </button>
-            <button onclick="document.getElementById('processContainer').scrollBy({left: 320, behavior: 'smooth'})"
-              class="w-12 h-12 rounded-full bg-slate-900 flex items-center justify-center text-white hover:bg-slate-800 transition-colors focus:outline-none">
-              <iconify-icon icon="lucide:arrow-right" width="20" stroke-width="1.5"></iconify-icon>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <div class="w-full relative">
-        <div id="processContainer"
-          class="flex gap-6 overflow-x-auto pb-10 pl-6 xl:pl-[calc((100vw-80rem)/2+1.5rem)] pr-6 cursor-grab select-none no-scrollbar snap-x snap-mandatory scroll-smooth">
-          <!-- Step 1 -->
-          <div class="w-[85vw] md:w-[400px] flex-shrink-0 snap-center group">
-            <div
-              class="relative h-[240px] md:h-[260px] rounded-3xl overflow-hidden mb-6 shadow-sm border border-slate-200/50">
-              <img src="./Images/idea_empire_d_discovery_1768136293624.png" alt="Discovery"
-                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-              <div
-                class="absolute top-4 left-4 w-10 h-10 bg-white/90 backdrop-blur-md rounded-full flex items-center justify-center font-bold text-slate-900 shadow-sm border border-white/50">
-                1</div>
-            </div>
-            <h3 class="text-xl font-bold text-slate-900 mb-2 font-sf">Discovery &amp; Strategy.</h3>
-            <p class="text-slate-600 leading-relaxed text-sm md:text-base">We deep dive into requirements to identify
-              high-impact opportunities before writing code.</p>
-          </div>
-
-          <!-- Step 2 -->
-          <div class="w-[85vw] md:w-[400px] flex-shrink-0 snap-center group">
-            <div
-              class="relative h-[240px] md:h-[260px] rounded-3xl overflow-hidden mb-6 shadow-sm border border-slate-200/50">
-              <img src="./Images/idea_empire_d_dev_1768136309743.png" alt="Development"
-                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-              <div
-                class="absolute top-4 left-4 w-10 h-10 bg-white/90 backdrop-blur-md rounded-full flex items-center justify-center font-bold text-slate-900 shadow-sm border border-white/50">
-                2</div>
-            </div>
-            <h3 class="text-xl font-bold text-slate-900 mb-2 font-sf">Rapid Development.</h3>
-            <p class="text-slate-600 leading-relaxed text-sm md:text-base">Robust, scalable architecture using
-              cutting-edge models. We iterate fast.</p>
-          </div>
-
-          <!-- Step 3 -->
-          <div class="w-[85vw] md:w-[400px] flex-shrink-0 snap-center group">
-            <div
-              class="relative h-[240px] md:h-[260px] rounded-3xl overflow-hidden mb-6 shadow-sm border border-slate-200/50">
-              <img src="./Images/idea_empire_d_launch_1768136329066.png" alt="Launch"
-                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-              <div
-                class="absolute top-4 left-4 w-10 h-10 bg-white/90 backdrop-blur-md rounded-full flex items-center justify-center font-bold text-slate-900 shadow-sm border border-white/50">
-                3</div>
-            </div>
-            <h3 class="text-xl font-bold text-slate-900 mb-2 font-sf">Launch & Automate.</h3>
-            <p class="text-slate-600 leading-relaxed text-sm md:text-base">We deploy scalable workflows that run
-              autonomously, freeing you to focus on growth.</p>
-          </div>
-
-
-        </div>
-
-        <div class="flex items-center justify-between mt-8 w-full max-w-7xl mx-auto px-6 md:hidden">
-          <div class="flex items-center gap-2 control-glass px-4 py-2.5 rounded-full md:hidden">
-            <button class="indicator-dot active h-2 rounded-full bg-slate-800 w-6" data-process-index="0"></button>
-            <button class="indicator-dot h-2 rounded-full bg-slate-300 w-1.5" data-process-index="1"></button>
-            <button class="indicator-dot h-2 rounded-full bg-slate-300 w-1.5" data-process-index="2"></button>
-
-          </div>
-
-          <div class="flex gap-4 ml-auto">
-            <button id="processPrev"
-              class="w-12 h-12 rounded-full bg-slate-900 shadow-md flex items-center justify-center text-white hover:bg-slate-800 transition-all focus:outline-none disabled:opacity-50 disabled:shadow-none">
-              <iconify-icon icon="lucide:arrow-left" width="20" stroke-width="1.5"></iconify-icon>
-            </button>
-            <button id="processNext"
-              class="w-12 h-12 rounded-full bg-slate-900 shadow-md flex items-center justify-center text-white hover:bg-slate-800 transition-all focus:outline-none disabled:opacity-50 disabled:shadow-none">
-              <iconify-icon icon="lucide:arrow-right" width="20" stroke-width="1.5"></iconify-icon>
-            </button>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- From Idea to exploration Section (New Vertical Layout) -->
     <section id="exploration" data-theme="light" class="py-20 md:py-32 bg-white overflow-hidden">
       <div class="max-w-7xl mx-auto px-6">
@@ -1936,7 +1837,7 @@
             From idea to <span
               class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-violet-600">exploration</span>.
           </h2>
-          <p class="text-[17px] md:text-xl font-medium text-[#6e6e73] leading-relaxed max-w-2xl mx-auto md:mx-0">
+          <p class="text-base md:text-xl font-medium text-[#6e6e73] leading-relaxed max-w-2xl mx-auto md:mx-0">
             We streamline the path from concept to execution. No wasted motion, just pure efficiency powered by
             intelligent automation.
           </p>
@@ -2044,7 +1945,7 @@
             class="text-[30px] md:text-[2.75rem] font-medium tracking-tight text-slate-900 leading-tight font-sf mb-3">
             Case Studies
           </h2>
-          <p class="text-[17px] md:text-xl font-medium text-[#6e6e73] tracking-tight leading-snug max-w-2xl mx-auto">
+          <p class="text-base md:text-xl font-medium text-[#6e6e73] tracking-tight leading-snug max-w-2xl mx-auto">
             Real results from real projects. See how we've helped businesses launch faster and automate smarter.
           </p>
         </div>
@@ -2255,7 +2156,7 @@
             Connect your entire
             <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-violet-400">tech stack</span>
           </h2>
-          <p class="mx-auto mt-4 max-w-2xl text-[17px] sm:text-base text-slate-400">
+          <p class="mx-auto mt-4 max-w-2xl text-base sm:text-base text-slate-400">
             One platform, infinite possibilities. Sync with all your favorite
             tools instantly.
           </p>
@@ -2695,7 +2596,7 @@
             </span>
             <h2 class="text-[28px] md:text-5xl font-medium font-sf text-slate-900 mb-6 leading-tight">Frequently Asked
               Questions</h2>
-            <p class="text-[17px] md:text-xl text-slate-500 max-w-md mx-auto lg:mx-0">Everything you need to know about
+            <p class="text-base md:text-xl text-slate-500 max-w-md mx-auto lg:mx-0">Everything you need to know about
               how we work.</p>
           </div>
 
@@ -2709,7 +2610,7 @@
                   <iconify-icon icon="lucide:chevron-down" width="20" class="text-slate-400"></iconify-icon>
                 </span>
               </summary>
-              <div class="px-6 pb-6 text-slate-600 leading-relaxed text-[17px]">
+              <div class="px-6 pb-6 text-slate-600 leading-relaxed text-base">
                 We work with SaaS companies, startups, agencies, e-commerce businesses, and B2B service companies across
                 all
                 industries. If you have repetitive processes to automate or need a custom product built, we can help.
@@ -2727,7 +2628,7 @@
                   <iconify-icon icon="lucide:chevron-down" width="20" class="text-slate-400"></iconify-icon>
                 </span>
               </summary>
-              <div class="px-6 pb-6 text-slate-600 leading-relaxed text-[17px]">
+              <div class="px-6 pb-6 text-slate-600 leading-relaxed text-base">
                 Yes, 100%. You receive full source code access and complete ownership of everything we build. There's no
                 vendor lock-in, no ongoing licensing fees, and you're free to modify, host, or transfer your product
                 anywhere you choose.
@@ -2825,8 +2726,7 @@
             <br>
             <span class="reveal-type inline-block">Best Tools</span>
           </h2>
-          <p
-            class="text-[17px] md:text-2xl font-medium text-[#6e6e73] tracking-tight leading-relaxed max-w-2xl mx-auto">
+          <p class="text-base md:text-xl font-medium text-[#6e6e73] tracking-tight leading-relaxed max-w-2xl mx-auto">
             We use cutting-edge technology to deliver fast, reliable, and scalable solutions
           </p>
         </div>
@@ -3853,7 +3753,7 @@
             <a href="#" class="inline-block">
               <img src="public/logos/logo_dark.svg" alt="LoopSuit" class="h-12 w-auto">
             </a>
-            <p class="text-slate-400 leading-relaxed max-w-sm font-sf text-[17px]">
+            <p class="text-slate-400 leading-relaxed max-w-sm font-sf text-base">
               Empowering forward-thinking businesses with intelligent automation systems.
               We blend cutting-edge AI with seamless workflows to help you scale faster.
             </p>
