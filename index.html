@@ -1254,7 +1254,7 @@
         <h2
           class="text-[26px] md:text-[32px] lg:text-[42px] font-medium tracking-tight leading-[1.2] text-black mx-auto max-w-4xl font-sf animate-appear-left pb-4"
           style="animation-delay: 0.2s;">
-          We launch your production-ready <span class="gradient-text-premium">MVP in 2 weeks</span>.
+          We launch your production-ready <span class="gradient-text-premium">MVP app in 2 weeks</span>.
           <div class="flex flex-col items-center mt-6 mb-8 group">
             <div
               class="h-[1px] w-0 bg-gradient-to-r from-transparent via-slate-200 to-transparent transition-all duration-1000 group-hover:w-full">
@@ -1598,7 +1598,7 @@
               class="w-full md:w-1/2 flex flex-col items-center md:items-start text-center md:text-left order-2 md:order-1">
               <span
                 class="inline-flex items-center gap-1 rounded-full bg-slate-50 border border-slate-200/60 px-3 py-1 text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-6">
-                Production-Ready
+                1. Production-Ready
               </span>
               <h3
                 class="text-[28px] md:text-5xl font-semibold text-slate-900 tracking-tight font-sf mb-6 leading-tight">
@@ -1622,6 +1622,30 @@
             </div>
           </div>
 
+          <!-- Showreel Video Section with Scroll Animations -->
+          <div id="showreel-section"
+            class="relative w-full min-h-screen flex flex-col items-center justify-start pt-8 md:pt-12">
+            <!-- SHOWREEL Text -->
+            <div id="showreel-text" class="text-center mb-0">
+              <h2
+                class="text-[80px] md:text-[120px] lg:text-[180px] font-black tracking-tighter text-slate-900 leading-none font-sf"
+                style="opacity: 0.15;">
+                SHOWREEL
+              </h2>
+            </div>
+
+            <!-- Video Player Container -->
+            <div id="showreel-video-container" class="w-full max-w-5xl px-6 -mt-12 md:-mt-20 relative z-10">
+              <div class="relative rounded-2xl overflow-hidden shadow-2xl bg-black" style="aspect-ratio: 16/9;">
+                <!-- Video Element -->
+                <video id="showreel-video" class="w-full h-full object-cover" controls preload="metadata" poster="">
+                  <source src="./videos/showreel.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+            </div>
+          </div>
+
           <!-- Row 2: Left Image, Right Text -->
           <div id="solution-sales"
             class="flex flex-col md:flex-row items-center justify-between gap-12 md:gap-24 group scroll-mt-32">
@@ -1638,7 +1662,7 @@
               class="w-full md:w-1/2 flex flex-col items-center md:items-start text-center md:text-left order-2 md:order-2 pl-0 md:pl-10">
               <span
                 class="inline-flex items-center gap-1 rounded-full bg-slate-50 border border-slate-200/60 px-3 py-1 text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-6">
-                Fully Autonomous
+                2. Fully Autonomous
               </span>
               <h3
                 class="text-[28px] md:text-5xl font-semibold text-slate-900 tracking-tight font-sf mb-6 leading-tight">
@@ -1659,7 +1683,7 @@
               class="w-full md:w-1/2 flex flex-col items-center md:items-start text-center md:text-left order-2 md:order-1">
               <span
                 class="inline-flex items-center gap-1 rounded-full bg-slate-50 border border-slate-200/60 px-3 py-1 text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-6">
-                Infinite Scale
+                3. Infinite Scale
               </span>
               <h3
                 class="text-[28px] md:text-5xl font-semibold text-slate-900 tracking-tight font-sf mb-6 leading-tight">
@@ -2058,62 +2082,6 @@
                 </h3>
                 <p class="text-sm md:text-base text-slate-600 leading-relaxed mb-4 flex-1">
                   Automated onboarding from 5-7 days to 4 hours. Scaled from 12 to 35 clients without hiring.
-                </p>
-                <div
-                  class="flex items-center gap-2 text-blue-600 font-semibold text-sm group-hover:gap-3 transition-all">
-                  Read Case Study
-                  <iconify-icon icon="lucide:arrow-right" width="16"></iconify-icon>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Case Study 5: MVP Development -->
-          <div class="group cursor-pointer" onclick="window.location.href='case-study-mvp.html'">
-            <div
-              class="bg-white rounded-2xl border border-slate-200 overflow-hidden hover:shadow-xl transition-all duration-500 h-full flex flex-col">
-              <div class="relative overflow-hidden aspect-[16/10]">
-                <img src="./Images/CaseStudies/mvp_case_study_1768257308084.png" alt="MVP Development Showcase"
-                  class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-              </div>
-              <div class="p-6 flex-1 flex flex-col">
-                <span
-                  class="inline-block px-3 py-1 rounded-full bg-orange-50 text-orange-600 text-xs font-bold uppercase tracking-wide mb-3 w-fit">
-                  Rapid MVP
-                </span>
-                <h3 class="text-xl md:text-2xl font-semibold text-slate-900 tracking-tight font-sf mb-3 leading-tight">
-                  Startup MVP — Launch in 3 Weeks
-                </h3>
-                <p class="text-sm md:text-base text-slate-600 leading-relaxed mb-4 flex-1">
-                  Production-ready MVP enabling seed funding and 1,000 users. Complete design system in 3 weeks.
-                </p>
-                <div
-                  class="flex items-center gap-2 text-blue-600 font-semibold text-sm group-hover:gap-3 transition-all">
-                  Read Case Study
-                  <iconify-icon icon="lucide:arrow-right" width="16"></iconify-icon>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Case Study 6: Compliance -->
-          <div class="group cursor-pointer" onclick="window.location.href='case-study-compliance.html'">
-            <div
-              class="bg-white rounded-2xl border border-slate-200 overflow-hidden hover:shadow-xl transition-all duration-500 h-full flex flex-col">
-              <div class="relative overflow-hidden aspect-[16/10]">
-                <img src="./Images/CaseStudies/compliance_case_study_1768257324618.png" alt="Compliance Dashboard"
-                  class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-              </div>
-              <div class="p-6 flex-1 flex flex-col">
-                <span
-                  class="inline-block px-3 py-1 rounded-full bg-teal-50 text-teal-600 text-xs font-bold uppercase tracking-wide mb-3 w-fit">
-                  AI Automation
-                </span>
-                <h3 class="text-xl md:text-2xl font-semibold text-slate-900 tracking-tight font-sf mb-3 leading-tight">
-                  FinServe — Compliance Processing
-                </h3>
-                <p class="text-sm md:text-base text-slate-600 leading-relaxed mb-4 flex-1">
-                  1,200+ documents monthly, 95% faster processing, 99.7% accuracy. 3x client growth enabled.
                 </p>
                 <div
                   class="flex items-center gap-2 text-blue-600 font-semibold text-sm group-hover:gap-3 transition-all">
@@ -4313,6 +4281,36 @@
       sections.forEach(section => {
         observer.observe(section);
       });
+    });
+  </script>
+
+  <script>
+    // Showreel Auto-Play on Scroll Into View
+    document.addEventListener('DOMContentLoaded', () => {
+      const showreelVideo = document.getElementById('showreel-video');
+      const showreelSection = document.getElementById('showreel-section');
+
+      if (!showreelVideo || !showreelSection) return;
+
+      // Use Intersection Observer to detect when section is visible
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            // Section is visible - play video
+            showreelVideo.play().catch(err => {
+              // Auto-play might be blocked by browser, that's okay
+              console.log('Auto-play prevented:', err);
+            });
+          } else {
+            // Section is not visible - pause video
+            showreelVideo.pause();
+          }
+        });
+      }, {
+        threshold: 0.5 // Trigger when 50% of section is visible
+      });
+
+      observer.observe(showreelSection);
     });
   </script>
 </body>
