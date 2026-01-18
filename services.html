@@ -1,0 +1,1233 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+
+<head>
+    <!-- Essential Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services | LoopSuit - Premium Design & AI Automation</title>
+    <meta name="description"
+        content="Expert product design and autonomous AI agent services. We build MVPs and automate businesses with cutting-edge technology.">
+
+    <!-- Fonts & Styles -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    animation: {
+                        'marquee': 'marquee 2s linear infinite',
+                        'spin-slow': 'spin 12s linear infinite',
+                    },
+                    keyframes: {
+                        marquee: {
+                            '0%': { transform: 'translateX(-100%)' },
+                            '100%': { transform: 'translateX(100%)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+
+    <!-- Calendly -->
+    <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+    <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+
+    <style>
+        /* Core Typography & Base */
+        :root {
+            --bg-dark: #050505;
+            --bg-card: #0A0A0B;
+            --accent-primary: #3b82f6;
+            --accent-secondary: #9333ea;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: #ffffff;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        .font-sf {
+            font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            letter-spacing: -0.02em;
+        }
+
+        /* Gradient Text Utilities */
+        .text-gradient {
+            background: linear-gradient(to right, #60a5fa, #a855f7, #f472b6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            background-size: 200% auto;
+            animation: gradient-flow 5s linear infinite;
+        }
+
+        @keyframes gradient-flow {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* Navbar Glass */
+        .glass-nav {
+            background: rgba(5, 5, 5, 0.7);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Card Aesthetics */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.04);
+            border-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-4px);
+        }
+
+        /* Shiny CTA Definition (Matches Index) */
+        @property --gradient-angle {
+            syntax: "<angle>";
+            initial-value: 0deg;
+            inherits: false;
+        }
+
+        .shiny-button {
+            position: relative;
+            background: linear-gradient(to bottom, #171717, #0a0a0a);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .shiny-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(to right,
+                    transparent,
+                    rgba(255, 255, 255, 0.1),
+                    transparent);
+            transform: skewX(-25deg);
+            transition: 0.5s;
+        }
+
+        .shiny-button:hover::before {
+            animation: shine 1.5s infinite;
+        }
+
+        @keyframes shine {
+            0% {
+                left: -100%;
+            }
+
+            100% {
+                left: 200%;
+            }
+        }
+
+        /* Custom Image Mask for Vision Section */
+        .vision-image-mask {
+            mask-image: linear-gradient(to right, black 80%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to right, black 80%, transparent 100%);
+        }
+
+        /* Service List Items */
+        .service-item {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .service-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.6rem;
+            width: 6px;
+            height: 6px;
+            background-color: #3b82f6;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #3b82f6;
+        }
+
+        /* Mobile Menu Transitions */
+        .mobile-menu-wrapper {
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+        }
+
+        .menu-closed {
+            transform: translateY(-100%);
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .menu-open {
+            transform: translateY(0);
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        /* Sticky Navbar & Shiny CTA from index.html */
+        @property --gradient-angle {
+            syntax: "<angle>";
+            initial-value: 0deg;
+            inherits: false;
+        }
+
+        @property --gradient-angle-offset {
+            syntax: "<angle>";
+            initial-value: 0deg;
+            inherits: false;
+        }
+
+        @property --gradient-shine {
+            syntax: "<color>";
+            initial-value: #f97316;
+            inherits: false;
+        }
+
+        .shiny-cta {
+            --gradient-angle: 0deg;
+            --gradient-angle-offset: 0deg;
+            --gradient-shine: #f97316;
+            position: relative;
+            overflow: hidden;
+            border-radius: 9999px;
+            padding: 0.625rem 1.25rem;
+            font-size: 0.875rem;
+            line-height: 1.2;
+            font-weight: 500;
+            color: #ffffff;
+            background: linear-gradient(#000000, #000000) padding-box, conic-gradient(from calc(var(--gradient-angle) - var(--gradient-angle-offset)), transparent 0%, #ea580c 5%, var(--gradient-shine) 15%, #ea580c 30%, transparent 40%, transparent 100%) border-box;
+            border: 2px solid transparent;
+            box-shadow: inset 0 0 0 1px #1a1818;
+            outline: none;
+            transition: all 0.3s;
+            cursor: pointer;
+            isolation: isolate;
+            outline-offset: 4px;
+            font-family: 'Inter', sans-serif;
+            animation: border-spin 2.5s linear infinite;
+        }
+
+        @keyframes border-spin {
+            to {
+                --gradient-angle: 360deg;
+            }
+        }
+
+        .shiny-cta::before {
+            content: '';
+            pointer-events: none;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: calc(100% - 6px);
+            height: calc(100% - 6px);
+            background: radial-gradient(circle at 2px 2px, white 0.5px, transparent 0) padding-box;
+            background-size: 4px 4px;
+            mask-image: conic-gradient(from calc(var(--gradient-angle) + 45deg), black, transparent 10% 90%, black);
+            opacity: 0.4;
+        }
+
+        .shiny-cta::after {
+            content: '';
+            pointer-events: none;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+            width: 100%;
+            aspect-ratio: 1;
+            background: linear-gradient(-50deg, transparent, #ea580c, transparent);
+            mask-image: radial-gradient(circle at bottom, transparent 40%, black);
+            opacity: 0.6;
+            animation: shimmer 4s linear infinite;
+        }
+
+        .shiny-cta:active {
+            transform: translateY(1px);
+        }
+
+        .shiny-cta span {
+            position: relative;
+            z-index: 2;
+        }
+
+        .shiny-cta span::before {
+            content: '';
+            pointer-events: none;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+            width: calc(100% + 1rem);
+            height: calc(100% + 1rem);
+            box-shadow: inset 0 -1ex 2rem 4px #ea580c;
+            opacity: 0;
+            transition: opacity 0.8s;
+            animation: breathe 4.5s linear infinite;
+        }
+
+        @keyframes breathe {
+
+            0%,
+            100% {
+                transform: translate(-50%, -50%) scale(1);
+            }
+
+            50% {
+                transform: translate(-50%, -50%) scale(1.20);
+            }
+        }
+
+        @keyframes shimmer {
+            to {
+                transform: translate(-50%, -50%) rotate(360deg);
+            }
+        }
+
+        .glass-nav-scrolled {
+            background: rgba(0, 0, 0, 0.6) !important;
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Dropdown Styles */
+        .hover-gradient-text:hover {
+            background: linear-gradient(to right, #60a5fa, #a855f7);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Mobile & Tablet Navbar Centering */
+        @media (max-width: 1023px) {
+            #inner-nav>div {
+                position: relative;
+            }
+
+            /* Center the logo section */
+            #inner-nav>div>a:first-child {
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            /* Keep hamburger on the right */
+            #inner-nav>div>div:last-child {
+                margin-left: auto;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-[#050505] text-slate-200 overflow-x-hidden">
+
+    <!-- Mobile Menu Overlay -->
+    <nav id="mobile-menu" aria-label="Mobile navigation"
+        class="fixed inset-0 z-[60] bg-black/95 backdrop-blur-3xl menu-closed mobile-menu-wrapper flex flex-col justify-center items-center">
+        <button id="close-menu-btn" aria-label="Close mobile menu" onclick="closeMenuAndNavigate()"
+            class="absolute top-6 right-6 p-3 rounded-full bg-white/10 hover:bg-white/20 transition-colors z-50">
+            <iconify-icon icon="lucide:x" width="24" stroke-width="1.5" class="text-white"></iconify-icon>
+        </button>
+        <div class="flex flex-col gap-8 text-center relative z-10">
+            <a href="index.html#solutions"
+                class="text-4xl font-sf font-semibold text-white tracking-tight hover:text-blue-500 transition-colors"
+                onclick="closeMenuAndNavigate()">
+                Solutions
+            </a>
+            <a href="services.html"
+                class="text-4xl font-sf font-semibold text-blue-500 tracking-tight transition-colors"
+                onclick="closeMenuAndNavigate()">
+                Services
+            </a>
+            <a href="case-studies.html"
+                class="text-4xl font-sf font-semibold text-white tracking-tight hover:text-blue-500 transition-colors"
+                onclick="closeMenuAndNavigate()">
+                Case Studies
+            </a>
+        </div>
+        <div class="mt-14 w-full px-12 max-w-sm relative z-10">
+            <button class="shiny-cta w-full focus:outline-none justify-center"
+                onclick="closeMenuAndNavigate(); openCalendly()">
+                <span>Book Free Call</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Navbar -->
+    <!-- Shared Header -->
+    <header id="main-navbar" class="fixed top-0 left-0 right-0 z-[100] pt-6 px-6 transition-all duration-300">
+        <nav class="max-w-[95%] mx-auto rounded-full px-6 py-3 transition-all duration-300" id="inner-nav">
+            <div class="flex items-center justify-between md:justify-between relative">
+                <!-- Logo -->
+                <a href="index.html" class="flex items-center gap-4 md:flex-1 justify-center md:justify-start">
+                    <div class="text-2xl font-black italic tracking-tighter text-white">
+                        LOOPSUIT<sup class="text-[9px] not-italic text-gray-500 ml-0.5">®</sup>
+                    </div>
+                    <div class="hidden sm:flex flex-col justify-center pl-4 border-l-2 border-white/10 h-8">
+                        <span
+                            class="text-[8px] font-bold tracking-[0.3em] text-gray-400 uppercase leading-none mb-0.5">VISION</span>
+                        <div class="bg-[#3b82f6] px-1.5 py-[1px] transform -skew-x-12 inline-block w-max">
+                            <span
+                                class="block transform skew-x-12 text-[9px] font-black tracking-widest text-white uppercase leading-none">AUTOMATED</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Desktop Nav (Absolutely Centered) -->
+                <div
+                    class="hidden lg:flex items-center gap-8 text-sm font-medium text-gray-300 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+                    <div class="relative group">
+                        <button class="flex items-center gap-1 hover:text-white transition-colors py-2">
+                            Solutions
+                            <iconify-icon icon="lucide:chevron-down"
+                                class="group-hover:rotate-180 transition-transform duration-300"></iconify-icon>
+                        </button>
+                        <!-- Dropdown (Light Theme) -->
+                        <div
+                            class="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[360px] p-2 bg-white rounded-2xl shadow-xl border border-slate-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible translate-y-2 group-hover:translate-y-0 transition-all duration-200 overflow-hidden z-50 ring-1 ring-black/5 whitespace-normal">
+                            <div class="flex flex-col gap-1">
+                                <a href="index.html#solution-sales"
+                                    class="flex items-start gap-4 p-3 rounded-xl hover:bg-slate-50 transition-colors group/item"
+                                    onclick="closeMenuAndNavigate()">
+                                    <div
+                                        class="w-9 h-9 flex-shrink-0 flex items-center justify-center rounded-lg bg-slate-100 border border-slate-200/50 mt-0.5 transition-colors group-hover/item:bg-white group-hover/item:shadow-sm">
+                                        <iconify-icon icon="lucide:workflow" width="16" stroke-width="1.5"
+                                            class="text-slate-500 transition-colors duration-300 group-hover/item:text-blue-600"></iconify-icon>
+                                    </div>
+                                    <div class="flex flex-col">
+                                        <span
+                                            class="text-sm font-semibold text-slate-900 leading-tight hover-gradient-text">
+                                            Automate Lead Generation & Sales
+                                        </span>
+                                        <span class="text-[11px] text-slate-500 font-medium mt-1 leading-snug">
+                                            200+ leads daily, personalized outreach, automatic proposals
+                                        </span>
+                                    </div>
+                                </a>
+                                <a href="index.html#solution-launch"
+                                    class="flex items-start gap-4 p-3 rounded-xl hover:bg-slate-50 transition-colors group/item"
+                                    onclick="closeMenuAndNavigate()">
+                                    <div
+                                        class="w-9 h-9 flex-shrink-0 flex items-center justify-center rounded-lg bg-slate-100 border border-slate-200/50 mt-0.5 transition-colors group-hover/item:bg-white group-hover/item:shadow-sm">
+                                        <iconify-icon icon="lucide:rocket" width="16" stroke-width="1.5"
+                                            class="text-slate-500 transition-colors duration-300 group-hover/item:text-blue-600"></iconify-icon>
+                                    </div>
+                                    <div class="flex flex-col">
+                                        <span
+                                            class="text-sm font-semibold text-slate-900 leading-tight hover-gradient-text">
+                                            Launch Your Product in 2 Weeks
+                                        </span>
+                                        <span class="text-[11px] text-slate-500 font-medium mt-1 leading-snug">
+                                            Production-ready MVPs. No 6-month timelines. No $100K fees.
+                                        </span>
+                                    </div>
+                                </a>
+                                <a href="index.html#solution-operations"
+                                    class="flex items-start gap-4 p-3 rounded-xl hover:bg-slate-50 transition-colors group/item"
+                                    onclick="closeMenuAndNavigate()">
+                                    <div
+                                        class="w-9 h-9 flex-shrink-0 flex items-center justify-center rounded-lg bg-slate-100 border border-slate-200/50 mt-0.5 transition-colors group-hover/item:bg-white group-hover/item:shadow-sm">
+                                        <iconify-icon icon="lucide:headset" width="16" stroke-width="1.5"
+                                            class="text-slate-500 transition-colors duration-300 group-hover/item:text-blue-600"></iconify-icon>
+                                    </div>
+                                    <div class="flex flex-col">
+                                        <span
+                                            class="text-sm font-semibold text-slate-900 leading-tight hover-gradient-text">
+                                            Automate Customer Support
+                                        </span>
+                                        <span class="text-[11px] text-slate-500 font-medium mt-1 leading-snug">
+                                            24/7 AI support handles 80% automatically—instant answers
+                                        </span>
+                                    </div>
+                                </a>
+                                <a href="index.html#package-premium"
+                                    class="flex items-start gap-4 p-3 rounded-xl hover:bg-slate-50 transition-colors group/item"
+                                    onclick="closeMenuAndNavigate()">
+                                    <div
+                                        class="w-9 h-9 flex-shrink-0 flex items-center justify-center rounded-lg bg-slate-100 border border-slate-200/50 mt-0.5 transition-colors group-hover/item:bg-white group-hover/item:shadow-sm">
+                                        <iconify-icon icon="lucide:sparkles" width="16" stroke-width="1.5"
+                                            class="text-slate-500 transition-colors duration-300 group-hover/item:text-blue-600"></iconify-icon>
+                                    </div>
+                                    <div class="flex flex-col">
+                                        <span
+                                            class="text-sm font-semibold text-slate-900 leading-tight hover-gradient-text">
+                                            Product + Automation Bundle
+                                        </span>
+                                        <span class="text-[11px] text-slate-500 font-medium mt-1 leading-snug">
+                                            MVP + sales automation + support. Launch in 30 days. Save 20%.
+                                        </span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="services.html" class="text-white transition-colors">Services</a>
+                    <a href="case-studies.html" class="hover:text-white transition-colors">Case Studies</a>
+                </div>
+
+                <!-- CTA & Hamburger -->
+                <div class="flex items-center gap-4">
+                    <button class="shiny-cta hidden lg:flex" onclick="openCalendly()">
+                        <span>Book Free Call</span>
+                    </button>
+                    <!-- Mobile Menu Button -->
+                    <button id="mobile-menu-btn"
+                        class="lg:hidden text-white p-2 rounded-full hover:bg-white/10 transition-colors"
+                        onclick="toggleMobileMenu()" aria-label="Menu">
+                        <iconify-icon icon="lucide:menu" width="24" height="24"></iconify-icon>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="pt-32 pb-20">
+
+        <!-- Hero / Mission Statement -->
+        <section class="max-w-7xl mx-auto px-6 mb-32">
+            <div class="flex flex-col gap-6">
+                <span class="text-blue-500 font-mono text-sm tracking-widest uppercase">01 // The Methodology</span>
+
+                <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold font-sf leading-[0.95] tracking-tight">
+                    We don't just write code.<br>
+                    <span
+                        class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-500 to-indigo-500">
+                        We design your unfair advantage.
+                    </span>
+                </h1>
+
+                <p class="text-lg md:text-xl text-gray-400 max-w-3xl font-light leading-relaxed mt-4">
+                    Pixel-perfect product design meets autonomous AI. From Figma prototypes to self-running systems—we
+                    build what others can't.
+                </p>
+            </div>
+        </section>
+
+        <!-- Vision Section (Centered, Contained) -->
+        <section class="max-w-5xl mx-auto px-6 mb-40">
+            <div
+                class="glass-card rounded-3xl p-8 md:p-12 flex flex-col md:flex-row items-center gap-12 relative overflow-hidden">
+                <!-- Background Glow -->
+                <div
+                    class="absolute top-0 right-0 w-64 h-64 bg-blue-600/10 rounded-full blur-[100px] pointer-events-none">
+                </div>
+
+                <!-- Small Image on Left -->
+                <div class="w-full md:w-1/3 flex-shrink-0">
+                    <div class="relative aspect-square rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
+                        <!-- Placeholder for an aesthetic/minimal image -->
+                        <div
+                            class="absolute inset-0 bg-gradient-to-br from-gray-800 to-black flex items-center justify-center">
+                            <iconify-icon icon="lucide:aperture" class="text-white/20 text-6xl animate-spin-slow"
+                                style="animation-duration: 20s;"></iconify-icon>
+                        </div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                    </div>
+                </div>
+
+                <!-- Text Content on Right -->
+                <div class="flex-1 text-center md:text-left">
+                    <h3 class="text-2xl font-bold font-sf text-white mb-4">The LoopSuit Philosophy</h3>
+                    <p class="text-gray-400 mb-8 leading-relaxed">
+                        We believe true innovation is silent. It works in the background, removing friction and
+                        automating the mundane. As product designers and automation architects, our vision is a world
+                        where your technology doesn't just support you—it propels you.
+                    </p>
+
+                    <div class="flex justify-center md:justify-start">
+                        <button onclick="openCalendly()"
+                            class="group flex items-center gap-2 text-white font-medium border-b border-blue-500 pb-0.5 hover:text-blue-400 transition-colors">
+                            Let's Connect
+                            <iconify-icon icon="lucide:arrow-right"
+                                class="group-hover:translate-x-1 transition-transform"></iconify-icon>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Synapse Section -->
+        <section
+            class="min-h-screen bg-black flex items-center justify-center relative overflow-hidden group/section mb-40 rounded-[40px]"
+            id="c8">
+            <div
+                class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-blue-900/20 via-black to-black">
+            </div>
+
+            <div
+                class="relative z-10 flex flex-col md:flex-row items-center justify-center w-full max-w-7xl px-6 gap-12 md:gap-24">
+
+                <!-- Left Side: Human Vision -->
+                <div class="group/human relative cursor-pointer md:w-1/2 flex flex-col items-end text-right">
+                    <h2
+                        class="text-5xl md:text-7xl font-sf text-amber-100 italic relative z-20 transition-all duration-500 group-hover/human:text-amber-200 group-hover/human:scale-105">
+                        Human Vision
+                    </h2>
+                    <p
+                        class="text-amber-100/50 mt-2 text-sm max-w-xs opacity-0 group-hover/human:opacity-100 transition-opacity duration-500">
+                        Hover to brainstorm
+                    </p>
+
+                    <!-- Thought Bubbles (Pop from background) -->
+                    <div class="absolute top-1/2 right-full transform -translate-y-1/2 pr-8 pointer-events-none">
+                        <div class="flex flex-col gap-4 items-end">
+                            <!-- Thought 1 -->
+                            <div
+                                class="bg-amber-100/10 backdrop-blur-md border border-amber-200/20 text-amber-100 px-6 py-3 rounded-l-2xl rounded-tr-2xl translate-x-12 opacity-0 group-hover/human:translate-x-0 group-hover/human:opacity-100 transition-all duration-500 ease-out delay-75 shadow-[0_0_15px_rgba(251,191,36,0.1)]">
+                                <span class="font-bold block text-sm text-amber-200">Idea:</span>
+                                "An app that automates lead filtering."
+                            </div>
+                            <!-- Thought 2 -->
+                            <div
+                                class="bg-amber-100/10 backdrop-blur-md border border-amber-200/20 text-amber-100 px-6 py-3 rounded-l-2xl rounded-tr-2xl translate-x-16 opacity-0 group-hover/human:translate-x-0 group-hover/human:opacity-100 transition-all duration-500 ease-out delay-150 shadow-[0_0_15px_rgba(251,191,36,0.1)]">
+                                <span class="font-bold block text-sm text-amber-200">Pain Point:</span>
+                                "I spend 10 hours a week on spreadsheets."
+                            </div>
+                            <!-- Thought 3 -->
+                            <div
+                                class="bg-amber-100/10 backdrop-blur-md border border-amber-200/20 text-amber-100 px-6 py-3 rounded-l-2xl rounded-tr-2xl translate-x-20 opacity-0 group-hover/human:translate-x-0 group-hover/human:opacity-100 transition-all duration-500 ease-out delay-200 shadow-[0_0_15px_rgba(251,191,36,0.1)]">
+                                <span class="font-bold block text-sm text-amber-200">Goal:</span>
+                                "Scale agency to $50k/mo."
+                            </div>
+                            <!-- Thought 4 -->
+                            <div
+                                class="bg-amber-100/10 backdrop-blur-md border border-amber-200/20 text-amber-100 px-6 py-3 rounded-l-2xl rounded-tr-2xl translate-x-24 opacity-0 group-hover/human:translate-x-0 group-hover/human:opacity-100 transition-all duration-500 ease-out delay-300 shadow-[0_0_15px_rgba(251,191,36,0.1)]">
+                                <span class="font-bold block text-sm text-amber-200">Feature:</span>
+                                "AI Agent that talks to clients."
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Center Spark -->
+                <div class="relative w-24 h-24 flex items-center justify-center pointer-events-none">
+                    <div
+                        class="absolute w-[200%] h-0.5 bg-gradient-to-r from-amber-200 via-white to-blue-500 transform rotate-45 opacity-50">
+                    </div>
+                    <!-- Spark Orb -->
+                    <div
+                        class="w-2 h-2 bg-white rounded-full shadow-[0_0_60px_20px_rgba(255,255,255,0.8)] z-20 animate-pulse group-hover/section:scale-150 transition-transform duration-700">
+                    </div>
+                </div>
+
+                <!-- Right Side: AI Speed -->
+                <div class="group/ai relative md:w-1/2 flex flex-col items-start text-left">
+                    <h2
+                        class="text-5xl md:text-7xl font-mono text-blue-500 font-bold relative z-20 transition-all duration-500 group-hover/human:text-blue-400 group-hover/human:scale-105">
+                        AI Speed.
+                    </h2>
+
+                    <!-- AI Outcomes (Triggered by Human Hover) -->
+                    <div
+                        class="absolute top-1/2 left-full transform -translate-y-1/2 pl-8 w-[400px] pointer-events-none">
+                        <div class="flex flex-col gap-6">
+                            <!-- Card 1 -->
+                            <div
+                                class="glass-card p-4 rounded-xl border border-blue-500/30 bg-blue-900/20 -translate-x-12 opacity-0 group-hover/human:translate-x-0 group-hover/human:opacity-100 transition-all duration-500 ease-out delay-300">
+                                <div class="flex items-center gap-3 mb-2">
+                                    <div
+                                        class="w-8 h-8 rounded bg-green-500/20 flex items-center justify-center text-green-400">
+                                        <iconify-icon icon="lucide:check-circle"></iconify-icon>
+                                    </div>
+                                    <div class="text-white font-bold text-sm">System Deployed</div>
+                                </div>
+                                <div class="w-full bg-blue-500/20 h-1.5 rounded-full overflow-hidden">
+                                    <div class="h-full bg-blue-500 w-full animate-marquee"></div>
+                                </div>
+                            </div>
+
+                            <!-- Card 2 -->
+                            <div
+                                class="glass-card p-4 rounded-xl border border-blue-500/30 bg-blue-900/20 -translate-x-16 opacity-0 group-hover/human:translate-x-0 group-hover/human:opacity-100 transition-all duration-500 ease-out delay-500">
+                                <div class="flex justify-between items-center mb-1">
+                                    <span class="text-gray-300 text-xs font-mono">MVP_STATUS</span>
+                                    <span class="text-green-400 text-xs font-bold">LIVE</span>
+                                </div>
+                                <div class="text-2xl font-bold text-white mb-2">LeadGen Bot <span
+                                        class="text-sm font-normal text-gray-400">v1.2</span></div>
+                                <div class="flex gap-2 text-[10px] text-blue-300">
+                                    <span class="bg-blue-500/10 px-2 py-1 rounded">Next.js</span>
+                                    <span class="bg-blue-500/10 px-2 py-1 rounded">OpenAI</span>
+                                    <span class="bg-blue-500/10 px-2 py-1 rounded">Supabase</span>
+                                </div>
+                            </div>
+
+                            <!-- Card 3 -->
+                            <div
+                                class="glass-card p-3 rounded-xl border border-purple-500/30 bg-purple-900/20 flex items-center gap-4 -translate-x-20 opacity-0 group-hover/human:translate-x-0 group-hover/human:opacity-100 transition-all duration-500 ease-out delay-700">
+                                <div class="text-3xl">🚀</div>
+                                <div>
+                                    <div class="text-white font-bold text-sm">Outcome Generated</div>
+                                    <div class="text-purple-300 text-xs">Saved 40hrs/week</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- Services Ecosystem Section -->
+        <section class="max-w-7xl mx-auto px-6 space-y-32">
+
+            <!-- Category 1: Strategy -->
+            <div
+                class="group border-t border-white/10 pt-16 grid md:grid-cols-12 gap-12 transition-all duration-500 hover:border-blue-500/30">
+                <div class="md:col-span-5 flex flex-col justify-between">
+                    <div>
+                        <h2 class="text-5xl md:text-7xl font-bold font-sf text-white mb-8 tracking-tight">
+                            Strategy
+                        </h2>
+                        <p class="text-gray-400 text-lg leading-relaxed max-w-sm">
+                            We don't just guess. We blueprint. Every line of code starts with a strategy designed to
+                            dominate your market and optimize your operations.
+                        </p>
+                    </div>
+                    <div class="hidden md:block mt-20">
+                        <div
+                            class="w-16 h-16 rounded-full border border-white/10 flex items-center justify-center group-hover:border-blue-500/50 group-hover:bg-blue-500/10 transition-all duration-500">
+                            <iconify-icon icon="lucide:arrow-down-right"
+                                class="text-2xl text-gray-500 group-hover:text-blue-400 transition-colors"></iconify-icon>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="md:col-span-1"></div>
+
+                <div class="md:col-span-6">
+                    <ul class="space-y-0">
+                        <li
+                            class="border-b border-white/5 group/item cursor-default hover:bg-white/[0.02] transition-colors">
+                            <div class="py-6 flex items-start gap-6">
+                                <span class="text-xs font-mono text-blue-500 pt-1">01</span>
+                                <div>
+                                    <h3
+                                        class="text-xl font-semibold text-gray-200 group-hover/item:text-white transition-colors">
+                                        AI Infrastructure Audit</h3>
+                                    <p class="text-sm text-gray-500 mt-2 leading-relaxed">Analyzing your readiness for
+                                        autonomous agents and data-driven scale.</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li
+                            class="border-b border-white/5 group/item cursor-default hover:bg-white/[0.02] transition-colors">
+                            <div class="py-6 flex items-start gap-6">
+                                <span class="text-xs font-mono text-blue-500 pt-1">02</span>
+                                <div>
+                                    <h3
+                                        class="text-xl font-semibold text-gray-200 group-hover/item:text-white transition-colors">
+                                        Product Roadmap & Scoping</h3>
+                                    <p class="text-sm text-gray-500 mt-2 leading-relaxed">Turning "what if" into a
+                                        concrete, executable engineering plan.</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li
+                            class="border-b border-white/5 group/item cursor-default hover:bg-white/[0.02] transition-colors">
+                            <div class="py-6 flex items-start gap-6">
+                                <span class="text-xs font-mono text-blue-500 pt-1">03</span>
+                                <div>
+                                    <h3
+                                        class="text-xl font-semibold text-gray-200 group-hover/item:text-white transition-colors">
+                                        Market Intelligence & Positioning</h3>
+                                    <p class="text-sm text-gray-500 mt-2 leading-relaxed">Using data scrapers to dissect
+                                        competitors and find your winning angle.</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li
+                            class="border-b border-white/5 group/item cursor-default hover:bg-white/[0.02] transition-colors">
+                            <div class="py-6 flex items-start gap-6">
+                                <span class="text-xs font-mono text-blue-500 pt-1">04</span>
+                                <div>
+                                    <h3
+                                        class="text-xl font-semibold text-gray-200 group-hover/item:text-white transition-colors">
+                                        Automation Architecture</h3>
+                                    <p class="text-sm text-gray-500 mt-2 leading-relaxed">Designing the invisible
+                                        workflows that will run your business 24/7.</p>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Category 2: Brand & Experience -->
+            <div
+                class="group border-t border-white/10 pt-16 grid md:grid-cols-12 gap-12 transition-all duration-500 hover:border-purple-500/30">
+                <div class="md:col-span-5 flex flex-col justify-between">
+                    <div>
+                        <h2 class="text-5xl md:text-7xl font-bold font-sf text-white mb-8 tracking-tight">
+                            Brand & Experience
+                        </h2>
+                        <p class="text-gray-400 text-lg leading-relaxed max-w-sm">
+                            Perception is reality. We craft visceral identities and user interfaces that feel premium,
+                            trustworthy, and impossible to ignore.
+                        </p>
+                    </div>
+                    <div class="hidden md:block mt-20">
+                        <div
+                            class="w-16 h-16 rounded-full border border-white/10 flex items-center justify-center group-hover:border-purple-500/50 group-hover:bg-purple-500/10 transition-all duration-500">
+                            <iconify-icon icon="lucide:palette"
+                                class="text-2xl text-gray-500 group-hover:text-purple-400 transition-colors"></iconify-icon>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="md:col-span-1"></div>
+
+                <div class="md:col-span-6">
+                    <ul class="space-y-0">
+                        <li
+                            class="border-b border-white/5 group/item cursor-default hover:bg-white/[0.02] transition-colors">
+                            <div class="py-6 flex items-start gap-6">
+                                <span class="text-xs font-mono text-purple-500 pt-1">01</span>
+                                <div>
+                                    <h3
+                                        class="text-xl font-semibold text-gray-200 group-hover/item:text-white transition-colors">
+                                        Visual Identity System</h3>
+                                    <p class="text-sm text-gray-500 mt-2 leading-relaxed">Logotypes, typography, and
+                                        color palettes that scream "market leader."</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li
+                            class="border-b border-white/5 group/item cursor-default hover:bg-white/[0.02] transition-colors">
+                            <div class="py-6 flex items-start gap-6">
+                                <span class="text-xs font-mono text-purple-500 pt-1">02</span>
+                                <div>
+                                    <h3
+                                        class="text-xl font-semibold text-gray-200 group-hover/item:text-white transition-colors">
+                                        High-Fidelity UI/UX</h3>
+                                    <p class="text-sm text-gray-500 mt-2 leading-relaxed">Pixel-perfect interfaces
+                                        designed for conversion and retention.</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li
+                            class="border-b border-white/5 group/item cursor-default hover:bg-white/[0.02] transition-colors">
+                            <div class="py-6 flex items-start gap-6">
+                                <span class="text-xs font-mono text-purple-500 pt-1">03</span>
+                                <div>
+                                    <h3
+                                        class="text-xl font-semibold text-gray-200 group-hover/item:text-white transition-colors">
+                                        Motion & Interaction</h3>
+                                    <p class="text-sm text-gray-500 mt-2 leading-relaxed">Subtle animations (like this
+                                        one) that make your product feel alive.</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li
+                            class="border-b border-white/5 group/item cursor-default hover:bg-white/[0.02] transition-colors">
+                            <div class="py-6 flex items-start gap-6">
+                                <span class="text-xs font-mono text-purple-500 pt-1">04</span>
+                                <div>
+                                    <h3
+                                        class="text-xl font-semibold text-gray-200 group-hover/item:text-white transition-colors">
+                                        Design Systems</h3>
+                                    <p class="text-sm text-gray-500 mt-2 leading-relaxed">Scalable component libraries
+                                        to keep your engineering team fast.</p>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Category 3: Product Engineering -->
+            <div
+                class="group border-t border-white/10 pt-16 grid md:grid-cols-12 gap-12 transition-all duration-500 hover:border-orange-500/30">
+                <div class="md:col-span-5 flex flex-col justify-between">
+                    <div>
+                        <h2 class="text-5xl md:text-7xl font-bold font-sf text-white mb-8 tracking-tight">
+                            Product Engineering
+                        </h2>
+                        <p class="text-gray-400 text-lg leading-relaxed max-w-sm">
+                            We build the machine. From custom AI models to robust web platforms, our engineering is
+                            designed for speed, scale, and stability.
+                        </p>
+                    </div>
+                    <div class="hidden md:block mt-20">
+                        <div
+                            class="w-16 h-16 rounded-full border border-white/10 flex items-center justify-center group-hover:border-orange-500/50 group-hover:bg-orange-500/10 transition-all duration-500">
+                            <iconify-icon icon="lucide:cpu"
+                                class="text-2xl text-gray-500 group-hover:text-orange-400 transition-colors"></iconify-icon>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="md:col-span-1"></div>
+
+                <div class="md:col-span-6">
+                    <ul class="space-y-0">
+                        <li
+                            class="border-b border-white/5 group/item cursor-default hover:bg-white/[0.02] transition-colors">
+                            <div class="py-6 flex items-start gap-6">
+                                <span class="text-xs font-mono text-orange-500 pt-1">01</span>
+                                <div>
+                                    <h3
+                                        class="text-xl font-semibold text-gray-200 group-hover/item:text-white transition-colors">
+                                        AI & ML App Development</h3>
+                                    <p class="text-sm text-gray-500 mt-2 leading-relaxed">Custom LLM integration, RAG
+                                        pipelines, and intelligent agents.</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li
+                            class="border-b border-white/5 group/item cursor-default hover:bg-white/[0.02] transition-colors">
+                            <div class="py-6 flex items-start gap-6">
+                                <span class="text-xs font-mono text-orange-500 pt-1">02</span>
+                                <div>
+                                    <h3
+                                        class="text-xl font-semibold text-gray-200 group-hover/item:text-white transition-colors">
+                                        Web Application Development</h3>
+                                    <p class="text-sm text-gray-500 mt-2 leading-relaxed">Full-stack builds using
+                                        Next.js, React, and modern serverless tech.</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li
+                            class="border-b border-white/5 group/item cursor-default hover:bg-white/[0.02] transition-colors">
+                            <div class="py-6 flex items-start gap-6">
+                                <span class="text-xs font-mono text-orange-500 pt-1">03</span>
+                                <div>
+                                    <h3
+                                        class="text-xl font-semibold text-gray-200 group-hover/item:text-white transition-colors">
+                                        Automation Frameworks</h3>
+                                    <p class="text-sm text-gray-500 mt-2 leading-relaxed">Development of robust n8n,
+                                        Make, and Python workflow engines.</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li
+                            class="border-b border-white/5 group/item cursor-default hover:bg-white/[0.02] transition-colors">
+                            <div class="py-6 flex items-start gap-6">
+                                <span class="text-xs font-mono text-orange-500 pt-1">04</span>
+                                <div>
+                                    <h3
+                                        class="text-xl font-semibold text-gray-200 group-hover/item:text-white transition-colors">
+                                        Shop & E-commerce</h3>
+                                    <p class="text-sm text-gray-500 mt-2 leading-relaxed">High-converting Shopify builds
+                                        with custom AI sales tools integrated.</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li
+                            class="border-b border-white/5 group/item cursor-default hover:bg-white/[0.02] transition-colors">
+                            <div class="py-6 flex items-start gap-6">
+                                <span class="text-xs font-mono text-orange-500 pt-1">05</span>
+                                <div>
+                                    <h3
+                                        class="text-xl font-semibold text-gray-200 group-hover/item:text-white transition-colors">
+                                        Custom Engineering</h3>
+                                    <p class="text-sm text-gray-500 mt-2 leading-relaxed">Solving bespoke technical
+                                        challenges that off-the-shelf tools can't touch.</p>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Final CTA -->
+        <section class="py-32 text-center">
+            <h2 class="text-3xl md:text-5xl font-bold font-sf mb-6">Ready to construct the future?</h2>
+            <div class="flex justify-center">
+                <button onclick="openCalendly()"
+                    class="px-8 py-4 bg-white text-black hover:bg-gray-200 transition-colors rounded-full font-bold text-lg">
+                    Book Scale Strategy Call
+                </button>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer Section -->
+    <footer data-theme="dark"
+        class="relative bg-gradient-to-b from-slate-950 via-slate-950 to-black text-slate-300 overflow-hidden py-12 md:py-16">
+        <style>
+            @keyframes footer-beam {
+                0% {
+                    left: -100%;
+                }
+
+                100% {
+                    left: 200%;
+                }
+            }
+
+            .animate-footer-beam {
+                animation: footer-beam 4s linear infinite;
+            }
+
+            .footer-futuristic {
+                background: #020617;
+                position: relative;
+                overflow: hidden;
+            }
+
+            .footer-futuristic::before {
+                content: "";
+                position: absolute;
+                inset: 0;
+                background: radial-gradient(circle at 50% 100%, rgba(6, 182, 212, 0.15) 0%, transparent 60%);
+                pointer-events: none;
+            }
+
+            .footer-futuristic::after {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 1px;
+                background: linear-gradient(90deg, transparent, rgba(6, 182, 212, 0.3), transparent);
+            }
+        </style>
+
+
+        <!-- Gradient Overlay -->
+        <div class="absolute inset-0 footer-futuristic pointer-events-none">
+        </div>
+
+        <!-- Futuristic Beam / Glow Effect -->
+        <div
+            class="absolute top-0 left-0 h-1 w-1/2 bg-gradient-to-r from-transparent via-cyan-500 to-transparent opacity-75 shadow-[0_0_15px_rgba(6,182,212,0.5)] z-20 animate-footer-beam">
+        </div>
+        <div class="absolute top-0 inset-x-0 h-px bg-slate-800 z-10"></div>
+
+        <!-- Animated Gradient Orb Background (Reduced Opacity) -->
+        <div
+            class="absolute top-[-20%] right-[-10%] w-[500px] h-[500px] bg-purple-900/10 rounded-full blur-[100px] pointer-events-none">
+        </div>
+        <div
+            class="absolute bottom-[-20%] left-[-10%] w-[500px] h-[500px] bg-blue-900/10 rounded-full blur-[100px] pointer-events-none">
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 md:gap-12 mb-8 md:mb-12">
+
+                <!-- Brand & Mission & Location -->
+                <div
+                    class="md:col-span-2 lg:col-span-5 space-y-5 flex flex-col items-center lg:items-start text-center lg:text-left">
+                    <a href="index.html" class="inline-block">
+                        <div class="flex items-center gap-4 group/logo">
+                            <div
+                                class="text-2xl font-black italic tracking-tighter text-white transition-transform duration-500 group-hover/logo:scale-105">
+                                LOOPSUIT<sup class="text-[9px] not-italic text-gray-500 ml-0.5">®</sup>
+                            </div>
+                            <div
+                                class="hidden sm:flex flex-col justify-center pl-4 border-l-2 border-white/10 h-8 transition-transform duration-500 group-hover/logo:scale-105 text-left">
+                                <span
+                                    class="text-[8px] font-bold tracking-[0.3em] text-gray-400 uppercase leading-none mb-0.5">VISION</span>
+                                <div class="bg-[#3b82f6] px-1.5 py-[1px] transform -skew-x-12 inline-block w-max">
+                                    <span
+                                        class="block transform skew-x-12 text-[9px] font-black tracking-widest text-white uppercase leading-none">AUTOMATED</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <p class="text-slate-400 leading-relaxed max-w-sm font-sf text-base">
+                        Empowering forward-thinking businesses with intelligent automation systems.
+                        We blend cutting-edge AI with seamless workflows to help you scale faster.
+                    </p>
+
+                    <!-- Location & Service Area -->
+                    <div class="space-y-2 font-sf">
+                        <p class="text-slate-400 text-sm">
+                            📍 Vancouver, Canada
+                        </p>
+                        <p
+                            class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400 font-semibold text-sm">
+                            Serving clients across US, Canada & EU
+                        </p>
+                        <p
+                            class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400 font-semibold text-sm">
+                            6+ Years of Industry Experience
+                        </p>
+                    </div>
+
+                    <div class="flex items-center justify-center lg:justify-start space-x-4 pt-2">
+                        <!-- Twitter -->
+                        <a href="#" aria-label="Twitter"
+                            class="w-10 h-10 flex items-center justify-center rounded-full bg-slate-900 border border-slate-800 text-slate-400 hover:text-white hover:border-cyan-500/50 hover:bg-cyan-950/30 transition-all duration-300 group">
+                            <iconify-icon icon="lucide:twitter" width="20"
+                                class="group-hover:scale-110 transition-transform duration-300"></iconify-icon>
+                        </a>
+                        <!-- LinkedIn -->
+                        <a href="#" aria-label="LinkedIn"
+                            class="w-10 h-10 flex items-center justify-center rounded-full bg-slate-900 border border-slate-800 text-slate-400 hover:text-white hover:border-cyan-500/50 hover:bg-cyan-950/30 transition-all duration-300 group">
+                            <iconify-icon icon="lucide:linkedin" width="20"
+                                class="group-hover:scale-110 transition-transform duration-300"></iconify-icon>
+                        </a>
+                        <!-- GitHub -->
+                        <a href="#" aria-label="GitHub"
+                            class="w-10 h-10 flex items-center justify-center rounded-full bg-slate-900 border border-slate-800 text-slate-400 hover:text-white hover:border-cyan-500/50 hover:bg-cyan-950/30 transition-all duration-300 group">
+                            <iconify-icon icon="lucide:github" width="20"
+                                class="group-hover:scale-110 transition-transform duration-300"></iconify-icon>
+                        </a>
+                    </div>
+
+                    <!-- Book Free Call CTA - Aligned Left/Center on mobile -->
+                    <div class="pt-4 flex justify-center lg:justify-start">
+                        <button onclick="openCalendly()"
+                            class="shiny-cta shiny-cta-light focus:outline-none group relative overflow-hidden transition-all duration-300 hover:scale-105">
+                            <div class="absolute inset-0 bg-gradient-to-r from-transparent via-blue-200 to-transparent opacity-0 group-hover:opacity-100 animate-footer-beam"
+                                style="animation-duration: 1.5s;"></div>
+                            <span class="font-sf relative z-10">Book Free Call</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Navigation Column -->
+                <div class="md:col-span-1 lg:col-span-2 lg:col-start-9 text-center">
+                    <h3 class="text-white font-semibold mb-4 text-lg font-sf">Navigation</h3>
+                    <ul class="space-y-3">
+                        <li><a href="index.html"
+                                class="text-slate-400 hover:text-cyan-400 transition-colors duration-200 flex items-center justify-center group font-sf"><span
+                                    class="w-0 group-hover:w-2 h-[1px] bg-cyan-400 mr-0 group-hover:mr-2 transition-all duration-300 opacity-0 group-hover:opacity-100"></span>Home</a>
+                        </li>
+                        <li><a href="index.html#how-it-works"
+                                class="text-slate-400 hover:text-cyan-400 transition-colors duration-200 flex items-center justify-center group font-sf"><span
+                                    class="w-0 group-hover:w-2 h-[1px] bg-cyan-400 mr-0 group-hover:mr-2 transition-all duration-300 opacity-0 group-hover:opacity-100"></span>How
+                                It Works</a></li>
+                        <li><a href="services.html"
+                                class="text-slate-400 hover:text-cyan-400 transition-colors duration-200 flex items-center justify-center group font-sf"><span
+                                    class="w-0 group-hover:w-2 h-[1px] bg-cyan-400 mr-0 group-hover:mr-2 transition-all duration-300 opacity-0 group-hover:opacity-100"></span>Services</a>
+                        </li>
+                        <li><a href="case-studies.html"
+                                class="text-slate-400 hover:text-cyan-400 transition-colors duration-200 flex items-center justify-center group font-sf"><span
+                                    class="w-0 group-hover:w-2 h-[1px] bg-cyan-400 mr-0 group-hover:mr-2 transition-all duration-300 opacity-0 group-hover:opacity-100"></span>Case
+                                Studies</a></li>
+                    </ul>
+                </div>
+
+                <!-- Solutions Column -->
+                <div class="md:col-span-1 lg:col-span-2 text-center">
+                    <h3 class="text-white font-semibold mb-4 text-lg font-sf">Solutions</h3>
+                    <ul class="space-y-3">
+                        <li><a href="index.html#workflow-automation"
+                                class="text-slate-400 hover:text-cyan-400 transition-colors duration-200 flex items-center justify-center group font-sf"><span
+                                    class="w-0 group-hover:w-2 h-[1px] bg-cyan-400 mr-0 group-hover:mr-2 transition-all duration-300 opacity-0 group-hover:opacity-100"></span>AI
+                                Workflow Automation</a></li>
+                        <li><a href="index.html#mvp-development"
+                                class="text-slate-400 hover:text-cyan-400 transition-colors duration-200 flex items-center justify-center group font-sf"><span
+                                    class="w-0 group-hover:w-2 h-[1px] bg-cyan-400 mr-0 group-hover:mr-2 transition-all duration-300 opacity-0 group-hover:opacity-100"></span>Rapid
+                                MVP Development</a>
+                        </li>
+                        <li><a href="index.html#ai-support"
+                                class="text-slate-400 hover:text-cyan-400 transition-colors duration-200 flex items-center justify-center group font-sf"><span
+                                    class="w-0 group-hover:w-2 h-[1px] bg-cyan-400 mr-0 group-hover:mr-2 transition-all duration-300 opacity-0 group-hover:opacity-100"></span>AI-Powered
+                                Support</a>
+                        </li>
+                        <li><a href="index.html#complete-solution"
+                                class="text-slate-400 hover:text-cyan-400 transition-colors duration-200 flex items-center justify-center group font-sf"><span
+                                    class="w-0 group-hover:w-2 h-[1px] bg-cyan-400 mr-0 group-hover:mr-2 transition-all duration-300 opacity-0 group-hover:opacity-100"></span>Complete
+                                AI Solution</a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <!-- Separator -->
+            <div class="border-t border-slate-800/50 mb-6 md:mb-8"></div>
+
+            <!-- Bottom Section -->
+            <div class="flex items-center justify-center text-slate-500 text-sm font-sf">
+                <p>&copy; <span id="year"></span> LoopSuit. All rights reserved.</p>
+            </div>
+        </div>
+        <script>
+            document.getElementById('year').textContent = new Date().getFullYear();
+        </script>
+    </footer>
+
+    <script>
+        // Calendly function matching index.html
+        function openCalendly() {
+            const calendlyUrl = 'https://calendly.com/your-username/30min'; // Replace with actual
+            if (typeof Calendly !== 'undefined') {
+                Calendly.initPopupWidget({ url: calendlyUrl });
+            } else {
+                window.open(calendlyUrl, '_blank');
+            }
+            return false;
+        }
+    </script>
+    <script>
+        // Scroll Effect for Navbar
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('inner-nav');
+            if (!nav) return;
+            if (window.scrollY > 20) {
+                nav.classList.add('glass-nav-scrolled');
+                nav.classList.remove('py-3');
+                nav.classList.add('py-2');
+            } else {
+                nav.classList.remove('glass-nav-scrolled');
+                nav.classList.add('py-3');
+                nav.classList.remove('py-2');
+            }
+        });
+
+        // Mobile Menu Logic
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            if (menu.classList.contains('menu-closed')) {
+                menu.classList.remove('menu-closed');
+                menu.classList.add('menu-open');
+                document.body.style.overflow = 'hidden';
+            } else {
+                closeMenuAndNavigate();
+            }
+        }
+
+        function closeMenuAndNavigate() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.remove('menu-open');
+            menu.classList.add('menu-closed');
+            document.body.style.overflow = '';
+        }
+
+        document.getElementById('mobile-menu-btn')?.addEventListener('click', toggleMobileMenu);
+    </script>
+</body>
+
+</html>
