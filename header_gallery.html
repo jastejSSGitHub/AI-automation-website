@@ -1,0 +1,2588 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LoopSuit Header Gallery - 20 Concepts</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    animation: {
+                        'blob': 'blob 7s infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'marquee': 'marquee 25s linear infinite',
+                        'marquee-reverse': 'marquee-reverse 25s linear infinite',
+                        'spin-slow': 'spin 12s linear infinite',
+                        'float-delayed': 'float 6s ease-in-out 3s infinite',
+                        'pulse-glow': 'pulse-glow 3s infinite',
+                        'orbit': 'orbit 60s linear infinite',
+                        'orbit-reverse': 'orbit-reverse 60s linear infinite',
+                        'spin-y': 'spin-y 15s linear infinite',
+                        'counter-spin-y': 'counter-spin-y 15s linear infinite',
+                    },
+                    keyframes: {
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        marquee: {
+                            '0%': { transform: 'translateY(0%)' },
+                            '100%': { transform: 'translateY(-100%)' },
+                        },
+                        'marquee-reverse': {
+                            '0%': { transform: 'translateY(-100%)' },
+                            '100%': { transform: 'translateY(0%)' },
+                        },
+                        'pulse-glow': {
+                            '0%, 100%': { opacity: '1', filter: 'brightness(1)' },
+                            '50%': { opacity: '0.8', filter: 'brightness(1.5)' },
+                        },
+                        orbit: {
+                            '0%': { transform: 'rotate(0deg)' },
+                            '100%': { transform: 'rotate(360deg)' },
+                        },
+                        'orbit-reverse': {
+                            '0%': { transform: 'rotate(360deg)' },
+                            '100%': { transform: 'rotate(0deg)' },
+                        },
+                        'spin-y': {
+                            '0%': { transform: 'rotateY(0deg)' },
+                            '100%': { transform: 'rotateY(360deg)' },
+                        },
+                        'counter-spin-y': {
+                            '0%': { transform: 'rotateY(360deg)' },
+                            '100%': { transform: 'rotateY(0deg)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@900,700,500,400&display=swap" rel="stylesheet">
+    <link href="https://api.fontshare.com/v2/css?f[]=clash-display@700,600,500&display=swap" rel="stylesheet">
+    <!-- Icons -->
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <!-- Calendly -->
+    <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+    <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+    <style>
+        html,
+        body {
+            overflow-x: hidden;
+            max-width: 100%;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .font-sf {
+            font-family: 'Satoshi', sans-serif;
+        }
+
+        .font-clash {
+            font-family: 'Clash Display', sans-serif;
+        }
+
+        .font-mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .neon-text {
+            text-shadow: 0 0 10px rgba(56, 189, 248, 0.5), 0 0 20px rgba(56, 189, 248, 0.3);
+        }
+
+        .grid-bg {
+            background-size: 50px 50px;
+            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+        }
+
+        /* 3D Utilities */
+        .perspective-1000 {
+            perspective: 1000px;
+        }
+
+        .preserve-3d {
+            transform-style: preserve-3d;
+        }
+
+        .backface-hidden {
+            backface-visibility: hidden;
+        }
+
+        /* Custom Orbit Animations */
+        @keyframes orbit-rotate {
+            0% {
+                transform: rotateY(0deg);
+            }
+
+            100% {
+                transform: rotateY(360deg);
+            }
+        }
+
+        @keyframes orbit-counter {
+            0% {
+                transform: rotateY(360deg);
+            }
+
+            100% {
+                transform: rotateY(0deg);
+            }
+        }
+
+        /* Sticky Navbar & Shiny CTA */
+        @property --gradient-angle {
+            syntax: "<angle>";
+            initial-value: 0deg;
+            inherits: false;
+        }
+
+        @property --gradient-angle-offset {
+            syntax: "<angle>";
+            initial-value: 0deg;
+            inherits: false;
+        }
+
+        @property --gradient-shine {
+            syntax: "<color>";
+            initial-value: #f97316;
+            inherits: false;
+        }
+
+        .shiny-cta {
+            --gradient-angle: 0deg;
+            --gradient-angle-offset: 0deg;
+            --gradient-shine: #f97316;
+            position: relative;
+            overflow: hidden;
+            border-radius: 9999px;
+            padding: 0.5rem 1rem;
+            font-size: 0.825rem;
+            line-height: 1.2;
+            font-weight: 500;
+            color: #ffffff;
+            background: linear-gradient(#000000, #000000) padding-box, conic-gradient(from calc(var(--gradient-angle) - var(--gradient-angle-offset)), transparent 0%, #ea580c 5%, var(--gradient-shine) 15%, #ea580c 30%, transparent 40%, transparent 100%) border-box;
+            border: 2px solid transparent;
+            box-shadow: inset 0 0 0 1px #1a1818;
+            transition: all 0.3s;
+            cursor: pointer;
+            isolation: isolate;
+            animation: border-spin 2.5s linear infinite;
+        }
+
+        @keyframes border-spin {
+            to {
+                --gradient-angle: 360deg;
+            }
+        }
+
+        .shiny-cta::before {
+            content: '';
+            pointer-events: none;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: calc(100% - 6px);
+            height: calc(100% - 6px);
+            background: radial-gradient(circle at 2px 2px, white 0.5px, transparent 0) padding-box;
+            background-size: 4px 4px;
+            mask-image: conic-gradient(from calc(var(--gradient-angle) + 45deg), black, transparent 10% 90%, black);
+            opacity: 0.4;
+        }
+
+        .glass-nav-scrolled {
+            background: rgba(0, 0, 0, 0.6) !important;
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .hover-gradient-text:hover {
+            background: linear-gradient(to right, #60a5fa, #a855f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Hide Scrollbar Utility */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Mobile Responsive Styles for Header Section */
+        @media (max-width: 768px) {
+
+            /* Section layout adjustments */
+            #c1 {
+                padding-top: 6rem;
+                padding-bottom: 4rem;
+            }
+
+            /* Adjust grid layout for mobile */
+            #c1 .container.mx-auto.px-6.grid.lg\:grid-cols-2 {
+                grid-template-columns: 1fr !important;
+                gap: 3rem !important;
+            }
+
+            /* Center content on mobile */
+            #c1 .space-y-8 {
+                text-align: center !important;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            /* Increase phone mockup container height */
+            #c1 .relative.h-\[600px\].flex.items-center.justify-center.perspective-1000 {
+                height: 700px !important;
+                margin-bottom: 12rem !important;
+            }
+
+            /* Make phone mockup bigger - targeting the iPhone frame */
+            #c1 .w-\[280px\].h-\[580px\].bg-black {
+                width: 340px !important;
+                height: 700px !important;
+                transform: scale(1.05) !important;
+            }
+
+            /* Glassmorphism Cards - MUCH LARGER on Mobile */
+            #c1 .glass-card.absolute.w-48 {
+                width: 85vw !important;
+                max-width: 360px !important;
+                padding: 2rem 1.75rem !important;
+                background: rgba(255, 255, 255, 0.12) !important;
+                backdrop-filter: blur(24px) !important;
+                -webkit-backdrop-filter: blur(24px) !important;
+                border: 2px solid rgba(255, 255, 255, 0.2) !important;
+                box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.45) !important;
+                position: absolute !important;
+            }
+
+            /* Dev Time Saved Card - Repositioned BELOW phone */
+            #c1 .glass-card.absolute.top-40.-left-6 {
+                top: auto !important;
+                bottom: -180px !important;
+                left: 50% !important;
+                right: auto !important;
+                transform: translateX(-50%) !important;
+                z-index: 50 !important;
+            }
+
+            /* App Design Complete Card - Repositioned BELOW Dev Time card */
+            #c1 .glass-card.absolute.bottom-40.-right-6 {
+                top: auto !important;
+                bottom: -300px !important;
+                left: 50% !important;
+                right: auto !important;
+                transform: translateX(-50%) !important;
+                z-index: 50 !important;
+            }
+
+            /* Enhanced text visibility on mobile - Labels */
+            #c1 .glass-card .text-sm.text-gray-400 {
+                font-size: 1.125rem !important;
+                font-weight: 700 !important;
+                color: rgba(255, 255, 255, 0.95) !important;
+                text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+                letter-spacing: 0.025em;
+            }
+
+            /* Enhanced text visibility on mobile - Values */
+            #c1 .glass-card .text-2xl.font-bold {
+                font-size: 3rem !important;
+                font-weight: 900 !important;
+                text-shadow: 0 3px 10px rgba(0, 0, 0, 0.7);
+                letter-spacing: -0.02em;
+            }
+
+            /* Ensure blue color is vibrant */
+            #c1 .glass-card .text-blue-400 {
+                color: #60a5fa !important;
+            }
+
+            /* Ensure green color is vibrant */
+            #c1 .glass-card .text-green-400 {
+                color: #4ade80 !important;
+            }
+
+            /* Hide 3D orbit elements on mobile for cleaner look */
+            #c1 .preserve-3d {
+                display: none !important;
+            }
+        }
+
+        /* Extra small devices (phones in portrait, less than 576px) */
+        @media (max-width: 576px) {
+
+            /* Further increase glassmorphism card sizes */
+            #c1 .glass-card.absolute.w-48 {
+                width: 92vw !important;
+                max-width: 380px !important;
+                padding: 2.5rem 2rem !important;
+            }
+
+            /* Even larger text for better readability */
+            #c1 .glass-card .text-sm.text-gray-400 {
+                font-size: 1.25rem !important;
+            }
+
+            #c1 .glass-card .text-2xl.font-bold {
+                font-size: 3.5rem !important;
+            }
+
+            /* Adjust card positioning for smaller screens */
+            #c1 .glass-card.absolute.top-40.-left-6 {
+                bottom: -200px !important;
+            }
+
+            #c1 .glass-card.absolute.bottom-40.-right-6 {
+                bottom: -340px !important;
+            }
+
+            /* Phone mockup adjustment */
+            #c1 .w-\[280px\].h-\[580px\].bg-black {
+                width: 320px !important;
+                height: 660px !important;
+            }
+
+            /* Increase container bottom margin */
+            #c1 .relative.h-\[600px\].flex.items-center.justify-center.perspective-1000 {
+                margin-bottom: 16rem !important;
+            }
+        }
+
+        /* Mobile Menu Transitions */
+        .mobile-menu-wrapper {
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+        }
+
+        .menu-closed {
+            transform: translateY(-100%);
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .menu-open {
+            transform: translateY(0);
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        /* Mobile & Tablet Navbar Centering */
+        @media (max-width: 1023px) {
+            #inner-nav>div {
+                position: relative;
+                width: 100%;
+            }
+
+            /* Center the logo section */
+            #inner-nav>div>div:first-child {
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            /* Keep hamburger on the right */
+            #inner-nav>div>div:last-child {
+                margin-left: auto;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-black text-white">
+
+    <!-- Mobile Menu Overlay -->
+    <nav id="mobile-menu" aria-label="Mobile navigation"
+        class="fixed inset-0 z-[150] bg-black/95 backdrop-blur-3xl menu-closed mobile-menu-wrapper flex flex-col justify-center items-center">
+        <button id="close-menu-btn" aria-label="Close mobile menu" onclick="closeMenuAndNavigate()"
+            class="absolute top-6 right-6 p-3 rounded-full bg-white/10 hover:bg-white/20 transition-colors z-[160]">
+            <iconify-icon icon="lucide:x" width="24" stroke-width="1.5" class="text-white"></iconify-icon>
+        </button>
+        <div class="flex flex-col gap-8 text-center relative z-10">
+            <a href="index.html#solutions"
+                class="text-4xl font-sf font-semibold text-white tracking-tight hover:text-blue-500 transition-colors"
+                onclick="closeMenuAndNavigate()">
+                Solutions
+            </a>
+            <a href="services.html"
+                class="text-4xl font-sf font-semibold text-white tracking-tight hover:text-blue-500 transition-colors"
+                onclick="closeMenuAndNavigate()">
+                Services
+            </a>
+            <a href="case-studies.html"
+                class="text-4xl font-sf font-semibold text-white tracking-tight hover:text-blue-500 transition-colors"
+                onclick="closeMenuAndNavigate()">
+                Case Studies
+            </a>
+        </div>
+        <div class="mt-14 w-full px-12 max-w-sm relative z-10">
+            <button class="shiny-cta w-full focus:outline-none justify-center"
+                onclick="closeMenuAndNavigate(); openCalendly()">
+                <span>Book Free Call</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Navigation Overlay (Concepts Switcher) -->
+    <div
+        class="fixed bottom-8 left-1/2 transform -translate-x-1/2 bg-black/90 backdrop-blur-md rounded-full px-6 py-3 border border-white/10 z-50 flex gap-2 overflow-x-auto max-w-[90vw]">
+        <span class="text-xs font-bold text-white mr-2 self-center">CONCEPTS:</span>
+        <a href="#c1"
+            class="w-6 h-6 rounded-full bg-neutral-800 hover:bg-white hover:text-black flex items-center justify-center text-[10px] transition-colors">1</a>
+        <a href="#c5"
+            class="w-6 h-6 rounded-full bg-neutral-800 hover:bg-white hover:text-black flex items-center justify-center text-[10px] transition-colors">5</a>
+        <a href="#c9"
+            class="w-6 h-6 rounded-full bg-neutral-800 hover:bg-white hover:text-black flex items-center justify-center text-[10px] transition-colors">9</a>
+        <a href="#c13"
+            class="w-6 h-6 rounded-full bg-neutral-800 hover:bg-white hover:text-black flex items-center justify-center text-[10px] transition-colors">13</a>
+        <a href="#c17"
+            class="w-6 h-6 rounded-full bg-neutral-800 hover:bg-white hover:text-black flex items-center justify-center text-[10px] transition-colors">17</a>
+        <a href="#c20"
+            class="w-6 h-6 rounded-full bg-neutral-800 hover:bg-white hover:text-black flex items-center justify-center text-[10px] transition-colors">20</a>
+    </div>
+
+    <!-- New Sticky Navbar -->
+    <header id="main-navbar" class="fixed top-0 left-0 right-0 z-[100] pt-6 px-6 transition-all duration-300">
+        <nav class="max-w-6xl mx-auto rounded-full px-6 py-3 transition-all duration-300" id="inner-nav">
+            <div class="flex items-center justify-between relative">
+                <!-- Logo -->
+                <a href="index.html" class="flex items-center gap-4">
+                    <div class="text-2xl font-black italic tracking-tighter text-white">
+                        LOOPSUIT<sup class="text-[9px] not-italic text-gray-500 ml-0.5">®</sup>
+                    </div>
+                    <div class="hidden sm:flex flex-col justify-center pl-4 border-l-2 border-white/10 h-8">
+                        <span
+                            class="text-[8px] font-bold tracking-[0.3em] text-gray-400 uppercase leading-none mb-0.5">VISION</span>
+                        <div class="bg-[#3b82f6] px-1.5 py-[1px] transform -skew-x-12 inline-block w-max">
+                            <span
+                                class="block transform skew-x-12 text-[9px] font-black tracking-widest text-white uppercase leading-none">AUTOMATED</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Desktop Nav (Absolutely Centered) -->
+                <div
+                    class="hidden lg:flex items-center gap-8 text-sm font-medium text-gray-300 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+                    <div class="relative group">
+                        <button class="flex items-center gap-1 hover:text-white transition-colors py-2">
+                            Solutions
+                            <iconify-icon icon="lucide:chevron-down"
+                                class="group-hover:rotate-180 transition-transform duration-300"></iconify-icon>
+                        </button>
+                        <!-- Dropdown -->
+                        <div
+                            class="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[360px] p-2 bg-[#0A0A0B] rounded-2xl shadow-xl border border-white/10 opacity-0 invisible group-hover:opacity-100 group-hover:visible translate-y-2 group-hover:translate-y-0 transition-all duration-200 overflow-hidden z-50 ring-1 ring-black/5 whitespace-normal">
+                            <div class="flex flex-col gap-1">
+                                <a href="index.html#solution-sales"
+                                    class="flex items-start gap-4 p-3 rounded-xl hover:bg-white/5 transition-colors group/item">
+                                    <div
+                                        class="w-9 h-9 flex-shrink-0 flex items-center justify-center rounded-lg bg-white/5 border border-white/10 mt-0.5 transition-colors group-hover/item:bg-white/10 group-hover/item:shadow-sm">
+                                        <iconify-icon icon="lucide:workflow" width="16" stroke-width="1.5"
+                                            class="text-gray-400 transition-colors duration-300 group-hover/item:text-blue-500"></iconify-icon>
+                                    </div>
+                                    <div class="flex flex-col">
+                                        <span
+                                            class="text-sm font-semibold text-white leading-tight hover-gradient-text">
+                                            Lead Generation & Sales
+                                        </span>
+                                        <span class="text-[11px] text-gray-500 font-medium mt-1 leading-snug">
+                                            200+ leads daily, personalized outreach, automatic proposals
+                                        </span>
+                                    </div>
+                                </a>
+                                <a href="index.html#solution-launch"
+                                    class="flex items-start gap-4 p-3 rounded-xl hover:bg-white/5 transition-colors group/item">
+                                    <div
+                                        class="w-9 h-9 flex-shrink-0 flex items-center justify-center rounded-lg bg-white/5 border border-white/10 mt-0.5 transition-colors group-hover/item:bg-white/10 group-hover/item:shadow-sm">
+                                        <iconify-icon icon="lucide:rocket" width="16" stroke-width="1.5"
+                                            class="text-gray-400 transition-colors duration-300 group-hover/item:text-blue-500"></iconify-icon>
+                                    </div>
+                                    <div class="flex flex-col">
+                                        <span
+                                            class="text-sm font-semibold text-white leading-tight hover-gradient-text">
+                                            Launch Faster
+                                        </span>
+                                        <span class="text-[11px] text-gray-500 font-medium mt-1 leading-snug">
+                                            Production-ready MVPs. No 6-month timelines. No $100K fees.
+                                        </span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="services.html" class="hover:text-white transition-colors">Services</a>
+                    <a href="case-studies.html" class="hover:text-white transition-colors">Case Studies</a>
+                </div>
+
+                <!-- CTA & Hamburger -->
+                <div class="flex items-center gap-4">
+                    <button class="shiny-cta hidden lg:flex" onclick="openCalendly()">
+                        <span>Book Free Call</span>
+                    </button>
+                    <!-- Mobile Menu Button -->
+                    <button id="mobile-menu-btn"
+                        class="lg:hidden text-white p-2 rounded-full hover:bg-white/10 transition-colors"
+                        onclick="toggleMobileMenu()" aria-label="Menu">
+                        <iconify-icon icon="lucide:menu" width="24" height="24"></iconify-icon>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <script>
+        // Scroll Effect
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('inner-nav');
+            if (window.scrollY > 20) {
+                nav.classList.add('glass-nav-scrolled');
+                // Compact it slightly
+                nav.classList.remove('py-3');
+                nav.classList.add('py-2');
+            } else {
+                nav.classList.remove('glass-nav-scrolled');
+                nav.classList.add('py-3');
+                nav.classList.remove('py-2');
+            }
+        });
+
+        // Mobile Menu Logic
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            if (menu.classList.contains('menu-closed')) {
+                menu.classList.remove('menu-closed');
+                menu.classList.add('menu-open');
+                document.body.style.overflow = 'hidden';
+            } else {
+                menu.classList.remove('menu-open');
+                menu.classList.add('menu-closed');
+                document.body.style.overflow = '';
+            }
+        }
+
+        function closeMenuAndNavigate() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.remove('menu-open');
+            menu.classList.add('menu-closed');
+            document.body.style.overflow = '';
+        }
+
+        window.openCalendly = function () {
+            if (typeof Calendly !== 'undefined') {
+                Calendly.initPopupWidget({ url: 'https://calendly.com/integrated-ai/30min' });
+            } else {
+                window.open('https://calendly.com/integrated-ai/30min', '_blank');
+            }
+            return false;
+        };
+
+        // Concept Nav Logic
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const targetId = this.getAttribute('href');
+                    if (targetId.startsWith('#c')) {
+                        e.preventDefault();
+                        const targetElement = document.querySelector(targetId);
+                        if (targetElement) {
+                            targetElement.scrollIntoView({
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+
+    <!-- 1. Floating Ecosystem (Refined) -->
+    <section class="min-h-screen relative flex items-center justify-center overflow-hidden bg-[#0A0A0B]" id="c1">
+        <!-- New Background: No Image, Clean Gradient + Subtle Grid -->
+        <div class="absolute inset-0 z-0 bg-gradient-to-br from-[#0c0c14] to-[#12122b]">
+            <div class="absolute inset-0 opacity-20"
+                style="background-image: radial-gradient(#3b82f6 1px, transparent 1px); background-size: 30px 30px;">
+            </div>
+            <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[100px]"></div>
+            <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-500/10 rounded-full blur-[100px]"></div>
+        </div>
+
+
+
+        <div class="relative z-10 container mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
+            <div class="space-y-8">
+                <div
+                    class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-bold uppercase tracking-wider">
+                    <div class="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></div>
+                    Intelligent by Design
+                </div>
+                <h1 class="text-6xl md:text-8xl font-black font-sf tracking-tighter leading-[0.9]">
+                    Design. Build. <br>
+                    <span
+                        class="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-600">Automate.</span>
+                </h1>
+                <p class="text-xl text-gray-400 max-w-lg leading-relaxed">
+                    We build beautiful apps that do the work for you. From stunning design to smart automation, we
+                    create custom software that grows your business on autopilot.
+                </p>
+                <div class="flex gap-4">
+                    <button
+                        class="bg-white text-black px-8 py-4 rounded-full font-bold hover:scale-105 transition-transform">Start
+                        Building</button>
+                </div>
+            </div>
+
+            <div class="relative h-[600px] flex items-center justify-center perspective-1000">
+                <!-- 3D Orbit Container -->
+                <div class="absolute inset-0 flex items-center justify-center z-10 pointer-events-none preserve-3d">
+                    <!-- Tilted Plane Wrapper -->
+                    <div class="preserve-3d absolute inset-0 flex items-center justify-center"
+                        style="transform: rotateX(15deg) rotateZ(-15deg);">
+                        <!-- The Spinner Ring -->
+                        <div class="w-[500px] h-[500px] absolute preserve-3d"
+                            style="animation: orbit-rotate 20s linear infinite;">
+                            <!-- Node 1: Anthropic (0 deg) -->
+                            <div class="absolute top-1/2 left-1/2 w-20 h-20 transform -translate-x-1/2 -translate-y-1/2 preserve-3d"
+                                style="transform: rotateY(0deg) translateZ(320px);">
+                                <!-- Counter Rotation Wrapper -->
+                                <div class="w-full h-full preserve-3d"
+                                    style="animation: orbit-counter 20s linear infinite; animation-delay: 0s;">
+                                    <!-- Tilt Correction Wrapper -->
+                                    <div class="w-full h-full preserve-3d"
+                                        style="transform: rotateZ(15deg) rotateX(-15deg);">
+                                        <div class="w-full h-full rounded-full flex items-center justify-center border border-white/10 shadow-[inset_-5px_-5px_20px_rgba(0,0,0,1),inset_2px_2px_10px_rgba(255,255,255,0.2),0_10px_20px_rgba(0,0,0,0.5)] bg-[#0A0A0B]"
+                                            style="background-image: radial-gradient(circle at 30% 30%, rgba(50,50,50,1), rgba(0,0,0,1));">
+                                            <iconify-icon icon="logos:anthropic-icon" width="36"
+                                                class="text-[#dcb898] filter brightness-125 contrast-125 drop-shadow-[0_0_10px_rgba(220,184,152,0.4)]"></iconify-icon>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Node 2: Gmail (90 deg) -->
+                            <div class="absolute top-1/2 left-1/2 w-20 h-20 transform -translate-x-1/2 -translate-y-1/2 preserve-3d"
+                                style="transform: rotateY(90deg) translateZ(320px);">
+                                <div class="w-full h-full preserve-3d"
+                                    style="animation: orbit-counter 20s linear infinite; animation-delay: -5s;">
+                                    <div class="w-full h-full preserve-3d"
+                                        style="transform: rotateZ(15deg) rotateX(-15deg);">
+                                        <div class="w-full h-full rounded-full flex items-center justify-center border border-white/10 shadow-[inset_-5px_-5px_20px_rgba(0,0,0,1),inset_2px_2px_10px_rgba(255,255,255,0.2),0_10px_20px_rgba(0,0,0,0.5)] bg-[#0A0A0B]"
+                                            style="background-image: radial-gradient(circle at 30% 30%, rgba(50,50,50,1), rgba(0,0,0,1));">
+                                            <iconify-icon icon="logos:google-gmail" width="36"></iconify-icon>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Node 3: Drive (180 deg) -->
+                            <div class="absolute top-1/2 left-1/2 w-20 h-20 transform -translate-x-1/2 -translate-y-1/2 preserve-3d"
+                                style="transform: rotateY(180deg) translateZ(320px);">
+                                <div class="w-full h-full preserve-3d"
+                                    style="animation: orbit-counter 20s linear infinite; animation-delay: -10s;">
+                                    <div class="w-full h-full preserve-3d"
+                                        style="transform: rotateZ(15deg) rotateX(-15deg);">
+                                        <div class="w-full h-full rounded-full flex items-center justify-center border border-white/10 shadow-[inset_-5px_-5px_20px_rgba(0,0,0,1),inset_2px_2px_10px_rgba(255,255,255,0.2),0_10px_20px_rgba(0,0,0,0.5)] bg-[#0A0A0B]"
+                                            style="background-image: radial-gradient(circle at 30% 30%, rgba(50,50,50,1), rgba(0,0,0,1));">
+                                            <iconify-icon icon="logos:google-drive" width="36"></iconify-icon>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Node 4: ChatGPT (270 deg) -->
+                            <div class="absolute top-1/2 left-1/2 w-20 h-20 transform -translate-x-1/2 -translate-y-1/2 preserve-3d"
+                                style="transform: rotateY(270deg) translateZ(320px);">
+                                <div class="w-full h-full preserve-3d"
+                                    style="animation: orbit-counter 20s linear infinite; animation-delay: -15s;">
+                                    <div class="w-full h-full preserve-3d"
+                                        style="transform: rotateZ(15deg) rotateX(-15deg);">
+                                        <div class="w-full h-full rounded-full flex items-center justify-center border border-white/10 shadow-[inset_-5px_-5px_20px_rgba(0,0,0,1),inset_2px_2px_10px_rgba(255,255,255,0.2),0_10px_20px_rgba(0,0,0,0.5)] bg-[#0A0A0B]"
+                                            style="background-image: radial-gradient(circle at 30% 30%, rgba(50,50,50,1), rgba(0,0,0,1));">
+                                            <iconify-icon icon="simple-icons:openai" width="36"
+                                                class="text-teal-400 drop-shadow-[0_0_10px_rgba(45,212,191,0.3)]"></iconify-icon>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    class="w-[290px] h-[600px] bg-black border-[6px] border-[#FF4F00] rounded-[3.5rem] shadow-2xl relative z-20 overflow-hidden transform rotate-[-5deg] shadow-orange-500/40 animate-float translate-z-0 ring-1 ring-white/10">
+                    <!-- Dynamic Island -->
+                    <div
+                        class="absolute top-4 left-1/2 transform -translate-x-1/2 w-[90px] h-[26px] bg-black rounded-full z-50 flex items-center justify-between px-2">
+                        <div class="w-2 h-2 rounded-full bg-neutral-900/50"></div>
+                        <div class="w-1.5 h-1.5 rounded-full bg-neutral-800/50"></div>
+                    </div>
+                    <!-- Screen Reflection/Gradient -->
+                    <div
+                        class="absolute top-0 w-full h-[140px] bg-gradient-to-b from-neutral-900/80 to-transparent z-10 pointer-events-none">
+                    </div>
+                    <!-- Dynamic Phone Content -->
+                    <div class="p-6 pt-12 text-white h-full bg-neutral-900 flex flex-col">
+                        <!-- Header & Nav -->
+                        <div class="flex justify-between items-center mb-8 px-1">
+                            <div>
+                                <h3 class="text-xl font-sf font-bold text-white tracking-tight">Dashboard</h3>
+                                <p class="text-[10px] text-gray-400 font-medium">Welcome back, Alex</p>
+                            </div>
+                            <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-blue-500 to-purple-600 p-[2px]">
+                                <div class="w-full h-full rounded-full bg-black flex items-center justify-center">
+                                    <iconify-icon icon="lucide:user" class="text-white text-sm"></iconify-icon>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Quick Actions Row -->
+                        <div class="flex gap-3 mb-6 overflow-x-auto pb-2 no-scrollbar px-1">
+                            <div class="flex-shrink-0 flex flex-col items-center gap-1.5 cursor-pointer group">
+                                <div
+                                    class="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-white/10 transition-colors">
+                                    <iconify-icon icon="lucide:plus" class="text-white text-lg"></iconify-icon>
+                                </div>
+                                <span class="text-[9px] text-gray-400">New Agent</span>
+                            </div>
+                            <div class="flex-shrink-0 flex flex-col items-center gap-1.5 cursor-pointer group">
+                                <div
+                                    class="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-white/10 transition-colors">
+                                    <iconify-icon icon="lucide:zap" class="text-yellow-400 text-lg"></iconify-icon>
+                                </div>
+                                <span class="text-[9px] text-gray-400">Deploy</span>
+                            </div>
+                            <div class="flex-shrink-0 flex flex-col items-center gap-1.5 cursor-pointer group">
+                                <div
+                                    class="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-white/10 transition-colors">
+                                    <iconify-icon icon="lucide:bar-chart-2"
+                                        class="text-blue-400 text-lg"></iconify-icon>
+                                </div>
+                                <span class="text-[9px] text-gray-400">Analytics</span>
+                            </div>
+                            <div class="flex-shrink-0 flex flex-col items-center gap-1.5 cursor-pointer group">
+                                <div
+                                    class="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-white/10 transition-colors">
+                                    <iconify-icon icon="lucide:settings" class="text-gray-400 text-lg"></iconify-icon>
+                                </div>
+                                <span class="text-[9px] text-gray-400">Settings</span>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between mb-3 px-1">
+                            <h4 class="text-xs font-bold text-gray-300 uppercase tracking-wider">Live Metrics</h4>
+                            <iconify-icon icon="lucide:more-horizontal" class="text-gray-500 text-xs"></iconify-icon>
+                        </div>
+
+                        <!-- Stats Grid -->
+                        <div class="flex flex-col gap-3 mb-6">
+                            <!-- Total Savings -->
+                            <div
+                                class="p-5 bg-gradient-to-br from-blue-600 to-blue-800 rounded-2xl shadow-lg relative overflow-hidden group">
+                                <div class="absolute -right-4 -top-4 text-white/10 transform rotate-12">
+                                    <iconify-icon icon="lucide:dollar-sign" width="80"></iconify-icon>
+                                </div>
+                                <div class="text-blue-100 text-xs mb-1 font-bold uppercase tracking-wider opacity-80">
+                                    Total Savings</div>
+                                <div class="text-3xl font-black tracking-tight text-white relative z-10">$124,500</div>
+                            </div>
+
+                            <!-- Leads Generated -->
+                            <div
+                                class="p-4 bg-gray-800/80 border border-gray-700/50 rounded-2xl shadow-lg flex justify-between items-center backdrop-blur-sm hover:bg-gray-800 transition-colors cursor-default">
+                                <div>
+                                    <div class="text-gray-400 text-[10px] mb-1 font-bold uppercase tracking-wider">Leads
+                                        Generated</div>
+                                    <div class="text-2xl font-bold text-white leading-none">1,943</div>
+                                </div>
+                                <div
+                                    class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 flex items-center justify-center">
+                                    <iconify-icon icon="lucide:trending-up" width="20"></iconify-icon>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex-1 space-y-3">
+                            <div class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-2 px-1">Active
+                                Agents</div>
+                            <div
+                                class="bg-gray-800/40 border border-gray-700/50 p-3 rounded-xl flex items-center gap-3 backdrop-blur-sm">
+                                <div
+                                    class="w-8 h-8 rounded-full bg-indigo-500/20 text-indigo-400 flex items-center justify-center ring-1 ring-indigo-500/30">
+                                    <iconify-icon icon="lucide:bot-message-square"></iconify-icon>
+                                </div>
+                                <div class="text-xs flex-1">
+                                    <div class="font-bold text-gray-200">Support Agent</div>
+                                    <div class="text-emerald-400 flex items-center gap-1">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                                        Active now
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="bg-gray-800/40 border border-gray-700/50 p-3 rounded-xl flex items-center gap-3 backdrop-blur-sm">
+                                <div
+                                    class="w-8 h-8 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center ring-1 ring-blue-500/30">
+                                    <iconify-icon icon="lucide:workflow"></iconify-icon>
+                                </div>
+                                <div class="text-xs">
+                                    <div class="font-bold text-gray-200">Lead Sourcing</div>
+                                    <div class="text-gray-500">Processing...</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Glass Stats Card 1: Dev Time -->
+                <div class="absolute top-40 -left-6 glass-card p-4 rounded-xl shadow-xl w-48 z-30 animate-float backdrop-blur-xl border border-white/10"
+                    style="animation-delay: 0.5s;">
+                    <div class="text-sm text-gray-400">Dev Time Saved</div>
+                    <div class="text-2xl font-bold text-blue-400">-120hrs</div>
+                </div>
+
+                <!-- Glass Stats Card 2: App Design -->
+                <div class="absolute bottom-40 -right-6 glass-card p-4 rounded-xl shadow-xl w-48 z-30 animate-float backdrop-blur-xl border border-white/10"
+                    style="animation-delay: 1.5s;">
+                    <div class="text-sm text-gray-400">App Design Complete</div>
+                    <div class="text-2xl font-bold text-green-400">2 Weeks</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. Split Screen Growth (Refined) -->
+    <section class="min-h-screen w-full flex flex-col md:flex-row bg-[#08021f]" id="c2">
+        <div
+            class="w-full md:w-1/2 flex items-center justify-center p-12 md:p-24 relative z-10 bg-[#08021f] text-center md:text-left">
+            <div class="space-y-6">
+                <h2 class="text-7xl md:text-9xl font-black font-sf tracking-tighter leading-none text-white">
+                    AUTOMATE <br> YOUR <br> GROWTH.
+                </h2>
+                <button
+                    class="bg-[#FF4F00] text-black px-8 py-4 text-xl font-bold uppercase tracking-tight hover:bg-[#ff6a00] transition-colors rounded-lg">
+                    Start Now
+                </button>
+            </div>
+        </div>
+        <!-- Right Side: Refined Background + Multiple Glass Stats -->
+        <div class="w-full md:w-1/2 relative bg-[#090518] overflow-hidden flex items-center justify-center">
+            <!-- Abstract Pattern Background -->
+            <div class="absolute inset-0 opacity-30">
+                <div class="absolute top-[20%] left-[20%] w-64 h-64 bg-purple-600 rounded-full blur-[80px]"></div>
+                <div class="absolute bottom-[20%] right-[20%] w-64 h-64 bg-indigo-600 rounded-full blur-[80px]"></div>
+                <div class="w-full h-full"
+                    style="background-image: radial-gradient(circle, #ffffff 1px, transparent 1px); background-size: 40px 40px; opacity: 0.1;">
+                </div>
+            </div>
+
+            <!-- 3D Cluster of Glass Cards -->
+            <div class="relative z-10 perspective-1000 transform scale-90 md:scale-100">
+                <div class="relative transform rotate-y-[-10deg] rotate-x-[5deg]">
+                    <!-- Main Card -->
+                    <div
+                        class="glass-card p-8 rounded-2xl shadow-2xl border-purple-500/30 w-[340px] mb-4 bg-gradient-to-br from-gray-900/50 to-transparent">
+                        <div class="flex justify-between items-center mb-6">
+                            <div class="text-lg font-bold text-gray-200">Leads Generated</div>
+                            <div class="text-green-400 font-mono font-bold bg-green-900/30 px-2 py-1 rounded">+420%
+                            </div>
+                        </div>
+                        <!-- CSS Graph -->
+                        <div class="flex items-end gap-2 h-32 w-full">
+                            <div class="flex-1 bg-purple-500/20 h-[30%] rounded-t"></div>
+                            <div class="flex-1 bg-purple-500/40 h-[50%] rounded-t"></div>
+                            <div class="flex-1 bg-purple-500/60 h-[40%] rounded-t"></div>
+                            <div class="flex-1 bg-purple-500/80 h-[80%] rounded-t"></div>
+                            <div class="flex-1 bg-purple-500 h-[100%] rounded-t shadow-[0_0_20px_rgba(168,85,247,0.5)]">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Secondary Floating Cards -->
+                    <div class="absolute top-10 -right-24 glass-card p-4 rounded-xl shadow-xl w-48 animate-float"
+                        style="animation-delay: 0.5s;">
+                        <div class="text-sm text-gray-400">Monthly Revenue</div>
+                        <div class="text-2xl font-bold text-white">$52,400</div>
+                    </div>
+
+                    <div class="absolute -bottom-12 -left-12 glass-card p-4 rounded-xl shadow-xl w-48 animate-float"
+                        style="animation-delay: 1.5s;">
+                        <div class="text-sm text-gray-400">Dev Time Saved</div>
+                        <div class="text-2xl font-bold text-blue-400">-120hrs</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Interactive Terminal (Refined) -->
+    <section
+        class="min-h-screen bg-neutral-900 flex items-center justify-center p-6 border-t border-white/5 overflow-hidden"
+        id="c3">
+        <div class="container mx-auto grid lg:grid-cols-2 gap-16 items-center relative z-10">
+            <div class="order-2 lg:order-1">
+                <h2
+                    class="text-[5rem] md:text-[8rem] font-bold leading-none tracking-tighter text-white mix-blend-difference mb-4 font-clash">
+                    CODE.<br>DEPLOY.<br>DOMINATE.
+                </h2>
+            </div>
+
+            <div class="order-1 lg:order-2 relative h-[500px] flex items-center justify-center">
+                <!-- Background Phone (Low Z-Index) -->
+                <div
+                    class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 -rotate-12 w-[300px] h-[550px] bg-black border-4 border-gray-800 rounded-[2.5rem] opacity-40 blur-[1px] -z-10 shadow-2xl">
+                    <div class="w-full h-full bg-gray-900 flex flex-col p-4">
+                        <div class="h-8 w-24 bg-gray-800 rounded mb-4"></div>
+                        <div class="h-32 w-full bg-gray-800 rounded mb-4"></div>
+                        <div class="h-8 w-full bg-gray-800 rounded mb-2"></div>
+                        <div class="h-8 w-2/3 bg-gray-800 rounded mb-2"></div>
+                    </div>
+                </div>
+
+                <!-- Main Terminal -->
+                <div
+                    class="w-full max-w-xl mx-auto bg-black/90 backdrop-blur border border-neutral-700 rounded-xl shadow-2xl overflow-hidden font-mono text-sm relative z-10">
+                    <div class="bg-neutral-800 p-3 flex gap-2 border-b border-neutral-700">
+                        <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                        <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                        <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                        <div class="ml-4 text-neutral-500">./deploy_mvp.sh</div>
+                    </div>
+                    <div class="p-6 text-green-400 space-y-2 h-[300px] overflow-hidden relative">
+                        <div class="opacity-50 text-gray-500"># Initializing deployment items...</div>
+                        <div><span class="text-purple-400">➜</span> Building Frontend [Next.js]... <span
+                                class="text-white">Done</span></div>
+                        <div><span class="text-purple-400">➜</span> Configuring AI Agents... <span
+                                class="text-white">Done</span></div>
+                        <div><span class="text-purple-400">➜</span> Syncing Database... <span
+                                class="text-white">Done</span></div>
+                        <div class="text-yellow-400">⚠ Optimizing assets for speed...</div>
+                        <div class="mt-4 border-l-2 border-green-500 pl-4 text-white font-bold bg-green-900/20 p-2">
+                            ✓ LAUNCH SUCCESSFUL
+                        </div>
+                        <div class="absolute bottom-4 left-6 animate-pulse">_</div>
+                    </div>
+                </div>
+
+                <!-- Foreground Glass Card (High Z-Index) -->
+                <div
+                    class="absolute -bottom-10 -right-4 glass-card p-6 rounded-2xl shadow-xl z-20 animate-float border-green-500/30 border-t-2">
+                    <div class="flex items-center gap-4">
+                        <div
+                            class="w-12 h-12 bg-green-500/20 rounded-full flex items-center justify-center text-green-400 text-2xl">
+                            ✓</div>
+                        <div>
+                            <div class="font-bold text-white text-lg">System Live</div>
+                            <div class="text-xs text-green-400">All systems operational</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Dynamic Stacked Cards (Refined) -->
+    <section class="min-h-screen bg-neutral-100 flex items-center justify-center overflow-hidden py-20 relative"
+        id="c4">
+        <div
+            class="absolute inset-0 z-0 opacity-50 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px]">
+        </div>
+
+        <div class="text-center relative z-20 w-full">
+            <div class="mb-12">
+                <h2 class="text-6xl md:text-9xl font-black text-slate-900 tracking-tighter font-sf mb-4">
+                    CHOOSE YOUR <br> GROWTH ENGINE.
+                </h2>
+                <p class="text-xl text-slate-500">Select the technology stack that powers your vision.</p>
+            </div>
+
+            <div class="relative h-[500px] w-full max-w-lg mx-auto perspective-1000 group">
+                <!-- Card 3 -->
+                <div
+                    class="absolute inset-x-0 top-0 mx-auto w-[320px] h-[460px] bg-slate-800 rounded-3xl transform scale-90 -translate-y-8 z-0 opacity-60 transition-all duration-500 group-hover:-translate-x-32 group-hover:rotate-[-10deg] shadow-xl border border-slate-600 flex flex-col p-6 items-center">
+                    <div class="text-white font-bold mb-auto">LLM Integration</div>
+                    <iconify-icon icon="logos:openai-icon" width="64" class="opacity-50 grayscale"></iconify-icon>
+                    <div class="mt-auto text-xs text-gray-500">GPT-4 / Claude / Llama</div>
+                </div>
+
+                <!-- Card 2 -->
+                <div
+                    class="absolute inset-x-0 top-0 mx-auto w-[320px] h-[460px] bg-slate-900 rounded-3xl transform scale-95 -translate-y-4 z-10 opacity-80 transition-all duration-500 group-hover:translate-x-32 group-hover:rotate-[10deg] shadow-xl border border-slate-700 flex flex-col p-6 items-center">
+                    <div class="text-white font-bold mb-auto">Automation</div>
+                    <iconify-icon icon="logos:zapier-icon" width="64" class="opacity-70"></iconify-icon>
+                    <div class="mt-auto text-xs text-gray-500">n8n / Zapier / Make</div>
+                </div>
+
+                <!-- Main Card -->
+                <div
+                    class="absolute inset-x-0 top-0 mx-auto w-[320px] h-[460px] bg-black rounded-3xl shadow-2xl z-20 transition-all duration-300 transform group-hover:-translate-y-8 flex flex-col items-center justify-between p-8 text-white border border-gray-800">
+                    <div class="w-full flex justify-between items-center">
+                        <span class="text-xs font-mono text-gray-400">FULL_STACK</span>
+                        <div class="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
+                    </div>
+                    <div class="text-center">
+                        <div
+                            class="w-20 h-20 bg-gradient-to-tr from-blue-600 to-purple-600 rounded-2xl mx-auto mb-6 flex items-center justify-center text-4xl shadow-lg shadow-blue-500/50">
+                            ⚡</div>
+                        <h3 class="text-3xl font-bold font-sf">LoopSuit Core</h3>
+                        <p class="text-sm text-gray-500 mt-2 px-4">The ultimate MVP foundation.</p>
+                    </div>
+                    <button
+                        class="w-full bg-white text-black font-bold py-3 rounded-xl hover:bg-gray-200 transition-colors">Start
+                        Building</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Holographic Projection (Refined) -->
+    <section class="min-h-screen bg-black relative flex flex-col items-center justify-center overflow-hidden" id="c5">
+        <!-- Grid Floor -->
+        <div class="absolute inset-0 flex items-center justify-center opacity-30 pointer-events-none">
+            <div
+                class="w-[200vw] h-[200vh] bg-[linear-gradient(rgba(0,255,255,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(0,255,255,0.1)_1px,transparent_1px)] bg-[size:40px_40px] transform perspective-[1000px] rotate-x-60 scale-150 [mask-image:linear-gradient(to_top,black,transparent)]">
+            </div>
+        </div>
+
+        <div class="relative z-10 text-center mb-16 group cursor-default">
+            <h2
+                class="text-7xl md:text-9xl font-black text-transparent bg-clip-text bg-gradient-to-b from-white to-cyan-500 font-sf tracking-tight transition-all duration-500 group-hover:text-shadow-cyan">
+                REALITY <br> UPGRADED.
+            </h2>
+        </div>
+
+        <!-- Phone Projector Cluster -->
+        <div class="relative transform translateY-20 flex justify-center items-end gap-12">
+            <!-- Left Phone 1 -->
+            <div
+                class="w-[120px] h-[240px] bg-gray-900 border border-gray-700 rounded-3xl transform rotate-y-12 translate-y-12 opacity-50">
+            </div>
+            <!-- Left Phone 2 -->
+            <div
+                class="w-[140px] h-[280px] bg-gray-900 border border-gray-700 rounded-3xl transform rotate-y-6 translate-y-6 opacity-70">
+            </div>
+
+            <!-- Center Hero Phone -->
+            <div
+                class="w-[240px] h-[480px] bg-black border-2 border-gray-700 rounded-[2.5rem] transform rotate-x-[30deg] shadow-2xl relative z-20">
+                <div class="absolute inset-0 bg-neutral-900 rounded-[2.3rem] overflow-hidden flex flex-col">
+                    <!-- Screen content -->
+                    <div class="h-1/2 bg-gradient-to-b from-cyan-900/50 to-transparent p-4">
+                        <div
+                            class="w-12 h-12 rounded-full border border-cyan-500/50 flex items-center justify-center text-cyan-500 mb-4">
+                            <iconify-icon icon="lucide:scan-face"></iconify-icon>
+                        </div>
+                        <div class="pl-1 border-l-2 border-cyan-500">
+                            <div class="text-xs text-cyan-400">Scanning ID...</div>
+                            <div class="text-white font-bold">Verified</div>
+                        </div>
+                    </div>
+                    <div class="h-1/2 p-4 grid grid-cols-2 gap-2">
+                        <div class="bg-gray-800 rounded-lg"></div>
+                        <div class="bg-gray-800 rounded-lg"></div>
+                        <div class="bg-gray-800 rounded-lg col-span-2"></div>
+                    </div>
+                </div>
+                <!-- Hologram Beam -->
+                <div
+                    class="absolute bottom-0 left-0 right-0 h-[500px] bg-gradient-to-t from-cyan-500/20 to-transparent blur-xl transform -translate-y-full clip-path-polygon pointer-events-none">
+                </div>
+
+                <!-- Hologram Interface (Moved to side) -->
+                <div
+                    class="absolute top-[-200px] -right-[240px] w-[300px] h-[180px] glass-card border-cyan-500/50 rounded-xl p-4 flex flex-col justify-between animate-float-delayed z-30">
+                    <div class="flex justify-between border-b border-cyan-500/30 pb-2">
+                        <span class="text-cyan-400 font-mono text-xs tracking-widest">LIVE ANALYTICS</span>
+                        <div class="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></div>
+                    </div>
+                    <div class="flex gap-1 items-end h-20 w-full justify-between">
+                        <div class="w-2 bg-cyan-500/50 h-[40%]"></div>
+                        <div class="w-2 bg-cyan-500/50 h-[70%]"></div>
+                        <div class="w-2 bg-cyan-500/50 h-[50%]"></div>
+                        <div class="w-2 bg-cyan-500/50 h-[90%]"></div>
+                        <div class="w-2 bg-cyan-500/50 h-[30%]"></div>
+                        <div class="w-2 bg-cyan-500/50 h-[60%]"></div>
+                        <div class="w-2 bg-cyan-500/50 h-[80%]"></div>
+                        <div class="w-2 bg-cyan-500 h-[100%] shadow-[0_0_10px_cyan]"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Phone 1 -->
+            <div
+                class="w-[140px] h-[280px] bg-gray-900 border border-gray-700 rounded-3xl transform -rotate-y-6 translate-y-6 opacity-70">
+            </div>
+            <!-- Right Phone 2 -->
+            <div
+                class="w-[120px] h-[240px] bg-gray-900 border border-gray-700 rounded-3xl transform -rotate-y-12 translate-y-12 opacity-50">
+            </div>
+        </div>
+
+
+    </section>
+
+    <!-- 6. Digital Assembly Line (Refined) -->
+    <section class="min-h-screen bg-neutral-100 flex items-center justify-center mt-12 mb-12" id="c6">
+        <div class="grid lg:grid-cols-2 gap-8 max-w-[1400px] mx-auto px-6 w-full items-center">
+            <div class="z-10">
+                <span class="text-orange-600 font-bold tracking-widest uppercase">Precision Engineering</span>
+                <!-- Fixed Typography Clipping -->
+                <h2
+                    class="text-6xl md:text-[6rem] font-bold text-slate-900 leading-[0.9] mt-4 mb-6 font-clash break-words">
+                    BUILT BY <br> INTELLIGENCE
+                </h2>
+                <p class="text-slate-600 text-lg max-w-md">Our AI factories assemble your custom software component by
+                    component.</p>
+                <div class="mt-8 flex gap-4">
+                    <div
+                        class="px-6 py-3 bg-white border border-slate-200 rounded-lg shadow-sm flex items-center gap-2">
+                        <iconify-icon icon="lucide:cpu" class="text-orange-500"></iconify-icon>
+                        <span class="font-bold text-slate-800">Auto-Generative</span>
+                    </div>
+                    <div
+                        class="px-6 py-3 bg-white border border-slate-200 rounded-lg shadow-sm flex items-center gap-2">
+                        <iconify-icon icon="lucide:shield-check" class="text-orange-500"></iconify-icon>
+                        <span class="font-bold text-slate-800">Mock-Safe</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Visual -->
+            <div
+                class="h-[600px] bg-white rounded-3xl shadow-xl border border-slate-200 relative overflow-hidden flex items-center justify-center">
+                <div class="absolute inset-x-0 h-2 bg-slate-100"></div>
+                <!-- Phone -->
+                <div
+                    class="w-[240px] h-[480px] bg-black rounded-[2.5rem] relative z-10 shadow-2xl flex flex-col overflow-hidden border-4 border-slate-200">
+                    <div class="h-16 bg-slate-900 flex items-center justify-center border-b border-gray-800">
+                        <div class="text-white font-mono text-xs">ASSEMBLY_MODE</div>
+                    </div>
+                    <div class="flex-1 bg-slate-800 relative">
+                        <!-- Blueprint Lines -->
+                        <div class="absolute inset-0"
+                            style="background-image: linear-gradient(#ffffff0a 1px, transparent 1px), linear-gradient(90deg, #ffffff0a 1px, transparent 1px); background-size: 20px 20px;">
+                        </div>
+                        <!-- UI Element Being Placed -->
+                        <div
+                            class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-12 bg-orange-500 rounded-lg flex items-center justify-center text-white font-bold shadow-lg animate-pulse">
+                            BUTTON
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Arms Refined -->
+                <div
+                    class="absolute top-20 left-10 w-4 h-64 bg-slate-300 origin-top transform rotate-[25deg] z-20 shadow-lg rounded-full">
+                    <div
+                        class="absolute bottom-0 -left-3 w-10 h-10 rounded-full bg-slate-800 border-4 border-white flex items-center justify-center">
+                        <div class="w-2 h-2 bg-orange-500 rounded-full animate-ping"></div>
+                    </div>
+                </div>
+                <div
+                    class="absolute top-20 right-10 w-4 h-64 bg-slate-300 origin-top transform -rotate-[25deg] z-20 shadow-lg rounded-full">
+                    <div
+                        class="absolute bottom-0 -left-3 w-10 h-10 rounded-full bg-slate-800 border-4 border-white flex items-center justify-center">
+                        <div class="w-2 h-2 bg-orange-500 rounded-full animate-ping"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. UI Cascade (Refined) -->
+    <section class="min-h-screen bg-[#050505] overflow-hidden relative flex flex-col items-center justify-center"
+        id="c7">
+        <!-- Marquee Columns with "Mock" UI content -->
+        <div class="absolute inset-0 grid grid-cols-3 md:grid-cols-5 gap-4 opacity-40 transform scale-110 rotate-6"
+            style="mask-image: radial-gradient(circle, transparent 20%, black 80%);">
+            <!-- Column 1 -->
+            <div class="space-y-4 animate-marquee">
+                <div class="h-64 bg-slate-800 rounded-xl w-full border border-slate-700 p-2">
+                    <div class="w-full h-full bg-slate-900 rounded"></div>
+                </div>
+                <div class="h-64 bg-slate-800 rounded-xl w-full border border-slate-700 p-2">
+                    <div class="w-full h-full bg-slate-900 rounded grid grid-cols-2 gap-1 p-1">
+                        <div class="bg-slate-800"></div>
+                        <div class="bg-slate-800"></div>
+                    </div>
+                </div>
+                <div class="h-64 bg-slate-800 rounded-xl w-full border border-slate-700 p-2">
+                    <div class="w-full h-full bg-slate-900 rounded"></div>
+                </div>
+            </div>
+            <!-- Column 2 -->
+            <div class="space-y-4 animate-marquee-reverse mt-12">
+                <div class="h-64 bg-slate-800 rounded-xl w-full border border-slate-700 p-2">
+                    <div class="w-full h-full bg-slate-900 rounded flex flex-col gap-2 p-2">
+                        <div class="h-2 bg-slate-700 rounded"></div>
+                        <div class="h-8 bg-slate-700 rounded"></div>
+                    </div>
+                </div>
+                <div class="h-64 bg-slate-800 rounded-xl w-full border border-slate-700 p-2">
+                    <div class="w-full h-full bg-slate-900 rounded"></div>
+                </div>
+                <div class="h-64 bg-slate-800 rounded-xl w-full border border-slate-700 p-2">
+                    <div class="w-full h-full bg-slate-900 rounded"></div>
+                </div>
+            </div>
+            <!-- Column 3 (Center) -->
+            <div class="space-y-4 animate-marquee">
+                <div class="h-64 bg-blue-900/40 rounded-xl w-full border border-blue-500/50 p-4">
+                    <div class="h-4 w-12 bg-blue-500 rounded mb-2"></div>
+                    <div class="h-32 w-full bg-blue-500/20 rounded mb-2"></div>
+                    <div class="h-8 w-full bg-blue-500/40 rounded"></div>
+                </div>
+                <div class="h-64 bg-purple-900/40 rounded-xl w-full border border-purple-500/50 p-4">
+                    <div class="text-xs text-purple-300 font-mono mb-2">AI_CHAT</div>
+                    <div class="space-y-2">
+                        <div class="bg-purple-500/20 p-2 rounded-lg rounded-tl-none text-[8px] text-white">Hello, how
+                            can I help?</div>
+                        <div class="bg-purple-500/40 p-2 rounded-lg rounded-tr-none text-[8px] text-white ml-auto">Build
+                            me an app.</div>
+                    </div>
+                </div>
+                <div class="h-64 bg-cyan-900/40 rounded-xl w-full border border-cyan-500/50 p-4">
+                    <div class="h-full w-full border-2 border-cyan-500/30 rounded flex items-center justify-center">
+                        <div class="w-12 h-12 rounded-full border-4 border-cyan-500 border-t-transparent animate-spin">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Column 4 -->
+            <div class="space-y-4 animate-marquee-reverse mt-24 hidden md:block">
+                <div class="h-64 bg-slate-800 rounded-xl w-full border border-slate-700 p-2"></div>
+                <div class="h-64 bg-slate-800 rounded-xl w-full border border-slate-700 p-2"></div>
+                <div class="h-64 bg-slate-800 rounded-xl w-full border border-slate-700 p-2"></div>
+            </div>
+            <!-- Column 5 -->
+            <div class="space-y-4 animate-marquee hidden md:block">
+                <div class="h-64 bg-slate-800 rounded-xl w-full border border-slate-700 p-2"></div>
+                <div class="h-64 bg-slate-800 rounded-xl w-full border border-slate-700 p-2"></div>
+            </div>
+        </div>
+
+        <div
+            class="relative z-10 text-center bg-black/80 backdrop-blur-md p-12 rounded-[3rem] border border-white/10 shadow-2xl max-w-4xl">
+            <h2
+                class="text-7xl md:text-9xl font-black text-white italic tracking-tighter mix-blend-overlay opacity-50 absolute top-2 left-2 pointer-events-none">
+                SHIP</h2>
+            <h2
+                class="text-7xl md:text-9xl font-black text-white italic tracking-tighter relative z-10 leading-none mb-2">
+                SHIP FASTER</h2>
+            <p class="text-xl text-neutral-400 font-medium mb-8">Automate the boring stuff. Focus on the vision.</p>
+
+            <div class="flex items-center justify-center gap-4">
+                <button
+                    class="bg-blue-600 text-white px-8 py-4 rounded-full font-bold hover:bg-blue-500 transition-colors shadow-lg shadow-blue-500/20">Book
+                    Strategy Call</button>
+                <button
+                    class="w-14 h-14 rounded-full border border-white/20 flex items-center justify-center hover:bg-white hover:text-black transition-colors">
+                    <iconify-icon icon="lucide:arrow-down" width="24"></iconify-icon>
+                </button>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- 9. Command Center (Refined) -->
+    <section class="min-h-screen bg-[#050505] flex flex-col items-center justify-center relative overflow-hidden"
+        id="c9">
+        <!-- Background Grid -->
+        <div class="absolute inset-0 opacity-20"
+            style="background-image: linear-gradient(#333 1px, transparent 1px), linear-gradient(90deg, #333 1px, transparent 1px); background-size: 40px 40px;">
+        </div>
+
+        <div class="relative z-20 text-center mb-16">
+            <h2 class="text-6xl md:text-8xl font-bold font-clash tracking-tight text-white mb-2 leading-none uppercase">
+                Control Your <br> <span
+                    class="bg-clip-text text-transparent bg-gradient-to-b from-white to-gray-500">Empire.</span>
+            </h2>
+            <p class="text-gray-400 text-xl font-light tracking-wide mt-4">The automated growth engine for your next big
+                idea.</p>
+        </div>
+
+        <!-- Desk Setup (Relevant MVP Content) -->
+        <div class="relative perspective-1000 transform scale-75 md:scale-100 group">
+            <div class="flex gap-6 items-end justify-center transform transition-transform duration-500 cursor-default">
+
+                <!-- Monitor L: Lead Pipeline -->
+                <div
+                    class="w-[300px] h-[400px] bg-neutral-900 border-4 border-neutral-800 rounded-2xl transform rotate-y-12 translate-x-4 transition-all duration-500 group-hover:rotate-y-20 group-hover:translate-x-0 shadow-2xl overflow-hidden relative">
+                    <!-- Screen Content -->
+                    <div class="absolute inset-0 bg-black p-4 flex flex-col">
+                        <div class="text-xs font-mono text-gray-500 mb-2 border-b border-gray-800 pb-1">LEAD_SOURCE_V3
+                        </div>
+                        <div class="space-y-2">
+                            <div class="flex items-center gap-2 bg-gray-900 p-2 rounded border border-gray-800">
+                                <div class="w-2 h-2 rounded-full bg-green-500"></div>
+                                <div class="text-xs text-gray-300">New Client: TechFlow</div>
+                            </div>
+                            <div class="flex items-center gap-2 bg-gray-900 p-2 rounded border border-gray-800">
+                                <div class="w-2 h-2 rounded-full bg-green-500"></div>
+                                <div class="text-xs text-gray-300">New Client: AgriCorp</div>
+                            </div>
+                            <div class="flex items-center gap-2 bg-gray-900 p-2 rounded border border-gray-800">
+                                <div class="w-2 h-2 rounded-full bg-green-500"></div>
+                                <div class="text-xs text-gray-300">New Client: FinServe</div>
+                            </div>
+                            <!-- Loading State -->
+                            <div class="mt-4 flex gap-2">
+                                <div class="h-2 w-2 bg-blue-500 rounded-full animate-bounce"></div>
+                                <div class="h-2 w-2 bg-blue-500 rounded-full animate-bounce delay-100"></div>
+                                <div class="h-2 w-2 bg-blue-500 rounded-full animate-bounce delay-200"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Monitor C: Main Dashboard -->
+                <div
+                    class="w-[600px] h-[380px] bg-neutral-900 border-4 border-neutral-800 rounded-2xl transform translate-z-10 shadow-[0_0_50px_rgba(255,255,255,0.05)] z-20 overflow-hidden relative group-hover:scale-105 transition-transform duration-500 mb-4">
+                    <div class="absolute inset-0 bg-[#0A0A0A] p-6 flex flex-col">
+                        <div class="flex justify-between items-center mb-6">
+                            <div class="text-white font-bold text-lg">System Performance</div>
+                            <div class="flex gap-2">
+                                <span class="bg-green-500/20 text-green-400 text-xs px-2 py-0.5 rounded">All Systems
+                                    Normal</span>
+                            </div>
+                        </div>
+
+                        <!-- Chart Visual -->
+                        <div class="flex items-end justify-between h-40 gap-2 mb-6">
+                            <div class="w-full bg-gray-800/30 h-full rounded-lg overflow-hidden relative">
+                                <!-- Graph Line -->
+                                <svg class="absolute inset-0 w-full h-full" overflow="visible">
+                                    <path d="M0 100 Q 50 80, 100 90 T 200 60 T 300 40 T 400 20 T 550 5" fill="none"
+                                        stroke="#3b82f6" stroke-width="3" />
+                                    <path d="M0 100 Q 50 80, 100 90 T 200 60 T 300 40 T 400 20 T 550 5 V 150 H 0 Z"
+                                        fill="url(#gradient)" opacity="0.2" />
+                                    <defs>
+                                        <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                            <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:1" />
+                                            <stop offset="100%" style="stop-color:#3b82f6;stop-opacity:0" />
+                                        </linearGradient>
+                                    </defs>
+                                </svg>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-3 gap-4">
+                            <div class="bg-gray-900 p-3 rounded-lg border border-gray-800 text-center">
+                                <div class="text-xs text-gray-500">Active Users</div>
+                                <div class="text-xl font-bold text-white">12,405</div>
+                            </div>
+                            <div class="bg-gray-900 p-3 rounded-lg border border-gray-800 text-center">
+                                <div class="text-xs text-gray-500">MRR</div>
+                                <div class="text-xl font-bold text-white">$45k</div>
+                            </div>
+                            <div class="bg-gray-900 p-3 rounded-lg border border-gray-800 text-center">
+                                <div class="text-xs text-gray-500">Churn</div>
+                                <div class="text-xl font-bold text-red-400">0.8%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Monitor R: AI Agents -->
+                <div
+                    class="w-[300px] h-[400px] bg-neutral-900 border-4 border-neutral-800 rounded-2xl transform -rotate-y-12 -translate-x-4 transition-all duration-500 group-hover:-rotate-y-20 group-hover:translate-x-0 shadow-2xl overflow-hidden relative">
+                    <div class="absolute inset-0 bg-black p-4 flex flex-col">
+                        <div class="text-xs font-mono text-purple-400 mb-2 border-b border-gray-800 pb-1">AI_WORKERS
+                        </div>
+                        <div class="space-y-3">
+                            <div class="bg-gray-900 p-3 rounded border border-gray-800">
+                                <div class="flex justify-between text-xs text-gray-400 mb-1">
+                                    <span>Outreach Bot</span>
+                                    <span class="text-green-500">Active</span>
+                                </div>
+                                <div class="w-full bg-gray-800 h-1 rounded-full">
+                                    <div class="w-[70%] bg-purple-500 h-1 rounded-full"></div>
+                                </div>
+                            </div>
+                            <div class="bg-gray-900 p-3 rounded border border-gray-800">
+                                <div class="flex justify-between text-xs text-gray-400 mb-1">
+                                    <span>Content Gen</span>
+                                    <span class="text-yellow-500">Thinking</span>
+                                </div>
+                                <div class="w-full bg-gray-800 h-1 rounded-full">
+                                    <div class="w-[30%] bg-purple-500 h-1 rounded-full animate-pulse"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Desk Glow -->
+            <div
+                class="absolute -bottom-10 left-1/2 transform -translate-x-1/2 w-[80%] h-32 bg-blue-500/10 blur-[80px] rounded-full pointer-events-none">
+            </div>
+        </div>
+    </section>
+
+    <!-- 10. Glassmorphism Overlap (Refined) -->
+    <section class="min-h-screen bg-white relative flex items-center justify-center overflow-hidden" id="c10">
+        <!-- Background Blobs (Kept as requested) -->
+        <div class="absolute top-0 left-0 w-full h-full overflow-hidden z-0">
+            <div
+                class="absolute top-10 left-10 w-96 h-96 bg-purple-300 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob">
+            </div>
+            <div
+                class="absolute top-10 right-10 w-96 h-96 bg-yellow-300 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-2000">
+            </div>
+            <div
+                class="absolute -bottom-32 left-80 w-96 h-96 bg-pink-300 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-4000">
+            </div>
+        </div>
+
+        <!-- Glass Pane -->
+        <div
+            class="relative z-10 w-[90%] max-w-6xl h-[80vh] bg-white/30 backdrop-blur-2xl border border-white/50 rounded-[3rem] shadow-2xl flex items-center justify-center overflow-visible">
+
+            <div class="text-center relative z-20 px-4">
+                <span
+                    class="inline-block py-1 px-3 rounded-full bg-purple-100 text-purple-600 text-sm font-bold tracking-widest mb-4">OUR
+                    MISSION</span>
+                <h2
+                    class="text-7xl md:text-9xl font-black text-slate-900 tracking-tighter mb-6 max-w-4xl mx-auto leading-[0.9]">
+                    CLARITY <br> IN CHAOS.
+                </h2>
+                <p class="text-slate-600 text-xl font-medium mb-10 max-w-2xl mx-auto leading-relaxed">
+                    We distill your complex business requirements into elegant, high-performance automated software
+                    solutions. No clutter, just results.
+                </p>
+                <button
+                    class="bg-black text-white px-10 py-5 rounded-full font-bold text-lg hover:bg-slate-800 transition-colors shadow-xl">
+                    Book a Meeting
+                </button>
+            </div>
+
+            <!-- Floating Result Elements -->
+
+            <!-- Element 1: Success Card -->
+            <div
+                class="absolute top-10 right-10 glass-card bg-white/60 p-6 rounded-2xl shadow-xl transform rotate-6 animate-float">
+                <div class="flex items-center gap-4 border-b border-gray-100 pb-4 mb-4">
+                    <div
+                        class="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center text-white text-xl">
+                        ✓</div>
+                    <div>
+                        <div class="font-bold text-slate-800">Project Complete</div>
+                        <div class="text-xs text-slate-500">Delivered on time</div>
+                    </div>
+                </div>
+                <div class="flex justify-between items-center">
+                    <div class="text-sm font-bold text-slate-700">Satisfaction</div>
+                    <div class="text-green-600 font-bold">100%</div>
+                </div>
+            </div>
+
+            <!-- Element 2: Efficiency Graph -->
+            <div class="absolute bottom-20 left-10 glass-card bg-white/60 p-6 rounded-2xl shadow-xl transform -rotate-6 animate-float"
+                style="animation-delay: 1.5s;">
+                <div class="mb-4">
+                    <div class="text-sm text-slate-500">Operational Efficiency</div>
+                    <div class="text-3xl font-bold text-slate-800">+85%</div>
+                </div>
+                <div class="flex items-end gap-1 h-16 w-32">
+                    <div class="bg-blue-400 w-full h-[30%] rounded-t"></div>
+                    <div class="bg-blue-400 w-full h-[50%] rounded-t"></div>
+                    <div class="bg-blue-400 w-full h-[40%] rounded-t"></div>
+                    <div class="bg-blue-400 w-full h-[70%] rounded-t"></div>
+                    <div class="bg-blue-500 w-full h-[100%] rounded-t"></div>
+                </div>
+            </div>
+
+            <!-- Element 3: Speed -->
+            <div class="absolute top-1/3 left-10 glass-card bg-white/60 p-4 rounded-2xl shadow-xl transform rotate-[-12deg] animate-float"
+                style="animation-delay: 0.5s;">
+                <div class="flex items-center gap-3">
+                    <iconify-icon icon="lucide:zap" class="text-yellow-500 text-2xl"></iconify-icon>
+                    <div>
+                        <div class="font-bold text-slate-800 text-lg">2 Weeks</div>
+                        <div class="text-xs text-slate-500">Concept to Launch</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- NEW CONCEPTS 11-20 -->
+
+    <!-- 11. MVP Interactive (Mouse Trail) -->
+    <section class="min-h-screen bg-neutral-900 text-white flex items-center justify-center relative overflow-hidden"
+        id="c11">
+        <!-- Script for mouse movement logic -->
+        <script>
+            document.addEventListener('mousemove', (e) => {
+                const section = document.getElementById('c11');
+                const rect = section.getBoundingClientRect();
+                if (rect.top < window.innerHeight && rect.bottom > 0) {
+                    const x = ((e.clientX - rect.left) / rect.width) * 100;
+                    const y = ((e.clientY - rect.top) / rect.height) * 100;
+
+                    const spotlight = document.getElementById('mvp-spotlight');
+                    if (spotlight) {
+                        spotlight.style.setProperty('--x', `${x}%`);
+                        spotlight.style.setProperty('--y', `${y}%`);
+                    }
+
+                    const floater = document.getElementById('mvp-floater');
+                    if (floater) {
+                        floater.style.transform = `translate(${e.clientX - rect.left}px, ${e.clientY - rect.top}px)`;
+                    }
+                }
+            });
+        </script>
+
+        <div id="mvp-spotlight" class="group relative cursor-none" style="--x: 50%; --y: 50%;">
+            <!-- Text Mask Effect -->
+            <h2
+                class="text-5xl md:text-8xl font-black leading-tight tracking-tighter text-neutral-800 select-none text-center">
+                HUMAN CREATIVITY.<br>
+                AI PRECISION.<br>
+                TOTAL DOMINATION.
+            </h2>
+
+            <!-- The Reveal Layer (Clip Path) -->
+            <div class="absolute inset-0 pointer-events-none" style="clip-path: circle(250px at var(--x) var(--y));">
+                <h2
+                    class="text-5xl md:text-8xl font-black leading-tight tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 select-none text-center">
+                    HUMAN CREATIVITY.<br>
+                    AI PRECISION.<br>
+                    TOTAL DOMINATION.
+                </h2>
+                <!-- Inside the spotlight, reveal UI patterns -->
+                <div
+                    class="absolute inset-0 opacity-20 bg-[url('https://patterns.ibrahim.do/assets/patterns/topography.svg')] mix-blend-overlay">
+                </div>
+            </div>
+
+            <p class="text-center text-xl font-mono text-gray-500 absolute bottom-10 left-0 right-0">HOVER TO REVEAL</p>
+        </div>
+
+        <!-- Custom Mouse Follower -->
+        <div id="mvp-floater"
+            class="absolute top-0 left-0 pointer-events-none transition-transform duration-75 ease-out z-50 mix-blend-difference">
+            <div
+                class="w-8 h-8 bg-white rounded-full flex items-center justify-center transform -translate-x-1/2 -translate-y-1/2">
+                <div class="w-2 h-2 bg-black rounded-full"></div>
+            </div>
+            <div
+                class="absolute top-4 left-4 bg-white/20 backdrop-blur px-3 py-1 rounded text-[10px] font-mono whitespace-nowrap border border-white/30">
+                BUILDING...
+            </div>
+        </div>
+
+    </section>
+
+    <!-- 12. Card Stack Swipe (Interactive) -->
+    <section class="min-h-screen bg-[#020420] overflow-hidden relative flex items-center justify-center" id="c12">
+        <div class="absolute inset-0 grid-bg transform opacity-20"></div>
+
+        <div class="relative z-10 container mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-12">
+            <div class="md:w-1/2">
+                <h2 class="text-6xl font-bold mb-8 font-sf text-white leading-tight">
+                    Infrastructure <br> for <span class="text-cyan-400">Ambition.</span>
+                </h2>
+
+                <!-- Result Oriented Tags -->
+                <div class="flex flex-col gap-4">
+                    <div class="flex items-center gap-4 group cursor-pointer">
+                        <div
+                            class="w-12 h-12 bg-slate-800 rounded-lg flex items-center justify-center border border-slate-700 group-hover:bg-cyan-500/20 group-hover:border-cyan-500 transition-colors">
+                            <iconify-icon icon="lucide:zap" class="text-cyan-400 text-xl"></iconify-icon>
+                        </div>
+                        <div>
+                            <h3 class="text-white font-bold">Automated Workflows</h3>
+                            <p class="text-slate-400 text-sm">Save 20+ hours / week</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4 group cursor-pointer">
+                        <div
+                            class="w-12 h-12 bg-slate-800 rounded-lg flex items-center justify-center border border-slate-700 group-hover:bg-cyan-500/20 group-hover:border-cyan-500 transition-colors">
+                            <iconify-icon icon="lucide:rocket" class="text-cyan-400 text-xl"></iconify-icon>
+                        </div>
+                        <div>
+                            <h3 class="text-white font-bold">Rapid Deployment</h3>
+                            <p class="text-slate-400 text-sm">Market ready in 14 days</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="md:w-1/2 flex items-center justify-center relative h-[500px] w-full group/stack">
+                <!-- Stack of Cards (Hover to fan out) -->
+
+                <!-- Card 3 (Back) -->
+                <div
+                    class="absolute w-[350px] bg-slate-800 border border-slate-600 rounded-2xl p-6 shadow-2xl transform scale-90 -translate-y-8 translate-x-4 opacity-50 z-0 transition-all duration-500 group-hover/stack:translate-x-32 group-hover/stack:rotate-6 group-hover/stack:opacity-100">
+                    <div class="flex justify-between items-center mb-4">
+                        <div class="font-bold text-white">Database</div>
+                        <div class="text-xs text-green-400 bg-green-900/40 px-2 py-1 rounded">Connected</div>
+                    </div>
+                    <div class="space-y-2 font-mono text-xs text-gray-400">
+                        <div class="bg-gray-900 p-2 rounded">postgres_main: OK</div>
+                        <div class="bg-gray-900 p-2 rounded">redis_cache: OK</div>
+                    </div>
+                </div>
+
+                <!-- Card 2 (Middle) -->
+                <div
+                    class="absolute w-[350px] bg-slate-900 border border-slate-600 rounded-2xl p-6 shadow-2xl transform scale-95 -translate-y-4 translate-x-2 opacity-80 z-10 transition-all duration-500 group-hover/stack:translate-x-16 group-hover/stack:rotate-3 group-hover/stack:opacity-100">
+                    <div class="flex justify-between items-center mb-4">
+                        <div class="font-bold text-white">Payments</div>
+                        <div class="text-xs text-green-400 bg-green-900/40 px-2 py-1 rounded">Live</div>
+                    </div>
+                    <div class="flex gap-4 mb-4">
+                        <div class="flex-1 bg-black p-3 rounded-lg text-center">
+                            <div class="text-xs text-gray-500">Today</div>
+                            <div class="font-bold text-white text-lg">$1,240</div>
+                        </div>
+                        <div class="flex-1 bg-black p-3 rounded-lg text-center">
+                            <div class="text-xs text-gray-500">Month</div>
+                            <div class="font-bold text-white text-lg">$45.2k</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 1 (Front) -->
+                <div
+                    class="absolute w-[350px] bg-black border border-cyan-500/30 rounded-2xl p-6 shadow-2xl z-20 transition-all duration-300 transform group-hover/stack:-translate-x-4">
+                    <div class="flex justify-between items-center mb-6">
+                        <div class="flex items-center gap-3">
+                            <div
+                                class="w-10 h-10 rounded-full bg-cyan-500/20 flex items-center justify-center text-cyan-400">
+                                <iconify-icon icon="lucide:user"></iconify-icon>
+                            </div>
+                            <div>
+                                <div class="text-white font-bold">User Dashboard</div>
+                                <div class="text-xs text-cyan-500">Admin View</div>
+                            </div>
+                        </div>
+                        <iconify-icon icon="lucide:more-vertical" class="text-gray-500"></iconify-icon>
+                    </div>
+
+                    <div class="space-y-3">
+                        <div class="h-16 bg-gray-900 rounded-xl border border-gray-800 flex items-center px-4 gap-4">
+                            <div class="w-8 h-8 rounded bg-gray-800"></div>
+                            <div class="flex-1">
+                                <div class="h-2 w-20 bg-gray-800 rounded mb-1"></div>
+                                <div class="h-2 w-12 bg-gray-800 rounded"></div>
+                            </div>
+                        </div>
+                        <div class="h-16 bg-gray-900 rounded-xl border border-gray-800 flex items-center px-4 gap-4">
+                            <div class="w-8 h-8 rounded bg-gray-800"></div>
+                            <div class="flex-1">
+                                <div class="h-2 w-20 bg-gray-800 rounded mb-1"></div>
+                                <div class="h-2 w-12 bg-gray-800 rounded"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button
+                        class="w-full mt-6 bg-cyan-600 hover:bg-cyan-500 text-white py-3 rounded-lg font-bold transition-colors">
+                        View Analytics
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 13. The Mega-Hero (List View) -->
+    <section class="min-h-screen bg-white text-black flex items-center justify-center relative overflow-hidden"
+        id="c13">
+        <div class="container mx-auto px-6 relative z-10">
+            <h1 class="text-xl font-bold mb-12 uppercase tracking-wide text-neutral-500">Select your destination:</h1>
+
+            <div class="border-t border-black">
+                <!-- 1. BUILD -->
+                <div
+                    class="group border-b border-black py-10 flex justify-between items-center cursor-pointer hover:bg-neutral-50 transition-colors px-4 relative">
+                    <h2 class="text-6xl md:text-8xl font-black font-clash z-10">BUILD.</h2>
+                    <span class="text-2xl group-hover:translate-x-6 transition-transform z-10 font-bold">→</span>
+
+                    <!-- Hover Flashcard -->
+                    <div
+                        class="absolute right-[10%] top-1/2 -translate-y-1/2 w-[450px] bg-black text-white p-6 rounded-2xl shadow-2xl opacity-0 group-hover:opacity-100 group-hover:rotate-2 group-hover:translate-x-0 translate-x-12 rotate-12 transition-all duration-500 pointer-events-none z-20 overflow-hidden">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center">
+                                <iconify-icon icon="lucide:layers" class="text-xl"></iconify-icon>
+                            </div>
+                            <span
+                                class="text-[10px] font-mono text-white/50 border border-white/20 px-2 py-1 rounded">STARTUP_V1</span>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-2">MVP in 2 Weeks</h3>
+                        <p class="text-gray-400 text-sm mb-6 leading-relaxed">
+                            From concept to deployed application. We handle the code so you can focus on the vision.
+                        </p>
+                        <!-- Angled Phone Mockup -->
+                        <div
+                            class="relative h-32 bg-neutral-800 rounded-t-xl mx-4 transform -rotate-6 border border-white/10 overflow-hidden">
+                            <div class="absolute inset-0 bg-neutral-900 border-x-4 border-t-4 border-black">
+                                <div class="h-full w-full bg-[#111] p-3">
+                                    <div class="w-1/2 h-2 bg-gray-700 rounded mb-2"></div>
+                                    <div class="grid grid-cols-2 gap-2">
+                                        <div class="h-12 bg-gray-800 rounded"></div>
+                                        <div class="h-12 bg-gray-800 rounded"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. AUTOMATE -->
+                <div
+                    class="group border-b border-black py-10 flex justify-between items-center cursor-pointer hover:bg-neutral-50 transition-colors px-4 relative">
+                    <h2 class="text-6xl md:text-8xl font-black font-clash z-10">AUTOMATE.</h2>
+                    <span class="text-2xl group-hover:translate-x-6 transition-transform z-10 font-bold">→</span>
+
+                    <!-- Hover Flashcard -->
+                    <div
+                        class="absolute right-[15%] top-1/2 -translate-y-1/2 w-[450px] bg-blue-600 text-white p-6 rounded-2xl shadow-2xl opacity-0 group-hover:opacity-100 group-hover:-rotate-2 group-hover:translate-x-0 translate-x-12 -rotate-12 transition-all duration-500 pointer-events-none z-20">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
+                                <iconify-icon icon="lucide:bot" class="text-xl"></iconify-icon>
+                            </div>
+                            <span
+                                class="text-[10px] font-mono text-white/70 border border-white/20 px-2 py-1 rounded">AUTOPILOT_ON</span>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-2">Save 20+ Hours/Week</h3>
+                        <p class="text-blue-100 text-sm mb-4 leading-relaxed">
+                            AI agents that work while you sleep. Automate outreach, customer support, and operations.
+                        </p>
+                        <div class="flex items-center gap-3 bg-blue-700/50 p-3 rounded-lg border border-blue-500">
+                            <iconify-icon icon="logos:openai-icon" width="20"></iconify-icon>
+                            <div class="text-xs font-bold">Analyzing 500 leads...</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. SCALE -->
+                <div
+                    class="group border-b border-black py-10 flex justify-between items-center cursor-pointer hover:bg-neutral-50 transition-colors px-4 relative">
+                    <h2 class="text-6xl md:text-8xl font-black font-clash z-10">SCALE.</h2>
+                    <span class="text-2xl group-hover:translate-x-6 transition-transform z-10 font-bold">→</span>
+
+                    <!-- Hover Flashcard -->
+                    <div
+                        class="absolute right-[5%] top-1/2 -translate-y-1/2 w-[450px] bg-[#FF4F00] text-white p-6 rounded-2xl shadow-2xl opacity-0 group-hover:opacity-100 group-hover:rotate-1 group-hover:translate-x-0 translate-x-12 rotate-6 transition-all duration-500 pointer-events-none z-20">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
+                                <iconify-icon icon="lucide:trending-up" class="text-xl"></iconify-icon>
+                            </div>
+                            <span
+                                class="text-[10px] font-mono text-white/80 border border-white/20 px-2 py-1 rounded">GROWTH_MODE</span>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-2">Empire Building</h3>
+                        <p class="text-orange-100 text-sm mb-4 leading-relaxed">
+                            Seamlessly mix human expertise with AI efficiency. Scale your operations without increasing
+                            headcount.
+                        </p>
+                        <div class="grid grid-cols-2 gap-2">
+                            <div class="bg-black/10 p-2 rounded text-center">
+                                <div class="text-[10px] uppercase opacity-70">Customers</div>
+                                <div class="font-bold">10k+</div>
+                            </div>
+                            <div class="bg-black/10 p-2 rounded text-center">
+                                <div class="text-[10px] uppercase opacity-70">Support</div>
+                                <div class="font-bold">AI + Human</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 14. Value Journey (Interactive) -->
+    <section class="min-h-screen bg-neutral-100 flex items-center justify-center overflow-hidden" id="c14">
+        <div class="relative w-full max-w-7xl mx-auto h-[600px] flex items-center justify-center group">
+
+            <!-- Default Stacked State (Central) -->
+            <div class="relative z-30 transition-all duration-700 group-hover:translate-y-24 group-hover:scale-110">
+                <div
+                    class="w-[280px] h-[580px] bg-black border-[12px] border-black rounded-[3rem] shadow-2xl relative overflow-hidden ring-4 ring-gray-200">
+                    <div class="absolute inset-0 bg-neutral-900 flex flex-col items-center justify-center text-white">
+                        <div class="w-16 h-16 bg-blue-600 rounded-2xl mb-4 flex items-center justify-center text-3xl">L
+                        </div>
+                        <h3 class="font-bold text-xl">LoopSuit App</h3>
+                        <p class="text-gray-500 text-xs mt-2">The Complete Ecosystem</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Peeking Cards (Left/Right) - Hidden on hover, visible by default -->
+            <div
+                class="absolute left-1/2 -translate-x-[200px] z-20 transform -rotate-6 transition-all duration-500 group-hover:opacity-0 group-hover:translate-x-[-400px]">
+                <div
+                    class="w-[260px] h-[540px] bg-white border border-gray-200 rounded-[2.5rem] shadow-xl p-4 opacity-60">
+                </div>
+            </div>
+            <div
+                class="absolute right-1/2 translate-x-[200px] z-20 transform rotate-6 transition-all duration-500 group-hover:opacity-0 group-hover:translate-x-[400px]">
+                <div
+                    class="w-[260px] h-[540px] bg-white border border-gray-200 rounded-[2.5rem] shadow-xl p-4 opacity-60">
+                </div>
+            </div>
+
+            <!-- THE JOURNEY (Revealed on Hover) -->
+            <div
+                class="absolute inset-x-0 top-0 h-full flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-all duration-700 ease-out pointer-events-none group-hover:pointer-events-auto">
+
+                <!-- 1. Onboarding -->
+                <div
+                    class="w-[200px] h-[400px] bg-white border-4 border-gray-100 rounded-[2rem] shadow-lg transform translate-y-12 -rotate-12 transition-transform duration-700 delay-75 group-hover:translate-y-0 group-hover:-rotate-3 overflow-hidden flex flex-col">
+                    <div class="bg-blue-50 p-4 h-full">
+                        <div class="text-[10px] font-bold text-blue-500 uppercase mb-2">Step 1: Onboarding</div>
+                        <div class="w-full h-2 bg-blue-200 rounded mb-2"></div>
+                        <div class="w-2/3 h-2 bg-blue-200 rounded mb-4"></div>
+                        <div class="mt-auto w-full h-8 bg-blue-500 rounded-lg"></div>
+                    </div>
+                </div>
+
+                <!-- 2. Dashboard -->
+                <div
+                    class="w-[200px] h-[400px] bg-white border-4 border-gray-100 rounded-[2rem] shadow-lg transform translate-y-12 -rotate-6 transition-transform duration-700 delay-100 group-hover:translate-y-0 group-hover:-rotate-1 overflow-hidden">
+                    <div class="bg-gray-50 p-4 h-full">
+                        <div class="text-[10px] font-bold text-gray-500 uppercase mb-2">Step 2: Dashboard</div>
+                        <div class="grid grid-cols-2 gap-2 mb-2">
+                            <div class="h-12 bg-white border border-gray-200 rounded"></div>
+                            <div class="h-12 bg-white border border-gray-200 rounded"></div>
+                        </div>
+                        <div class="h-24 bg-white border border-gray-200 rounded w-full"></div>
+                    </div>
+                </div>
+
+                <!-- 3. Spacer for Main Phone (Center) -->
+                <div class="w-[300px]"></div>
+
+                <!-- 4. Automation -->
+                <div
+                    class="w-[200px] h-[400px] bg-white border-4 border-gray-100 rounded-[2rem] shadow-lg transform translate-y-12 rotate-6 transition-transform duration-700 delay-100 group-hover:translate-y-0 group-hover:rotate-1 overflow-hidden">
+                    <div class="bg-purple-50 p-4 h-full relative">
+                        <div class="absolute inset-0 flex items-center justify-center opacity-10">
+                            <iconify-icon icon="lucide:bot" width="100"></iconify-icon>
+                        </div>
+                        <div class="text-[10px] font-bold text-purple-500 uppercase mb-2">Step 3: Automation</div>
+                        <div class="space-y-2">
+                            <div class="p-2 bg-white rounded border border-purple-100 flex gap-2 items-center">
+                                <div class="w-4 h-4 rounded-full bg-purple-200"></div>
+                                <div class="h-2 w-16 bg-purple-100 rounded"></div>
+                            </div>
+                            <div class="p-2 bg-white rounded border border-purple-100 flex gap-2 items-center">
+                                <div class="w-4 h-4 rounded-full bg-purple-200"></div>
+                                <div class="h-2 w-16 bg-purple-100 rounded"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5. Scale -->
+                <div
+                    class="w-[200px] h-[400px] bg-white border-4 border-gray-100 rounded-[2rem] shadow-lg transform translate-y-12 rotate-12 transition-transform duration-700 delay-75 group-hover:translate-y-0 group-hover:rotate-3 overflow-hidden">
+                    <div class="bg-green-50 p-4 h-full">
+                        <div class="text-[10px] font-bold text-green-500 uppercase mb-2">Step 4: Scale</div>
+                        <div class="flex items-end gap-1 h-32 mt-4">
+                            <div class="bg-green-300 w-full h-[20%] rounded-t"></div>
+                            <div class="bg-green-300 w-full h-[40%] rounded-t"></div>
+                            <div class="bg-green-300 w-full h-[60%] rounded-t"></div>
+                            <div class="bg-green-500 w-full h-[90%] rounded-t"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Hint Text -->
+            <div
+                class="absolute bottom-10 font-mono text-gray-400 text-sm animate-pulse group-hover:opacity-0 transition-opacity">
+                HOVER TO REVEAL JOURNEY
+            </div>
+        </div>
+    </section>
+
+    <!-- 15. The Infinite Canvas -->
+    <section class="min-h-screen bg-[#F9FAFB] overflow-hidden relative cursor-grab active:cursor-grabbing" id="c15">
+        <!-- Figma-style Dot Grid -->
+        <div class="absolute inset-0"
+            style="background-image: radial-gradient(#d1d5db 1.5px, transparent 1.5px); background-size: 24px 24px;">
+        </div>
+
+        <!-- Figma Interface Chrome -->
+        <div
+            class="absolute top-0 left-0 right-0 h-10 bg-white border-b border-gray-200 z-50 flex items-center px-4 justify-between">
+            <div class="flex gap-4 items-center">
+                <div class="flex gap-2">
+                    <div class="w-3 h-3 rounded-full bg-red-400"></div>
+                    <div class="w-3 h-3 rounded-full bg-yellow-400"></div>
+                    <div class="w-3 h-3 rounded-full bg-green-400"></div>
+                </div>
+                <div class="h-4 w-[1px] bg-gray-300 mx-2"></div>
+                <span class="text-xs font-medium text-gray-600">LoopSuit_Master_File / Automation_Flow</span>
+            </div>
+            <div class="flex -space-x-2">
+                <div class="w-6 h-6 rounded-full bg-blue-500 border-2 border-white"></div>
+                <div class="w-6 h-6 rounded-full bg-purple-500 border-2 border-white"></div>
+                <div
+                    class="w-6 h-6 rounded-full bg-pink-500 border-2 border-white text-[8px] text-white flex items-center justify-center">
+                    +4</div>
+            </div>
+        </div>
+
+        <!-- Floating Tools -->
+        <div
+            class="absolute bottom-8 left-1/2 transform -translate-x-1/2 bg-white shadow-xl border border-gray-200 rounded-full px-6 py-2 z-50 flex gap-6">
+            <iconify-icon icon="lucide:mouse-pointer-2" class="text-blue-500 text-xl"></iconify-icon>
+            <iconify-icon icon="lucide:hand"
+                class="text-gray-400 text-xl hover:text-black transition-colors"></iconify-icon>
+            <iconify-icon icon="lucide:layout-grid"
+                class="text-gray-400 text-xl hover:text-black transition-colors"></iconify-icon>
+            <iconify-icon icon="lucide:type"
+                class="text-gray-400 text-xl hover:text-black transition-colors"></iconify-icon>
+        </div>
+
+        <!-- Canvas Content (Mockup Dashboard) -->
+        <div class="absolute inset-0 flex items-center justify-center overflow-auto">
+            <div
+                class="relative w-[1200px] h-[800px] bg-white rounded shadow-sm border border-gray-200 scale-75 md:scale-90 origin-center p-12">
+                <!-- Canvas Header -->
+                <div class="text-gray-300 text-[100px] font-bold absolute -top-32 left-0 leading-none select-none">
+                    Design.
+                </div>
+
+                <!-- Connected Nodes -->
+                <div class="absolute top-20 left-20 p-4 bg-white shadow-xl border border-blue-100 rounded-xl w-64 z-10">
+                    <div class="text-xs font-bold text-blue-500 uppercase mb-2">Input Source</div>
+                    <div class="flex items-center gap-2 bg-gray-50 p-2 rounded mb-2">
+                        <iconify-icon icon="logos:typeform-icon"></iconify-icon>
+                        <span class="text-sm font-medium">Lead Form</span>
+                    </div>
+                </div>
+
+                <!-- Curved Line -->
+                <svg class="absolute top-20 left-80 w-40 h-20 z-0 overflow-visible">
+                    <path d="M 0 30 C 50 30, 50 80, 150 80" fill="none" stroke="#CBD5E1" stroke-width="2"
+                        stroke-dasharray="4" />
+                </svg>
+
+                <div
+                    class="absolute top-32 left-[400px] p-4 bg-white shadow-xl border border-purple-100 rounded-xl w-64 z-10">
+                    <div class="text-xs font-bold text-purple-500 uppercase mb-2">AI Processing</div>
+                    <div class="flex items-center gap-2 bg-gray-50 p-2 rounded mb-2">
+                        <iconify-icon icon="logos:openai-icon"></iconify-icon>
+                        <span class="text-sm font-medium">Qualify Lead</span>
+                    </div>
+                </div>
+
+                <!-- Curved Line -->
+                <svg class="absolute top-48 left-[650px] w-40 h-20 z-0 overflow-visible">
+                    <path d="M 0 30 C 50 30, 50 80, 150 80" fill="none" stroke="#CBD5E1" stroke-width="2" />
+                </svg>
+
+                <!-- Main UI Mockup (Target) -->
+                <div
+                    class="absolute top-[200px] left-[800px] w-[600px] h-[400px] bg-white border border-gray-200 rounded-xl shadow-2xl overflow-hidden z-20">
+                    <div class="bg-gray-900 text-white p-4 flex justify-between items-center">
+                        <span class="font-bold">LoopSuit Admin</span>
+                        <div class="flex gap-2 text-xs text-gray-400">
+                            <span>Home</span>
+                            <span>Leads</span>
+                            <span>Settings</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="text-2xl font-bold mb-4">Dashboard Overview</div>
+                        <div class="flex gap-4">
+                            <div class="flex-1 h-32 bg-blue-50 rounded-lg border border-blue-100 p-4">
+                                <div class="text-blue-500 font-bold text-2xl">1,204</div>
+                                <div class="text-sm text-gray-500">Total Automations</div>
+                            </div>
+                            <div class="flex-1 h-32 bg-green-50 rounded-lg border border-green-100 p-4">
+                                <div class="text-green-500 font-bold text-2xl">$42k</div>
+                                <div class="text-sm text-gray-500">Revenue Saved</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 16. Blueprint Scanner (Enhanced) -->
+    <section class="min-h-screen bg-[#0055FF] relative overflow-hidden flex items-center justify-center" id="c16">
+        <div class="absolute inset-0 bg-[#0044CC] w-1/2 z-0 border-r-4 border-white/20"></div>
+
+        <div class="relative z-10 grid grid-cols-2 w-full max-w-6xl items-center gap-12 px-6">
+            <!-- Left: Wireframe (Robust) -->
+            <div class="opacity-80">
+                <div
+                    class="bg-[#003399]/50 border-2 border-white/30 border-dashed rounded-3xl h-[600px] w-[340px] p-8 mx-auto relative backdrop-blur-sm">
+                    <!-- Wireframe Elements -->
+                    <div class="flex justify-between items-center mb-8">
+                        <div class="w-8 h-8 rounded-full border-2 border-dashed border-white/40"></div>
+                        <div class="w-16 h-4 border-2 border-dashed border-white/40 rounded"></div>
+                    </div>
+                    <div
+                        class="h-40 border-2 border-dashed border-white/40 rounded-xl mb-6 flex items-center justify-center">
+                        <span class="text-white/40 font-mono text-xs">HERO_SECTION_PLACEHOLDER</span>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="h-10 border-2 border-white/40 border-dashed rounded w-full"></div>
+                        <div class="h-10 border-2 border-white/40 border-dashed rounded w-full"></div>
+                        <div class="h-10 border-2 border-white/40 border-dashed rounded w-full"></div>
+                    </div>
+
+                    <!-- Vision Bubbles -->
+                    <div
+                        class="absolute -left-20 top-20 bg-white p-4 rounded-xl shadow-lg transform -rotate-12 w-48 z-20">
+                        <p class="text-[10px] sm:text-xs font-serif text-slate-800 italic">
+                            "I want a platform where users can automate their daily tasks visually..."
+                        </p>
+                        <div class="flex items-center gap-2 mt-2">
+                            <div class="w-4 h-4 bg-gray-200 rounded-full"></div>
+                            <span class="text-[8px] font-bold text-gray-500 uppercase">Client Vision</span>
+                        </div>
+                    </div>
+                </div>
+                <h3 class="text-white/50 font-mono text-center mt-6 tracking-widest text-sm">CONCEPT_PHASE</h3>
+            </div>
+
+            <!-- Right: Real App (High Fidelity) -->
+            <div class="relative group">
+                <div
+                    class="bg-white rounded-[3rem] h-[640px] w-[360px] shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)] mx-auto overflow-hidden relative border-[8px] border-white">
+                    <!-- Mock UI -->
+                    <div class="h-full w-full bg-slate-50 flex flex-col">
+                        <!-- App Header -->
+                        <div class="p-6 bg-white border-b border-gray-100 flex justify-between items-center pt-10">
+                            <div class="font-bold text-lg text-slate-900">TaskFlow AI</div>
+                            <div class="w-8 h-8 bg-blue-500 rounded-full"></div>
+                        </div>
+
+                        <!-- App Content -->
+                        <div class="p-6">
+                            <h2 class="text-2xl font-bold text-slate-900 mb-2">Morning, Alex</h2>
+                            <p class="text-slate-500 mb-6 text-sm">Your AI agents have been busy.</p>
+
+                            <!-- UI Card 1 -->
+                            <div class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 mb-4">
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-bold text-sm text-slate-700">Inbox Cleaned</span>
+                                    <iconify-icon icon="lucide:check-circle" class="text-green-500"></iconify-icon>
+                                </div>
+                                <div class="text-xs text-slate-400">Archived 42 newsletters</div>
+                            </div>
+
+                            <!-- UI Card 2 -->
+                            <div
+                                class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 mb-4 relative overflow-hidden">
+                                <div class="absolute top-0 right-0 p-2 opacity-10">
+                                    <iconify-icon icon="logos:notion-icon" width="40"></iconify-icon>
+                                </div>
+                                <div class="font-bold text-sm text-slate-700 mb-1">Notion Sync</div>
+                                <div class="w-full bg-gray-100 h-1.5 rounded-full overflow-hidden">
+                                    <div class="w-full h-full bg-blue-500 animate-[marquee_2s_linear_infinite]"></div>
+                                </div>
+                            </div>
+
+                            <!-- Logos/Integrations -->
+                            <div class="mt-8">
+                                <div class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-3">Powered
+                                    By</div>
+                                <div class="flex gap-4 opacity-70 grayscale hover:grayscale-0 transition-all">
+                                    <iconify-icon icon="logos:openai-icon" width="24"></iconify-icon>
+                                    <iconify-icon icon="logos:anthropic-icon" width="24"></iconify-icon>
+                                    <iconify-icon icon="logos:stripe" width="24"></iconify-icon>
+                                    <iconify-icon icon="logos:supabase-icon" width="24"></iconify-icon>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Scanner Line -->
+                    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-blue-500/20 to-transparent h-12 w-full animate-float"
+                        style="animation-duration: 2s; top: -100px;"></div>
+                </div>
+
+                <h3 class="text-white font-bold text-center mt-6 tracking-widest text-sm">DEPLOYED PRODUCT</h3>
+
+                <!-- Center Badge -->
+                <div
+                    class="absolute top-1/2 left-0 transform -translate-x-1/2 -translate-y-1/2 bg-black text-white px-4 py-2 rounded-full z-30 shadow-xl flex items-center gap-2">
+                    <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                    <span class="font-mono text-xs">TRANSFORM COMPLETE</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 17. Auto-Kanban (SaaS Layout) -->
+    <section class="min-h-screen bg-[#F5F7FA] flex flex-col items-center justify-center pt-10" id="c17">
+        <div class="text-center mb-12 max-w-2xl px-6">
+            <span class="text-blue-600 font-bold tracking-widest uppercase text-xs mb-2 block">Autonomous
+                Operations</span>
+            <h2 class="text-5xl md:text-6xl font-black font-sf text-slate-900 mb-4 leading-tight">Work that does itself.
+            </h2>
+            <p class="text-slate-500 text-lg">
+                The first agency that automates its own deliverables. Watch your project move from concept to completion
+                in real-time.
+            </p>
+        </div>
+
+        <div class="flex gap-6 overflow-x-auto max-w-7xl px-6 pb-12 w-full justify-center">
+            <!-- Col 1: To Do -->
+            <div class="w-80 bg-slate-100/50 rounded-2xl p-4 min-h-[500px] border border-slate-200 backdrop-blur-sm">
+                <div class="flex justify-between items-center mb-4 px-2">
+                    <div class="font-bold text-slate-500 text-xs uppercase tracking-wider">Backlog</div>
+                    <span class="bg-slate-200 text-slate-600 text-[10px] px-2 py-1 rounded-full">3</span>
+                </div>
+
+                <!-- Card 1 -->
+                <div
+                    class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 mb-3 group hover:shadow-md transition-shadow cursor-default">
+                    <div class="flex gap-2 mb-3">
+                        <span class="px-2 py-0.5 bg-orange-100 text-orange-600 rounded text-[10px] font-bold">High
+                            Priority</span>
+                    </div>
+                    <p class="text-slate-700 text-sm font-medium mb-3">Design System Implementation</p>
+                    <div class="flex items-center gap-2">
+                        <div class="w-6 h-6 rounded-full bg-gray-200 border-2 border-white"></div>
+                        <div class="text-xs text-gray-400">Assigned to Team</div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 mb-3 opacity-60">
+                    <p class="text-slate-700 text-sm font-medium mb-2">User Authentication Flow</p>
+                    <div class="h-1 w-full bg-slate-100 rounded overflow-hidden">
+                        <div class="h-full bg-slate-300 w-0"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Col 2: In Progress (Active) -->
+            <div
+                class="w-80 bg-blue-50/50 rounded-2xl p-4 min-h-[500px] border border-blue-100 backdrop-blur-sm relative overflow-hidden">
+                <!-- AI Gradient Background -->
+                <div
+                    class="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-blue-400 via-purple-500 to-blue-400 animate-gradient-x">
+                </div>
+
+                <div class="flex justify-between items-center mb-4 px-2">
+                    <div class="font-bold text-blue-600 text-xs uppercase tracking-wider flex items-center gap-2">
+                        In Progress
+                        <span class="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
+                    </div>
+                    <span class="bg-blue-100 text-blue-600 text-[10px] px-2 py-1 rounded-full">1</span>
+                </div>
+
+                <!-- Active AI Card -->
+                <div
+                    class="bg-white p-5 rounded-xl shadow-lg border-l-4 border-blue-500 mb-3 transform hover:-translate-y-1 transition-transform">
+                    <div class="flex justify-between items-start mb-3">
+                        <div class="flex items-center gap-2">
+                            <iconify-icon icon="lucide:bot" class="text-blue-500"></iconify-icon>
+                            <span class="text-xs font-bold text-blue-500">AI Agent Working...</span>
+                        </div>
+                    </div>
+                    <p class="text-slate-800 text-sm font-bold mb-2">Generating Backend API</p>
+                    <div class="bg-slate-900 rounded p-3 mb-3">
+                        <code class="text-[10px] text-green-400 font-mono block">
+                            > initializing_db...<br>
+                            > seeding_users...<br>
+                            > <span class="animate-pulse">_</span>
+                        </code>
+                    </div>
+                    <div class="flex justify-between items-center text-xs text-gray-400">
+                        <span>Time Saved: 4h</span>
+                        <span class="text-blue-500 font-bold">85%</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Col 3: Done -->
+            <div class="w-80 bg-slate-100/50 rounded-2xl p-4 min-h-[500px] border border-slate-200 backdrop-blur-sm">
+                <div class="flex justify-between items-center mb-4 px-2">
+                    <div class="font-bold text-slate-500 text-xs uppercase tracking-wider">Deployed</div>
+                    <span class="bg-slate-200 text-slate-600 text-[10px] px-2 py-1 rounded-full">12</span>
+                </div>
+
+                <!-- Finished Card -->
+                <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 mb-3 opacity-90">
+                    <div class="flex justify-between mb-2">
+                        <span class="text-green-600 bg-green-50 px-2 py-1 rounded text-[10px] font-bold">Live</span>
+                        <iconify-icon icon="lucide:check-circle" class="text-green-500 text-sm"></iconify-icon>
+                    </div>
+                    <p class="text-slate-700 text-sm font-medium decoration-slate-400">Landing Page V1</p>
+                    <p class="text-[10px] text-gray-400 mt-2">Deployed to Vercel • 10m ago</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 18. The Nexus (High-Fi Dark Mode) -->
+    <section class="min-h-screen bg-[#050505] flex items-center justify-center relative overflow-hidden" id="c18">
+        <!-- Ambient Glow -->
+        <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+            <div class="w-[800px] h-[800px] bg-indigo-900/20 rounded-full filter blur-[120px] animate-pulse"></div>
+        </div>
+        <!-- Grid Floor -->
+        <div class="absolute bottom-0 w-full h-1/2 bg-gradient-to-t from-indigo-900/10 to-transparent opacity-50"></div>
+
+        <div class="relative z-10 w-full max-w-6xl px-6 flex flex-col items-center">
+            <div class="text-center mb-16">
+                <h2
+                    class="text-7xl md:text-8xl font-black text-transparent bg-clip-text bg-gradient-to-br from-white via-indigo-200 to-indigo-500 font-sf tracking-tight mb-4">
+                    ARCHITECT
+                </h2>
+                <p class="text-indigo-200/50 text-xl font-light tracking-widest uppercase">
+                    The New Standard for MVP Development
+                </p>
+            </div>
+
+            <!-- Main High-Fi Interface -->
+            <div
+                class="w-full max-w-5xl h-[600px] bg-[#0A0A0B] rounded-t-3xl border border-indigo-500/20 shadow-[0_-20px_80px_-20px_rgba(79,70,229,0.2)] overflow-hidden relative group">
+                <!-- Window Chrome -->
+                <div class="h-10 bg-[#0A0A0B] border-b border-white/5 flex items-center px-4 gap-2">
+                    <div class="flex gap-2">
+                        <div class="w-3 h-3 rounded-full bg-red-500/50"></div>
+                        <div class="w-3 h-3 rounded-full bg-yellow-500/50"></div>
+                        <div class="w-3 h-3 rounded-full bg-green-500/50"></div>
+                    </div>
+                </div>
+
+                <!-- App Layout -->
+                <div class="flex h-full">
+                    <!-- Sidebar -->
+                    <div class="w-64 border-r border-white/5 bg-black/40 p-4 hidden md:block">
+                        <div class="flex items-center gap-3 mb-8 opacity-60">
+                            <div class="w-8 h-8 rounded-lg bg-indigo-600"></div>
+                            <span class="font-bold text-white text-sm">Nexus.AI</span>
+                        </div>
+                        <div class="space-y-1">
+                            <div class="p-2 rounded bg-indigo-500/10 text-indigo-400 text-sm font-medium">Dashboard
+                            </div>
+                            <div class="p-2 rounded text-gray-500 text-sm hover:text-white transition-colors">Analytics
+                            </div>
+                            <div class="p-2 rounded text-gray-500 text-sm hover:text-white transition-colors">Users
+                            </div>
+                            <div class="p-2 rounded text-gray-500 text-sm hover:text-white transition-colors">Settings
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Content -->
+                    <div class="flex-1 p-8 bg-[#0A0A0B]">
+                        <div class="flex justify-between items-center mb-8">
+                            <h3 class="text-2xl font-bold text-white">Overview</h3>
+                            <button
+                                class="bg-white text-black px-4 py-2 rounded-lg text-sm font-bold shadow-lg shadow-white/10 hover:shadow-white/20 transition-all">Create
+                                New</button>
+                        </div>
+
+                        <!-- Stats Grid -->
+                        <div class="grid grid-cols-3 gap-6 mb-8">
+                            <div
+                                class="p-5 rounded-2xl bg-white/5 border border-white/5 hover:border-indigo-500/30 transition-colors">
+                                <div class="text-gray-400 text-xs uppercase mb-2">Revenue</div>
+                                <div class="text-3xl font-bold text-white">$24,500</div>
+                                <div class="text-green-500 text-xs mt-1">+12% this week</div>
+                            </div>
+                            <div
+                                class="p-5 rounded-2xl bg-white/5 border border-white/5 hover:border-indigo-500/30 transition-colors">
+                                <div class="text-gray-400 text-xs uppercase mb-2">Active Users</div>
+                                <div class="text-3xl font-bold text-white">1,240</div>
+                                <div class="text-green-500 text-xs mt-1">+8% this week</div>
+                            </div>
+                            <div
+                                class="p-5 rounded-2xl bg-white/5 border border-white/5 hover:border-indigo-500/30 transition-colors">
+                                <div class="text-gray-400 text-xs uppercase mb-2">Churn Rate</div>
+                                <div class="text-3xl font-bold text-white">0.4%</div>
+                                <div class="text-indigo-400 text-xs mt-1">Stellar</div>
+                            </div>
+                        </div>
+
+                        <!-- Graph Area (CSS) -->
+                        <div
+                            class="w-full h-64 bg-white/5 rounded-2xl border border-white/5 p-6 relative overflow-hidden">
+                            <div class="absolute inset-0 bg-gradient-to-t from-indigo-500/10 to-transparent"></div>
+                            <!-- Simple Line Graph -->
+                            <svg class="w-full h-full" viewBox="0 0 800 200" preserveAspectRatio="none">
+                                <path d="M0 150 Q 100 100, 200 120 T 400 80 T 600 50 T 800 20" fill="none"
+                                    stroke="#6366f1" stroke-width="3" />
+                                <path d="M0 150 Q 100 100, 200 120 T 400 80 T 600 50 T 800 20 V 200 H 0 Z"
+                                    fill="url(#grad1)" opacity="0.3" />
+                                <defs>
+                                    <linearGradient id="grad1" x1="0%" y1="0%" x2="0%" y2="100%">
+                                        <stop offset="0%" style="stop-color:#6366f1;stop-opacity:1" />
+                                        <stop offset="100%" style="stop-color:#6366f1;stop-opacity:0" />
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 19. Wireframe Grid (Detailed) -->
+    <section class="min-h-screen bg-white text-black pt-24" id="c19">
+        <div class="container mx-auto px-6 mb-12 flex justify-between items-end">
+            <h1 class="text-4xl md:text-5xl font-black font-clash max-w-xl leading-[0.9]">
+                ONE PERFECT APP <br>
+                <span class="text-gray-400 font-sans font-normal text-2xl tracking-normal">among a thousand
+                    prototypes.</span>
+            </h1>
+            <button
+                class="bg-black text-white px-8 py-3 rounded-full hover:bg-neutral-800 transition-colors font-bold">Explore
+                Case Studies</button>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 px-6 pb-20">
+
+            <!-- Repeating Wireframe Cells -->
+            <!-- Function to generate wireframe content -->
+            <script>
+                // Visual only, handled by inner HTML below
+            </script>
+
+            <div
+                class="aspect-[9/16] border border-gray-100 rounded-xl bg-gray-50/50 p-4 flex flex-col gap-2 grayscale opacity-40 hover:opacity-100 transition-opacity">
+                <div class="h-4 bg-gray-200 rounded w-1/3"></div>
+                <div class="h-32 bg-gray-200 rounded w-full"></div>
+                <div class="flex gap-2">
+                    <div class="h-10 bg-gray-200 rounded flex-1"></div>
+                    <div class="h-10 bg-gray-200 rounded flex-1"></div>
+                </div>
+            </div>
+            <div
+                class="aspect-[9/16] border border-gray-100 rounded-xl bg-gray-50/50 p-4 flex flex-col gap-2 grayscale opacity-40 hover:opacity-100 transition-opacity">
+                <div class="flex justify-between mb-4">
+                    <div class="w-8 h-8 rounded-full bg-gray-200"></div>
+                    <div class="w-4 h-4 bg-gray-200 rounded"></div>
+                </div>
+                <div class="h-2 bg-gray-200 rounded w-full"></div>
+                <div class="h-2 bg-gray-200 rounded w-2/3"></div>
+                <div class="mt-auto h-12 bg-gray-200 rounded"></div>
+            </div>
+            <div
+                class="aspect-[9/16] border border-gray-100 rounded-xl bg-gray-50/50 p-4 flex flex-col gap-2 grayscale opacity-40 hover:opacity-100 transition-opacity">
+                <div
+                    class="h-full bg-white border border-gray-200 rounded flex items-center justify-center text-xs text-gray-300">
+                    LOGIN_FLOW</div>
+            </div>
+
+            <!-- The One (High-Fi) -->
+            <div
+                class="aspect-[9/16] bg-black rounded-xl shadow-2xl transform scale-105 z-10 relative overflow-hidden group col-span-2 md:col-span-1 border-4 border-black">
+                <!-- Screen Content -->
+                <div class="absolute inset-0 bg-neutral-900 overflow-hidden">
+                    <div class="p-4 pt-10">
+                        <div class="text-white font-bold text-xl mb-1">Hello, Owner</div>
+                        <div class="text-gray-400 text-xs mb-6">Today's metrics</div>
+                        <div class="p-3 bg-white/10 rounded-xl border border-white/10 mb-2">
+                            <div class="text-xs text-gray-400">Total Sales</div>
+                            <div class="text-white font-bold text-lg">$12,450</div>
+                        </div>
+                        <div class="p-3 bg-blue-600 rounded-xl border border-blue-500 mb-2">
+                            <div class="text-xs text-blue-100">Active Automations</div>
+                            <div class="text-white font-bold text-lg">Running (4)</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Reflection -->
+                <div class="absolute inset-0 bg-gradient-to-tr from-transparent to-white/10 pointer-events-none"></div>
+            </div>
+
+            <div
+                class="aspect-[9/16] border border-gray-100 rounded-xl bg-gray-50/50 p-4 flex flex-col gap-2 grayscale opacity-40 hover:opacity-100 transition-opacity">
+                <div class="h-8 bg-gray-200 rounded w-full mb-2"></div>
+                <div class="grid grid-cols-2 gap-2 h-full">
+                    <div class="bg-gray-200 rounded"></div>
+                    <div class="bg-gray-200 rounded"></div>
+                </div>
+            </div>
+            <div
+                class="aspect-[9/16] border border-gray-100 rounded-xl bg-gray-50/50 p-4 flex flex-col gap-2 grayscale opacity-40 hover:opacity-100 transition-opacity">
+                <div class="w-20 h-20 rounded-full bg-gray-200 mx-auto mt-10"></div>
+                <div class="h-2 bg-gray-200 rounded w-full mt-4"></div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 20. The Future (Confetti) -->
+    <section class="min-h-screen bg-black flex items-center justify-center relative overflow-hidden" id="c20">
+        <!-- Confetti Background (CSS only for performance) -->
+        <style>
+            .confetti-piece {
+                position: absolute;
+                width: 10px;
+                height: 10px;
+                background-color: #ffd300;
+                top: -10%;
+                opacity: 0;
+            }
+
+            .confetti-piece:nth-child(odd) {
+                background-color: #7d32f2;
+            }
+
+            .confetti-piece:nth-child(even) {
+                background-color: #32f27d;
+            }
+
+            .confetti-piece:nth-child(3n) {
+                background-color: #f23232;
+            }
+
+            @keyframes fall {
+                0% {
+                    top: -10%;
+                    opacity: 1;
+                    transform: rotate(0deg);
+                }
+
+                100% {
+                    top: 110%;
+                    opacity: 0;
+                    transform: rotate(720deg);
+                }
+            }
+        </style>
+
+        <div class="absolute inset-0 pointer-events-none overflow-hidden">
+            <!-- Generating 20 static confetti pieces for visual effect via CSS loop equivalent -->
+            <div class="confetti-piece" style="left: 10%; animation: fall 4s linear infinite; animation-delay: 0s;">
+            </div>
+            <div class="confetti-piece" style="left: 30%; animation: fall 5s linear infinite; animation-delay: 1s;">
+            </div>
+            <div class="confetti-piece" style="left: 50%; animation: fall 3s linear infinite; animation-delay: 0.5s;">
+            </div>
+            <div class="confetti-piece" style="left: 70%; animation: fall 6s linear infinite; animation-delay: 2s;">
+            </div>
+            <div class="confetti-piece" style="left: 90%; animation: fall 4s linear infinite; animation-delay: 1.5s;">
+            </div>
+            <div class="confetti-piece" style="left: 20%; animation: fall 5s linear infinite; animation-delay: 3s;">
+            </div>
+        </div>
+
+        <h1 class="text-[15vw] font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-200 to-gray-500 relative z-10 mix-blend-difference select-none hover:scale-105 transition-transform cursor-default outline-text"
+            style="-webkit-text-stroke: 4px white;">
+            FUTURE
+        </h1>
+
+        <!-- Hover Text -->
+        <div class="absolute bottom-20 text-white font-mono text-sm animate-pulse">
+            SCROLL TO BEGIN
+        </div>
+    </section>
+
+    <!-- Premium Drag-to-Scroll (Swipe) Logic -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Select all horizontal scroll containers (Kanban, Nav, Quick Actions)
+            const scrollContainers = document.querySelectorAll('.overflow-x-auto, .overflow-auto');
+
+            scrollContainers.forEach(slider => {
+                let isDown = false;
+                let startX;
+                let scrollLeft;
+                let velX = 0;
+                let animationID;
+
+                // Add grab cursor style
+                slider.style.cursor = 'grab';
+                slider.style.userSelect = 'none';
+
+                slider.addEventListener('mousedown', (e) => {
+                    isDown = true;
+                    slider.style.cursor = 'grabbing';
+                    startX = e.pageX - slider.offsetLeft;
+                    scrollLeft = slider.scrollLeft;
+                    // Stop any existing momentum
+                    cancelAnimationFrame(animationID);
+                });
+
+                slider.addEventListener('mouseleave', () => {
+                    if (isDown) {
+                        isDown = false;
+                        slider.style.cursor = 'grab';
+                        beginMomentum();
+                    }
+                });
+
+                slider.addEventListener('mouseup', () => {
+                    isDown = false;
+                    slider.style.cursor = 'grab';
+                    beginMomentum();
+                });
+
+                slider.addEventListener('mousemove', (e) => {
+                    if (!isDown) return;
+                    e.preventDefault();
+                    // Calculate distance moved
+                    const x = e.pageX - slider.offsetLeft;
+                    const walk = (x - startX) * 1.5; // Multiplier for speed
+
+                    const prevScroll = slider.scrollLeft;
+                    slider.scrollLeft = scrollLeft - walk;
+
+                    // Calculate velocity for momentum
+                    velX = slider.scrollLeft - prevScroll;
+                });
+
+                // Physics-based momentum
+                function beginMomentum() {
+                    cancelAnimationFrame(animationID);
+                    function inertia() {
+                        if (Math.abs(velX) < 0.1) return;
+                        slider.scrollLeft += velX;
+                        velX *= 0.95; // Friction
+                        animationID = requestAnimationFrame(inertia);
+                    }
+                    animationID = requestAnimationFrame(inertia);
+                }
+
+                // Touch support is native with overflow-x-auto, 
+                // but we can enhance it or leave it native. 
+                // Using overflow-x-auto on mobile usually works best natively.
+            });
+        });
+    </script>
+</body>
+
+</html>
