@@ -214,6 +214,19 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
+        /* Navbar Hide/Show on Scroll */
+        #main-navbar {
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        #main-navbar.navbar-hidden {
+            transform: translateY(-100%);
+        }
+
+        #main-navbar.navbar-visible {
+            transform: translateY(0);
+        }
+
         /* Shiny CTA Button */
         @property --gradient-angle {
             syntax: "<angle>";

@@ -54,20 +54,47 @@ function navigateToPage(url, event) {
     }, 200);
 }
 
-// Navbar Scroll Effect
+// Navbar Scroll Effect with Hide/Show on Scroll Direction
 function initNavbarScroll() {
-    window.addEventListener('scroll', () => {
-        const nav = document.getElementById('inner-nav');
-        if (!nav) return;
+    let lastScrollY = window.scrollY;
+    let ticking = false;
 
-        if (window.scrollY > 20) {
-            nav.classList.add('glass-nav-scrolled');
-            nav.classList.remove('py-3');
-            nav.classList.add('py-2');
-        } else {
-            nav.classList.remove('glass-nav-scrolled');
-            nav.classList.add('py-3');
-            nav.classList.remove('py-2');
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            window.requestAnimationFrame(() => {
+                const navbar = document.getElementById('main-navbar');
+                const nav = document.getElementById('inner-nav');
+                if (!navbar || !nav) return;
+
+                const currentScrollY = window.scrollY;
+
+                // Add glass effect when scrolled
+                if (currentScrollY > 20) {
+                    nav.classList.add('glass-nav-scrolled');
+                    nav.classList.remove('py-3');
+                    nav.classList.add('py-2');
+                } else {
+                    nav.classList.remove('glass-nav-scrolled');
+                    nav.classList.add('py-3');
+                    nav.classList.remove('py-2');
+                }
+
+                // Hide/Show navbar based on scroll direction
+                if (currentScrollY > lastScrollY && currentScrollY > 100) {
+                    // Scrolling down & past threshold - hide navbar
+                    navbar.classList.add('navbar-hidden');
+                    navbar.classList.remove('navbar-visible');
+                } else if (currentScrollY < lastScrollY) {
+                    // Scrolling up - show navbar
+                    navbar.classList.remove('navbar-hidden');
+                    navbar.classList.add('navbar-visible');
+                }
+
+                lastScrollY = currentScrollY;
+                ticking = false;
+            });
+
+            ticking = true;
         }
     });
 }
