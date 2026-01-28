@@ -2,460 +2,1966 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TurboContent AI Platform - Case Study | LoopSuit</title>
-    <meta name="description"
-        content="Complete AI SaaS platform with 7 content tools built in 6 weeks, 85% cheaper than traditional development">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
-        rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
-    <style>
-        html,
-        body {
-            overflow-x: hidden;
-            max-width: 100%;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TurboContent AI Platform - Case Study | LoopSuit</title>
+  <meta name="description"
+    content="Complete AI SaaS platform with 7 content tools built in 6 weeks, 85% cheaper than traditional development">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+  <style>
+    html,
+    body {
+      scroll-behavior: smooth;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      overflow-x: hidden;
+      max-width: 100%;
+    }
 
-        body {
-            font-family: 'Inter', sans-serif;
-            -webkit-font-smoothing: antialiased;
-        }
+    ::-webkit-scrollbar {
+      display: none;
+      width: 0;
+      background: transparent;
+    }
 
-        .font-sf {
-            font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            letter-spacing: -0.025em;
-        }
-    </style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: white;
+      color: rgb(15, 23, 42);
+      -webkit-font-smoothing: antialiased;
+      width: 100%;
+      position: relative;
+    }
+
+    .font-sf {
+      font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      letter-spacing: -0.025em;
+    }
+
+    /* 3D Utilities */
+    .perspective-1000 {
+      perspective: 1000px;
+    }
+
+    .preserve-3d,
+    .transform-style-3d {
+      transform-style: preserve-3d;
+    }
+
+    .backface-hidden {
+      backface-visibility: hidden;
+    }
+
+    /* Custom Orbit Animations */
+    @keyframes orbit-rotate {
+      0% {
+        transform: rotateY(0deg);
+      }
+
+      100% {
+        transform: rotateY(360deg);
+      }
+    }
+
+    @keyframes orbit-counter {
+      0% {
+        transform: rotateY(360deg);
+      }
+
+      100% {
+        transform: rotateY(0deg);
+      }
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-20px);
+      }
+    }
+
+    .animate-float {
+      animation: float 6s ease-in-out infinite;
+    }
+
+    /* Sticky Navbar & Shiny CTA */
+    @property --gradient-angle {
+      syntax: "<angle>";
+      initial-value: 0deg;
+      inherits: false;
+    }
+
+    @property --gradient-angle-offset {
+      syntax: "<angle>";
+      initial-value: 0deg;
+      inherits: false;
+    }
+
+    @property --gradient-shine {
+      syntax: "<color>";
+      initial-value: #f97316;
+      inherits: false;
+    }
+
+    .shiny-cta {
+      --gradient-angle: 0deg;
+      --gradient-angle-offset: 0deg;
+      --gradient-shine: #f97316;
+      position: relative;
+      overflow: hidden;
+      border-radius: 9999px;
+      padding: 0.5rem 1rem;
+      font-size: 0.825rem;
+      line-height: 1.2;
+      font-weight: 500;
+      color: #ffffff;
+      background: linear-gradient(#000000, #000000) padding-box, conic-gradient(from calc(var(--gradient-angle) - var(--gradient-angle-offset)), transparent 0%, #ea580c 5%, var(--gradient-shine) 15%, #ea580c 30%, transparent 40%, transparent 100%) border-box;
+      border: 2px solid transparent;
+      box-shadow: inset 0 0 0 1px #1a1818;
+      transition: all 0.3s;
+      cursor: pointer;
+      isolation: isolate;
+      animation: border-spin 2.5s linear infinite;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    @keyframes border-spin {
+      to {
+        --gradient-angle: 360deg;
+      }
+    }
+
+    .shiny-cta::before {
+      content: '';
+      pointer-events: none;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: calc(100% - 6px);
+      height: calc(100% - 6px);
+      background: radial-gradient(circle at 2px 2px, white 0.5px, transparent 0) padding-box;
+      background-size: 4px 4px;
+      mask-image: conic-gradient(from calc(var(--gradient-angle) + 45deg), black, transparent 10% 90%, black);
+      opacity: 0.4;
+    }
+
+    .glass-nav-scrolled {
+      background: rgba(0, 0, 0, 0.6) !important;
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    /* Navbar Hide/Show on Scroll */
+    #main-navbar {
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    #main-navbar.navbar-hidden {
+      transform: translateY(-100%);
+    }
+
+    #main-navbar.navbar-visible {
+      transform: translateY(0);
+    }
+
+    /* Light/Inverse Navbar Theme (Dynamic) */
+    .glass-nav-inverse {
+      background: rgba(255, 255, 255, 0.85) !important;
+      backdrop-filter: blur(12px) !important;
+      border: 1px solid rgba(0, 0, 0, 0.05) !important;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    }
+
+    .glass-nav-inverse .text-white {
+      color: #1e293b !important;
+      /* slate-800 */
+    }
+
+    /* Preserve white text for specific elements like the Automated badge, even in inverse mode */
+    .glass-nav-inverse .bg-\[\#3b82f6\] .text-white {
+      color: #ffffff !important;
+    }
+
+    .glass-nav-inverse .text-gray-300,
+    .glass-nav-inverse .text-gray-400 {
+      color: #64748b !important;
+      /* slate-500 */
+    }
+
+    .glass-nav-inverse .hover\:text-white:hover {
+      color: #0f172a !important;
+      /* slate-900 */
+    }
+
+    .glass-nav-inverse .border-white\/10 {
+      border-color: rgba(0, 0, 0, 0.1) !important;
+    }
+
+
+
+    .hover-gradient-text:hover {
+      background: linear-gradient(to right, #60a5fa, #a855f7);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .glass-card {
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    /* Hide Scrollbar Utility */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    .rotate-y-180 {
+      transform: rotateY(180deg);
+    }
+
+    .ease-out-expo {
+      transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+    }
+
+    .card-flipped {
+      transform: rotateY(180deg);
+    }
+
+    .cursor-grab {
+      cursor: grab;
+    }
+
+    .cursor-grabbing {
+      cursor: grabbing;
+    }
+
+    .glass-nav {
+      background: rgba(5, 5, 5, 0.7);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    }
+
+    .pricing-card {
+      transition: all 0.3s ease;
+      background: var(--bg-card);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .pricing-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px -5px rgba(0, 0, 0, 0.3);
+    }
+
+    .control-glass {
+      background: rgba(30, 30, 30, 0.6);
+      backdrop-filter: blur(16px) saturate(180%);
+      -webkit-backdrop-filter: blur(16px) saturate(180%);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .indicator-dot {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .indicator-dot.active {
+      width: 24px;
+      background-color: #1d1d1f;
+    }
+
+    @property --gradient-angle {
+      syntax: "<angle>";
+      initial-value: 0deg;
+      inherits: false;
+    }
+
+    @property --gradient-angle-offset {
+      syntax: "<angle>";
+      initial-value: 0deg;
+      inherits: false;
+    }
+
+    @property --gradient-shine {
+      syntax: "<color>";
+      initial-value: #f97316;
+      inherits: false;
+    }
+
+    .shiny-cta {
+      --gradient-angle: 0deg;
+      --gradient-angle-offset: 0deg;
+      --gradient-shine: #f97316;
+      position: relative;
+      overflow: hidden;
+      border-radius: 9999px;
+      padding: 0.625rem 1.25rem;
+      font-size: 0.875rem;
+      line-height: 1.2;
+      font-weight: 500;
+      color: #ffffff;
+      background: linear-gradient(#000000, #000000) padding-box, conic-gradient(from calc(var(--gradient-angle) - var(--gradient-angle-offset)), transparent 0%, #ea580c 5%, var(--gradient-shine) 15%, #ea580c 30%, transparent 40%, transparent 100%) border-box;
+      border: 2px solid transparent;
+      box-shadow: inset 0 0 0 1px #1a1818;
+      outline: none;
+      transition: all 0.3s;
+      cursor: pointer;
+      isolation: isolate;
+      outline-offset: 4px;
+      font-family: 'Inter', sans-serif;
+      animation: border-spin 2.5s linear infinite;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      letter-spacing: -0.02em;
+    }
+
+    h1 {
+      font-weight: 700;
+    }
+
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-weight: 500;
+    }
+
+    @keyframes gradient-flow-badge {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      100% {
+        background-position: 200% 50%;
+      }
+    }
+
+    .badge-animated {
+      background-size: 200% auto;
+      animation: gradient-flow-badge 3s linear infinite;
+    }
+
+    @media (min-width: 768px) {
+      .shiny-cta {
+        padding: 0.75rem 1.75rem;
+        font-size: 0.95rem;
+      }
+    }
+
+    .shiny-cta-light {
+      color: #000000;
+      --gradient-shine: #fb923c;
+      background: linear-gradient(#ffffff, #ffffff) padding-box, conic-gradient(from calc(var(--gradient-angle) - var(--gradient-angle-offset)), transparent 0%, #cbd5e1 5%, var(--gradient-shine) 15%, #cbd5e1 30%, transparent 40%, transparent 100%) border-box;
+      box-shadow: inset 0 0 0 1px #e2e8f0, 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    @keyframes border-spin {
+      to {
+        --gradient-angle: 360deg;
+      }
+    }
+
+    .shiny-cta:active {
+      transform: translateY(1px);
+    }
+
+    .shiny-cta::before {
+      content: '';
+      pointer-events: none;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: calc(100% - 6px);
+      height: calc(100% - 6px);
+      background: radial-gradient(circle at 2px 2px, white 0.5px, transparent 0) padding-box;
+      background-size: 4px 4px;
+      mask-image: conic-gradient(from calc(var(--gradient-angle) + 45deg), black, transparent 10% 90%, black);
+      opacity: 0.4;
+    }
+
+    .shiny-cta-light::before {
+      background: radial-gradient(circle at 2px 2px, #000 0.5px, transparent 0) padding-box;
+      opacity: 0.1;
+    }
+
+    .shiny-cta::after {
+      content: '';
+      pointer-events: none;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 1;
+      width: 100%;
+      aspect-ratio: 1;
+      background: linear-gradient(-50deg, transparent, #ea580c, transparent);
+      mask-image: radial-gradient(circle at bottom, transparent 40%, black);
+      opacity: 0.6;
+      animation: shimmer 4s linear infinite;
+    }
+
+    .shiny-cta-light::after {
+      background: linear-gradient(-50deg, transparent, #fb923c, transparent);
+      opacity: 0.3;
+    }
+
+    .shiny-cta span {
+      position: relative;
+      z-index: 2;
+    }
+
+    .shiny-cta span::before {
+      content: '';
+      pointer-events: none;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      z-index: -1;
+      width: calc(100% + 1rem);
+      height: calc(100% + 1rem);
+      box-shadow: inset 0 -1ex 2rem 4px #ea580c;
+      opacity: 0;
+      transition: opacity 0.8s;
+      animation: breathe 4.5s linear infinite;
+    }
+
+    .shiny-cta-light span::before {
+      box-shadow: inset 0 -1ex 2rem 4px #fdba74;
+    }
+
+    @keyframes shimmer {
+      to {
+        transform: translate(-50%, -50%) rotate(360deg);
+      }
+    }
+
+    @keyframes breathe {
+
+      0%,
+      100% {
+        transform: translate(-50%, -50%) scale(1);
+      }
+
+      50% {
+        transform: translate(-50%, -50%) scale(1.20);
+      }
+    }
+
+    .shiny-cta.nav-cta {
+      padding: 0.5rem 1rem;
+      font-size: 0.825rem;
+    }
+
+    .shiny-cta.w-full {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+
+    /* Modified Beam Border for Mobile - Vertical Scan */
+    .card-beam-border {
+      position: absolute;
+      inset: 0;
+      border-radius: 24px;
+      pointer-events: none;
+      z-index: 0;
+      padding: 2px;
+      background: linear-gradient(180deg, transparent 0%, #60a5fa 50%, transparent 100%);
+      background-size: 100% 200%;
+      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      animation: beam-scan 3s ease-in-out infinite alternate;
+      display: none;
+    }
+
+    @keyframes beam-scan {
+      0% {
+        background-position: 0% 0%;
+      }
+
+      100% {
+        background-position: 0% 100%;
+      }
+    }
+
+    @media (max-width: 1023px) {
+      .card-beam-border {
+        display: block;
+      }
+    }
+
+    /* Beam Animation for Pricing CTA */
+    @keyframes beam-rotate {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    .cta-beam-animation {
+      background-size: 200% 200%;
+      animation: beam-rotate 3s linear infinite;
+    }
+
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background-color: rgba(0, 0, 0, 0.1);
+      border-radius: 20px;
+    }
+
+    .mobile-menu-wrapper {
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+    }
+
+    .menu-closed {
+      transform: translateY(-100%);
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .menu-open {
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .sneak-shine {
+      background: linear-gradient(to right, #ffffff 30%, #a5f3fc 45%, #a5f3fc 55%, #ffffff 70%);
+      background-size: 200% auto;
+      color: #fff;
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: sneak-pass 5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+      transition: background 0.8s ease;
+    }
+
+    @keyframes sneak-pass {
+      0% {
+        background-position: 100% center;
+      }
+
+      100% {
+        background-position: -100% center;
+      }
+    }
+
+    .animate-in {
+      animation: fade-up 0.8s ease-out forwards;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    @keyframes fade-up {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .integration-icon-wrapper {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .integration-icon-wrapper:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.15);
+    }
+
+    @keyframes gradient-flow {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    .group\/item:hover .hover-gradient-text {
+      background: linear-gradient(to right, #2563eb, #9333ea, #2563eb);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      color: transparent;
+      animation: gradient-flow 3s linear infinite;
+    }
+
+    iconify-icon.icon-gradient {
+      display: inline-block;
+    }
+
+    /* Animations for Mission Statement and Modal */
+    @keyframes shimmer {
+      0% {
+        background-position: 200% 0;
+      }
+
+      100% {
+        background-position: -200% 0;
+      }
+    }
+
+    .animate-shimmer {
+      animation: shimmer 3s linear infinite;
+    }
+
+    @keyframes gradient-text {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    .animate-gradient {
+      animation: gradient-text 6s ease infinite;
+    }
+
+    @keyframes fade-in-up {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-fade-in-up {
+      animation: fade-in-up 0.8s ease-out forwards;
+      opacity: 0;
+      /* Starte invisible */
+    }
+
+    /* Floating Animation for 3D Thunder Icon */
+    @keyframes float-icon {
+
+      0%,
+      100% {
+        transform: translateY(-10px) rotate(-2deg);
+      }
+
+      50% {
+        transform: translateY(10px) rotate(2deg);
+      }
+    }
+
+    .floating-icon {
+      animation: float-icon 4s ease-in-out infinite;
+    }
+
+    /* New Animations for Mission Statement (Simulating Framer Motion properties) */
+    @keyframes appear-from-left-smooth {
+      0% {
+        opacity: 0;
+        transform: translateX(-50px);
+        filter: blur(10px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateX(0);
+        filter: blur(0);
+      }
+    }
+
+    .animate-appear-left {
+      opacity: 0;
+      /* meaningful start state */
+      animation: appear-from-left-smooth 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      /* smooth easeOutExpo-like curve */
+    }
+
+    .reveal-type {
+      background: linear-gradient(90deg, #1d1d1f 0%, #1d1d1f 50%, #a855f7 50%, #2563eb 75%, #10b981 100%);
+      background-size: 200% 100%;
+      background-position: 0% 0;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      color: transparent;
+      transition: background-position 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    .reveal-type.active {
+      background-position: 100% 0;
+    }
+
+    .gradient-text-premium {
+      background: linear-gradient(135deg, #2563eb, #9333ea, #db2777);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      color: transparent;
+      animation: gradient-flow 3s linear infinite;
+      /* Optional: adds subtle movement to gradient */
+    }
+
+    /* Tech Stack Carousel Animation */
+    @keyframes scroll-tech {
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    .animate-scroll-tech {
+      display: flex;
+      width: max-content;
+      animation: scroll-tech 40s linear infinite;
+    }
+
+    .animate-scroll-tech:hover {
+      animation-play-state: paused;
+    }
+
+    /* Inverse Glass Nav for Light Backgrounds */
+    /* Inverse Glass Nav for Light Backgrounds - subtler light gray */
+    .glass-nav-inverse {
+      background: rgba(226, 232, 240, 0.8) !important;
+      /* slate-200/80 */
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    }
+
+    /* Globe Placeholder Animation - Matrix/Beam Effect */
+    @keyframes beam-scan-diagonal {
+      0% {
+        transform: translate(-50%, 50%);
+      }
+
+      100% {
+        transform: translate(50%, -50%);
+      }
+    }
+
+    .animate-beam-scan {
+      animation: beam-scan-diagonal 3s linear infinite;
+      will-change: transform;
+    }
+
+    .animate-gradient-slow {
+      background-size: 200% auto;
+      animation: gradient-text 8s ease infinite;
+    }
+
+    .matrix-grid {
+      background-image:
+        linear-gradient(rgba(147, 51, 234, 0.3) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(59, 130, 246, 0.3) 1px, transparent 1px);
+      background-size: 30px 30px;
+      mask-image: radial-gradient(circle at center, black 0%, transparent 80%);
+      -webkit-mask-image: radial-gradient(circle at center, black 0%, transparent 80%);
+    }
+
+    /* Integration Logo Beam Animation */
+    @property --logo-beam-angle {
+      syntax: '<angle>';
+      initial-value: 0deg;
+      inherits: false;
+    }
+
+    @keyframes logo-beam-rotate {
+      from {
+        --logo-beam-angle: 0deg;
+      }
+
+      to {
+        --logo-beam-angle: 360deg;
+      }
+    }
+
+    @keyframes logo-beam-opacity {
+
+      0%,
+      10% {
+        opacity: 1;
+        filter: blur(0px);
+      }
+
+      15%,
+      100% {
+        opacity: 0;
+        filter: blur(2px);
+      }
+    }
+
+    .logo-beam-container {
+      position: relative;
+    }
+
+    .logo-beam-container::after {
+      content: '';
+      position: absolute;
+      inset: -2px;
+      border-radius: 12px;
+      padding: 2px;
+      background: conic-gradient(from var(--logo-beam-angle), transparent 60%, #6366f1, #8b5cf6, #a855f7, transparent 90%);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      opacity: 0;
+      animation: logo-beam-rotate 2s linear infinite, logo-beam-opacity 8s infinite;
+      pointer-events: none;
+    }
+
+    .logo-beam-1::after {
+      animation-delay: 0s, 0s;
+    }
+
+    .logo-beam-2::after {
+      animation-delay: 0s, 1s;
+    }
+
+    .logo-beam-3::after {
+      animation-delay: 0s, 2s;
+    }
+
+    .logo-beam-4::after {
+      animation-delay: 0s, 3s;
+    }
+
+    .logo-beam-5::after {
+      animation-delay: 0s, 4s;
+    }
+
+    .logo-beam-6::after {
+      animation-delay: 0s, 5s;
+    }
+
+    .logo-beam-7::after {
+      animation-delay: 0s, 6s;
+    }
+
+    .logo-beam-8::after {
+      animation-delay: 0s, 7s;
+    }
+
+    /* Apple-Style Organic Gradient Background */
+    @keyframes gradient-shift {
+
+      0%,
+      100% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+    }
+
+    @keyframes gradient-rotate {
+      0% {
+        transform: translate(-50%, -50%) rotate(0deg) scale(1);
+      }
+
+      50% {
+        transform: translate(-50%, -50%) rotate(180deg) scale(1.1);
+      }
+
+      100% {
+        transform: translate(-50%, -50%) rotate(360deg) scale(1);
+      }
+    }
+
+    .hero-gradient-bg {
+      position: absolute;
+      top: 40%;
+      left: 25%;
+      width: 800px;
+      height: 800px;
+      transform: translate(-50%, -50%);
+      background: radial-gradient(circle at center,
+          rgba(59, 130, 246, 0.15) 0%,
+          rgba(147, 51, 234, 0.12) 25%,
+          rgba(236, 72, 153, 0.1) 50%,
+          rgba(59, 130, 246, 0.08) 75%,
+          transparent 100%);
+      filter: blur(120px);
+      animation: gradient-rotate 20s ease-in-out infinite;
+      pointer-events: none;
+      z-index: 1;
+      opacity: 1;
+    }
+
+    .hero-gradient-bg-2 {
+      position: absolute;
+      top: 25%;
+      left: 15%;
+      width: 700px;
+      height: 700px;
+      transform: translate(-50%, -50%);
+      background: radial-gradient(circle at center,
+          rgba(147, 51, 234, 0.12) 0%,
+          rgba(236, 72, 153, 0.1) 30%,
+          rgba(59, 130, 246, 0.08) 60%,
+          transparent 100%);
+      filter: blur(140px);
+      animation: gradient-rotate 25s ease-in-out infinite reverse;
+      pointer-events: none;
+      z-index: 1;
+      opacity: 1;
+    }
+
+    .hero-gradient-bg-3 {
+      position: absolute;
+      bottom: 15%;
+      left: 20%;
+      width: 650px;
+      height: 650px;
+      transform: translate(-50%, -50%);
+      background: radial-gradient(circle at center,
+          rgba(236, 72, 153, 0.1) 0%,
+          rgba(59, 130, 246, 0.08) 40%,
+          rgba(147, 51, 234, 0.06) 70%,
+          transparent 100%);
+      filter: blur(130px);
+      animation: gradient-rotate 30s ease-in-out infinite;
+      animation-delay: -10s;
+      pointer-events: none;
+      z-index: 1;
+      opacity: 1;
+    }
+
+    /* Mobile & Tablet Navbar Centering */
+    @media (max-width: 1023px) {
+      #inner-nav>div {
+        position: relative;
+      }
+
+      /* Center the logo section */
+      #inner-nav>div>a:first-child {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      /* Keep hamburger on the right */
+      #inner-nav>div>div:last-child {
+        margin-left: auto;
+      }
+    }
+  </style>
 </head>
 
 <body class="bg-white text-slate-900">
 
-    <!-- Simple Navigation -->
-    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
-            <a href="case-studies.html"
-                class="flex items-center gap-2 text-slate-900 font-semibold hover:text-blue-600 transition-colors text-sm md:text-base">
-                <iconify-icon icon="lucide:arrow-left" width="20"></iconify-icon>
-                <span class="hidden sm:inline">Back to All Case Studies</span>
-                <span class="sm:hidden">All Case Studies</span>
-            </a>
-            <a href="index.html" class="block">
-                <img src="logos/logo_light_cropped.png" alt="LoopSuit" class="h-6 w-auto">
-            </a>
-        </div>
-    </nav>
+  <!-- Simple Navigation -->
+  <nav id="mobile-menu" aria-label="Mobile navigation"
+    class="fixed inset-0 z-[150] bg-black/95 backdrop-blur-3xl menu-closed mobile-menu-wrapper flex flex-col justify-center items-center">
+    <button id="close-menu-btn" aria-label="Close mobile menu" onclick="closeMenuAndNavigate()"
+      class="absolute top-6 right-6 p-3 rounded-full bg-white/10 hover:bg-white/20 transition-colors z-[160]">
+      <iconify-icon icon="lucide:x" width="24" stroke-width="1.5" class="text-white"></iconify-icon>
+    </button>
+    <div class="flex flex-col gap-8 text-center relative z-10">
+      <a href="index.html#solutions"
+        class="text-4xl font-sf font-semibold text-white tracking-tight hover:text-blue-500 transition-colors"
+        onclick="closeMenuAndNavigate()">
+        Solutions
+      </a>
+      <a href="services.html"
+        class="text-4xl font-sf font-semibold text-white tracking-tight hover:text-blue-500 transition-colors"
+        onclick="closeMenuAndNavigate()">
+        Services
+      </a>
+      <a href="case-studies.html"
+        class="text-4xl font-sf font-semibold text-white tracking-tight hover:text-blue-500 transition-colors"
+        onclick="closeMenuAndNavigate()">
+        Case Studies
+      </a>
+    </div>
+    <div class="mt-14 w-full px-12 max-w-sm relative z-10">
+      <button class="shiny-cta w-full focus:outline-none justify-center"
+        onclick="closeMenuAndNavigate(); openCalendly()">
+        <span>Book Free Call</span>
+      </button>
+    </div>
+  </nav>
+  <header id="main-navbar" class="fixed top-0 left-0 right-0 z-[100] pt-6 px-6 transition-all duration-300">
+    <nav class="max-w-[95%] mx-auto rounded-full px-6 py-3 transition-all duration-300 glass-nav" id="inner-nav">
+      <div class="flex items-center justify-between md:justify-between relative">
+        <!-- Logo -->
+        <a href="index.html" class="flex items-center gap-4 md:flex-1 justify-center md:justify-start">
+          <div class="text-2xl font-black italic tracking-tighter text-white">
+            LOOPSUIT<sup class="text-[9px] not-italic text-gray-500 ml-0.5">®</sup>
+          </div>
+          <div class="hidden sm:flex flex-col justify-center pl-4 border-l-2 border-white/10 h-8">
+            <span
+              class="text-[8px] font-bold tracking-[0.3em] text-gray-400 uppercase leading-none mb-0.5">VISION</span>
+            <div class="bg-[#3b82f6] px-1.5 py-[1px] transform -skew-x-12 inline-block w-max">
+              <span
+                class="block transform skew-x-12 text-[9px] font-black tracking-widest text-white uppercase leading-none">AUTOMATED</span>
+            </div>
+          </div>
+        </a>
 
-    <!-- Hero Section -->
-    <section class="pt-20 md:pt-24 pb-8 md:pb-12 px-4 sm:px-6 lg:px-8">
-        <div class="max-w-7xl mx-auto">
+        <!-- Desktop Nav (Absolutely Centered) -->
+        <div
+          class="hidden lg:flex items-center gap-8 text-sm font-medium text-gray-300 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+          <div class="relative group">
+            <button class="flex items-center gap-1 hover:text-white transition-colors py-2">
+              Solutions
+              <iconify-icon icon="lucide:chevron-down"
+                class="group-hover:rotate-180 transition-transform duration-300"></iconify-icon>
+            </button>
+            <!-- Dropdown (Light Theme) -->
             <div
-                class="relative w-full h-[50vh] min-h-[400px] max-h-[600px] rounded-2xl md:rounded-3xl overflow-hidden">
-                <img src="./Images/CaseStudies/turbocontent_case_study_1768257286200.png" alt="TurboContent AI Platform"
-                    class="absolute inset-0 w-full h-full object-cover">
-
-                <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
-
-                <div class="absolute bottom-0 left-0 right-0 p-6 sm:p-8 md:p-10 lg:p-12">
-                    <span
-                        class="inline-block px-4 py-1.5 rounded-full bg-indigo-500 text-white text-xs font-bold uppercase tracking-wide mb-3 md:mb-4 shadow-lg">
-                        SaaS MVP
+              class="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[360px] p-2 bg-white rounded-2xl shadow-xl border border-slate-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible translate-y-2 group-hover:translate-y-0 transition-all duration-200 overflow-hidden z-50 ring-1 ring-black/5 whitespace-normal">
+              <div class="flex flex-col gap-1">
+                <a href="index.html#solution-sales"
+                  class="flex items-start gap-4 p-3 rounded-xl hover:bg-slate-50 transition-colors group/item"
+                  onclick="closeMenuAndNavigate()">
+                  <div
+                    class="w-9 h-9 flex-shrink-0 flex items-center justify-center rounded-lg bg-slate-100 border border-slate-200/50 mt-0.5 transition-colors group-hover/item:bg-white group-hover/item:shadow-sm">
+                    <iconify-icon icon="lucide:workflow" width="16" stroke-width="1.5"
+                      class="text-slate-500 transition-colors duration-300 group-hover/item:text-blue-600"></iconify-icon>
+                  </div>
+                  <div class="flex flex-col">
+                    <span class="text-sm font-semibold text-slate-900 leading-tight hover-gradient-text">
+                      Automate Lead Generation & Sales
                     </span>
-
-                    <h1
-                        class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white font-sf mb-2 md:mb-3 leading-tight max-w-4xl">
-                        TurboContent AI — Complete Content Platform
-                    </h1>
-
-                    <p class="text-sm sm:text-base md:text-lg lg:text-lg text-slate-100 max-w-3xl leading-relaxed">
-                        Production-ready AI SaaS platform with 7 content tools, Stripe payments, and user dashboard
-                        built in 6 weeks for 85% less cost
-                    </p>
-                </div>
+                    <span class="text-[11px] text-slate-500 font-medium mt-1 leading-snug">
+                      200+ leads daily, personalized outreach, automatic proposals
+                    </span>
+                  </div>
+                </a>
+                <a href="index.html#solution-launch"
+                  class="flex items-start gap-4 p-3 rounded-xl hover:bg-slate-50 transition-colors group/item"
+                  onclick="closeMenuAndNavigate()">
+                  <div
+                    class="w-9 h-9 flex-shrink-0 flex items-center justify-center rounded-lg bg-slate-100 border border-slate-200/50 mt-0.5 transition-colors group-hover/item:bg-white group-hover/item:shadow-sm">
+                    <iconify-icon icon="lucide:rocket" width="16" stroke-width="1.5"
+                      class="text-slate-500 transition-colors duration-300 group-hover/item:text-blue-600"></iconify-icon>
+                  </div>
+                  <div class="flex flex-col">
+                    <span class="text-sm font-semibold text-slate-900 leading-tight hover-gradient-text">
+                      Launch Your Product in 2 Weeks
+                    </span>
+                    <span class="text-[11px] text-slate-500 font-medium mt-1 leading-snug">
+                      Production-ready MVPs. No 6-month timelines. No $100K fees.
+                    </span>
+                  </div>
+                </a>
+                <a href="index.html#solution-operations"
+                  class="flex items-start gap-4 p-3 rounded-xl hover:bg-slate-50 transition-colors group/item"
+                  onclick="closeMenuAndNavigate()">
+                  <div
+                    class="w-9 h-9 flex-shrink-0 flex items-center justify-center rounded-lg bg-slate-100 border border-slate-200/50 mt-0.5 transition-colors group-hover/item:bg-white group-hover/item:shadow-sm">
+                    <iconify-icon icon="lucide:headset" width="16" stroke-width="1.5"
+                      class="text-slate-500 transition-colors duration-300 group-hover/item:text-blue-600"></iconify-icon>
+                  </div>
+                  <div class="flex flex-col">
+                    <span class="text-sm font-semibold text-slate-900 leading-tight hover-gradient-text">
+                      Automate Customer Support
+                    </span>
+                    <span class="text-[11px] text-slate-500 font-medium mt-1 leading-snug">
+                      24/7 AI support handles 80% automatically—instant answers
+                    </span>
+                  </div>
+                </a>
+                <a href="index.html#package-premium"
+                  class="flex items-start gap-4 p-3 rounded-xl hover:bg-slate-50 transition-colors group/item"
+                  onclick="closeMenuAndNavigate()">
+                  <div
+                    class="w-9 h-9 flex-shrink-0 flex items-center justify-center rounded-lg bg-slate-100 border border-slate-200/50 mt-0.5 transition-colors group-hover/item:bg-white group-hover/item:shadow-sm">
+                    <iconify-icon icon="lucide:sparkles" width="16" stroke-width="1.5"
+                      class="text-slate-500 transition-colors duration-300 group-hover/item:text-blue-600"></iconify-icon>
+                  </div>
+                  <div class="flex flex-col">
+                    <span class="text-sm font-semibold text-slate-900 leading-tight hover-gradient-text">
+                      Product + Automation Bundle
+                    </span>
+                    <span class="text-[11px] text-slate-500 font-medium mt-1 leading-snug">
+                      MVP + sales automation + support. Launch in 30 days. Save 20%.
+                    </span>
+                  </div>
+                </a>
+              </div>
             </div>
+          </div>
+          <a href="services.html" class="hover:text-white transition-colors">Services</a>
+          <a href="case-studies.html" class="hover:text-white transition-colors">Case Studies</a>
         </div>
-    </section>
 
-    <!-- Main Content -->
-    <div class="max-w-7xl mx-auto px-6 py-12">
-        <div class="grid lg:grid-cols-3 gap-12">
+        <!-- CTA & Hamburger -->
+        <div class="flex items-center gap-4">
+          <button class="shiny-cta hidden lg:flex" onclick="openCalendly()">
+            <span>Book Free Call</span>
+          </button>
+          <!-- Mobile Menu Button -->
+          <button id="mobile-menu-btn" class="lg:hidden text-white p-2 rounded-full hover:bg-white/10 transition-colors"
+            onclick="toggleMobileMenu()" aria-label="Menu">
+            <iconify-icon icon="lucide:menu" width="24" height="24"></iconify-icon>
+          </button>
+        </div>
+      </div>
+    </nav>
+  </header>
 
-            <!-- Main Content Column -->
-            <div class="lg:col-span-2 space-y-12">
+  <!-- Hero Section -->
+  <section class="pt-20 md:pt-24 pb-8 md:pb-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+      <div class="relative w-full h-[50vh] min-h-[400px] max-h-[600px] rounded-2xl md:rounded-3xl overflow-hidden">
+        <img src="./Images/CaseStudies/turbocontent_case_study_1768257286200.png" alt="TurboContent AI Platform"
+          class="absolute inset-0 w-full h-full object-cover">
 
-                <!-- Overview -->
-                <section>
-                    <h2 class="text-3xl font-semibold text-slate-900 font-sf mb-6">The Challenge</h2>
-                    <p class="text-base text-slate-600 leading-relaxed mb-4">
-                        A content marketing agency wanted to launch their own AI-powered SaaS platform to serve their
-                        clients directly, but traditional development quotes were coming in at $180K-$250K with 9-12
-                        month timelines. They needed a faster, more cost-effective solution without sacrificing quality
-                        or features.
-                    </p>
-                    <p class="text-base text-slate-600 leading-relaxed mb-4">
-                        Key requirements included:
-                    </p>
-                    <ul class="space-y-2 text-base text-slate-600 ml-6">
-                        <li class="flex items-start gap-2">
-                            <iconify-icon icon="lucide:check-circle" class="text-indigo-600 mt-1"
-                                width="20"></iconify-icon>
-                            7 AI-powered content generation tools (blog posts, social media, emails, etc.)
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <iconify-icon icon="lucide:check-circle" class="text-indigo-600 mt-1"
-                                width="20"></iconify-icon>
-                            Stripe subscription payments with 3 pricing tiers
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <iconify-icon icon="lucide:check-circle" class="text-indigo-600 mt-1"
-                                width="20"></iconify-icon>
-                            User authentication and personalized dashboards
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <iconify-icon icon="lucide:check-circle" class="text-indigo-600 mt-1"
-                                width="20"></iconify-icon>
-                            Content history and export functionality
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <iconify-icon icon="lucide:check-circle" class="text-indigo-600 mt-1"
-                                width="20"></iconify-icon>
-                            Mobile-responsive design with modern UI
-                        </li>
-                    </ul>
-                </section>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
 
-                <!-- Solution -->
-                <section>
-                    <h2 class="text-3xl font-semibold text-slate-900 font-sf mb-6">The Solution</h2>
-                    <p class="text-base text-slate-600 leading-relaxed mb-6">
-                        We built a production-ready MVP using modern no-code and low-code tools, integrating
-                        best-in-class AI APIs, and delivering a polished product in just 6 weeks at a fraction of
-                        traditional development costs.
-                    </p>
+        <div class="absolute bottom-0 left-0 right-0 p-6 sm:p-8 md:p-10 lg:p-12">
+          <span
+            class="inline-block px-4 py-1.5 rounded-full bg-indigo-500 text-white text-xs font-bold uppercase tracking-wide mb-3 md:mb-4 shadow-lg">
+            SaaS MVP
+          </span>
 
-                    <div class="space-y-6">
-                        <!-- Tech Stack -->
-                        <div class="bg-slate-50 rounded-2xl p-6">
-                            <h3 class="text-xl font-semibold text-slate-900 mb-4 flex items-center gap-2">
-                                <iconify-icon icon="lucide:code-2" class="text-indigo-600" width="24"></iconify-icon>
-                                Modern Tech Stack
-                            </h3>
-                            <div class="grid sm:grid-cols-2 gap-4">
-                                <div class="flex items-start gap-3">
-                                    <iconify-icon icon="simple-icons:nextdotjs" class="text-slate-700 mt-1"
-                                        width="20"></iconify-icon>
-                                    <div>
-                                        <div class="font-semibold text-slate-900 text-sm">Next.js 14</div>
-                                        <div class="text-xs text-slate-600">React framework with App Router</div>
-                                    </div>
-                                </div>
-                                <div class="flex items-start gap-3">
-                                    <iconify-icon icon="simple-icons:openai" class="text-slate-700 mt-1"
-                                        width="20"></iconify-icon>
-                                    <div>
-                                        <div class="font-semibold text-slate-900 text-sm">OpenAI GPT-4</div>
-                                        <div class="text-xs text-slate-600">Content generation engine</div>
-                                    </div>
-                                </div>
-                                <div class="flex items-start gap-3">
-                                    <iconify-icon icon="simple-icons:supabase" class="text-slate-700 mt-1"
-                                        width="20"></iconify-icon>
-                                    <div>
-                                        <div class="font-semibold text-slate-900 text-sm">Supabase</div>
-                                        <div class="text-xs text-slate-600">Database & authentication</div>
-                                    </div>
-                                </div>
-                                <div class="flex items-start gap-3">
-                                    <iconify-icon icon="simple-icons:stripe" class="text-slate-700 mt-1"
-                                        width="20"></iconify-icon>
-                                    <div>
-                                        <div class="font-semibold text-slate-900 text-sm">Stripe</div>
-                                        <div class="text-xs text-slate-600">Payment processing & subscriptions</div>
-                                    </div>
-                                </div>
-                                <div class="flex items-start gap-3">
-                                    <iconify-icon icon="simple-icons:tailwindcss" class="text-slate-700 mt-1"
-                                        width="20"></iconify-icon>
-                                    <div>
-                                        <div class="font-semibold text-slate-900 text-sm">Tailwind CSS</div>
-                                        <div class="text-xs text-slate-600">Utility-first styling</div>
-                                    </div>
-                                </div>
-                                <div class="flex items-start gap-3">
-                                    <iconify-icon icon="simple-icons:vercel" class="text-slate-700 mt-1"
-                                        width="20"></iconify-icon>
-                                    <div>
-                                        <div class="font-semibold text-slate-900 text-sm">Vercel</div>
-                                        <div class="text-xs text-slate-600">Hosting & deployment</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+          <h1
+            class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white font-sf mb-2 md:mb-3 leading-tight max-w-4xl">
+            TurboContent AI — Complete Content Platform
+          </h1>
 
-                        <!-- Features Built -->
-                        <div class="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-2xl p-6">
-                            <h3 class="text-xl font-semibold text-slate-900 mb-4 flex items-center gap-2">
-                                <iconify-icon icon="lucide:sparkles" class="text-indigo-600" width="24"></iconify-icon>
-                                7 AI Content Tools Delivered
-                            </h3>
-                            <div class="grid sm:grid-cols-2 gap-3">
-                                <div class="bg-white rounded-lg p-3">
-                                    <div class="font-semibold text-slate-900 text-sm mb-1">📝 Blog Post Generator</div>
-                                    <div class="text-xs text-slate-600">SEO-optimized long-form content</div>
-                                </div>
-                                <div class="bg-white rounded-lg p-3">
-                                    <div class="font-semibold text-slate-900 text-sm mb-1">📱 Social Media Posts</div>
-                                    <div class="text-xs text-slate-600">Platform-specific captions & hashtags</div>
-                                </div>
-                                <div class="bg-white rounded-lg p-3">
-                                    <div class="font-semibold text-slate-900 text-sm mb-1">✉️ Email Campaigns</div>
-                                    <div class="text-xs text-slate-600">Subject lines & body copy</div>
-                                </div>
-                                <div class="bg-white rounded-lg p-3">
-                                    <div class="font-semibold text-slate-900 text-sm mb-1">🎯 Ad Copy Creator</div>
-                                    <div class="text-xs text-slate-600">Google & Facebook ads</div>
-                                </div>
-                                <div class="bg-white rounded-lg p-3">
-                                    <div class="font-semibold text-slate-900 text-sm mb-1">📄 Product Descriptions</div>
-                                    <div class="text-xs text-slate-600">E-commerce optimized</div>
-                                </div>
-                                <div class="bg-white rounded-lg p-3">
-                                    <div class="font-semibold text-slate-900 text-sm mb-1">🎬 Video Scripts</div>
-                                    <div class="text-xs text-slate-600">YouTube & TikTok ready</div>
-                                </div>
-                                <div class="bg-white rounded-lg p-3 sm:col-span-2">
-                                    <div class="font-semibold text-slate-900 text-sm mb-1">🔄 Content Repurposer</div>
-                                    <div class="text-xs text-slate-600">Transform content across formats</div>
-                                </div>
-                            </div>
-                        </div>
+          <p class="text-sm sm:text-base md:text-lg lg:text-lg text-slate-100 max-w-3xl leading-relaxed">
+            Production-ready AI SaaS platform with 7 content tools, Stripe payments, and user dashboard
+            built in 6 weeks for 85% less cost
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-                        <!-- Development Timeline -->
-                        <div class="bg-slate-50 rounded-2xl p-6">
-                            <h3 class="text-xl font-semibold text-slate-900 mb-4">6-Week Development Sprint</h3>
-                            <div class="space-y-3">
-                                <div class="flex gap-3">
-                                    <div class="flex-shrink-0 text-indigo-600 font-bold text-sm">Week 1-2</div>
-                                    <div class="text-sm text-slate-600">Core infrastructure, auth, database schema,
-                                        payment integration</div>
-                                </div>
-                                <div class="flex gap-3">
-                                    <div class="flex-shrink-0 text-indigo-600 font-bold text-sm">Week 3-4</div>
-                                    <div class="text-sm text-slate-600">AI tool development, prompt engineering, UI/UX
-                                        design</div>
-                                </div>
-                                <div class="flex gap-3">
-                                    <div class="flex-shrink-0 text-indigo-600 font-bold text-sm">Week 5</div>
-                                    <div class="text-sm text-slate-600">User dashboard, content history, export
-                                        features, mobile optimization</div>
-                                </div>
-                                <div class="flex gap-3">
-                                    <div class="flex-shrink-0 text-indigo-600 font-bold text-sm">Week 6</div>
-                                    <div class="text-sm text-slate-600">Testing, bug fixes, performance optimization,
-                                        deployment</div>
-                                </div>
-                            </div>
-                        </div>
+  <!-- Main Content -->
+  <div class="max-w-7xl mx-auto px-6 py-12">
+    <div class="grid lg:grid-cols-3 gap-12">
 
-                        <!-- Key Features -->
-                        <div class="bg-slate-50 rounded-2xl p-6">
-                            <h3 class="text-xl font-semibold text-slate-900 mb-3">Platform Features</h3>
-                            <ul class="space-y-2 text-sm text-slate-600">
-                                <li class="flex items-start gap-2">
-                                    <iconify-icon icon="lucide:check" class="text-indigo-600 mt-1"
-                                        width="18"></iconify-icon>
-                                    User authentication with email/password and Google OAuth
-                                </li>
-                                <li class="flex items-start gap-2">
-                                    <iconify-icon icon="lucide:check" class="text-indigo-600 mt-1"
-                                        width="18"></iconify-icon>
-                                    3-tier subscription model ($29, $79, $199/month)
-                                </li>
-                                <li class="flex items-start gap-2">
-                                    <iconify-icon icon="lucide:check" class="text-indigo-600 mt-1"
-                                        width="18"></iconify-icon>
-                                    Credit-based usage system with automatic renewal
-                                </li>
-                                <li class="flex items-start gap-2">
-                                    <iconify-icon icon="lucide:check" class="text-indigo-600 mt-1"
-                                        width="18"></iconify-icon>
-                                    Content history with search and filtering
-                                </li>
-                                <li class="flex items-start gap-2">
-                                    <iconify-icon icon="lucide:check" class="text-indigo-600 mt-1"
-                                        width="18"></iconify-icon>
-                                    One-click export to PDF, DOCX, and TXT
-                                </li>
-                                <li class="flex items-start gap-2">
-                                    <iconify-icon icon="lucide:check" class="text-indigo-600 mt-1"
-                                        width="18"></iconify-icon>
-                                    Admin dashboard for user management and analytics
-                                </li>
-                                <li class="flex items-start gap-2">
-                                    <iconify-icon icon="lucide:check" class="text-indigo-600 mt-1"
-                                        width="18"></iconify-icon>
-                                    Fully responsive design (mobile, tablet, desktop)
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </section>
+      <!-- Main Content Column -->
+      <div class="lg:col-span-2 space-y-12">
 
-                <!-- Results -->
-                <section>
-                    <h2 class="text-3xl font-semibold text-slate-900 font-sf mb-6">The Results</h2>
+        <!-- Overview -->
+        <section>
+          <h2 class="text-3xl font-semibold text-slate-900 font-sf mb-6">The Challenge</h2>
+          <p class="text-base text-slate-600 leading-relaxed mb-4">
+            A content marketing agency wanted to launch their own AI-powered SaaS platform to serve their
+            clients directly, but traditional development quotes were coming in at $180K-$250K with 9-12
+            month timelines. They needed a faster, more cost-effective solution without sacrificing quality
+            or features.
+          </p>
+          <p class="text-base text-slate-600 leading-relaxed mb-4">
+            Key requirements included:
+          </p>
+          <ul class="space-y-2 text-base text-slate-600 ml-6">
+            <li class="flex items-start gap-2">
+              <iconify-icon icon="lucide:check-circle" class="text-indigo-600 mt-1" width="20"></iconify-icon>
+              7 AI-powered content generation tools (blog posts, social media, emails, etc.)
+            </li>
+            <li class="flex items-start gap-2">
+              <iconify-icon icon="lucide:check-circle" class="text-indigo-600 mt-1" width="20"></iconify-icon>
+              Stripe subscription payments with 3 pricing tiers
+            </li>
+            <li class="flex items-start gap-2">
+              <iconify-icon icon="lucide:check-circle" class="text-indigo-600 mt-1" width="20"></iconify-icon>
+              User authentication and personalized dashboards
+            </li>
+            <li class="flex items-start gap-2">
+              <iconify-icon icon="lucide:check-circle" class="text-indigo-600 mt-1" width="20"></iconify-icon>
+              Content history and export functionality
+            </li>
+            <li class="flex items-start gap-2">
+              <iconify-icon icon="lucide:check-circle" class="text-indigo-600 mt-1" width="20"></iconify-icon>
+              Mobile-responsive design with modern UI
+            </li>
+          </ul>
+        </section>
 
-                    <div class="grid md:grid-cols-2 gap-6 mb-8">
-                        <div class="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-2xl p-6">
-                            <div class="text-4xl font-bold text-indigo-600 mb-2">6 weeks</div>
-                            <div class="text-slate-700 font-medium">Time to Launch</div>
-                            <div class="text-sm text-slate-500 mt-1">vs. 9-12 months traditional dev</div>
-                        </div>
-                        <div class="bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl p-6">
-                            <div class="text-4xl font-bold text-green-600 mb-2">85%</div>
-                            <div class="text-slate-700 font-medium">Cost Savings</div>
-                            <div class="text-sm text-slate-500 mt-1">$27K vs. $180K+ quoted</div>
-                        </div>
-                        <div class="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl p-6">
-                            <div class="text-4xl font-bold text-blue-600 mb-2">1,200+</div>
-                            <div class="text-slate-700 font-medium">Users in 3 Months</div>
-                            <div class="text-sm text-slate-500 mt-1">Organic growth + paid ads</div>
-                        </div>
-                        <div class="bg-gradient-to-br from-orange-50 to-red-50 rounded-2xl p-6">
-                            <div class="text-4xl font-bold text-orange-600 mb-2">$18K</div>
-                            <div class="text-slate-700 font-medium">MRR in Month 3</div>
-                            <div class="text-sm text-slate-500 mt-1">67% ROI already achieved</div>
-                        </div>
-                    </div>
+        <!-- Solution -->
+        <section>
+          <h2 class="text-3xl font-semibold text-slate-900 font-sf mb-6">The Solution</h2>
+          <p class="text-base text-slate-600 leading-relaxed mb-6">
+            We built a production-ready MVP using modern no-code and low-code tools, integrating
+            best-in-class AI APIs, and delivering a polished product in just 6 weeks at a fraction of
+            traditional development costs.
+          </p>
 
-                    <div class="bg-gradient-to-r from-indigo-100 to-purple-100 rounded-2xl p-6 mb-6">
-                        <h3 class="text-lg font-semibold text-slate-900 mb-3">Business Impact</h3>
-                        <div class="space-y-2 text-sm text-slate-700">
-                            <p class="flex items-start gap-2">
-                                <iconify-icon icon="lucide:rocket" class="text-indigo-600 mt-0.5"
-                                    width="18"></iconify-icon>
-                                <span><strong>Launched 8 months ahead</strong> of original timeline, capturing market
-                                    share early</span>
-                            </p>
-                            <p class="flex items-start gap-2">
-                                <iconify-icon icon="lucide:dollar-sign" class="text-indigo-600 mt-0.5"
-                                    width="18"></iconify-icon>
-                                <span><strong>Saved $153K in development costs</strong> that was reinvested in
-                                    marketing</span>
-                            </p>
-                            <p class="flex items-start gap-2">
-                                <iconify-icon icon="lucide:trending-up" class="text-indigo-600 mt-0.5"
-                                    width="18"></iconify-icon>
-                                <span><strong>4.8/5 average rating</strong> from 340+ user reviews on Product
-                                    Hunt</span>
-                            </p>
-                            <p class="flex items-start gap-2">
-                                <iconify-icon icon="lucide:zap" class="text-indigo-600 mt-0.5"
-                                    width="18"></iconify-icon>
-                                <span><strong>45,000+ pieces of content generated</strong> in first 3 months</span>
-                            </p>
-                        </div>
-                    </div>
-
-                    <p class="text-base text-slate-600 leading-relaxed">
-                        The platform continues to grow with new features being added monthly. The client has since
-                        expanded to enterprise clients and is on track to hit $100K MRR by month 12. The MVP approach
-                        allowed them to validate their market and iterate based on real user feedback.
-                    </p>
-                </section>
-
-            </div>
-
-            <!-- Sidebar -->
-            <div class="lg:col-span-1">
-                <div class="sticky top-24 space-y-6">
-
-                    <!-- Live MVP Link -->
-                    <div class="bg-white rounded-2xl p-1 shadow-sm border border-slate-200">
-                        <div class="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-xl p-5">
-                            <div class="flex items-start justify-between mb-3">
-                                <div>
-                                    <h3 class="text-base font-bold text-slate-900 font-sf">Live MVP Preview</h3>
-                                    <p class="text-xs text-slate-500 mt-1">Experience the actual platform</p>
-                                </div>
-                                <div
-                                    class="w-8 h-8 rounded-full bg-white flex items-center justify-center shadow-sm text-indigo-600">
-                                    <iconify-icon icon="lucide:zap" width="16"></iconify-icon>
-                                </div>
-                            </div>
-
-                            <a href="https://turbo-scribe-studio.lovable.app/" target="_blank"
-                                class="flex items-center justify-between w-full px-4 py-3 bg-white hover:bg-indigo-50 text-slate-900 hover:text-indigo-700 font-medium rounded-lg border border-slate-200 hover:border-indigo-200 transition-all group">
-                                <span class="text-sm">Launch Application</span>
-                                <iconify-icon icon="lucide:external-link"
-                                    class="text-slate-400 group-hover:text-indigo-600 transition-colors"
-                                    width="16"></iconify-icon>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Key Takeaways -->
-                    <div class="bg-slate-50 rounded-2xl p-6">
-                        <h3 class="text-lg font-bold text-slate-900 mb-4 font-sf">Project Details</h3>
-                        <div class="space-y-4">
-                            <div>
-                                <div class="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-1">Timeline
-                                </div>
-                                <div class="text-base font-semibold text-slate-900">6 weeks</div>
-                            </div>
-                            <div>
-                                <div class="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-1">Industry
-                                </div>
-                                <div class="text-base font-semibold text-slate-900">AI SaaS</div>
-                            </div>
-                            <div>
-                                <div class="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-1">Tools
-                                    Built</div>
-                                <div class="text-base font-semibold text-slate-900">7 AI features</div>
-                            </div>
-                            <div>
-                                <div class="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-1">Users
-                                </div>
-                                <div class="text-base font-semibold text-slate-900">1,200+</div>
-                            </div>
-                            <div>
-                                <div class="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-1">Cost
-                                    Savings</div>
-                                <div class="text-base font-semibold text-slate-900">$153K</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- CTA -->
-                    <div class="bg-gradient-to-br from-indigo-600 to-purple-600 rounded-2xl p-6 text-white">
-                        <h3 class="text-xl font-bold mb-3">Launch Your SaaS MVP?</h3>
-                        <p class="text-indigo-100 mb-4 text-sm">Get a production-ready platform in weeks, not months.
-                        </p>
-                        <a href="index.html#packages"
-                            class="inline-block w-full text-center px-6 py-3 bg-white text-indigo-600 font-semibold rounded-xl hover:bg-indigo-50 transition-colors">
-                            View Packages
-                        </a>
-                    </div>
-
+          <div class="space-y-6">
+            <!-- Tech Stack -->
+            <div class="bg-slate-50 rounded-2xl p-6">
+              <h3 class="text-xl font-semibold text-slate-900 mb-4 flex items-center gap-2">
+                <iconify-icon icon="lucide:code-2" class="text-indigo-600" width="24"></iconify-icon>
+                Modern Tech Stack
+              </h3>
+              <div class="grid sm:grid-cols-2 gap-4">
+                <div class="flex items-start gap-3">
+                  <iconify-icon icon="simple-icons:nextdotjs" class="text-slate-700 mt-1" width="20"></iconify-icon>
+                  <div>
+                    <div class="font-semibold text-slate-900 text-sm">Next.js 14</div>
+                    <div class="text-xs text-slate-600">React framework with App Router</div>
+                  </div>
                 </div>
+                <div class="flex items-start gap-3">
+                  <iconify-icon icon="simple-icons:openai" class="text-slate-700 mt-1" width="20"></iconify-icon>
+                  <div>
+                    <div class="font-semibold text-slate-900 text-sm">OpenAI GPT-4</div>
+                    <div class="text-xs text-slate-600">Content generation engine</div>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3">
+                  <iconify-icon icon="simple-icons:supabase" class="text-slate-700 mt-1" width="20"></iconify-icon>
+                  <div>
+                    <div class="font-semibold text-slate-900 text-sm">Supabase</div>
+                    <div class="text-xs text-slate-600">Database & authentication</div>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3">
+                  <iconify-icon icon="simple-icons:stripe" class="text-slate-700 mt-1" width="20"></iconify-icon>
+                  <div>
+                    <div class="font-semibold text-slate-900 text-sm">Stripe</div>
+                    <div class="text-xs text-slate-600">Payment processing & subscriptions</div>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3">
+                  <iconify-icon icon="simple-icons:tailwindcss" class="text-slate-700 mt-1" width="20"></iconify-icon>
+                  <div>
+                    <div class="font-semibold text-slate-900 text-sm">Tailwind CSS</div>
+                    <div class="text-xs text-slate-600">Utility-first styling</div>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3">
+                  <iconify-icon icon="simple-icons:vercel" class="text-slate-700 mt-1" width="20"></iconify-icon>
+                  <div>
+                    <div class="font-semibold text-slate-900 text-sm">Vercel</div>
+                    <div class="text-xs text-slate-600">Hosting & deployment</div>
+                  </div>
+                </div>
+              </div>
             </div>
+
+            <!-- Features Built -->
+            <div class="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-2xl p-6">
+              <h3 class="text-xl font-semibold text-slate-900 mb-4 flex items-center gap-2">
+                <iconify-icon icon="lucide:sparkles" class="text-indigo-600" width="24"></iconify-icon>
+                7 AI Content Tools Delivered
+              </h3>
+              <div class="grid sm:grid-cols-2 gap-3">
+                <div class="bg-white rounded-lg p-3">
+                  <div class="font-semibold text-slate-900 text-sm mb-1">📝 Blog Post Generator</div>
+                  <div class="text-xs text-slate-600">SEO-optimized long-form content</div>
+                </div>
+                <div class="bg-white rounded-lg p-3">
+                  <div class="font-semibold text-slate-900 text-sm mb-1">📱 Social Media Posts</div>
+                  <div class="text-xs text-slate-600">Platform-specific captions & hashtags</div>
+                </div>
+                <div class="bg-white rounded-lg p-3">
+                  <div class="font-semibold text-slate-900 text-sm mb-1">✉️ Email Campaigns</div>
+                  <div class="text-xs text-slate-600">Subject lines & body copy</div>
+                </div>
+                <div class="bg-white rounded-lg p-3">
+                  <div class="font-semibold text-slate-900 text-sm mb-1">🎯 Ad Copy Creator</div>
+                  <div class="text-xs text-slate-600">Google & Facebook ads</div>
+                </div>
+                <div class="bg-white rounded-lg p-3">
+                  <div class="font-semibold text-slate-900 text-sm mb-1">📄 Product Descriptions</div>
+                  <div class="text-xs text-slate-600">E-commerce optimized</div>
+                </div>
+                <div class="bg-white rounded-lg p-3">
+                  <div class="font-semibold text-slate-900 text-sm mb-1">🎬 Video Scripts</div>
+                  <div class="text-xs text-slate-600">YouTube & TikTok ready</div>
+                </div>
+                <div class="bg-white rounded-lg p-3 sm:col-span-2">
+                  <div class="font-semibold text-slate-900 text-sm mb-1">🔄 Content Repurposer</div>
+                  <div class="text-xs text-slate-600">Transform content across formats</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Development Timeline -->
+            <div class="bg-slate-50 rounded-2xl p-6">
+              <h3 class="text-xl font-semibold text-slate-900 mb-4">6-Week Development Sprint</h3>
+              <div class="space-y-3">
+                <div class="flex gap-3">
+                  <div class="flex-shrink-0 text-indigo-600 font-bold text-sm">Week 1-2</div>
+                  <div class="text-sm text-slate-600">Core infrastructure, auth, database schema,
+                    payment integration</div>
+                </div>
+                <div class="flex gap-3">
+                  <div class="flex-shrink-0 text-indigo-600 font-bold text-sm">Week 3-4</div>
+                  <div class="text-sm text-slate-600">AI tool development, prompt engineering, UI/UX
+                    design</div>
+                </div>
+                <div class="flex gap-3">
+                  <div class="flex-shrink-0 text-indigo-600 font-bold text-sm">Week 5</div>
+                  <div class="text-sm text-slate-600">User dashboard, content history, export
+                    features, mobile optimization</div>
+                </div>
+                <div class="flex gap-3">
+                  <div class="flex-shrink-0 text-indigo-600 font-bold text-sm">Week 6</div>
+                  <div class="text-sm text-slate-600">Testing, bug fixes, performance optimization,
+                    deployment</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Key Features -->
+            <div class="bg-slate-50 rounded-2xl p-6">
+              <h3 class="text-xl font-semibold text-slate-900 mb-3">Platform Features</h3>
+              <ul class="space-y-2 text-sm text-slate-600">
+                <li class="flex items-start gap-2">
+                  <iconify-icon icon="lucide:check" class="text-indigo-600 mt-1" width="18"></iconify-icon>
+                  User authentication with email/password and Google OAuth
+                </li>
+                <li class="flex items-start gap-2">
+                  <iconify-icon icon="lucide:check" class="text-indigo-600 mt-1" width="18"></iconify-icon>
+                  3-tier subscription model ($29, $79, $199/month)
+                </li>
+                <li class="flex items-start gap-2">
+                  <iconify-icon icon="lucide:check" class="text-indigo-600 mt-1" width="18"></iconify-icon>
+                  Credit-based usage system with automatic renewal
+                </li>
+                <li class="flex items-start gap-2">
+                  <iconify-icon icon="lucide:check" class="text-indigo-600 mt-1" width="18"></iconify-icon>
+                  Content history with search and filtering
+                </li>
+                <li class="flex items-start gap-2">
+                  <iconify-icon icon="lucide:check" class="text-indigo-600 mt-1" width="18"></iconify-icon>
+                  One-click export to PDF, DOCX, and TXT
+                </li>
+                <li class="flex items-start gap-2">
+                  <iconify-icon icon="lucide:check" class="text-indigo-600 mt-1" width="18"></iconify-icon>
+                  Admin dashboard for user management and analytics
+                </li>
+                <li class="flex items-start gap-2">
+                  <iconify-icon icon="lucide:check" class="text-indigo-600 mt-1" width="18"></iconify-icon>
+                  Fully responsive design (mobile, tablet, desktop)
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- Results -->
+        <section>
+          <h2 class="text-3xl font-semibold text-slate-900 font-sf mb-6">The Results</h2>
+
+          <div class="grid md:grid-cols-2 gap-6 mb-8">
+            <div class="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-2xl p-6">
+              <div class="text-4xl font-bold text-indigo-600 mb-2">6 weeks</div>
+              <div class="text-slate-700 font-medium">Time to Launch</div>
+              <div class="text-sm text-slate-500 mt-1">vs. 9-12 months traditional dev</div>
+            </div>
+            <div class="bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl p-6">
+              <div class="text-4xl font-bold text-green-600 mb-2">85%</div>
+              <div class="text-slate-700 font-medium">Cost Savings</div>
+              <div class="text-sm text-slate-500 mt-1">$27K vs. $180K+ quoted</div>
+            </div>
+            <div class="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl p-6">
+              <div class="text-4xl font-bold text-blue-600 mb-2">1,200+</div>
+              <div class="text-slate-700 font-medium">Users in 3 Months</div>
+              <div class="text-sm text-slate-500 mt-1">Organic growth + paid ads</div>
+            </div>
+            <div class="bg-gradient-to-br from-orange-50 to-red-50 rounded-2xl p-6">
+              <div class="text-4xl font-bold text-orange-600 mb-2">$18K</div>
+              <div class="text-slate-700 font-medium">MRR in Month 3</div>
+              <div class="text-sm text-slate-500 mt-1">67% ROI already achieved</div>
+            </div>
+          </div>
+
+          <div class="bg-gradient-to-r from-indigo-100 to-purple-100 rounded-2xl p-6 mb-6">
+            <h3 class="text-lg font-semibold text-slate-900 mb-3">Business Impact</h3>
+            <div class="space-y-2 text-sm text-slate-700">
+              <p class="flex items-start gap-2">
+                <iconify-icon icon="lucide:rocket" class="text-indigo-600 mt-0.5" width="18"></iconify-icon>
+                <span><strong>Launched 8 months ahead</strong> of original timeline, capturing market
+                  share early</span>
+              </p>
+              <p class="flex items-start gap-2">
+                <iconify-icon icon="lucide:dollar-sign" class="text-indigo-600 mt-0.5" width="18"></iconify-icon>
+                <span><strong>Saved $153K in development costs</strong> that was reinvested in
+                  marketing</span>
+              </p>
+              <p class="flex items-start gap-2">
+                <iconify-icon icon="lucide:trending-up" class="text-indigo-600 mt-0.5" width="18"></iconify-icon>
+                <span><strong>4.8/5 average rating</strong> from 340+ user reviews on Product
+                  Hunt</span>
+              </p>
+              <p class="flex items-start gap-2">
+                <iconify-icon icon="lucide:zap" class="text-indigo-600 mt-0.5" width="18"></iconify-icon>
+                <span><strong>45,000+ pieces of content generated</strong> in first 3 months</span>
+              </p>
+            </div>
+          </div>
+
+          <p class="text-base text-slate-600 leading-relaxed">
+            The platform continues to grow with new features being added monthly. The client has since
+            expanded to enterprise clients and is on track to hit $100K MRR by month 12. The MVP approach
+            allowed them to validate their market and iterate based on real user feedback.
+          </p>
+        </section>
+
+      </div>
+
+      <!-- Sidebar -->
+      <div class="lg:col-span-1">
+        <div class="sticky top-24 space-y-6">
+
+          <!-- Live MVP Link -->
+          <div class="bg-white rounded-2xl p-1 shadow-sm border border-slate-200">
+            <div class="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-xl p-5">
+              <div class="flex items-start justify-between mb-3">
+                <div>
+                  <h3 class="text-base font-bold text-slate-900 font-sf">Live MVP Preview</h3>
+                  <p class="text-xs text-slate-500 mt-1">Experience the actual platform</p>
+                </div>
+                <div class="w-8 h-8 rounded-full bg-white flex items-center justify-center shadow-sm text-indigo-600">
+                  <iconify-icon icon="lucide:zap" width="16"></iconify-icon>
+                </div>
+              </div>
+
+              <a href="https://turbo-scribe-studio.lovable.app/" target="_blank"
+                class="flex items-center justify-between w-full px-4 py-3 bg-white hover:bg-indigo-50 text-slate-900 hover:text-indigo-700 font-medium rounded-lg border border-slate-200 hover:border-indigo-200 transition-all group">
+                <span class="text-sm">Launch Application</span>
+                <iconify-icon icon="lucide:external-link"
+                  class="text-slate-400 group-hover:text-indigo-600 transition-colors" width="16"></iconify-icon>
+              </a>
+            </div>
+          </div>
+
+          <!-- Key Takeaways -->
+          <div class="bg-slate-50 rounded-2xl p-6">
+            <h3 class="text-lg font-bold text-slate-900 mb-4 font-sf">Project Details</h3>
+            <div class="space-y-4">
+              <div>
+                <div class="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-1">Timeline
+                </div>
+                <div class="text-base font-semibold text-slate-900">6 weeks</div>
+              </div>
+              <div>
+                <div class="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-1">Industry
+                </div>
+                <div class="text-base font-semibold text-slate-900">AI SaaS</div>
+              </div>
+              <div>
+                <div class="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-1">Tools
+                  Built</div>
+                <div class="text-base font-semibold text-slate-900">7 AI features</div>
+              </div>
+              <div>
+                <div class="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-1">Users
+                </div>
+                <div class="text-base font-semibold text-slate-900">1,200+</div>
+              </div>
+              <div>
+                <div class="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-1">Cost
+                  Savings</div>
+                <div class="text-base font-semibold text-slate-900">$153K</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- CTA -->
+          <div class="bg-gradient-to-br from-indigo-600 to-purple-600 rounded-2xl p-6 text-white">
+            <h3 class="text-xl font-bold mb-3">Launch Your SaaS MVP?</h3>
+            <p class="text-indigo-100 mb-4 text-sm">Get a production-ready platform in weeks, not months.
+            </p>
+            <a href="index.html#packages"
+              class="inline-block w-full text-center px-6 py-3 bg-white text-indigo-600 font-semibold rounded-xl hover:bg-indigo-50 transition-colors">
+              View Packages
+            </a>
+          </div>
 
         </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer data-theme="dark"
+    class="relative bg-gradient-to-b from-slate-950 via-slate-950 to-black text-slate-300 overflow-hidden py-12 md:py-16">
+    <style>
+      @keyframes footer-beam {
+        0% {
+          left: -100%;
+        }
+
+        100% {
+          left: 200%;
+        }
+      }
+
+      .animate-footer-beam {
+        animation: footer-beam 4s linear infinite;
+      }
+
+      .footer-futuristic {
+        background: #020617;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .footer-futuristic::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle at 50% 100%, rgba(6, 182, 212, 0.15) 0%, transparent 60%);
+        pointer-events: none;
+      }
+
+      .footer-futuristic::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(6, 182, 212, 0.3), transparent);
+      }
+    </style>
+
+
+    <!-- Gradient Overlay -->
+    <div class="absolute inset-0 footer-futuristic pointer-events-none">
     </div>
 
-    <!-- Footer -->
-    <footer class="bg-slate-900 text-white py-12 mt-20">
-        <div class="max-w-7xl mx-auto px-6 text-center flex flex-col items-center gap-4">
-            <img src="logos/logo_dark_cropped.png" alt="LoopSuit" class="h-8 w-auto opacity-70">
-            <p class="text-slate-400">&copy; <span id="year"></span> LoopSuit. All rights reserved.</p>
+    <!-- Futuristic Beam / Glow Effect -->
+    <div
+      class="absolute top-0 left-0 h-1 w-1/2 bg-gradient-to-r from-transparent via-cyan-500 to-transparent opacity-75 shadow-[0_0_15px_rgba(6,182,212,0.5)] z-20 animate-footer-beam">
+    </div>
+    <div class="absolute top-0 inset-x-0 h-px bg-slate-800 z-10"></div>
+
+    <!-- Animated Gradient Orb Background (Reduced Opacity) -->
+    <div
+      class="absolute top-[-20%] right-[-10%] w-[500px] h-[500px] bg-purple-900/10 rounded-full blur-[100px] pointer-events-none">
+    </div>
+    <div
+      class="absolute bottom-[-20%] left-[-10%] w-[500px] h-[500px] bg-blue-900/10 rounded-full blur-[100px] pointer-events-none">
+    </div>
+
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 md:gap-12 mb-8 md:mb-12">
+
+        <!-- Brand & Mission & Location -->
+        <div
+          class="md:col-span-2 lg:col-span-5 space-y-5 flex flex-col items-center lg:items-start text-center lg:text-left">
+          <a href="index.html" class="inline-block">
+            <div class="flex items-center gap-4 group/logo">
+              <div
+                class="text-2xl font-black italic tracking-tighter text-white transition-transform duration-500 group-hover/logo:scale-105">
+                LOOPSUIT<sup class="text-[9px] not-italic text-gray-500 ml-0.5">®</sup>
+              </div>
+              <div
+                class="hidden sm:flex flex-col justify-center pl-4 border-l-2 border-white/10 h-8 transition-transform duration-500 group-hover/logo:scale-105 text-left">
+                <span
+                  class="text-[8px] font-bold tracking-[0.3em] text-gray-400 uppercase leading-none mb-0.5">VISION</span>
+                <div class="bg-[#3b82f6] px-1.5 py-[1px] transform -skew-x-12 inline-block w-max">
+                  <span
+                    class="block transform skew-x-12 text-[9px] font-black tracking-widest text-white uppercase leading-none">AUTOMATED</span>
+                </div>
+              </div>
+            </div>
+          </a>
+          <p class="text-slate-400 leading-relaxed max-w-sm font-sf text-base">
+            Empowering forward-thinking businesses with intelligent automation systems.
+            We blend cutting-edge AI with seamless workflows to help you scale faster.
+          </p>
+
+          <!-- Location & Service Area -->
+          <div class="space-y-2 font-sf">
+            <p class="text-white font-semibold text-base">
+              Jastej Singh Sehra
+            </p>
+            <div class="relative group w-max">
+              <button onclick="copyEmail(this)"
+                class="text-slate-400 text-sm hover:text-cyan-400 transition-all duration-200 cursor-pointer text-left flex items-center gap-2">
+                <span>✉️ jastejsingh98@gmail.com</span>
+              </button>
+              <span
+                class="copy-feedback absolute left-full ml-2 top-1/2 -translate-y-1/2 text-green-400 text-xs font-semibold opacity-0 transition-opacity duration-300 pointer-events-none whitespace-nowrap">
+                Email copied
+              </span>
+            </div>
+            <p class="text-slate-400 text-sm">
+              📍 Vancouver, Canada
+            </p>
+          </div>
+
+          <!-- Book Free Call CTA - Aligned Left/Center on mobile -->
+          <div class="pt-4 flex justify-center lg:justify-start">
+            <button onclick="openCalendly()"
+              class="shiny-cta shiny-cta-light focus:outline-none group relative overflow-hidden transition-all duration-300 hover:scale-105">
+              <div
+                class="absolute inset-0 bg-gradient-to-r from-transparent via-blue-200 to-transparent opacity-0 group-hover:opacity-100 animate-footer-beam"
+                style="animation-duration: 1.5s;"></div>
+              <span class="font-sf relative z-10">Book Free Call</span>
+            </button>
+          </div>
         </div>
-    </footer>
 
+        <!-- Navigation Column -->
+        <div class="md:col-span-1 lg:col-span-2 lg:col-start-9 text-center">
+          <h3 class="text-white font-semibold mb-4 text-lg font-sf">Navigation</h3>
+          <ul class="space-y-3">
+            <li><a href="index.html"
+                class="text-slate-400 hover:text-cyan-400 transition-colors duration-200 flex items-center justify-center group font-sf"><span
+                  class="w-0 group-hover:w-2 h-[1px] bg-cyan-400 mr-0 group-hover:mr-2 transition-all duration-300 opacity-0 group-hover:opacity-100"></span>Home</a>
+            </li>
+            <li><a href="index.html#how-it-works"
+                class="text-slate-400 hover:text-cyan-400 transition-colors duration-200 flex items-center justify-center group font-sf"><span
+                  class="w-0 group-hover:w-2 h-[1px] bg-cyan-400 mr-0 group-hover:mr-2 transition-all duration-300 opacity-0 group-hover:opacity-100"></span>How
+                It Works</a></li>
+            <li><a href="services.html"
+                class="text-slate-400 hover:text-cyan-400 transition-colors duration-200 flex items-center justify-center group font-sf"><span
+                  class="w-0 group-hover:w-2 h-[1px] bg-cyan-400 mr-0 group-hover:mr-2 transition-all duration-300 opacity-0 group-hover:opacity-100"></span>Services</a>
+            </li>
+            <li><a href="case-studies.html"
+                class="text-slate-400 hover:text-cyan-400 transition-colors duration-200 flex items-center justify-center group font-sf"><span
+                  class="w-0 group-hover:w-2 h-[1px] bg-cyan-400 mr-0 group-hover:mr-2 transition-all duration-300 opacity-0 group-hover:opacity-100"></span>Case
+                Studies</a></li>
+          </ul>
+        </div>
+
+        <!-- Solutions Column -->
+        <div class="md:col-span-1 lg:col-span-2 text-center">
+          <h3 class="text-white font-semibold mb-4 text-lg font-sf">Solutions</h3>
+          <ul class="space-y-3">
+            <li><a href="index.html#workflow-automation"
+                class="text-slate-400 hover:text-cyan-400 transition-colors duration-200 flex items-center justify-center group font-sf"><span
+                  class="w-0 group-hover:w-2 h-[1px] bg-cyan-400 mr-0 group-hover:mr-2 transition-all duration-300 opacity-0 group-hover:opacity-100"></span>AI
+                Workflow Automation</a></li>
+            <li><a href="index.html#mvp-development"
+                class="text-slate-400 hover:text-cyan-400 transition-colors duration-200 flex items-center justify-center group font-sf"><span
+                  class="w-0 group-hover:w-2 h-[1px] bg-cyan-400 mr-0 group-hover:mr-2 transition-all duration-300 opacity-0 group-hover:opacity-100"></span>Rapid
+                MVP Development</a>
+            </li>
+            <li><a href="index.html#ai-support"
+                class="text-slate-400 hover:text-cyan-400 transition-colors duration-200 flex items-center justify-center group font-sf"><span
+                  class="w-0 group-hover:w-2 h-[1px] bg-cyan-400 mr-0 group-hover:mr-2 transition-all duration-300 opacity-0 group-hover:opacity-100"></span>AI-Powered
+                Support</a>
+            </li>
+            <li><a href="index.html#complete-solution"
+                class="text-slate-400 hover:text-cyan-400 transition-colors duration-200 flex items-center justify-center group font-sf"><span
+                  class="w-0 group-hover:w-2 h-[1px] bg-cyan-400 mr-0 group-hover:mr-2 transition-all duration-300 opacity-0 group-hover:opacity-100"></span>Complete
+                AI Solution</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Separator -->
+      <div class="border-t border-slate-800/50 mb-6 md:mb-8"></div>
+
+      <!-- Bottom Section: Flex Container for Responsive Layout -->
+      <div class="flex flex-col-reverse md:flex-row justify-between items-center gap-6">
+
+        <!-- Left: Copyright -->
+        <div class="text-slate-500 text-sm font-sf text-center md:text-left">
+          <p>&copy; <span id="year"></span> LoopSuit. All rights reserved.</p>
+        </div>
+
+        <!-- Right: Moved Content (Socials & Info) -->
+        <div class="flex flex-col items-center md:items-end gap-3 text-center md:text-right">
+          <div class="space-y-1">
+            <p class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400 font-semibold text-sm">
+              Serving clients across US, Canada & EU
+            </p>
+            <p class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400 font-semibold text-sm">
+              6+ Years of Industry Experience
+            </p>
+          </div>
+
+          <!-- Social Icons -->
+          <div class="flex items-center space-x-4 pt-1">
+            <!-- Twitter -->
+            <a href="#" aria-label="Twitter"
+              class="w-9 h-9 flex items-center justify-center rounded-full bg-slate-900 border border-slate-800 text-slate-400 hover:text-white hover:border-cyan-500/50 hover:bg-cyan-950/30 transition-all duration-300 group">
+              <iconify-icon icon="lucide:twitter" width="18"
+                class="group-hover:scale-110 transition-transform duration-300"></iconify-icon>
+            </a>
+            <!-- LinkedIn -->
+            <a href="#" aria-label="LinkedIn"
+              class="w-9 h-9 flex items-center justify-center rounded-full bg-slate-900 border border-slate-800 text-slate-400 hover:text-white hover:border-cyan-500/50 hover:bg-cyan-950/30 transition-all duration-300 group">
+              <iconify-icon icon="lucide:linkedin" width="18"
+                class="group-hover:scale-110 transition-transform duration-300"></iconify-icon>
+            </a>
+            <!-- GitHub -->
+            <a href="#" aria-label="GitHub"
+              class="w-9 h-9 flex items-center justify-center rounded-full bg-slate-900 border border-slate-800 text-slate-400 hover:text-white hover:border-cyan-500/50 hover:bg-cyan-950/30 transition-all duration-300 group">
+              <iconify-icon icon="lucide:github" width="18"
+                class="group-hover:scale-110 transition-transform duration-300"></iconify-icon>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
     <script>
-        document.getElementById('year').textContent = new Date().getFullYear();
+      document.getElementById('year').textContent = new Date().getFullYear();
     </script>
+  </footer>
 
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+  <script>
+    // Scroll Effect
+    window.addEventListener('scroll', () => {
+      const nav = document.getElementById('inner-nav');
+      if (!nav) return;
+      if (window.scrollY > 20) {
+        nav.classList.add('glass-nav-scrolled');
+        nav.classList.remove('py-3');
+        nav.classList.add('py-2');
+      } else {
+        nav.classList.remove('glass-nav-scrolled');
+        nav.classList.add('py-3');
+        nav.classList.remove('py-2');
+      }
+    });
+  </script>
+  <script>
+    // Mobile Menu Logic
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobile-menu');
+      if (menu.classList.contains('menu-closed')) {
+        menu.classList.remove('menu-closed');
+        menu.classList.add('menu-open');
+        document.body.style.overflow = 'hidden';
+      } else {
+        closeMenuAndNavigate();
+      }
+    }
+
+    function closeMenuAndNavigate() {
+      const menu = document.getElementById('mobile-menu');
+      if (menu) {
+        menu.classList.remove('menu-open');
+        menu.classList.add('menu-closed');
+        document.body.style.overflow = '';
+      }
+    }
+
+    document.getElementById('mobile-menu-btn')?.addEventListener('click', toggleMobileMenu);
+  </script>
+  <script>
+    function openCalendly() {
+      // TODO: Replace with your actual Calendly URL
+      // Example: 'https://calendly.com/your-username/30min'
+      const calendlyUrl = 'https://calendly.com/jastejsehra/chat-about-ai-automation';
+
+      // Use the native Calendly popup widget
+      if (typeof Calendly !== 'undefined') {
+        Calendly.initPopupWidget({ url: calendlyUrl });
+      } else {
+        console.warn("Calendly script not loaded");
+        window.open(calendlyUrl, '_blank');
+      }
+      return false;
+    }
+
+    function openLeadGenModal() {
+      const modal = document.getElementById('lead-gen-modal');
+      const backdrop = document.getElementById('lead-gen-backdrop');
+      const content = modal.querySelector('.relative.w-full');
+
+      modal.classList.remove('opacity-0', 'pointer-events-none');
+      modal.classList.add('opacity-100');
+
+      backdrop.classList.remove('opacity-0');
+      backdrop.classList.add('opacity-100');
+
+      content.classList.remove('scale-95', '-translate-y-4');
+      content.classList.add('scale-100', 'translate-y-0');
+
+      // Disable body scroll
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLeadGenModal() {
+      const modal = document.getElementById('lead-gen-modal');
+      const backdrop = document.getElementById('lead-gen-backdrop');
+      const content = modal.querySelector('.relative.w-full');
+
+      modal.classList.add('opacity-0', 'pointer-events-none');
+      modal.classList.remove('opacity-100');
+
+      backdrop.classList.add('opacity-0');
+      backdrop.classList.remove('opacity-100');
+
+      content.classList.remove('scale-100', 'translate-y-0');
+      content.classList.add('scale-95', '-translate-y-4');
+
+      // Re-enable body scroll
+      document.body.style.overflow = '';
+    }
+
+    // Open after 5 seconds
+    setTimeout(() => {
+      openLeadGenModal();
+    }, 5000);
+  </script>
+  <script>
+    // Copy Email Functionality
+    function copyEmail(button) {
+      navigator.clipboard.writeText("jastejsingh98@gmail.com").then(() => {
+        const feedback = button.nextElementSibling;
+        feedback.classList.remove('opacity-0');
+        setTimeout(() => {
+          feedback.classList.add('opacity-0');
+        }, 2000);
+      });
+    }
+
+    // Floating Showreel Logic
+    document.addEventListener('DOMContentLoaded', () => {
+      // Create elements if they don't exist (in case we need to inject them via JS, but we will put HTML below)
+      const previewVideo = document.getElementById('floating-preview-video');
+      if (previewVideo) {
+        previewVideo.play().catch(() => { }); // Auto-play preview
+      }
+    });
+
+    function openShowreelModal() {
+      const modal = document.getElementById('floating-showreel-modal');
+      const video = document.getElementById('floating-main-video');
+
+      modal.classList.remove('hidden');
+      video.currentTime = 0;
+      video.play().catch(e => console.log('Play failed', e));
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeShowreelModal() {
+      const modal = document.getElementById('floating-showreel-modal');
+      const video = document.getElementById('floating-main-video');
+
+      modal.classList.add('hidden');
+      video.pause();
+      document.body.style.overflow = '';
+    }
+
+    // Lead Generation Form Handler (FormSubmit AJAX)
+    function handleLeadGenSubmit(e) {
+      e.preventDefault();
+
+      const form = document.getElementById('lead-gen-form');
+      const btn = document.getElementById('lead-gen-submit-btn');
+      const btnText = btn.querySelector('span');
+      const successMsg = document.getElementById('lead-gen-success');
+
+      // Set Loading State
+      const originalText = btnText.textContent;
+      btnText.textContent = "Sending...";
+      btn.disabled = true;
+      btn.classList.add('opacity-75', 'cursor-not-allowed');
+
+      const formData = new FormData(form);
+
+      fetch("https://formsubmit.co/ajax/jastejsingh98@gmail.com", {
+        method: "POST",
+        body: formData
+      })
+        .then(response => response.json())
+        .then(data => {
+          // Success
+          btnText.textContent = originalText;
+          btn.classList.add('hidden'); // Hide button
+          successMsg.classList.remove('hidden'); // Show success message
+          form.reset();
+
+          // Close modal after 3 seconds
+          setTimeout(() => {
+            closeLeadGenModal();
+            // Reset UI for next time
+            setTimeout(() => {
+              btn.classList.remove('hidden');
+              successMsg.classList.add('hidden');
+              btn.disabled = false;
+              btn.classList.remove('opacity-75', 'cursor-not-allowed');
+            }, 500);
+          }, 3000);
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          btnText.textContent = "Error. Try again.";
+          setTimeout(() => {
+            btnText.textContent = originalText;
+            btn.disabled = false;
+            btn.classList.remove('opacity-75', 'cursor-not-allowed');
+          }, 3000);
+        });
+    }
+  </script>
+  <script src="navbar-scroll.js"></script>
 </body>
 
 </html>
