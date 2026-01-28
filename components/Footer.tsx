@@ -3,8 +3,17 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Facebook, Twitter, Instagram, Linkedin, Github } from "lucide-react";
+import { useState } from "react";
 
 export default function Footer() {
+    const [emailCopied, setEmailCopied] = useState(false);
+
+    const handleEmailClick = () => {
+        navigator.clipboard.writeText("jastejsingh98@gmail.com");
+        setEmailCopied(true);
+        setTimeout(() => setEmailCopied(false), 2000);
+    };
+
     return (
         <footer className="relative bg-gradient-to-b from-slate-950 via-slate-950 to-black text-slate-300 overflow-hidden py-24 md:py-32 border-t border-slate-900">
             {/* Futuristic Beam / Glow Effect */}
@@ -43,6 +52,27 @@ export default function Footer() {
 
                         {/* Location & Service Area */}
                         <div className="space-y-2">
+                            <p className="text-white font-semibold text-base">
+                                Jastej Singh Sehra
+                            </p>
+                            <button
+                                onClick={handleEmailClick}
+                                className="group relative text-slate-400 text-sm hover:text-cyan-400 transition-all duration-200 cursor-pointer text-left flex items-center gap-2"
+                            >
+                                <span className="flex items-center gap-2">
+                                    ✉️ jastejsingh98@gmail.com
+                                </span>
+                                {emailCopied && (
+                                    <motion.span
+                                        initial={{ opacity: 0, x: -10 }}
+                                        animate={{ opacity: 1, x: 0 }}
+                                        exit={{ opacity: 0 }}
+                                        className="text-green-400 text-xs font-semibold"
+                                    >
+                                        Email copied
+                                    </motion.span>
+                                )}
+                            </button>
                             <p className="text-slate-400 text-sm">
                                 📍 Vancouver, Canada
                             </p>

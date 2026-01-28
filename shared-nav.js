@@ -26,7 +26,7 @@ function closeMenuAndNavigate() {
 
 // Calendly Integration
 function openCalendly() {
-    const calendlyUrl = 'https://calendly.com/your-username/30min'; // Replace with actual URL
+    const calendlyUrl = 'https://calendly.com/jastejsehra/chat-about-ai-automation'; // Updated URL
     if (typeof Calendly !== 'undefined') {
         Calendly.initPopupWidget({ url: calendlyUrl });
     } else {

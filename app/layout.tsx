@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/Footer";
+import FloatingShowreel from "@/components/FloatingShowreel";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -26,6 +27,7 @@ export default function RootLayout({
       </head>
       <body className={`${inter.variable} antialiased bg-white overflow-x-hidden`}>
         {children}
+        <FloatingShowreel />
         <Footer />
       </body>
     </html>
