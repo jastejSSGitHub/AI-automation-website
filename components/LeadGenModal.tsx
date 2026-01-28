@@ -38,7 +38,11 @@ export default function LeadGenModal({ isOpen, onClose }: LeadGenModalProps) {
         const handleEscape = (e: KeyboardEvent) => {
             if (e.key === "Escape") onClose();
         };
-        if (isOpen) document.addEventListener("keydown", handleEscape);
+        if (isOpen) {
+            document.addEventListener("keydown", handleEscape);
+            // Set flag so it doesn't auto-popup again
+            localStorage.setItem("hasSeenLeadGenModal", "true");
+        }
         return () => document.removeEventListener("keydown", handleEscape);
     }, [isOpen, onClose]);
 

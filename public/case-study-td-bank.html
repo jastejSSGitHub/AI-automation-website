@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- Updated TD Bank Case Study -->
 <html lang="en">
 
 <head>
@@ -1920,6 +1921,8 @@
 
       // Disable body scroll
       document.body.style.overflow = 'hidden';
+      // Set flag so it doesn't auto-popup again
+      localStorage.setItem('hasSeenLeadGenModal', 'true');
     }
 
     function closeLeadGenModal() {
@@ -1940,10 +1943,13 @@
       document.body.style.overflow = '';
     }
 
-    // Open after 5 seconds
-    setTimeout(() => {
-      openLeadGenModal();
-    }, 5000);
+    // Open after 5 seconds ONLY if they haven't seen it before
+    if (!localStorage.getItem('hasSeenLeadGenModal')) {
+      setTimeout(() => {
+        openLeadGenModal();
+        localStorage.setItem('hasSeenLeadGenModal', 'true');
+      }, 5000);
+    }
   </script>
   <script>
     // Copy Email Functionality

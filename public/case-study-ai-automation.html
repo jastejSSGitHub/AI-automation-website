@@ -1185,8 +1185,8 @@
         </a>
       </div>
       <div class="relative w-full h-[50vh] min-h-[400px] max-h-[600px] rounded-2xl md:rounded-3xl overflow-hidden">
-        <img src="./Images/CaseStudies/ai_automation_case_study_1768257269326.png"
-          alt="Revive Air AI Automation Dashboard" class="absolute inset-0 w-full h-full object-cover">
+        <img src="./Images/CaseStudies/revive_air_v2.png" alt="Revive Air AI Automation Dashboard"
+          class="absolute inset-0 w-full h-full object-cover">
 
         <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
 
@@ -1843,6 +1843,8 @@
 
       // Disable body scroll
       document.body.style.overflow = 'hidden';
+      // Set flag so it doesn't auto-popup again
+      localStorage.setItem('hasSeenLeadGenModal', 'true');
     }
 
     function closeLeadGenModal() {
@@ -1863,10 +1865,13 @@
       document.body.style.overflow = '';
     }
 
-    // Open after 5 seconds
-    setTimeout(() => {
-      openLeadGenModal();
-    }, 5000);
+    // Open after 5 seconds ONLY if they haven't seen it before
+    if (!localStorage.getItem('hasSeenLeadGenModal')) {
+      setTimeout(() => {
+        openLeadGenModal();
+        localStorage.setItem('hasSeenLeadGenModal', 'true');
+      }, 5000);
+    }
   </script>
   <script>
     // Copy Email Functionality

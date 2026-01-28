@@ -7,11 +7,17 @@ export default function Hero() {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     useEffect(() => {
-        const timer = setTimeout(() => {
-            setIsModalOpen(true);
-        }, 5000);
+        // Only trigger the auto-popup if it hasn't been shown before
+        const hasSeenModal = localStorage.getItem("hasSeenLeadGenModal");
 
-        return () => clearTimeout(timer);
+        if (!hasSeenModal) {
+            const timer = setTimeout(() => {
+                setIsModalOpen(true);
+                localStorage.setItem("hasSeenLeadGenModal", "true");
+            }, 5000);
+
+            return () => clearTimeout(timer);
+        }
     }, []);
 
     return (
