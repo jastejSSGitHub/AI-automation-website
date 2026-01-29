@@ -1361,7 +1361,7 @@
 
 
       <div
-        class="relative z-10 container mx-auto px-6 grid md:grid-cols-2 gap-2 md:gap-12 items-center h-full pt-20 md:pt-0">
+        class="relative z-10 container mx-auto px-6 grid md:grid-cols-2 gap-2 md:gap-12 items-start md:items-center h-full pt-44 md:pt-0">
         <!-- Text Content -->
         <div
           class="space-y-4 md:space-y-8 text-center md:text-left order-1 flex flex-col items-center md:items-start relative z-20">
@@ -1596,18 +1596,18 @@
 
             <!-- Glass Stats Card 1: Dev Time -->
             <div
-              class="absolute top-40 -left-6 md:-left-6 glass-card p-4 rounded-xl shadow-xl w-48 z-30 animate-float backdrop-blur-xl border border-white/10"
+              class="absolute top-40 -left-6 md:-left-6 glass-card p-6 md:p-4 rounded-2xl md:rounded-xl shadow-xl w-72 md:w-48 z-30 animate-float backdrop-blur-xl border border-white/10"
               style="animation-delay: 0.5s;">
-              <div class="text-sm text-gray-400">Dev Time Saved</div>
-              <div class="text-2xl font-bold text-blue-400">-120hrs</div>
+              <div class="text-lg md:text-sm text-gray-400">Dev Time Saved</div>
+              <div class="text-4xl md:text-2xl font-bold text-blue-400">-120hrs</div>
             </div>
 
             <!-- Glass Stats Card 2: App Design -->
             <div
-              class="absolute bottom-40 -right-6 md:-right-6 glass-card p-4 rounded-xl shadow-xl w-48 z-30 animate-float backdrop-blur-xl border border-white/10"
+              class="absolute bottom-40 -right-6 md:-right-6 glass-card p-6 md:p-4 rounded-2xl md:rounded-xl shadow-xl w-72 md:w-48 z-30 animate-float backdrop-blur-xl border border-white/10"
               style="animation-delay: 1.5s;">
-              <div class="text-sm text-gray-400">App Design Complete</div>
-              <div class="text-2xl font-bold text-green-400">2 Weeks</div>
+              <div class="text-lg md:text-sm text-gray-400">App Design Complete</div>
+              <div class="text-4xl md:text-2xl font-bold text-green-400">2 Weeks</div>
             </div>
           </div>
         </div>
@@ -1717,6 +1717,14 @@
         .animate-beam-slide {
           animation: beam-slide-custom 10s cubic-bezier(0.4, 0, 0.2, 1) infinite;
           background: linear-gradient(90deg, transparent, #22d3ee, #60a5fa, transparent);
+        }
+
+        /* Fix for iPad Pro/Tablet Portrait extra whitespace */
+        @media only screen and (min-width: 768px) and (max-width: 1100px) and (orientation: portrait) {
+          #showreel-section {
+            min-height: auto !important;
+            padding-bottom: 6rem !important;
+          }
         }
       </style>
       <div class="w-full max-w-7xl mx-auto px-6 mb-6 md:mb-8 relative z-10">
