@@ -78,7 +78,7 @@ export default function LeadGenModal({ isOpen, onClose }: LeadGenModalProps) {
                             className={cn(
                                 "pointer-events-auto w-full max-w-3xl overflow-hidden shadow-2xl",
                                 "bg-white/90 backdrop-blur-2xl rounded-[32px] flex flex-col md:flex-row relative border border-white/50",
-                                "max-h-[90vh] md:max-h-none"
+                                "max-h-[80vh] md:max-h-none"
                             )}
                         >
                             <button
@@ -135,7 +135,7 @@ export default function LeadGenModal({ isOpen, onClose }: LeadGenModalProps) {
                                         </div>
 
                                         {/* Mobile Image: Floating 3D Icon */}
-                                        <div className="md:hidden w-full h-48 relative rounded-2xl overflow-hidden mb-8 shadow-sm bg-slate-50 flex items-center justify-center">
+                                        <div className="md:hidden w-full h-32 relative rounded-2xl overflow-hidden mb-8 shadow-sm bg-slate-50 flex items-center justify-center">
                                             <motion.div
                                                 animate={{
                                                     y: [-5, 5, -5],
@@ -308,7 +308,8 @@ export default function LeadGenModal({ isOpen, onClose }: LeadGenModalProps) {
                         </motion.div>
                     </div>
                 </>
-            )}
-        </AnimatePresence>
+            )
+            }
+        </AnimatePresence >
     );
 }

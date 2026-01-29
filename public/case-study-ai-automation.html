@@ -1165,7 +1165,7 @@
           </button>
           <!-- Mobile Menu Button -->
           <button id="mobile-menu-btn" class="lg:hidden text-white p-2 rounded-full hover:bg-white/10 transition-colors"
-            onclick="toggleMobileMenu()" aria-label="Menu">
+            aria-label="Menu">
             <iconify-icon icon="lucide:menu" width="24" height="24"></iconify-icon>
           </button>
         </div>
@@ -1964,6 +1964,30 @@
           }, 3000);
         });
     }
+  </script>
+  <script>
+    // Mobile Menu Logic
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobile-menu');
+      if (menu.classList.contains('menu-closed')) {
+        menu.classList.remove('menu-closed');
+        menu.classList.add('menu-open');
+        document.body.style.overflow = 'hidden';
+      } else {
+        closeMenuAndNavigate();
+      }
+    }
+
+    function closeMenuAndNavigate() {
+      const menu = document.getElementById('mobile-menu');
+      if (menu) {
+        menu.classList.remove('menu-open');
+        menu.classList.add('menu-closed');
+        document.body.style.overflow = '';
+      }
+    }
+
+    document.getElementById('mobile-menu-btn')?.addEventListener('click', toggleMobileMenu);
   </script>
   <script src="navbar-scroll.js"></script>
 </body>
