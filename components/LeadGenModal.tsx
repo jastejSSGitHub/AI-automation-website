@@ -77,7 +77,8 @@ export default function LeadGenModal({ isOpen, onClose }: LeadGenModalProps) {
                             transition={{ duration: 0.3, ease: "easeOut" }}
                             className={cn(
                                 "pointer-events-auto w-full max-w-3xl overflow-hidden shadow-2xl",
-                                "bg-white/90 backdrop-blur-2xl rounded-[32px] flex flex-col md:flex-row relative border border-white/50"
+                                "bg-white/90 backdrop-blur-2xl rounded-[32px] flex flex-col md:flex-row relative border border-white/50",
+                                "max-h-[90vh] md:max-h-none"
                             )}
                         >
                             <button
@@ -110,7 +111,7 @@ export default function LeadGenModal({ isOpen, onClose }: LeadGenModalProps) {
                             </div>
 
                             {/* Right Column: Content */}
-                            <div className="flex-1 p-8 md:p-12 md:max-h-[90vh] overflow-y-auto flex flex-col justify-center">
+                            <div className="flex-1 p-8 md:p-12 overflow-y-auto flex flex-col justify-center">
                                 {!isSuccess ? (
                                     <>
                                         <div className="text-left mb-8">

@@ -14,7 +14,7 @@ export default function Hero() {
             const timer = setTimeout(() => {
                 setIsModalOpen(true);
                 localStorage.setItem("hasSeenLeadGenModal", "true");
-            }, 5000);
+            }, 10000);
 
             return () => clearTimeout(timer);
         }
