@@ -90,7 +90,7 @@ export default function LeadGenModal({ isOpen, onClose }: LeadGenModalProps) {
                             </button>
 
                             {/* Left Column: Image Area */}
-                            <div className="md:w-5/12 bg-slate-50 flex items-center justify-center p-8 relative overflow-hidden border-b md:border-b-0 md:border-r border-slate-100">
+                            <div className="hidden md:flex md:w-5/12 bg-slate-50 items-center justify-center p-8 relative overflow-hidden border-b md:border-b-0 md:border-r border-slate-100">
                                 {/* Decorative Glows */}
                                 <div className="absolute inset-0 pointer-events-none">
                                     <div className="absolute -top-10 -left-10 w-40 h-40 bg-blue-500/10 rounded-full blur-3xl" />
@@ -135,7 +135,7 @@ export default function LeadGenModal({ isOpen, onClose }: LeadGenModalProps) {
                                         </div>
 
                                         {/* Mobile Image: Floating 3D Icon */}
-                                        <div className="md:hidden w-full h-32 relative rounded-2xl overflow-hidden mb-8 shadow-sm bg-slate-50 flex items-center justify-center">
+                                        <div className="md:hidden w-full h-24 relative rounded-2xl overflow-hidden mb-8 shadow-sm bg-slate-50 flex items-center justify-center">
                                             <motion.div
                                                 animate={{
                                                     y: [-5, 5, -5],
