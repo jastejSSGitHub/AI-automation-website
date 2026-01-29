@@ -7,6 +7,11 @@ import SolutionModal from './SolutionModal';
 
 export default function ChallengeSection() {
     const [isSolutionModalOpen, setIsSolutionModalOpen] = useState(false);
+    const [activeCardId, setActiveCardId] = useState<number | null>(null);
+
+    const handleCardToggle = (id: number) => {
+        setActiveCardId(prev => prev === id ? null : id);
+    };
 
     return (
         <section
@@ -33,6 +38,8 @@ export default function ChallengeSection() {
                         <FlipCard
                             key={challenge.id}
                             challenge={challenge}
+                            isFlipped={activeCardId === challenge.id}
+                            onToggle={() => handleCardToggle(challenge.id)}
                             onViewSolution={(id) => setIsSolutionModalOpen(true)}
                         />
                     ))}

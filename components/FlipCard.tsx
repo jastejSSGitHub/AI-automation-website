@@ -1,19 +1,15 @@
 'use client';
 
-import { useState } from 'react';
 import { Challenge } from '@/data/challenges';
 
 interface FlipCardProps {
     challenge: Challenge;
+    isFlipped: boolean;
+    onToggle: () => void;
+    onViewSolution?: (id: number) => void;
 }
 
-export default function FlipCard({ challenge, onViewSolution }: FlipCardProps & { onViewSolution?: (id: number) => void }) {
-    const [isFlipped, setIsFlipped] = useState(false);
-
-    const handleFlip = () => {
-        setIsFlipped(!isFlipped);
-    };
-
+export default function FlipCard({ challenge, isFlipped, onToggle, onViewSolution }: FlipCardProps) {
     return (
         <div className="group h-[420px] md:h-[340px] min-w-[78vw] md:min-w-[45vw] lg:min-w-0 lg:max-w-none w-full lg:w-auto perspective-1000 flex-shrink-0 select-none snap-center transition-transform duration-300 hover:-translate-y-2">
             <div
@@ -22,9 +18,10 @@ export default function FlipCard({ challenge, onViewSolution }: FlipCardProps & 
             >
                 {/* Front of Card */}
                 <div
-                    onClick={handleFlip}
+                    onClick={onToggle}
                     className={`absolute inset-0 w-full h-full backface-hidden ${challenge.isDark ? 'bg-stone-900' : 'bg-white'
                         } rounded-[24px] border border-black/5 flex flex-col justify-between overflow-hidden cursor-pointer`}
+                    style={{ backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden' }}
                 >
                     {!challenge.isDark && (
                         <div className="absolute inset-0 z-0">
@@ -74,7 +71,7 @@ export default function FlipCard({ challenge, onViewSolution }: FlipCardProps & 
                         <button
                             onClick={(e) => {
                                 e.stopPropagation();
-                                handleFlip();
+                                onToggle();
                             }}
                             className={`absolute bottom-6 right-6 z-20 ${challenge.isDark ? 'w-10 h-10 bg-white' : 'w-10 h-10 bg-slate-900'
                                 } rounded-full shadow-lg flex items-center justify-center ${challenge.isDark
@@ -101,7 +98,14 @@ export default function FlipCard({ challenge, onViewSolution }: FlipCardProps & 
                 </div>
 
                 {/* Back of Card */}
-                <div className="absolute inset-0 w-full h-full backface-hidden rotate-y-180 bg-white rounded-[24px] border border-black/5 p-8 flex flex-col overflow-hidden">
+                <div
+                    className="absolute inset-0 w-full h-full backface-hidden rotate-y-180 bg-white rounded-[24px] border border-black/5 p-8 flex flex-col overflow-hidden"
+                    style={{
+                        transform: 'rotateY(180deg)',
+                        backfaceVisibility: 'hidden',
+                        WebkitBackfaceVisibility: 'hidden'
+                    }}
+                >
                     <div className="flex flex-col items-center text-center md:items-start md:text-left flex-shrink-0 mb-2">
                         <span className="inline-flex items-center gap-1 w-fit rounded-full bg-white border border-blue-100 px-2.5 py-0.5 text-[10px] font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-violet-600 bg-[length:200%_auto] tracking-wide mb-3" style={{ animation: 'gradient-flow-badge 3s linear infinite' }}>
                             PROBLEM {String(challenge.id).padStart(2, '0')}
@@ -135,7 +139,7 @@ export default function FlipCard({ challenge, onViewSolution }: FlipCardProps & 
                         )}
                     </div>
                     <button
-                        onClick={handleFlip}
+                        onClick={onToggle}
                         className="absolute bottom-5 right-5 z-20 w-8 h-8 bg-slate-200 rounded-full shadow-lg flex items-center justify-center text-slate-900 hover:bg-slate-300 transition-colors"
                         aria-label="Flip Back"
                     >
