@@ -169,7 +169,7 @@ export default function LeadGenModal({ isOpen, onClose }: LeadGenModalProps) {
                                                         setFormState({ ...formState, name: e.target.value })
                                                     }
                                                     placeholder="Ex. Jane"
-                                                    className="w-full px-4 py-3.5 rounded-xl bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 outline-none transition-all placeholder:text-slate-400 text-slate-900 font-medium"
+                                                    className="w-full px-4 py-3.5 rounded-xl bg-slate-50 border border-slate-300 focus:bg-white focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 outline-none transition-all placeholder:text-slate-400 text-slate-900 font-medium"
                                                 />
                                             </div>
 
@@ -186,7 +186,7 @@ export default function LeadGenModal({ isOpen, onClose }: LeadGenModalProps) {
                                                         setFormState({ ...formState, email: e.target.value })
                                                     }
                                                     placeholder="jane@company.com"
-                                                    className="w-full px-4 py-3.5 rounded-xl bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 outline-none transition-all placeholder:text-slate-400 text-slate-900 font-medium"
+                                                    className="w-full px-4 py-3.5 rounded-xl bg-slate-50 border border-slate-300 focus:bg-white focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 outline-none transition-all placeholder:text-slate-400 text-slate-900 font-medium"
                                                 />
                                             </div>
 
@@ -200,7 +200,7 @@ export default function LeadGenModal({ isOpen, onClose }: LeadGenModalProps) {
                                                         type="button"
                                                         onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                                                         className={cn(
-                                                            "w-full px-4 py-3.5 rounded-xl bg-slate-50 border border-slate-200 outline-none transition-all text-left flex items-center justify-between font-medium",
+                                                            "w-full px-4 py-3.5 rounded-xl bg-slate-50 border border-slate-300 outline-none transition-all text-left flex items-center justify-between font-medium",
                                                             isDropdownOpen
                                                                 ? "ring-4 ring-blue-500/10 border-blue-500 bg-white"
                                                                 : "hover:bg-slate-100"
