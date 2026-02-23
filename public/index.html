@@ -4636,6 +4636,9 @@
       }
 
       function openLeadGenModal() {
+        // Only show on desktop — hidden on mobile and tablet (< 1024px)
+        if (window.innerWidth < 1024) return;
+
         const modal = document.getElementById('lead-gen-modal');
         const backdrop = document.getElementById('lead-gen-backdrop');
         const content = modal.querySelector('.relative.w-full');
