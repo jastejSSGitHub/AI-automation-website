@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Blog | LoopSuit — AI Automation, Design & Product Insights</title>
+  <meta name="description" content="Practical insights on AI automation, product design, MVP development, and building scalable digital systems. The LoopSuit blog for founders and operators.">
+  <meta name="keywords" content="AI automation blog, product design insights, MVP development guide, UI UX trends, business automation, startup blog, LoopSuit blog">
+  <meta name="author" content="LoopSuit">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+  <link rel="canonical" href="https://loopsuitai.com/blog.html">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://loopsuitai.com/blog.html">
+  <meta property="og:title" content="Blog | LoopSuit — AI Automation, Design & Product Insights">
+  <meta property="og:description" content="Practical insights on AI automation, product design, MVP development, and scaling with intelligent systems.">
+  <meta property="og:image" content="https://loopsuitai.com/og-image.jpg">
+  <meta property="og:site_name" content="LoopSuit">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@loopsuitai">
+  <meta name="twitter:title" content="Blog | LoopSuit — AI Automation, Design & Product Insights">
+  <meta name="twitter:description" content="Practical insights on AI automation, product design, MVP development, and scaling with intelligent systems.">
+  <meta name="twitter:image" content="https://loopsuitai.com/og-image.jpg">
+  <link rel="icon" type="image/svg+xml" href="/logos/favicon.svg">
+  <link rel="shortcut icon" href="/logos/favicon.svg">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Blog","name":"LoopSuit Blog","url":"https://loopsuitai.com/blog.html","description":"Practical insights on AI automation, product design, MVP development, and building scalable digital systems.","publisher":{"@type":"Organization","name":"LoopSuit","url":"https://loopsuitai.com"},"breadcrumb":{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://loopsuitai.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://loopsuitai.com/blog.html"}]}}
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+  <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+
+  <style>
+    html, body {
+      scroll-behavior: smooth;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      overflow-x: hidden;
+    }
+    ::-webkit-scrollbar { display: none; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #0a0a0a;
+      color: #f1f5f9;
+      -webkit-font-smoothing: antialiased;
+    }
+    .font-sf {
+      font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      letter-spacing: -0.025em;
+    }
+
+    @property --gradient-angle {
+      syntax: "<angle>"; initial-value: 0deg; inherits: false;
+    }
+    @property --gradient-angle-offset {
+      syntax: "<angle>"; initial-value: 0deg; inherits: false;
+    }
+    @property --gradient-shine {
+      syntax: "<color>"; initial-value: #f97316; inherits: false;
+    }
+    .shiny-cta {
+      --gradient-angle: 0deg;
+      --gradient-angle-offset: 0deg;
+      --gradient-shine: #f97316;
+      position: relative; overflow: hidden; border-radius: 9999px;
+      padding: 0.625rem 1.25rem; font-size: 0.875rem; line-height: 1.2;
+      font-weight: 500; color: #ffffff;
+      background: linear-gradient(#000000, #000000) padding-box,
+        conic-gradient(from calc(var(--gradient-angle) - var(--gradient-angle-offset)), transparent 0%, #ea580c 5%, var(--gradient-shine) 15%, #ea580c 30%, transparent 40%, transparent 100%) border-box;
+      border: 2px solid transparent;
+      box-shadow: inset 0 0 0 1px #1a1818;
+      transition: all 0.3s; cursor: pointer; isolation: isolate;
+      animation: border-spin 2.5s linear infinite;
+      display: inline-flex; align-items: center; justify-content: center;
+    }
+    .shiny-cta-light {
+      color: #000000; --gradient-shine: #fb923c;
+      background: linear-gradient(#ffffff, #ffffff) padding-box,
+        conic-gradient(from calc(var(--gradient-angle) - var(--gradient-angle-offset)), transparent 0%, #cbd5e1 5%, var(--gradient-shine) 15%, #cbd5e1 30%, transparent 40%, transparent 100%) border-box;
+      box-shadow: inset 0 0 0 1px #e2e8f0, 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+    @keyframes border-spin { to { --gradient-angle: 360deg; } }
+    .shiny-cta::before {
+      content: ''; pointer-events: none; position: absolute;
+      left: 50%; top: 50%; transform: translate(-50%, -50%);
+      width: calc(100% - 6px); height: calc(100% - 6px);
+      background: radial-gradient(circle at 2px 2px, white 0.5px, transparent 0) padding-box;
+      background-size: 4px 4px;
+      mask-image: conic-gradient(from calc(var(--gradient-angle) + 45deg), black, transparent 10% 90%, black);
+      opacity: 0.4;
+    }
+    .shiny-cta::after {
+      content: ''; pointer-events: none; position: absolute;
+      left: 50%; top: 50%; transform: translate(-50%, -50%);
+      z-index: 1; width: 100%; aspect-ratio: 1;
+      background: linear-gradient(-50deg, transparent, #ea580c, transparent);
+      mask-image: radial-gradient(circle at bottom, transparent 40%, black);
+      opacity: 0.6; animation: shimmer 4s linear infinite;
+    }
+    @keyframes shimmer { to { transform: translate(-50%, -50%) rotate(360deg); } }
+    .shiny-cta span { position: relative; z-index: 2; }
+
+    .glass-nav {
+      background: rgba(5, 5, 5, 0.7);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    .glass-nav-scrolled {
+      background: rgba(0, 0, 0, 0.6) !important;
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    #main-navbar { transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+    #main-navbar.navbar-hidden { transform: translateY(-100%); }
+    #main-navbar.navbar-visible { transform: translateY(0); }
+
+    .blog-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .blog-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 60px rgba(59, 130, 246, 0.1);
+    }
+    .blog-card .img-placeholder {
+      transition: transform 0.5s ease;
+    }
+    .blog-card:hover .img-placeholder {
+      transform: scale(1.03);
+    }
+
+    .filter-btn {
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+    .filter-btn.active {
+      background: #3b82f6;
+      color: white;
+      border-color: #3b82f6;
+    }
+    .blog-item { transition: opacity 0.3s ease, transform 0.3s ease; }
+    .blog-item.hidden-item { opacity: 0; pointer-events: none; height: 0; overflow: hidden; margin: 0; padding: 0; }
+
+    .featured-card {
+      transition: transform 0.3s ease;
+    }
+    .featured-card:hover { transform: translateY(-4px); }
+
+    @keyframes footer-beam {
+      0% { left: -100%; }
+      100% { left: 200%; }
+    }
+    .animate-footer-beam { animation: footer-beam 4s linear infinite; }
+
+    .hover-gradient-text:hover {
+      background: linear-gradient(to right, #60a5fa, #a855f7);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Mobile menu */
+    .menu-closed { transform: translateX(100%); transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+    .menu-open { transform: translateX(0); transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+  </style>
+</head>
+
+<body>
+
+  <!-- Mobile Menu Overlay -->
+  <nav id="mobile-menu" class="fixed inset-0 z-[150] bg-black/95 backdrop-blur-3xl menu-closed flex flex-col justify-center items-center">
+    <button id="close-menu-btn" onclick="closeMobileMenu()" class="absolute top-6 right-6 p-3 rounded-full bg-white/10 hover:bg-white/20 transition-colors z-[160]">
+      <iconify-icon icon="lucide:x" width="24" stroke-width="1.5" class="text-white"></iconify-icon>
+    </button>
+    <div class="flex flex-col gap-8 text-center relative z-10">
+      <a href="index.html" class="text-4xl font-sf font-semibold text-white tracking-tight hover:text-blue-500 transition-colors" onclick="closeMobileMenu()">Home</a>
+      <a href="services.html" class="text-4xl font-sf font-semibold text-white tracking-tight hover:text-blue-500 transition-colors" onclick="closeMobileMenu()">Services</a>
+      <a href="case-studies.html" class="text-4xl font-sf font-semibold text-white tracking-tight hover:text-blue-500 transition-colors" onclick="closeMobileMenu()">Case Studies</a>
+      <a href="blog.html" class="text-4xl font-sf font-semibold text-blue-400 tracking-tight">Blog</a>
+    </div>
+    <div class="mt-14 w-full px-12 max-w-sm relative z-10">
+      <button class="shiny-cta w-full focus:outline-none justify-center" onclick="closeMobileMenu(); openCalendly()">
+        <span>Book Free Call</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Navbar -->
+  <header id="main-navbar" class="fixed top-0 left-0 right-0 z-[100] pt-6 px-6 transition-all duration-300">
+    <nav class="max-w-[95%] mx-auto rounded-full px-6 py-3 transition-all duration-300 glass-nav" id="inner-nav">
+      <div class="flex items-center justify-between relative">
+        <a href="index.html" class="flex items-center gap-4 md:flex-1 justify-center md:justify-start">
+          <div class="text-2xl font-black italic tracking-tighter text-white">LOOPSUIT<sup class="text-[9px] not-italic text-gray-500 ml-0.5">®</sup></div>
+          <div class="hidden sm:flex flex-col justify-center pl-4 border-l-2 border-white/10 h-8">
+            <span class="text-[8px] font-bold tracking-[0.3em] text-gray-400 uppercase leading-none mb-0.5">VISION</span>
+            <div class="bg-[#3b82f6] px-1.5 py-[1px] transform -skew-x-12 inline-block w-max">
+              <span class="block transform skew-x-12 text-[9px] font-black tracking-widest text-white uppercase leading-none">AUTOMATED</span>
+            </div>
+          </div>
+        </a>
+        <div class="hidden lg:flex items-center gap-8 text-sm font-medium text-gray-300 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+          <div class="relative group">
+            <button class="flex items-center gap-1 hover:text-white transition-colors py-2">
+              Solutions <iconify-icon icon="lucide:chevron-down" class="group-hover:rotate-180 transition-transform duration-300"></iconify-icon>
+            </button>
+            <div class="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[320px] p-2 bg-white rounded-2xl shadow-xl border border-slate-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible translate-y-2 group-hover:translate-y-0 transition-all duration-200 z-50">
+              <div class="flex flex-col gap-1">
+                <a href="index.html#solution-sales" class="flex items-start gap-3 p-3 rounded-xl hover:bg-slate-50 transition-colors">
+                  <div class="w-8 h-8 flex-shrink-0 flex items-center justify-center rounded-lg bg-slate-100 mt-0.5">
+                    <iconify-icon icon="lucide:workflow" width="14" class="text-slate-500"></iconify-icon>
+                  </div>
+                  <div><span class="text-sm font-semibold text-slate-900 block">Automate Lead Generation</span><span class="text-[11px] text-slate-500">200+ leads daily, automated outreach</span></div>
+                </a>
+                <a href="index.html#solution-launch" class="flex items-start gap-3 p-3 rounded-xl hover:bg-slate-50 transition-colors">
+                  <div class="w-8 h-8 flex-shrink-0 flex items-center justify-center rounded-lg bg-slate-100 mt-0.5">
+                    <iconify-icon icon="lucide:rocket" width="14" class="text-slate-500"></iconify-icon>
+                  </div>
+                  <div><span class="text-sm font-semibold text-slate-900 block">Launch MVP in 2 Weeks</span><span class="text-[11px] text-slate-500">Production-ready, no 6-month timelines</span></div>
+                </a>
+                <a href="index.html#solution-operations" class="flex items-start gap-3 p-3 rounded-xl hover:bg-slate-50 transition-colors">
+                  <div class="w-8 h-8 flex-shrink-0 flex items-center justify-center rounded-lg bg-slate-100 mt-0.5">
+                    <iconify-icon icon="lucide:headset" width="14" class="text-slate-500"></iconify-icon>
+                  </div>
+                  <div><span class="text-sm font-semibold text-slate-900 block">Automate Customer Support</span><span class="text-[11px] text-slate-500">24/7 AI handles 80% automatically</span></div>
+                </a>
+              </div>
+            </div>
+          </div>
+          <a href="services.html" class="hover:text-white transition-colors">Services</a>
+          <a href="case-studies.html" class="hover:text-white transition-colors">Case Studies</a>
+          <a href="blog.html" class="text-white font-semibold">Blog</a>
+        </div>
+        <div class="flex items-center gap-4">
+          <button class="shiny-cta hidden lg:flex" onclick="openCalendly()"><span>Book Free Call</span></button>
+          <button id="mobile-menu-btn" class="lg:hidden text-white p-2 rounded-full hover:bg-white/10 transition-colors" onclick="openMobileMenu()">
+            <iconify-icon icon="lucide:menu" width="24" height="24"></iconify-icon>
+          </button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="pt-44 pb-20 text-center px-6 relative overflow-hidden">
+    <div class="absolute inset-0 z-0">
+      <div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(#3b82f6 1px, transparent 1px); background-size: 30px 30px;"></div>
+      <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-blue-500/10 rounded-full blur-[100px]"></div>
+    </div>
+    <div class="relative z-10 max-w-4xl mx-auto">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-[10px] font-bold uppercase tracking-wider mb-6">
+        <div class="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse"></div>
+        OUR BLOG
+      </div>
+      <h1 class="text-5xl md:text-7xl lg:text-8xl font-black font-sf tracking-tighter leading-[0.9] text-white mb-6">
+        Insights &amp; <em class="italic font-light text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">Intelligence</em>
+      </h1>
+      <p class="text-gray-400 text-base md:text-lg max-w-xl mx-auto leading-relaxed">
+        Practical ideas on AI automation, product design, and building businesses that scale on autopilot.
+      </p>
+    </div>
+  </section>
+
+  <!-- Featured Posts -->
+  <section class="max-w-7xl mx-auto px-6 mb-16">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <!-- Featured Card 1 -->
+      <a href="blog-ai-automation-workflows.html" class="featured-card group block rounded-2xl overflow-hidden border border-white/5 bg-white/3 hover:border-blue-500/30 transition-all duration-300">
+        <div class="relative h-64 overflow-hidden">
+          <div class="img-placeholder w-full h-full bg-gradient-to-br from-blue-900/60 via-slate-800 to-slate-900 flex items-center justify-center transition-transform duration-500 group-hover:scale-105">
+            <div class="text-center space-y-3">
+              <div class="w-16 h-16 rounded-2xl bg-blue-500/20 border border-blue-500/30 flex items-center justify-center mx-auto">
+                <iconify-icon icon="lucide:cpu" width="32" class="text-blue-400"></iconify-icon>
+              </div>
+              <span class="text-white/20 text-sm font-medium">Image Placeholder</span>
+            </div>
+          </div>
+          <div class="absolute top-4 left-4 flex gap-2">
+            <span class="px-3 py-1 rounded-full bg-blue-500/20 border border-blue-500/30 text-blue-300 text-[10px] font-bold uppercase tracking-wider">#AI Automation</span>
+          </div>
+        </div>
+        <div class="p-6">
+          <div class="flex items-center gap-3 text-gray-500 text-xs mb-3">
+            <span>February 10, 2025</span>
+            <span>·</span>
+            <span>8 min read</span>
+          </div>
+          <h2 class="text-xl md:text-2xl font-bold font-sf text-white leading-tight mb-3 group-hover:text-blue-300 transition-colors">
+            How AI Automation is Replacing $50K+/Year Tasks in Your Business
+          </h2>
+          <p class="text-gray-400 text-sm leading-relaxed line-clamp-3">
+            The math is undeniable: a single AI agent can outperform three full-time employees at a fraction of the cost. Here's exactly where the ROI lives and how to capture it.
+          </p>
+        </div>
+      </a>
+
+      <!-- Featured Card 2 -->
+      <a href="blog-mvp-14-days.html" class="featured-card group block rounded-2xl overflow-hidden border border-white/5 bg-white/3 hover:border-purple-500/30 transition-all duration-300">
+        <div class="relative h-64 overflow-hidden">
+          <div class="img-placeholder w-full h-full bg-gradient-to-br from-purple-900/60 via-slate-800 to-slate-900 flex items-center justify-center transition-transform duration-500 group-hover:scale-105">
+            <div class="text-center space-y-3">
+              <div class="w-16 h-16 rounded-2xl bg-purple-500/20 border border-purple-500/30 flex items-center justify-center mx-auto">
+                <iconify-icon icon="lucide:rocket" width="32" class="text-purple-400"></iconify-icon>
+              </div>
+              <span class="text-white/20 text-sm font-medium">Image Placeholder</span>
+            </div>
+          </div>
+          <div class="absolute top-4 left-4 flex gap-2">
+            <span class="px-3 py-1 rounded-full bg-purple-500/20 border border-purple-500/30 text-purple-300 text-[10px] font-bold uppercase tracking-wider">#MVP</span>
+          </div>
+        </div>
+        <div class="p-6">
+          <div class="flex items-center gap-3 text-gray-500 text-xs mb-3">
+            <span>January 15, 2025</span>
+            <span>·</span>
+            <span>10 min read</span>
+          </div>
+          <h2 class="text-xl md:text-2xl font-bold font-sf text-white leading-tight mb-3 group-hover:text-purple-300 transition-colors">
+            Zero to Product: Our Exact Playbook for Shipping an MVP in 14 Days
+          </h2>
+          <p class="text-gray-400 text-sm leading-relaxed line-clamp-3">
+            Most founders waste 6 months building the wrong thing. We've refined a process that gets real products into real users' hands in two weeks flat.
+          </p>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- Filter Tags -->
+  <section class="max-w-7xl mx-auto px-6 mb-10">
+    <div class="border-t border-white/5 pt-10">
+      <h2 class="text-xs font-bold tracking-widest text-gray-500 uppercase mb-5">Filter by Topic</h2>
+      <div class="flex gap-3 flex-wrap">
+        <button class="filter-btn active px-4 py-2 rounded-full border border-white/10 text-sm font-medium text-gray-300" onclick="filterBlogs('all', this)">All Posts</button>
+        <button class="filter-btn px-4 py-2 rounded-full border border-white/10 text-sm font-medium text-gray-300" onclick="filterBlogs('ai-automation', this)">#AI Automation</button>
+        <button class="filter-btn px-4 py-2 rounded-full border border-white/10 text-sm font-medium text-gray-300" onclick="filterBlogs('design', this)">#Design</button>
+        <button class="filter-btn px-4 py-2 rounded-full border border-white/10 text-sm font-medium text-gray-300" onclick="filterBlogs('mvp', this)">#MVP</button>
+        <button class="filter-btn px-4 py-2 rounded-full border border-white/10 text-sm font-medium text-gray-300" onclick="filterBlogs('startups', this)">#Startups</button>
+        <button class="filter-btn px-4 py-2 rounded-full border border-white/10 text-sm font-medium text-gray-300" onclick="filterBlogs('trends', this)">#Trends 2025</button>
+        <button class="filter-btn px-4 py-2 rounded-full border border-white/10 text-sm font-medium text-gray-300" onclick="filterBlogs('customer-support', this)">#Customer Support</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog Grid -->
+  <section class="max-w-7xl mx-auto px-6 mb-24">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="blog-grid">
+
+      <!-- Card 1: AI Automation -->
+      <a href="blog-ai-automation-workflows.html" class="blog-card blog-item group block rounded-2xl overflow-hidden border border-white/5 bg-white/[0.02] hover:border-white/10" data-tags="ai-automation">
+        <div class="relative h-48 overflow-hidden">
+          <div class="img-placeholder w-full h-full bg-gradient-to-br from-blue-900/50 to-slate-900 flex items-center justify-center">
+            <iconify-icon icon="lucide:cpu" width="40" class="text-blue-500/40"></iconify-icon>
+          </div>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+        </div>
+        <div class="p-5">
+          <div class="flex gap-2 mb-3 flex-wrap">
+            <span class="text-[10px] font-bold text-blue-400 uppercase tracking-wider">#AI Automation</span>
+            <span class="text-[10px] font-bold text-gray-600">·</span>
+            <span class="text-[10px] font-bold text-gray-500 uppercase tracking-wider">#Productivity</span>
+          </div>
+          <h3 class="text-base font-bold font-sf text-white leading-snug mb-2 group-hover:text-blue-300 transition-colors">
+            How AI Automation is Replacing $50K+/Year Tasks in Your Business
+          </h3>
+          <p class="text-gray-500 text-xs leading-relaxed mb-4 line-clamp-2">
+            The math is undeniable: a single AI agent can outperform three full-time employees at a fraction of the cost.
+          </p>
+          <div class="flex items-center justify-between">
+            <span class="text-gray-600 text-xs">Feb 10, 2025 · 8 min read</span>
+            <span class="text-blue-400 text-xs font-medium group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">
+              Read <iconify-icon icon="lucide:arrow-right" width="12"></iconify-icon>
+            </span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Card 2: Design Systems -->
+      <a href="blog-design-systems-startups.html" class="blog-card blog-item group block rounded-2xl overflow-hidden border border-white/5 bg-white/[0.02] hover:border-white/10" data-tags="design startups">
+        <div class="relative h-48 overflow-hidden">
+          <div class="img-placeholder w-full h-full bg-gradient-to-br from-emerald-900/50 to-slate-900 flex items-center justify-center">
+            <iconify-icon icon="lucide:layout-grid" width="40" class="text-emerald-500/40"></iconify-icon>
+          </div>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+        </div>
+        <div class="p-5">
+          <div class="flex gap-2 mb-3 flex-wrap">
+            <span class="text-[10px] font-bold text-emerald-400 uppercase tracking-wider">#Design</span>
+            <span class="text-[10px] font-bold text-gray-600">·</span>
+            <span class="text-[10px] font-bold text-gray-500 uppercase tracking-wider">#Startups</span>
+          </div>
+          <h3 class="text-base font-bold font-sf text-white leading-snug mb-2 group-hover:text-emerald-300 transition-colors">
+            Why Your Startup Needs a Design System (Before You Think It Does)
+          </h3>
+          <p class="text-gray-500 text-xs leading-relaxed mb-4 line-clamp-2">
+            Design systems aren't just for enterprise teams. Here's why building one early saves you months of rework.
+          </p>
+          <div class="flex items-center justify-between">
+            <span class="text-gray-600 text-xs">Jan 28, 2025 · 6 min read</span>
+            <span class="text-emerald-400 text-xs font-medium group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">
+              Read <iconify-icon icon="lucide:arrow-right" width="12"></iconify-icon>
+            </span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Card 3: MVP 14 Days -->
+      <a href="blog-mvp-14-days.html" class="blog-card blog-item group block rounded-2xl overflow-hidden border border-white/5 bg-white/[0.02] hover:border-white/10" data-tags="mvp startups">
+        <div class="relative h-48 overflow-hidden">
+          <div class="img-placeholder w-full h-full bg-gradient-to-br from-purple-900/50 to-slate-900 flex items-center justify-center">
+            <iconify-icon icon="lucide:rocket" width="40" class="text-purple-500/40"></iconify-icon>
+          </div>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+        </div>
+        <div class="p-5">
+          <div class="flex gap-2 mb-3 flex-wrap">
+            <span class="text-[10px] font-bold text-purple-400 uppercase tracking-wider">#MVP</span>
+            <span class="text-[10px] font-bold text-gray-600">·</span>
+            <span class="text-[10px] font-bold text-gray-500 uppercase tracking-wider">#Startups</span>
+          </div>
+          <h3 class="text-base font-bold font-sf text-white leading-snug mb-2 group-hover:text-purple-300 transition-colors">
+            Zero to Product: Our Exact Playbook for Shipping an MVP in 14 Days
+          </h3>
+          <p class="text-gray-500 text-xs leading-relaxed mb-4 line-clamp-2">
+            Most founders waste 6 months building the wrong thing. We've refined a process that gets real products shipped in two weeks.
+          </p>
+          <div class="flex items-center justify-between">
+            <span class="text-gray-600 text-xs">Jan 15, 2025 · 10 min read</span>
+            <span class="text-purple-400 text-xs font-medium group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">
+              Read <iconify-icon icon="lucide:arrow-right" width="12"></iconify-icon>
+            </span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Card 4: AI Customer Support -->
+      <a href="blog-ai-customer-support.html" class="blog-card blog-item group block rounded-2xl overflow-hidden border border-white/5 bg-white/[0.02] hover:border-white/10" data-tags="ai-automation customer-support">
+        <div class="relative h-48 overflow-hidden">
+          <div class="img-placeholder w-full h-full bg-gradient-to-br from-orange-900/50 to-slate-900 flex items-center justify-center">
+            <iconify-icon icon="lucide:headset" width="40" class="text-orange-500/40"></iconify-icon>
+          </div>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+        </div>
+        <div class="p-5">
+          <div class="flex gap-2 mb-3 flex-wrap">
+            <span class="text-[10px] font-bold text-orange-400 uppercase tracking-wider">#AI Automation</span>
+            <span class="text-[10px] font-bold text-gray-600">·</span>
+            <span class="text-[10px] font-bold text-gray-500 uppercase tracking-wider">#Customer Support</span>
+          </div>
+          <h3 class="text-base font-bold font-sf text-white leading-snug mb-2 group-hover:text-orange-300 transition-colors">
+            How to Handle 10,000 Support Requests a Month Without Hiring Anyone
+          </h3>
+          <p class="text-gray-500 text-xs leading-relaxed mb-4 line-clamp-2">
+            AI support stacks have matured enough to handle 80% of tickets automatically. Here's how to set one up that actually works.
+          </p>
+          <div class="flex items-center justify-between">
+            <span class="text-gray-600 text-xs">Dec 20, 2024 · 7 min read</span>
+            <span class="text-orange-400 text-xs font-medium group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">
+              Read <iconify-icon icon="lucide:arrow-right" width="12"></iconify-icon>
+            </span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Card 5: UX Design Trends -->
+      <a href="blog-ux-design-trends-2025.html" class="blog-card blog-item group block rounded-2xl overflow-hidden border border-white/5 bg-white/[0.02] hover:border-white/10" data-tags="design trends">
+        <div class="relative h-48 overflow-hidden">
+          <div class="img-placeholder w-full h-full bg-gradient-to-br from-pink-900/50 to-slate-900 flex items-center justify-center">
+            <iconify-icon icon="lucide:sparkles" width="40" class="text-pink-500/40"></iconify-icon>
+          </div>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+        </div>
+        <div class="p-5">
+          <div class="flex gap-2 mb-3 flex-wrap">
+            <span class="text-[10px] font-bold text-pink-400 uppercase tracking-wider">#Design</span>
+            <span class="text-[10px] font-bold text-gray-600">·</span>
+            <span class="text-[10px] font-bold text-gray-500 uppercase tracking-wider">#UI/UX</span>
+            <span class="text-[10px] font-bold text-gray-600">·</span>
+            <span class="text-[10px] font-bold text-gray-500 uppercase tracking-wider">#Trends 2025</span>
+          </div>
+          <h3 class="text-base font-bold font-sf text-white leading-snug mb-2 group-hover:text-pink-300 transition-colors">
+            The 7 UX Design Trends That Will Define Digital Products in 2025
+          </h3>
+          <p class="text-gray-500 text-xs leading-relaxed mb-4 line-clamp-2">
+            From spatial computing to AI-generated personalization — the design landscape is shifting fast. Here's what's actually worth your attention.
+          </p>
+          <div class="flex items-center justify-between">
+            <span class="text-gray-600 text-xs">Dec 5, 2024 · 9 min read</span>
+            <span class="text-pink-400 text-xs font-medium group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">
+              Read <iconify-icon icon="lucide:arrow-right" width="12"></iconify-icon>
+            </span>
+          </div>
+        </div>
+      </a>
+
+      <!-- CTA Card -->
+      <div class="blog-card blog-item blog-item-cta rounded-2xl border border-blue-500/20 bg-gradient-to-br from-blue-950/40 to-slate-900/80 flex flex-col items-center justify-center text-center p-8" data-tags="all">
+        <div class="w-14 h-14 rounded-2xl bg-blue-500/20 border border-blue-500/30 flex items-center justify-center mb-5">
+          <iconify-icon icon="lucide:zap" width="28" class="text-blue-400"></iconify-icon>
+        </div>
+        <h3 class="text-lg font-bold font-sf text-white mb-2">Want us to automate your business?</h3>
+        <p class="text-gray-400 text-sm mb-6 leading-relaxed">Book a free 30-minute strategy call and see what's possible.</p>
+        <button class="shiny-cta" onclick="openCalendly()"><span>Book Free Call</span></button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="relative bg-gradient-to-b from-slate-950 via-slate-950 to-black text-slate-300 overflow-hidden py-12 md:py-16">
+    <style>
+      @keyframes footer-beam-2 { 0% { left: -100%; } 100% { left: 200%; } }
+      .animate-footer-beam-2 { animation: footer-beam-2 4s linear infinite; }
+    </style>
+    <div class="absolute top-0 left-0 h-1 w-1/2 bg-gradient-to-r from-transparent via-cyan-500 to-transparent opacity-75 z-20 animate-footer-beam-2"></div>
+    <div class="absolute top-0 inset-x-0 h-px bg-slate-800 z-10"></div>
+    <div class="absolute top-[-20%] right-[-10%] w-[500px] h-[500px] bg-purple-900/10 rounded-full blur-[100px] pointer-events-none"></div>
+    <div class="absolute bottom-[-20%] left-[-10%] w-[500px] h-[500px] bg-blue-900/10 rounded-full blur-[100px] pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-6 lg:px-20 xl:px-32 relative z-10">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 md:gap-12 mb-8 md:mb-12">
+        <div class="md:col-span-2 lg:col-span-5 space-y-5 flex flex-col items-center lg:items-start text-center lg:text-left">
+          <a href="index.html" class="inline-block">
+            <div class="flex items-center gap-4 group/logo">
+              <div class="text-2xl font-black italic tracking-tighter text-white transition-transform duration-500 group-hover/logo:scale-105">LOOPSUIT<sup class="text-[9px] not-italic text-gray-500 ml-0.5">®</sup></div>
+              <div class="hidden sm:flex flex-col justify-center pl-4 border-l-2 border-white/10 h-8">
+                <span class="text-[8px] font-bold tracking-[0.3em] text-gray-400 uppercase leading-none mb-0.5">VISION</span>
+                <div class="bg-[#3b82f6] px-1.5 py-[1px] transform -skew-x-12 inline-block w-max">
+                  <span class="block transform skew-x-12 text-[9px] font-black tracking-widest text-white uppercase leading-none">AUTOMATED</span>
+                </div>
+              </div>
+            </div>
+          </a>
+          <p class="text-slate-400 leading-relaxed max-w-sm font-sf text-base">Empowering forward-thinking businesses with intelligent automation systems.</p>
+          <div class="space-y-2 font-sf">
+            <p class="text-white font-semibold text-base">Jastej Singh Sehra</p>
+            <p class="text-slate-400 text-sm">✉️ jastejsingh98@gmail.com</p>
+            <p class="text-slate-400 text-sm">📍 Vancouver, Canada</p>
+          </div>
+          <div class="pt-4">
+            <button onclick="openCalendly()" class="shiny-cta shiny-cta-light hover:scale-105 transition-transform">
+              <span class="font-sf">Book Free Call</span>
+            </button>
+          </div>
+        </div>
+        <div class="md:col-span-1 lg:col-span-2 lg:col-start-9 text-center">
+          <h3 class="text-white font-semibold mb-4 text-lg font-sf">Navigation</h3>
+          <ul class="space-y-3">
+            <li><a href="index.html" class="text-slate-400 hover:text-cyan-400 transition-colors font-sf">Home</a></li>
+            <li><a href="services.html" class="text-slate-400 hover:text-cyan-400 transition-colors font-sf">Services</a></li>
+            <li><a href="case-studies.html" class="text-slate-400 hover:text-cyan-400 transition-colors font-sf">Case Studies</a></li>
+            <li><a href="blog.html" class="text-cyan-400 font-sf font-medium">Blog</a></li>
+          </ul>
+        </div>
+        <div class="md:col-span-1 lg:col-span-2 text-center">
+          <h3 class="text-white font-semibold mb-4 text-lg font-sf">Blog Topics</h3>
+          <ul class="space-y-3">
+            <li><span class="text-slate-400 font-sf text-sm">#AI Automation</span></li>
+            <li><span class="text-slate-400 font-sf text-sm">#Design & UI/UX</span></li>
+            <li><span class="text-slate-400 font-sf text-sm">#MVP Development</span></li>
+            <li><span class="text-slate-400 font-sf text-sm">#Startups</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-slate-800/50 mb-6 md:mb-8"></div>
+      <div class="flex flex-col-reverse md:flex-row justify-between items-center gap-6">
+        <div class="text-slate-500 text-sm font-sf text-center md:text-left">
+          <p>&copy; <span id="year"></span> LoopSuit. All rights reserved.</p>
+        </div>
+        <div class="flex flex-col items-center md:items-end gap-3">
+          <p class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400 font-semibold text-sm">Serving clients across US, Canada & EU</p>
+          <div class="flex items-center space-x-4">
+            <a href="#" class="w-9 h-9 flex items-center justify-center rounded-full bg-slate-900 border border-slate-800 text-slate-400 hover:text-white hover:border-cyan-500/50 transition-all">
+              <iconify-icon icon="lucide:twitter" width="18"></iconify-icon>
+            </a>
+            <a href="#" class="w-9 h-9 flex items-center justify-center rounded-full bg-slate-900 border border-slate-800 text-slate-400 hover:text-white hover:border-cyan-500/50 transition-all">
+              <iconify-icon icon="lucide:linkedin" width="18"></iconify-icon>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  </footer>
+
+  <script>
+    // Navbar scroll
+    const navbar = document.getElementById('main-navbar');
+    const innerNav = document.getElementById('inner-nav');
+    let lastScrollY = window.scrollY;
+    window.addEventListener('scroll', () => {
+      const currentScrollY = window.scrollY;
+      if (innerNav) {
+        if (currentScrollY > 20) {
+          innerNav.classList.add('glass-nav-scrolled');
+          innerNav.classList.remove('py-3');
+          innerNav.classList.add('py-2');
+        } else {
+          innerNav.classList.remove('glass-nav-scrolled');
+          innerNav.classList.add('py-3');
+          innerNav.classList.remove('py-2');
+        }
+      }
+      if (navbar) {
+        if (currentScrollY <= 50 || currentScrollY < lastScrollY) {
+          navbar.classList.remove('navbar-hidden');
+          navbar.classList.add('navbar-visible');
+        } else if (currentScrollY > lastScrollY && currentScrollY > 50) {
+          navbar.classList.remove('navbar-visible');
+          navbar.classList.add('navbar-hidden');
+        }
+      }
+      lastScrollY = currentScrollY;
+    });
+
+    // Mobile menu
+    function openMobileMenu() {
+      document.getElementById('mobile-menu').classList.replace('menu-closed', 'menu-open');
+    }
+    function closeMobileMenu() {
+      document.getElementById('mobile-menu').classList.replace('menu-open', 'menu-closed');
+    }
+
+    // Calendly
+    function openCalendly() {
+      const url = 'https://calendly.com/jastejsehra/chat-about-ai-automation';
+      if (typeof Calendly !== 'undefined') {
+        Calendly.initPopupWidget({ url });
+      } else {
+        window.open(url, '_blank');
+      }
+      return false;
+    }
+
+    // Blog filter
+    function filterBlogs(tag, btn) {
+      // Update active button
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const items = document.querySelectorAll('.blog-item:not(.blog-item-cta)');
+      items.forEach(item => {
+        const tags = item.dataset.tags || '';
+        if (tag === 'all' || tags.includes(tag)) {
+          item.style.opacity = '1';
+          item.style.pointerEvents = 'auto';
+          item.style.display = '';
+        } else {
+          item.style.opacity = '0.2';
+          item.style.pointerEvents = 'none';
+        }
+      });
+    }
+  </script>
+</body>
+</html>
