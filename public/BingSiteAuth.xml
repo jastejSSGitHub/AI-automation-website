@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!--
+  BING WEBMASTER TOOLS VERIFICATION
+  ===================================
+  HOW TO USE THIS FILE:
+
+  1. Go to https://www.bing.com/webmasters/
+  2. Sign in with Microsoft account
+  3. Click "Add a Site" → enter https://loopsuitai.com
+  4. Choose "XML file" verification
+  5. Bing will give you a code like: ABCDEF1234567890ABCDEF1234567890
+  6. Replace REPLACE_WITH_YOUR_BING_AUTH_CODE below with that code
+  7. Push to GitHub — Bing will verify the site
+
+  Also submit your sitemap in Bing Webmaster Tools:
+  → https://loopsuitai.com/sitemap.xml
+
+  (Bing powers Microsoft Copilot AI search — very important for AI search rankings)
+-->
+<users>
+  <user>REPLACE_WITH_YOUR_BING_AUTH_CODE</user>
+</users>

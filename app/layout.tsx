@@ -72,7 +72,7 @@ export const metadata: Metadata = {
       "Premium app design, website design, dashboard design & AI automation agency. Launch your MVP in 2 weeks. Serving USA, Canada & India.",
     images: [
       {
-        url: "https://loopsuitai.com/og-image.jpg",
+        url: "https://loopsuitai.com/api/og",
         width: 1200,
         height: 630,
         alt: "LoopSuit — App Design, Website Design & AI Automation Agency",
@@ -86,7 +86,7 @@ export const metadata: Metadata = {
     title: "LoopSuit | App Design, Website Design & AI Automation Agency",
     description:
       "Premium app design, website design, dashboard design & AI automation agency. Launch your MVP in 2 weeks. USA, Canada & India.",
-    images: ["https://loopsuitai.com/twitter-card.jpg"],
+    images: ["https://loopsuitai.com/api/og"],
   },
   verification: {
     google: "",   // Add your Google Search Console verification token here

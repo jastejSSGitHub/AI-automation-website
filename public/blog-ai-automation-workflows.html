@@ -13,7 +13,7 @@
   <meta property="og:url" content="https://loopsuitai.com/blog-ai-automation-workflows.html">
   <meta property="og:title" content="How AI Automation is Replacing $50K+/Year Tasks in Business | LoopSuit">
   <meta property="og:description" content="A single AI system can replace $50K–$150K worth of manual tasks. Lead gen, customer support, and reporting are the highest-ROI starting points.">
-  <meta property="og:image" content="https://loopsuitai.com/og-image.jpg">
+  <meta property="og:image" content="https://loopsuitai.com/api/og">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:site_name" content="LoopSuit">
@@ -22,7 +22,7 @@
   <meta name="twitter:site" content="@loopsuitai">
   <meta name="twitter:title" content="How AI Automation is Replacing $50K+/Year Tasks | LoopSuit Blog">
   <meta name="twitter:description" content="The math is undeniable. Here's exactly where AI automation pays off and how to start.">
-  <meta name="twitter:image" content="https://loopsuitai.com/og-image.jpg">
+  <meta name="twitter:image" content="https://loopsuitai.com/api/og">
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"BlogPosting","headline":"How AI Automation is Replacing $50K+/Year Tasks in Business","description":"A single AI system can replace $50K–$150K worth of manual tasks. Lead gen, customer support, and reporting are the highest-ROI starting points.","author":{"@type":"Organization","name":"LoopSuit","url":"https://loopsuitai.com"},"publisher":{"@type":"Organization","name":"LoopSuit","url":"https://loopsuitai.com"},"url":"https://loopsuitai.com/blog-ai-automation-workflows.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://loopsuitai.com/blog-ai-automation-workflows.html"},"keywords":["AI automation","business automation","AI in business","workflow automation","AI agents","lead generation automation"],"breadcrumb":{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://loopsuitai.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://loopsuitai.com/blog.html"},{"@type":"ListItem","position":3,"name":"How AI Automation is Replacing $50K+/Year Tasks","item":"https://loopsuitai.com/blog-ai-automation-workflows.html"}]}}
   </script>
@@ -83,21 +83,37 @@
     .art-link { color: #2563eb; text-decoration: underline; text-underline-offset: 3px; font-weight: 500; }
 
     /* TOC */
-    .toc-link { display: block; font-size: 0.8rem; color: #94a3b8; line-height: 1.4; padding: 6px 0 6px 12px; border-left: 2px solid transparent; transition: all 0.2s; }
-    .toc-link:hover { color: #1e293b; border-left-color: #94a3b8; }
-    .toc-link.toc-active { color: #2563eb; border-left-color: #2563eb; font-weight: 600; }
+    .toc-link {
+      display: block; font-size: 0.8rem; color: #64748b;
+      line-height: 1.5; padding: 5px 0; border: none;
+      transition: color 0.2s;
+    }
+    .toc-link:hover { color: #0f172a; }
+    .toc-link.toc-active { color: #0f172a; font-weight: 600; }
+
+    /* TOC collapse */
+    #toc-body { transition: all 0.3s ease; overflow: hidden; }
+    #toc-body.toc-collapsed { max-height: 0 !important; opacity: 0; }
 
     /* Reading progress */
     #reading-progress { position: fixed; top: 0; left: 0; height: 3px; background: linear-gradient(to right, #3b82f6, #8b5cf6); z-index: 9999; transition: width 0.1s linear; pointer-events: none; }
 
-    /* Carousel */
-    .carousel-wrapper { overflow: hidden; }
-    .carousel-track { display: flex; gap: 10px; transition: transform 0.5s cubic-bezier(0.4,0,0.2,1); }
-    .carousel-slide { flex-shrink: 0; width: 120px; height: 160px; border-radius: 12px; overflow: hidden; }
-
     /* Footer */
     @keyframes footer-beam { 0% { left: -100%; } 100% { left: 200%; } }
     .animate-footer-beam { animation: footer-beam 4s linear infinite; }
+
+    /* Related article card */
+    .rel-card { background: #fff; border-radius: 16px; overflow: hidden; border: 1px solid #e2e8f0; transition: box-shadow 0.2s, transform 0.2s; display: flex; flex-direction: column; }
+    .rel-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.10); transform: translateY(-2px); }
+    .rel-card-img { width: 100%; aspect-ratio: 16/10; object-fit: cover; display: block; }
+    .rel-card-img-placeholder { width: 100%; aspect-ratio: 16/10; display: flex; align-items: center; justify-content: center; }
+
+    /* Share circle */
+    .share-btn { width: 42px; height: 42px; border-radius: 50%; border: 1.5px solid #cbd5e1; display: flex; align-items: center; justify-content: center; color: #64748b; transition: all 0.2s; background: transparent; }
+    .share-btn:hover { border-color: #475569; color: #0f172a; }
+
+    /* Tag pill */
+    .tag-pill { display: inline-flex; align-items: center; padding: 4px 12px; border-radius: 9999px; border: 1.5px solid #e2e8f0; background: #fff; font-size: 0.75rem; color: #64748b; font-weight: 500; }
   </style>
 </head>
 
@@ -149,7 +165,7 @@
     </nav>
   </header>
 
-  <!-- Article Header (centered, light bg) -->
+  <!-- Article Header -->
   <header class="pt-28 md:pt-36 pb-8 px-6 text-center">
     <div class="max-w-2xl mx-auto">
       <p class="text-blue-600 text-[11px] font-bold uppercase tracking-[0.2em] mb-5">February 10, 2025</p>
@@ -166,19 +182,19 @@
         <span class="text-slate-300">·</span>
         <span class="text-slate-400">8 min read</span>
       </div>
-      <!-- Social icons -->
-      <div class="flex items-center justify-center gap-3">
-        <a href="https://instagram.com/loopsuitai" target="_blank" class="w-10 h-10 rounded-full border border-slate-200 flex items-center justify-center text-slate-500 hover:text-slate-900 hover:border-slate-400 transition-all">
-          <iconify-icon icon="lucide:instagram" width="16"></iconify-icon>
+      <!-- Social share -->
+      <div class="flex items-center justify-center gap-2">
+        <a href="https://linkedin.com/company/loopsuit" target="_blank" class="share-btn">
+          <iconify-icon icon="lucide:linkedin" width="15"></iconify-icon>
         </a>
-        <a href="https://linkedin.com/company/loopsuit" target="_blank" class="w-10 h-10 rounded-full border border-slate-200 flex items-center justify-center text-slate-500 hover:text-slate-900 hover:border-slate-400 transition-all">
-          <iconify-icon icon="lucide:linkedin" width="16"></iconify-icon>
+        <a href="https://instagram.com/loopsuitai" target="_blank" class="share-btn">
+          <iconify-icon icon="lucide:instagram" width="15"></iconify-icon>
         </a>
-        <button onclick="copyPageLink(this)" class="w-10 h-10 rounded-full border border-slate-200 flex items-center justify-center text-slate-500 hover:text-slate-900 hover:border-slate-400 transition-all" title="Copy link">
-          <iconify-icon icon="lucide:link-2" width="16"></iconify-icon>
+        <button onclick="copyPageLink(this)" class="share-btn" title="Copy link">
+          <iconify-icon icon="lucide:link-2" width="15"></iconify-icon>
         </button>
-        <a href="mailto:?subject=Interesting article from LoopSuit&body=Check this out: https://loopsuitai.com/blog-ai-automation-workflows.html" class="w-10 h-10 rounded-full border border-slate-200 flex items-center justify-center text-slate-500 hover:text-slate-900 hover:border-slate-400 transition-all">
-          <iconify-icon icon="lucide:mail" width="16"></iconify-icon>
+        <a href="mailto:?subject=Interesting article from LoopSuit&body=Check this out: https://loopsuitai.com/blog-ai-automation-workflows.html" class="share-btn">
+          <iconify-icon icon="lucide:mail" width="15"></iconify-icon>
         </a>
       </div>
     </div>
@@ -200,22 +216,49 @@
   </div>
 
   <!-- Main layout: 3-col desktop, single-col mobile -->
-  <div class="max-w-[1180px] mx-auto px-4 md:px-6 pb-20">
-    <div class="lg:grid lg:grid-cols-[232px_1fr_252px] lg:gap-10">
+  <div class="max-w-[1200px] mx-auto px-4 md:px-6 pb-20">
+    <div class="lg:grid lg:grid-cols-[240px_1fr_260px] lg:gap-10 lg:items-start">
 
       <!-- LEFT: Desktop TOC (sticky) -->
       <aside class="hidden lg:block">
-        <div class="sticky top-28">
-          <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400 mb-4">Table of Contents</p>
-          <nav>
-            <a href="#manual-costs" class="toc-link toc-active">The hidden cost of manual work</a>
-            <a href="#where-ai-pays" class="toc-link">Where AI pays off most</a>
-            <a href="#lead-gen" class="toc-link">Lead generation & outreach</a>
-            <a href="#customer-support" class="toc-link">Customer support at scale</a>
-            <a href="#reporting" class="toc-link">Data entry & reporting</a>
-            <a href="#getting-started" class="toc-link">Getting started</a>
-            <a href="#faqs" class="toc-link">FAQs</a>
-          </nav>
+        <div class="sticky top-28 space-y-5">
+
+          <!-- TOC Box -->
+          <div class="border border-slate-200 rounded-xl bg-[#F7F6F2] overflow-hidden">
+            <div class="flex items-center justify-between px-4 py-3 border-b border-slate-200">
+              <span class="text-[10px] font-bold uppercase tracking-[0.18em] text-slate-500">Table of Contents</span>
+              <button id="toc-toggle" onclick="toggleToc()" class="text-slate-400 hover:text-slate-700 transition-colors text-lg leading-none font-light" title="Collapse">—</button>
+            </div>
+            <nav id="toc-body" class="px-4 py-3" style="max-height: 400px;">
+              <a href="#manual-costs" class="toc-link toc-active">The hidden cost of manual work</a>
+              <a href="#where-ai-pays" class="toc-link">Where AI pays off most</a>
+              <a href="#lead-gen" class="toc-link">Lead generation &amp; outreach</a>
+              <a href="#customer-support" class="toc-link">Customer support at scale</a>
+              <a href="#reporting" class="toc-link">Data entry &amp; reporting</a>
+              <a href="#getting-started" class="toc-link">Getting started</a>
+              <a href="#faqs" class="toc-link">FAQs</a>
+            </nav>
+          </div>
+
+          <!-- Share -->
+          <div>
+            <p class="text-[10px] font-bold uppercase tracking-[0.18em] text-slate-400 mb-3 px-1">Share</p>
+            <div class="flex gap-2">
+              <a href="https://linkedin.com/company/loopsuit" target="_blank" class="share-btn">
+                <iconify-icon icon="lucide:linkedin" width="15"></iconify-icon>
+              </a>
+              <a href="https://instagram.com/loopsuitai" target="_blank" class="share-btn">
+                <iconify-icon icon="lucide:instagram" width="15"></iconify-icon>
+              </a>
+              <button onclick="copyPageLink(this)" class="share-btn">
+                <iconify-icon icon="lucide:link-2" width="15"></iconify-icon>
+              </button>
+              <a href="mailto:?subject=Interesting article from LoopSuit&body=Check this out: https://loopsuitai.com/blog-ai-automation-workflows.html" class="share-btn">
+                <iconify-icon icon="lucide:mail" width="15"></iconify-icon>
+              </a>
+            </div>
+          </div>
+
         </div>
       </aside>
 
@@ -231,16 +274,18 @@
         </div>
 
         <!-- MOBILE: In This Article (not sticky) -->
-        <div class="lg:hidden mb-10 bg-slate-100 rounded-2xl p-5 border border-slate-200">
-          <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500 mb-4">In This Article</p>
-          <ol class="space-y-2.5">
-            <li><a href="#manual-costs" class="text-slate-700 font-medium text-sm hover:text-blue-600 transition-colors">1. The hidden cost of manual work</a></li>
-            <li><a href="#where-ai-pays" class="text-slate-700 font-medium text-sm hover:text-blue-600 transition-colors">2. Where AI pays off most</a></li>
-            <li><a href="#lead-gen" class="text-slate-700 font-medium text-sm hover:text-blue-600 transition-colors">3. Lead generation & outreach</a></li>
-            <li><a href="#customer-support" class="text-slate-700 font-medium text-sm hover:text-blue-600 transition-colors">4. Customer support at scale</a></li>
-            <li><a href="#reporting" class="text-slate-700 font-medium text-sm hover:text-blue-600 transition-colors">5. Data entry & reporting</a></li>
-            <li><a href="#getting-started" class="text-slate-700 font-medium text-sm hover:text-blue-600 transition-colors">6. Getting started</a></li>
-            <li><a href="#faqs" class="text-slate-700 font-medium text-sm hover:text-blue-600 transition-colors">7. FAQs</a></li>
+        <div class="lg:hidden mb-10 border border-slate-200 rounded-xl overflow-hidden bg-[#F7F6F2]">
+          <div class="px-4 py-3 border-b border-slate-200">
+            <p class="text-[10px] font-bold uppercase tracking-[0.18em] text-slate-500">In This Article</p>
+          </div>
+          <ol class="px-4 py-3 space-y-2">
+            <li><a href="#manual-costs" class="text-slate-700 text-sm hover:text-blue-600 transition-colors">1. The hidden cost of manual work</a></li>
+            <li><a href="#where-ai-pays" class="text-slate-700 text-sm hover:text-blue-600 transition-colors">2. Where AI pays off most</a></li>
+            <li><a href="#lead-gen" class="text-slate-700 text-sm hover:text-blue-600 transition-colors">3. Lead generation &amp; outreach</a></li>
+            <li><a href="#customer-support" class="text-slate-700 text-sm hover:text-blue-600 transition-colors">4. Customer support at scale</a></li>
+            <li><a href="#reporting" class="text-slate-700 text-sm hover:text-blue-600 transition-colors">5. Data entry &amp; reporting</a></li>
+            <li><a href="#getting-started" class="text-slate-700 text-sm hover:text-blue-600 transition-colors">6. Getting started</a></li>
+            <li><a href="#faqs" class="text-slate-700 text-sm hover:text-blue-600 transition-colors">7. FAQs</a></li>
           </ol>
         </div>
 
@@ -256,7 +301,6 @@
             <li>Net savings: <strong>$60,000–$80,000/year. Starting month one.</strong></li>
           </ul>
 
-          <!-- Section placeholder image -->
           <div class="my-8 rounded-xl overflow-hidden" style="height: 220px;">
             <div class="w-full h-full bg-gradient-to-br from-slate-200 to-slate-300 flex items-center justify-center">
               <div class="text-center">
@@ -272,17 +316,17 @@
           <h2>Where AI Actually <span class="underline decoration-purple-400 decoration-[3px] underline-offset-4">Pays Off</span></h2>
           <p>Not all automation is equal. After building AI systems for 100+ businesses, the highest-ROI areas are consistent across industries:</p>
           <ul>
-            <li><strong>Lead generation & outreach</strong> — AI identifies, enriches, and contacts 500+ qualified prospects daily</li>
+            <li><strong>Lead generation &amp; outreach</strong> — AI identifies, enriches, and contacts 500+ qualified prospects daily</li>
             <li><strong>Customer support</strong> — AI handles 80%+ of Tier 1 tickets automatically, around the clock</li>
-            <li><strong>Data entry & reporting</strong> — AI extracts, structures, and summarizes data without human intervention</li>
-            <li><strong>Invoice & document processing</strong> — OCR + AI reads, codes, and routes approvals automatically</li>
+            <li><strong>Data entry &amp; reporting</strong> — AI extracts, structures, and summarizes data without human intervention</li>
+            <li><strong>Invoice &amp; document processing</strong> — OCR + AI reads, codes, and routes approvals automatically</li>
           </ul>
           <p>What makes these four different from every other automation is the <a href="services.html" class="art-link">combination of reliability and ROI</a>. They're high-frequency, rules-based enough for AI to handle reliably, and expensive enough to make the savings meaningful.</p>
         </section>
 
         <!-- Section 3 -->
         <section id="lead-gen">
-          <h2>Lead Generation & <span class="underline decoration-blue-400 decoration-[3px] underline-offset-4">Outreach</span></h2>
+          <h2>Lead Generation &amp; <span class="underline decoration-blue-400 decoration-[3px] underline-offset-4">Outreach</span></h2>
           <p>This is where most businesses see the fastest return. A traditional Business Development Rep (BDR) might send 50–80 personalized emails per day. An AI outreach system can send <strong>500+</strong>, each genuinely personalized using data enrichment from LinkedIn, company databases, and behavioral signals.</p>
           <p>The workflow looks like this:</p>
           <ul>
@@ -293,7 +337,6 @@
           </ul>
           <p>One of our clients went from 40 demos/month to 180 demos/month using this exact stack — <strong>with the same team size</strong>. No new hires. Just systems.</p>
 
-          <!-- Section placeholder image -->
           <div class="my-8 rounded-xl overflow-hidden" style="height: 220px;">
             <div class="w-full h-full bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center">
               <div class="text-center">
@@ -304,7 +347,7 @@
           </div>
         </section>
 
-        <!-- MODAL 1: embedded CTA -->
+        <!-- Inline CTA 1 -->
         <div class="my-12 rounded-2xl overflow-hidden bg-slate-900 text-white">
           <div style="height: 180px;" class="relative overflow-hidden">
             <div class="w-full h-full bg-gradient-to-br from-blue-800 via-blue-900 to-slate-900 flex items-center justify-center">
@@ -338,7 +381,6 @@
           </ul>
           <p>The result: <strong>80% of tickets resolved without any human involvement</strong>. Average response time drops from hours to seconds. And — counterintuitively — CSAT scores often improve because customers get instant, accurate answers at 3am on a Sunday.</p>
 
-          <!-- Section placeholder image -->
           <div class="my-8 rounded-xl overflow-hidden" style="height: 220px;">
             <div class="w-full h-full bg-gradient-to-br from-orange-100 to-orange-200 flex items-center justify-center">
               <div class="text-center">
@@ -351,7 +393,7 @@
 
         <!-- Section 5 -->
         <section id="reporting">
-          <h2>Data Entry & <span class="underline decoration-emerald-400 decoration-[3px] underline-offset-4">Automated Reporting</span></h2>
+          <h2>Data Entry &amp; <span class="underline decoration-emerald-400 decoration-[3px] underline-offset-4">Automated Reporting</span></h2>
           <p>Every business generates more data than it knows what to do with. Invoices, CRM updates, inventory changes, sales numbers, weekly board decks — these typically require dedicated admin time to collect, clean, and format.</p>
           <p>AI handles all of it:</p>
           <ul>
@@ -361,7 +403,6 @@
             <li><strong>Anomaly detection</strong>: AI flags unusual patterns — a sudden drop in conversion rate, an unexpected spike in churn — before they become problems</li>
           </ul>
 
-          <!-- Section placeholder image -->
           <div class="my-8 rounded-xl overflow-hidden" style="height: 220px;">
             <div class="w-full h-full bg-gradient-to-br from-emerald-100 to-emerald-200 flex items-center justify-center">
               <div class="text-center">
@@ -372,7 +413,7 @@
           </div>
         </section>
 
-        <!-- MODAL 2: How 120+ businesses -->
+        <!-- Inline CTA 2 -->
         <div class="my-12 rounded-2xl overflow-hidden bg-slate-900 text-white">
           <div style="height: 200px;" class="relative overflow-hidden">
             <div class="w-full h-full bg-gradient-to-br from-purple-900 via-slate-800 to-slate-900 flex items-center justify-center">
@@ -380,7 +421,6 @@
                 <iconify-icon icon="lucide:building-2" width="40" class="text-purple-300 mb-2"></iconify-icon>
                 <p class="text-purple-200/40 text-xs font-medium">Image Placeholder</p>
               </div>
-              <!-- Badge overlay -->
               <div class="absolute top-4 right-4 bg-blue-500 text-white text-[10px] font-black uppercase tracking-wider px-3 py-1.5 rounded-full transform rotate-3">
                 LoopSuit
               </div>
@@ -405,7 +445,7 @@
           <p><strong>Step 4 — Measure.</strong> Track time saved, error rate, and output quality over 30 days. Compare to the baseline you established in Step 1.</p>
           <p><strong>Step 5 — Expand.</strong> Once your first workflow is stable and measured, add the next one. Within 90 days, you can have 3–4 workflows running, saving 20+ hours/week.</p>
 
-          <!-- Book a Call Modal -->
+          <!-- Book a Call CTA -->
           <div class="my-10 rounded-2xl overflow-hidden bg-slate-900 text-white p-8">
             <p class="text-[10px] font-bold uppercase tracking-[0.25em] text-slate-400 mb-4 text-center">BOOK A CALL</p>
             <h3 class="font-sf font-black tracking-tight text-center leading-tight mb-2" style="font-size: clamp(1.4rem, 4vw, 2rem);">
@@ -415,27 +455,26 @@
             <button onclick="openCalendly()" class="shiny-cta w-full justify-center mb-8" style="padding: 1rem 1.5rem; font-size: 0.95rem; border-radius: 14px;">
               <span>Book Free Strategy Call</span>
             </button>
-            <!-- Auto-swiping thumbnails -->
-            <div class="carousel-wrapper">
-              <div class="carousel-track" id="book-carousel">
-                <div class="carousel-slide bg-gradient-to-br from-blue-700 to-blue-900 flex items-center justify-center flex-shrink-0" style="width:120px;height:160px;border-radius:12px;">
-                  <iconify-icon icon="lucide:smartphone" width="28" class="text-blue-200"></iconify-icon>
+            <div style="overflow:hidden; border-radius: 12px;">
+              <div style="display:flex; gap:10px; animation: carouselScroll 12s linear infinite;">
+                <div style="flex-shrink:0;width:120px;height:160px;border-radius:12px;background:linear-gradient(135deg,#1d4ed8,#1e3a8a);display:flex;align-items:center;justify-content:center;">
+                  <iconify-icon icon="lucide:smartphone" width="28" style="color:#93c5fd;"></iconify-icon>
                 </div>
-                <div class="carousel-slide bg-gradient-to-br from-purple-700 to-purple-900 flex items-center justify-center flex-shrink-0" style="width:120px;height:160px;border-radius:12px;">
-                  <iconify-icon icon="lucide:monitor" width="28" class="text-purple-200"></iconify-icon>
+                <div style="flex-shrink:0;width:120px;height:160px;border-radius:12px;background:linear-gradient(135deg,#7c3aed,#4c1d95);display:flex;align-items:center;justify-content:center;">
+                  <iconify-icon icon="lucide:monitor" width="28" style="color:#c4b5fd;"></iconify-icon>
                 </div>
-                <div class="carousel-slide bg-gradient-to-br from-emerald-700 to-emerald-900 flex items-center justify-center flex-shrink-0" style="width:120px;height:160px;border-radius:12px;">
-                  <iconify-icon icon="lucide:layout-dashboard" width="28" class="text-emerald-200"></iconify-icon>
+                <div style="flex-shrink:0;width:120px;height:160px;border-radius:12px;background:linear-gradient(135deg,#047857,#064e3b);display:flex;align-items:center;justify-content:center;">
+                  <iconify-icon icon="lucide:layout-dashboard" width="28" style="color:#6ee7b7;"></iconify-icon>
                 </div>
-                <div class="carousel-slide bg-gradient-to-br from-orange-700 to-orange-900 flex items-center justify-center flex-shrink-0" style="width:120px;height:160px;border-radius:12px;">
-                  <iconify-icon icon="lucide:tablet" width="28" class="text-orange-200"></iconify-icon>
+                <div style="flex-shrink:0;width:120px;height:160px;border-radius:12px;background:linear-gradient(135deg,#b45309,#78350f);display:flex;align-items:center;justify-content:center;">
+                  <iconify-icon icon="lucide:tablet" width="28" style="color:#fcd34d;"></iconify-icon>
                 </div>
-                <div class="carousel-slide bg-gradient-to-br from-slate-600 to-slate-800 flex items-center justify-center flex-shrink-0" style="width:120px;height:160px;border-radius:12px;">
-                  <iconify-icon icon="lucide:cpu" width="28" class="text-slate-300"></iconify-icon>
+                <div style="flex-shrink:0;width:120px;height:160px;border-radius:12px;background:linear-gradient(135deg,#475569,#1e293b);display:flex;align-items:center;justify-content:center;">
+                  <iconify-icon icon="lucide:cpu" width="28" style="color:#cbd5e1;"></iconify-icon>
                 </div>
               </div>
             </div>
-            <p class="text-slate-500 text-[11px] text-center mt-4">App, web & dashboard mockups — Image placeholders</p>
+            <p class="text-slate-500 text-[11px] text-center mt-4">App, web &amp; dashboard mockups — Image placeholders</p>
           </div>
         </section>
 
@@ -480,20 +519,24 @@
 
       <!-- RIGHT: Desktop sticky CTA widget -->
       <aside class="hidden lg:block">
-        <div class="sticky top-28 space-y-6">
-          <!-- CTA Widget -->
+        <div class="sticky top-28 space-y-5">
+
+          <!-- CTA Card -->
           <div class="rounded-2xl overflow-hidden bg-slate-900 text-white">
-            <div class="h-40 relative overflow-hidden">
-              <div class="w-full h-full bg-gradient-to-br from-blue-800 to-slate-900 flex items-center justify-center">
-                <div class="text-center">
-                  <iconify-icon icon="lucide:zap" width="32" class="text-blue-300 mb-2"></iconify-icon>
-                  <p class="text-blue-200/30 text-[10px]">Image Placeholder</p>
+            <div class="relative overflow-hidden" style="height: 180px;">
+              <div class="w-full h-full bg-gradient-to-br from-slate-800 via-slate-900 to-black flex items-center justify-center relative">
+                <div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(#3b82f6 1px, transparent 1px); background-size: 18px 18px;"></div>
+                <div class="text-center relative z-10 px-4">
+                  <div class="w-16 h-16 rounded-2xl bg-blue-500/20 border border-blue-500/30 flex items-center justify-center mx-auto mb-3">
+                    <iconify-icon icon="lucide:zap" width="28" class="text-blue-300"></iconify-icon>
+                  </div>
+                  <p class="text-white/40 text-[10px] font-medium tracking-wider uppercase">Image Placeholder</p>
                 </div>
               </div>
             </div>
             <div class="p-5">
-              <p class="text-[9px] font-bold uppercase tracking-[0.2em] text-slate-400 mb-2">Transform Your Business</p>
-              <h4 class="font-sf font-bold text-base leading-snug mb-3">Discover the speed of <em class="italic font-light">intelligent automation</em></h4>
+              <p class="text-[9px] font-bold uppercase tracking-[0.2em] text-slate-400 mb-1.5">Book a call</p>
+              <h4 class="font-sf font-bold text-base leading-snug mb-2">Notice the results.<br><em class="italic font-light text-slate-300">Discover the speed.</em></h4>
               <p class="text-slate-400 text-xs leading-relaxed mb-4">See what's possible when AI handles the heavy lifting in your business.</p>
               <button onclick="openCalendly()" class="w-full bg-blue-500 hover:bg-blue-400 text-white font-bold py-3 rounded-xl text-sm transition-all">
                 Book Free Call
@@ -501,126 +544,124 @@
               <p class="text-slate-500 text-[10px] text-center mt-3">No commitment. Just a conversation.</p>
             </div>
           </div>
-          <!-- Share widget -->
-          <div class="rounded-2xl border border-slate-200 p-4 bg-white">
-            <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400 mb-3">Share</p>
-            <div class="flex gap-2">
-              <a href="https://instagram.com/loopsuitai" target="_blank" class="flex-1 flex items-center justify-center h-10 rounded-xl border border-slate-200 text-slate-500 hover:text-slate-900 hover:border-slate-400 transition-all">
-                <iconify-icon icon="lucide:instagram" width="15"></iconify-icon>
-              </a>
-              <a href="https://linkedin.com/company/loopsuit" target="_blank" class="flex-1 flex items-center justify-center h-10 rounded-xl border border-slate-200 text-slate-500 hover:text-slate-900 hover:border-slate-400 transition-all">
-                <iconify-icon icon="lucide:linkedin" width="15"></iconify-icon>
-              </a>
-              <button onclick="copyPageLink(this)" class="flex-1 flex items-center justify-center h-10 rounded-xl border border-slate-200 text-slate-500 hover:text-slate-900 hover:border-slate-400 transition-all">
-                <iconify-icon icon="lucide:link-2" width="15"></iconify-icon>
-              </button>
-            </div>
-          </div>
+
         </div>
       </aside>
 
     </div>
   </div>
 
-  <!-- Tags & Breadcrumbs -->
-  <div class="max-w-[1180px] mx-auto px-4 md:px-6 py-10 border-t border-slate-200">
-    <!-- Breadcrumbs -->
-    <nav class="flex items-center gap-1.5 text-xs text-slate-400 mb-6 flex-wrap">
-      <a href="index.html" class="hover:text-slate-700 transition-colors">Home</a>
-      <iconify-icon icon="lucide:chevron-right" width="12" class="text-slate-300"></iconify-icon>
-      <a href="blog.html" class="hover:text-slate-700 transition-colors">Blog</a>
-      <iconify-icon icon="lucide:chevron-right" width="12" class="text-slate-300"></iconify-icon>
-      <span class="text-slate-600 truncate max-w-[200px] md:max-w-none">How AI Automation is Replacing $50K+/Year Tasks...</span>
-    </nav>
-    <!-- Tags -->
-    <div>
-      <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400 mb-3">Tags in this article</p>
-      <div class="flex gap-2 flex-wrap">
-        <span class="px-3 py-1.5 rounded-full border border-slate-200 bg-white text-slate-600 text-xs font-medium">#AI Automation</span>
-        <span class="px-3 py-1.5 rounded-full border border-slate-200 bg-white text-slate-600 text-xs font-medium">#Productivity</span>
-        <span class="px-3 py-1.5 rounded-full border border-slate-200 bg-white text-slate-600 text-xs font-medium">#Business Growth</span>
-        <span class="px-3 py-1.5 rounded-full border border-slate-200 bg-white text-slate-600 text-xs font-medium">#Lead Generation</span>
+  <!-- Breadcrumbs + Tags (full width, below article) -->
+  <div class="border-t border-slate-200">
+    <div class="max-w-[1200px] mx-auto px-4 md:px-6 py-10">
+      <!-- Breadcrumbs -->
+      <nav class="flex items-center gap-1.5 text-xs text-slate-400 mb-8 flex-wrap">
+        <a href="index.html" class="hover:text-slate-700 transition-colors">Home</a>
+        <iconify-icon icon="lucide:chevron-right" width="12" class="text-slate-300"></iconify-icon>
+        <a href="blog.html" class="hover:text-slate-700 transition-colors">Blog</a>
+        <iconify-icon icon="lucide:chevron-right" width="12" class="text-slate-300"></iconify-icon>
+        <span class="text-slate-600 truncate max-w-[240px] md:max-w-none">How AI Automation is Replacing $50K+/Year Tasks...</span>
+      </nav>
+      <!-- Tags -->
+      <div>
+        <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400 mb-4">Tags in this article</p>
+        <div class="flex gap-2 flex-wrap">
+          <span class="tag-pill">#AI Automation</span>
+          <span class="tag-pill">#Productivity</span>
+          <span class="tag-pill">#Business Growth</span>
+          <span class="tag-pill">#Lead Generation</span>
+        </div>
       </div>
     </div>
   </div>
 
   <!-- Related Articles -->
   <section class="bg-[#F0EFE9] py-16 px-4 md:px-6">
-    <div class="max-w-[1180px] mx-auto">
+    <div class="max-w-[1200px] mx-auto">
       <div class="text-center mb-10">
         <p class="text-[10px] font-bold uppercase tracking-[0.25em] text-blue-600 mb-3">Related Articles</p>
         <h2 class="font-sf font-black text-slate-900 tracking-tight" style="font-size: clamp(1.75rem, 4vw, 2.5rem);">You may also like these</h2>
       </div>
+
+      <!-- Desktop: 4-col grid | Mobile: 1-col stack -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
 
-        <a href="blog-ai-customer-support.html" class="group bg-white rounded-2xl overflow-hidden border border-slate-100 hover:shadow-lg transition-all">
-          <div class="h-44 bg-gradient-to-br from-orange-100 to-orange-200 flex items-center justify-center">
-            <iconify-icon icon="lucide:headset" width="32" class="text-orange-400"></iconify-icon>
+        <!-- Card 1 -->
+        <a href="blog-ai-customer-support.html" class="rel-card group">
+          <div class="rel-card-img-placeholder bg-gradient-to-br from-orange-100 to-orange-200">
+            <iconify-icon icon="lucide:headset" width="36" class="text-orange-400"></iconify-icon>
           </div>
-          <div class="p-4">
-            <div class="flex gap-1.5 mb-2 flex-wrap">
-              <span class="text-[9px] font-bold text-orange-500 uppercase tracking-wider">#AI Automation</span>
-              <span class="text-[9px] text-slate-300">·</span>
-              <span class="text-[9px] font-bold text-slate-400 uppercase tracking-wider">7 min read</span>
-            </div>
-            <h3 class="font-sf font-bold text-slate-900 text-sm leading-snug mb-2 group-hover:text-blue-600 transition-colors">How to Handle 10,000 Support Requests a Month Without Hiring Anyone</h3>
-            <p class="text-slate-500 text-xs leading-relaxed line-clamp-2">AI support stacks have matured enough to handle 80% of tickets automatically.</p>
-            <div class="flex gap-1.5 mt-3 flex-wrap">
-              <span class="px-2 py-0.5 rounded-full border border-slate-100 text-[9px] text-slate-500">#Customer Support</span>
-            </div>
-          </div>
-        </a>
-
-        <a href="blog-mvp-14-days.html" class="group bg-white rounded-2xl overflow-hidden border border-slate-100 hover:shadow-lg transition-all">
-          <div class="h-44 bg-gradient-to-br from-purple-100 to-purple-200 flex items-center justify-center">
-            <iconify-icon icon="lucide:rocket" width="32" class="text-purple-400"></iconify-icon>
-          </div>
-          <div class="p-4">
-            <div class="flex gap-1.5 mb-2 flex-wrap">
-              <span class="text-[9px] font-bold text-purple-500 uppercase tracking-wider">#MVP</span>
-              <span class="text-[9px] text-slate-300">·</span>
-              <span class="text-[9px] font-bold text-slate-400 uppercase tracking-wider">10 min read</span>
-            </div>
-            <h3 class="font-sf font-bold text-slate-900 text-sm leading-snug mb-2 group-hover:text-blue-600 transition-colors">Zero to Product: Our Exact Playbook for Shipping an MVP in 14 Days</h3>
-            <p class="text-slate-500 text-xs leading-relaxed line-clamp-2">Most founders waste 6 months building the wrong thing. Here's how to ship in 2 weeks.</p>
-            <div class="flex gap-1.5 mt-3 flex-wrap">
-              <span class="px-2 py-0.5 rounded-full border border-slate-100 text-[9px] text-slate-500">#Startups</span>
+          <div class="p-4 flex flex-col flex-1">
+            <p class="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-2">
+              AI Automation&nbsp;<span class="text-slate-300">·</span>&nbsp;AI Operations&nbsp;<span class="text-slate-300">·</span>&nbsp;7 min read
+            </p>
+            <h3 class="font-sf font-bold text-slate-900 text-sm leading-snug mb-2 group-hover:text-blue-600 transition-colors">
+              How to Handle 10,000 Support Requests a Month Without Hiring Anyone
+            </h3>
+            <p class="text-slate-500 text-xs leading-relaxed line-clamp-2 mb-auto">AI support stacks have matured enough to handle 80% of tickets automatically — here's exactly how.</p>
+            <div class="flex gap-1.5 mt-4 flex-wrap">
+              <span class="tag-pill text-[10px] px-2 py-0.5">#Customer Support</span>
+              <span class="tag-pill text-[10px] px-2 py-0.5">#AI Tools</span>
             </div>
           </div>
         </a>
 
-        <a href="blog-design-systems-startups.html" class="group bg-white rounded-2xl overflow-hidden border border-slate-100 hover:shadow-lg transition-all">
-          <div class="h-44 bg-gradient-to-br from-emerald-100 to-emerald-200 flex items-center justify-center">
-            <iconify-icon icon="lucide:layout-grid" width="32" class="text-emerald-400"></iconify-icon>
+        <!-- Card 2 -->
+        <a href="blog-mvp-14-days.html" class="rel-card group">
+          <div class="rel-card-img-placeholder bg-gradient-to-br from-purple-100 to-purple-200">
+            <iconify-icon icon="lucide:rocket" width="36" class="text-purple-400"></iconify-icon>
           </div>
-          <div class="p-4">
-            <div class="flex gap-1.5 mb-2 flex-wrap">
-              <span class="text-[9px] font-bold text-emerald-500 uppercase tracking-wider">#Design</span>
-              <span class="text-[9px] text-slate-300">·</span>
-              <span class="text-[9px] font-bold text-slate-400 uppercase tracking-wider">6 min read</span>
-            </div>
-            <h3 class="font-sf font-bold text-slate-900 text-sm leading-snug mb-2 group-hover:text-blue-600 transition-colors">Why Your Startup Needs a Design System (Before You Think It Does)</h3>
-            <p class="text-slate-500 text-xs leading-relaxed line-clamp-2">Building one early saves months of rework and makes your product feel world-class from day one.</p>
-            <div class="flex gap-1.5 mt-3 flex-wrap">
-              <span class="px-2 py-0.5 rounded-full border border-slate-100 text-[9px] text-slate-500">#Startups</span>
+          <div class="p-4 flex flex-col flex-1">
+            <p class="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-2">
+              Product&nbsp;<span class="text-slate-300">·</span>&nbsp;Startups&nbsp;<span class="text-slate-300">·</span>&nbsp;10 min read
+            </p>
+            <h3 class="font-sf font-bold text-slate-900 text-sm leading-snug mb-2 group-hover:text-blue-600 transition-colors">
+              Zero to Product: Our Exact Playbook for Shipping an MVP in 14 Days
+            </h3>
+            <p class="text-slate-500 text-xs leading-relaxed line-clamp-2 mb-auto">Most founders waste 6 months building the wrong thing. Here's how to ship in 2 weeks.</p>
+            <div class="flex gap-1.5 mt-4 flex-wrap">
+              <span class="tag-pill text-[10px] px-2 py-0.5">#Startups</span>
+              <span class="tag-pill text-[10px] px-2 py-0.5">#Expert Insights</span>
             </div>
           </div>
         </a>
 
-        <a href="blog-ux-design-trends-2025.html" class="group bg-white rounded-2xl overflow-hidden border border-slate-100 hover:shadow-lg transition-all">
-          <div class="h-44 bg-gradient-to-br from-pink-100 to-pink-200 flex items-center justify-center">
-            <iconify-icon icon="lucide:sparkles" width="32" class="text-pink-400"></iconify-icon>
+        <!-- Card 3 -->
+        <a href="blog-design-systems-startups.html" class="rel-card group">
+          <div class="rel-card-img-placeholder bg-gradient-to-br from-emerald-100 to-emerald-200">
+            <iconify-icon icon="lucide:layout-grid" width="36" class="text-emerald-400"></iconify-icon>
           </div>
-          <div class="p-4">
-            <div class="flex gap-1.5 mb-2 flex-wrap">
-              <span class="text-[9px] font-bold text-pink-500 uppercase tracking-wider">#Design</span>
-              <span class="text-[9px] text-slate-300">·</span>
-              <span class="text-[9px] font-bold text-slate-400 uppercase tracking-wider">9 min read</span>
+          <div class="p-4 flex flex-col flex-1">
+            <p class="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-2">
+              Design&nbsp;<span class="text-slate-300">·</span>&nbsp;Strategy&nbsp;<span class="text-slate-300">·</span>&nbsp;6 min read
+            </p>
+            <h3 class="font-sf font-bold text-slate-900 text-sm leading-snug mb-2 group-hover:text-blue-600 transition-colors">
+              Why Your Startup Needs a Design System (Before You Think It Does)
+            </h3>
+            <p class="text-slate-500 text-xs leading-relaxed line-clamp-2 mb-auto">Building one early saves months of rework and makes your product feel world-class from day one.</p>
+            <div class="flex gap-1.5 mt-4 flex-wrap">
+              <span class="tag-pill text-[10px] px-2 py-0.5">#Design</span>
+              <span class="tag-pill text-[10px] px-2 py-0.5">#Startups</span>
             </div>
-            <h3 class="font-sf font-bold text-slate-900 text-sm leading-snug mb-2 group-hover:text-blue-600 transition-colors">The 7 UX Design Trends That Will Define Digital Products in 2025</h3>
-            <p class="text-slate-500 text-xs leading-relaxed line-clamp-2">From spatial computing to AI personalization — here's what's actually worth your attention.</p>
-            <div class="flex gap-1.5 mt-3 flex-wrap">
-              <span class="px-2 py-0.5 rounded-full border border-slate-100 text-[9px] text-slate-500">#Trends 2025</span>
+          </div>
+        </a>
+
+        <!-- Card 4 -->
+        <a href="blog-ux-design-trends-2025.html" class="rel-card group">
+          <div class="rel-card-img-placeholder bg-gradient-to-br from-pink-100 to-pink-200">
+            <iconify-icon icon="lucide:sparkles" width="36" class="text-pink-400"></iconify-icon>
+          </div>
+          <div class="p-4 flex flex-col flex-1">
+            <p class="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-2">
+              UX&nbsp;<span class="text-slate-300">·</span>&nbsp;Trends&nbsp;<span class="text-slate-300">·</span>&nbsp;9 min read
+            </p>
+            <h3 class="font-sf font-bold text-slate-900 text-sm leading-snug mb-2 group-hover:text-blue-600 transition-colors">
+              The 7 UX Design Trends That Will Define Digital Products in 2025
+            </h3>
+            <p class="text-slate-500 text-xs leading-relaxed line-clamp-2 mb-auto">From spatial computing to AI personalization — here's what's actually worth your attention.</p>
+            <div class="flex gap-1.5 mt-4 flex-wrap">
+              <span class="tag-pill text-[10px] px-2 py-0.5">#Trends 2025</span>
+              <span class="tag-pill text-[10px] px-2 py-0.5">#Expert Insights</span>
             </div>
           </div>
         </a>
@@ -629,7 +670,7 @@
     </div>
   </section>
 
-  <!-- Footer (dark) -->
+  <!-- Footer -->
   <footer class="relative bg-gradient-to-b from-slate-950 via-slate-950 to-black text-slate-300 overflow-hidden py-12 md:py-16">
     <div class="absolute top-0 left-0 h-1 w-1/2 bg-gradient-to-r from-transparent via-cyan-500 to-transparent opacity-75 z-20 animate-footer-beam"></div>
     <div class="absolute top-0 inset-x-0 h-px bg-slate-800 z-10"></div>
@@ -677,12 +718,19 @@
       <div class="border-t border-slate-800/50 pt-6">
         <div class="flex flex-col-reverse md:flex-row justify-between items-center gap-4">
           <p class="text-slate-500 text-xs font-sf">&copy; <span id="year"></span> LoopSuit. All rights reserved.</p>
-          <p class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400 font-semibold text-sm">Serving clients across US, Canada & EU</p>
+          <p class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400 font-semibold text-sm">Serving clients across US, Canada &amp; EU</p>
         </div>
       </div>
     </div>
     <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
   </footer>
+
+  <style>
+    @keyframes carouselScroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-650px); }
+    }
+  </style>
 
   <script>
     // Navbar scroll
@@ -692,19 +740,16 @@
 
     window.addEventListener('scroll', () => {
       const y = window.scrollY;
-      // Reading progress
       const docH = document.documentElement.scrollHeight - window.innerHeight;
       document.getElementById('reading-progress').style.width = (y / docH * 100) + '%';
-      // Navbar glass
       if (y > 20) { innerNav.classList.add('glass-nav-scrolled'); } else { innerNav.classList.remove('glass-nav-scrolled'); }
-      // Navbar hide/show
       if (y <= 50 || y < lastScrollY) { navbar.classList.remove('navbar-hidden'); navbar.classList.add('navbar-visible'); }
       else if (y > lastScrollY && y > 50) { navbar.classList.remove('navbar-visible'); navbar.classList.add('navbar-hidden'); }
       lastScrollY = y;
     });
 
     // TOC active state
-    const observer = new IntersectionObserver((entries) => {
+    const tocObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           document.querySelectorAll('.toc-link').forEach(l => l.classList.remove('toc-active'));
@@ -713,7 +758,24 @@
         }
       });
     }, { rootMargin: '-20% 0% -60% 0%' });
-    document.querySelectorAll('section[id]').forEach(s => observer.observe(s));
+    document.querySelectorAll('section[id]').forEach(s => tocObserver.observe(s));
+
+    // TOC collapse
+    let tocOpen = true;
+    function toggleToc() {
+      const body = document.getElementById('toc-body');
+      const btn = document.getElementById('toc-toggle');
+      tocOpen = !tocOpen;
+      if (tocOpen) {
+        body.classList.remove('toc-collapsed');
+        btn.textContent = '—';
+        btn.title = 'Collapse';
+      } else {
+        body.classList.add('toc-collapsed');
+        btn.textContent = '+';
+        btn.title = 'Expand';
+      }
+    }
 
     // Mobile menu
     function openMobileMenu() { document.getElementById('mobile-menu').classList.replace('menu-closed','menu-open'); }
@@ -729,20 +791,12 @@
     function copyPageLink(btn) {
       navigator.clipboard.writeText(window.location.href).then(() => {
         const orig = btn.innerHTML;
-        btn.innerHTML = '<iconify-icon icon="lucide:check" width="16" class="text-green-500"></iconify-icon>';
+        btn.innerHTML = '<iconify-icon icon="lucide:check" width="16" style="color:#22c55e;"></iconify-icon>';
         setTimeout(() => { btn.innerHTML = orig; }, 2000);
       });
     }
 
-    // Carousel auto-advance
-    let carouselIndex = 0;
-    const carouselSlides = document.querySelectorAll('#book-carousel .carousel-slide');
-    setInterval(() => {
-      carouselIndex = (carouselIndex + 1) % (carouselSlides.length - 2);
-      document.getElementById('book-carousel').style.transform = `translateX(-${carouselIndex * 130}px)`;
-    }, 2500);
-
-    // Details styling
+    // FAQ details
     document.querySelectorAll('details summary').forEach(s => s.style.listStyle = 'none');
   </script>
 </body>
