@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import LegalNavbar from "@/components/LegalNavbar";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
@@ -11,7 +12,8 @@ export const metadata: Metadata = {
 
 export default function PrivacyPolicyPage() {
   return (
-    <main className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-slate-200 pt-24 pb-16">
+    <main className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-slate-200 pt-32 pb-16">
+      <LegalNavbar />
       <section className="max-w-4xl mx-auto px-6">
         <div className="mb-10">
           <p className="text-cyan-400 text-sm font-semibold tracking-wide uppercase">LoopSuit Legal</p>

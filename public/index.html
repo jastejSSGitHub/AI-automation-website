@@ -1977,12 +1977,12 @@
     </section>
 
     <!-- Solutions Section -->
-    <section id="solutions" class="flex flex-col justify-center py-12 md:py-20 relative overflow-hidden">
+    <section id="solutions" class="flex flex-col justify-center py-4 md:py-20 relative overflow-hidden">
       <!-- Custom Slanted Background -->
       <div class="absolute inset-0 w-full h-full pointer-events-none overflow-hidden z-0">
         <!-- Dark Top Part with Skew -->
         <!-- Dark Top Part with Skew -->
-        <div class="absolute -top-[200px] left-0 w-full bg-[#0A0A0B] h-[650px] md:h-[1350px]"
+        <div class="absolute -top-[200px] left-0 w-full bg-[#0A0A0B] h-[900px] md:h-[1350px]"
           style="transform: skewY(-2deg); transform-origin: top left;">
           <!-- Silver Cut Border -->
           <div
@@ -2112,6 +2112,10 @@
         }
 
         @media (max-width: 767px) {
+          .solutions-carousel-controls {
+            display: none;
+          }
+
           .solutions-carousel-arrow {
             width: 38px;
             height: 38px;
@@ -2119,8 +2123,8 @@
 
           .solutions-carousel {
             --solution-card-gap: 0.9rem;
-            padding-inline: 1.3rem;
-            padding-block: 2rem 2.5rem;
+            padding-inline: 1rem;
+            padding-block: 0.5rem 1rem;
           }
         }
 
@@ -2217,7 +2221,7 @@
               </p>
             </div>
                     <div class="w-full lg:w-1/2">
-                      <div class="relative w-full aspect-square md:aspect-[4/3] flex items-center justify-center">
+                      <div class="relative w-full aspect-[4/3] flex items-center justify-center">
                 <img src="./Images/Solutions/capability1-newupdated.png"
                   alt="Launch Product in 2 Weeks - Fintech and Note Taking App"
                           class="w-full h-auto object-contain transition-transform duration-500 ease-out hover:scale-[1.02]">
@@ -2245,7 +2249,7 @@
               </p>
             </div>
                     <div class="w-full lg:w-1/2">
-                      <div class="relative w-full aspect-square md:aspect-[4/3] flex items-center justify-center">
+                      <div class="relative w-full aspect-[4/3] flex items-center justify-center">
                         <img src="./Images/Solutions/solution2 alt.png" alt="Automated Sales Workflows"
                           class="w-full h-auto object-contain transition-transform duration-500 ease-out hover:scale-[1.02]">
           </div>
@@ -2272,7 +2276,7 @@
               </p>
             </div>
                     <div class="w-full lg:w-1/2">
-                      <div class="relative w-full aspect-square md:aspect-[4/3] flex items-center justify-center">
+                      <div class="relative w-full aspect-[4/3] flex items-center justify-center">
                 <img src="./Images/Solutions/solution3 alt.png" alt="Operations at Light Speed"
                           class="w-full h-auto object-contain transition-transform duration-500 ease-out hover:scale-[1.02]">
                       </div>
@@ -2895,7 +2899,7 @@
           <!-- Right Column: Image -->
           <div class="w-full lg:w-1/2 relative perspective-1000">
             <div
-              class="relative aspect-square md:aspect-[4/3] flex items-center justify-center p-0 group transition-all duration-500">
+              class="relative aspect-[4/3] flex items-center justify-center p-0 group transition-all duration-500">
               <!-- Background Gradients (Removed as requested to remove background color) -->
 
               <img src="./Images/ai_process_orbit.png" alt="AI Automation Process with 3D Orbit"
@@ -5924,7 +5928,7 @@
   </script>
 
   <script>
-    // Scroll-driven horizontal solutions carousel with drag/swipe support
+    // Horizontal solutions carousel: snap-to-center on mobile, auto-scroll stops on user interaction
     document.addEventListener('DOMContentLoaded', () => {
       const stage = document.querySelector('.solutions-horizontal-stage');
       const carousel = stage?.querySelector('.solutions-carousel');
@@ -5943,7 +5947,20 @@
       let snapPoints = [];
       let currentSnapIndex = 0;
 
+      // Auto-scroll state
+      let autoScrollRunning = false;
+      let userHasInteracted = false;
+      let autoScrollRAF = null;
+      let autoScrollLastTime = null;
+      const AUTO_SCROLL_SPEED = 0.22; // px per ms — slow, comfortable glide
+
       const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
+
+      const setTransition = (enabled) => {
+        track.style.transition = enabled
+          ? 'transform 380ms cubic-bezier(0.25, 0.46, 0.45, 0.94)'
+          : 'none';
+      };
 
       const paint = () => {
         track.style.transform = `translate3d(${-translateX}px, 0, 0)`;
@@ -5973,8 +5990,8 @@
         if (!snapPoints.length) return;
         const safeIndex = clamp(targetIndex, 0, snapPoints.length - 1);
         currentSnapIndex = safeIndex;
-        const targetTranslate = snapPoints[safeIndex];
-        translateX = targetTranslate;
+        translateX = snapPoints[safeIndex];
+        setTransition(true);
         paint();
         updateArrowState();
       };
@@ -5983,17 +6000,76 @@
         const groupWidth = group.getBoundingClientRect().width;
         const viewportWidth = carousel.clientWidth;
         maxTranslate = Math.max(0, groupWidth - viewportWidth);
-        snapPoints = Array.from(group.querySelectorAll('article')).map((card) =>
-          clamp(card.offsetLeft, 0, maxTranslate)
-        );
+        const isMobile = window.innerWidth < 768;
+        snapPoints = Array.from(group.querySelectorAll('article')).map((card) => {
+          if (isMobile) {
+            // Center snap: align card center with carousel viewport center
+            const centerSnap = card.offsetLeft + card.offsetWidth / 2 - viewportWidth / 2;
+            return clamp(centerSnap, 0, maxTranslate);
+          }
+          return clamp(card.offsetLeft, 0, maxTranslate);
+        });
         if (!snapPoints.length) snapPoints = [0];
       };
 
+      // ── Auto-scroll ──────────────────────────────────────────────────────
+      const stopAutoScroll = () => {
+        autoScrollRunning = false;
+        userHasInteracted = true;
+        if (autoScrollRAF) {
+          cancelAnimationFrame(autoScrollRAF);
+          autoScrollRAF = null;
+        }
+      };
+
+      const autoScrollStep = (timestamp) => {
+        if (!autoScrollRunning) return;
+        if (autoScrollLastTime !== null) {
+          const delta = timestamp - autoScrollLastTime;
+          translateX = Math.min(translateX + AUTO_SCROLL_SPEED * delta, maxTranslate);
+          currentSnapIndex = findClosestSnapIndex(translateX);
+          updateArrowState();
+          paint();
+        }
+        autoScrollLastTime = timestamp;
+        if (translateX >= maxTranslate) {
+          autoScrollRunning = false;
+          snapToIndex(snapPoints.length - 1); // clean snap at end
+          return;
+        }
+        autoScrollRAF = requestAnimationFrame(autoScrollStep);
+      };
+
+      const startAutoScroll = () => {
+        if (userHasInteracted || autoScrollRunning || maxTranslate <= 0) return;
+        autoScrollRunning = true;
+        autoScrollLastTime = null;
+        setTransition(false); // continuous scroll — no transition during auto glide
+        autoScrollRAF = requestAnimationFrame(autoScrollStep);
+      };
+
+      // Start auto-scroll when section scrolls into view
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && !userHasInteracted) {
+            setTimeout(startAutoScroll, 1000);
+          } else if (!entry.isIntersecting && autoScrollRunning) {
+            autoScrollRunning = false;
+            if (autoScrollRAF) { cancelAnimationFrame(autoScrollRAF); autoScrollRAF = null; }
+          }
+        });
+      }, { threshold: 0.35 });
+
+      observer.observe(stage);
+
+      // ── Drag / pointer ────────────────────────────────────────────────────
       carousel.addEventListener('pointerdown', (event) => {
         if (event.pointerType === 'mouse' && event.button !== 0) return;
+        stopAutoScroll();
         isDragging = true;
         startClientX = event.clientX;
         startTranslate = translateX;
+        setTransition(false);
         carousel.classList.add('is-dragging');
         carousel.setPointerCapture(event.pointerId);
       });
@@ -6022,15 +6098,10 @@
         if (carousel.hasPointerCapture(event.pointerId)) {
           carousel.releasePointerCapture(event.pointerId);
         }
+        snapToIndex(findClosestSnapIndex(translateX));
       });
 
-      const handleResize = () => {
-        updateMetrics();
-        currentSnapIndex = findClosestSnapIndex(translateX);
-        updateArrowState();
-        paint();
-      };
-
+      // ── Wheel ─────────────────────────────────────────────────────────────
       const handleWheel = (event) => {
         const rect = stage.getBoundingClientRect();
         const isStageVisible = rect.top < window.innerHeight && rect.bottom > 0;
@@ -6044,30 +6115,42 @@
         const scrollingForward = primaryDelta > 0;
         const scrollingBackward = primaryDelta < 0;
 
-        if ((scrollingForward && atEnd) || (scrollingBackward && atStart)) {
-          return;
-        }
+        if ((scrollingForward && atEnd) || (scrollingBackward && atStart)) return;
 
+        stopAutoScroll();
         event.preventDefault();
         translateX = clamp(translateX + primaryDelta, 0, maxTranslate);
         currentSnapIndex = findClosestSnapIndex(translateX);
         updateArrowState();
+        setTransition(false);
         paint();
       };
 
+      // ── Arrow buttons ─────────────────────────────────────────────────────
       prevArrow?.addEventListener('click', () => {
+        stopAutoScroll();
         snapToIndex(currentSnapIndex - 1);
       });
 
       nextArrow?.addEventListener('click', () => {
+        stopAutoScroll();
         snapToIndex(currentSnapIndex + 1);
       });
+
+      // ── Resize ────────────────────────────────────────────────────────────
+      const handleResize = () => {
+        updateMetrics();
+        currentSnapIndex = findClosestSnapIndex(translateX);
+        updateArrowState();
+        paint();
+      };
 
       window.addEventListener('resize', handleResize);
       carousel.addEventListener('wheel', handleWheel, { passive: false });
 
       updateMetrics();
       currentSnapIndex = findClosestSnapIndex(translateX);
+      setTransition(false);
       paint();
       updateArrowState();
     });
@@ -6170,7 +6253,7 @@
 
   <!-- Floating Showreel Component -->
   <!-- Button -->
-  <div class="fixed bottom-6 right-6 md:bottom-8 md:right-8 z-50 animate-in fade-in zoom-in duration-1000 delay-1000">
+  <div id="floating-showreel-wrapper" class="fixed bottom-6 right-6 md:bottom-8 md:right-8 z-50 animate-in fade-in zoom-in duration-1000 delay-1000" style="transition: bottom 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);">
     <button onclick="openShowreelModal()"
       class="group relative w-32 h-32 md:w-36 md:h-36 rounded-full overflow-hidden shadow-2xl hover:shadow-cyan-500/50 transition-all duration-500 ease-out hover:scale-105 border-[3px] border-white/20 backdrop-blur-sm cursor-pointer"
       aria-label="Open Showreel">
@@ -6702,7 +6785,7 @@
 
       <!-- close button -->
       <button
-        onclick="document.getElementById('sticky-cta-bar').style.bottom='-140px'; document.getElementById('sticky-cta-bar').dataset.dismissed='true';"
+        onclick="document.getElementById('sticky-cta-bar').style.bottom='-140px'; document.getElementById('sticky-cta-bar').dataset.dismissed='true'; var sw=document.getElementById('floating-showreel-wrapper'); if(sw) sw.style.bottom='';"
         aria-label="Dismiss"
         style="
           flex-shrink: 0;
@@ -6781,8 +6864,14 @@
         var pct = scrolled / total;
 
         if (!shown && pct >= 0.50) {
-          bar.style.bottom = '-12px';
+          bar.style.bottom = '8px';
           shown = true;
+          // Shift the floating showreel button up so it's never overlapped
+          var showreelWrapper = document.getElementById('floating-showreel-wrapper');
+          if (showreelWrapper) {
+            var barH = bar.offsetHeight || 90;
+            showreelWrapper.style.bottom = (8 + barH + 12) + 'px';
+          }
         }
       }
 
