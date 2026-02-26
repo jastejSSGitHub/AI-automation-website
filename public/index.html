@@ -2111,6 +2111,16 @@
           flex-shrink: 0;
         }
 
+        .solutions-dot {
+          width: 8px;
+          background-color: rgba(100, 116, 139, 0.4);
+        }
+
+        .solutions-dot.active {
+          width: 24px;
+          background-color: #1d1d1f;
+        }
+
         @media (max-width: 767px) {
           .solutions-carousel-controls {
             display: none;
@@ -2286,6 +2296,24 @@
                   </div>
                 </div>
               </div>
+
+              <!-- Below-carousel navigation: mobile/tablet only, same style as more-capabilities arrows -->
+              <div class="flex items-center justify-center gap-4 mt-5 pb-3 w-full lg:hidden" id="solutionsBelowControls">
+                <button id="solutionsArrowBelowPrev" type="button"
+                  class="w-12 h-12 rounded-full bg-[#F3F4F6] flex items-center justify-center text-slate-900 hover:bg-[#E5E7EB] transition-colors focus:outline-none disabled:opacity-40">
+                  <iconify-icon icon="lucide:arrow-left" width="24" stroke-width="1.5"></iconify-icon>
+                </button>
+                <div class="flex items-center gap-2 bg-[#F3F4F6] px-4 py-3 rounded-full">
+                  <button class="solutions-dot h-2 rounded-full transition-all duration-300" data-index="0" aria-label="Slide 1"></button>
+                  <button class="solutions-dot h-2 rounded-full transition-all duration-300" data-index="1" aria-label="Slide 2"></button>
+                  <button class="solutions-dot h-2 rounded-full transition-all duration-300" data-index="2" aria-label="Slide 3"></button>
+                </div>
+                <button id="solutionsArrowBelowNext" type="button"
+                  class="w-12 h-12 rounded-full bg-[#F3F4F6] flex items-center justify-center text-slate-900 hover:bg-[#E5E7EB] transition-colors focus:outline-none disabled:opacity-40">
+                  <iconify-icon icon="lucide:arrow-right" width="24" stroke-width="1.5"></iconify-icon>
+                </button>
+              </div>
+
             </div>
           </div>
         </div>
@@ -2911,299 +2939,6 @@
       </div>
     </section>
 
-    <!-- Problem Section (Challenge) -->
-    <section data-theme="light"
-      class="flex flex-col overflow-hidden text-slate-900 bg-[#F6F6F7] z-10 py-12 md:py-20 pr-6 pl-6 relative justify-center"
-      id="results">
-      <div class="w-full max-w-7xl mx-auto h-full flex flex-col justify-center relative px-6 lg:px-20 xl:px-32">
-        <div class="text-center mb-10 max-w-3xl mx-auto flex-shrink-0">
-          <span
-            class="inline-flex items-center justify-center px-3 py-1 rounded-full bg-white border border-blue-100 shadow-sm text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-violet-600 text-[10px] font-bold uppercase tracking-wider mb-5 badge-animated">
-            The Challenge
-          </span>
-          <h2 class="text-[30px] md:text-[2.75rem] leading-tight font-medium text-slate-900 tracking-tight font-sf">
-            The Challenge Every
-            <br>
-            Founder Faces
-          </h2>
-        </div>
-
-        <div id="challengesContainer"
-          class="drag-scroll-container flex lg:grid lg:grid-cols-2 overflow-x-auto gap-4 md:gap-6 w-full pt-2 pb-12 cursor-grab scroll-smooth snap-x snap-mandatory lg:snap-none no-scrollbar">
-          <!-- Card 1 -->
-          <div
-            class="group h-[320px] md:h-[340px] min-w-[78vw] md:min-w-[45vw] lg:min-w-0 lg:max-w-none w-full lg:w-auto perspective-1000 flex-shrink-0 select-none snap-center transition-transform duration-300 hover:-translate-y-2">
-            <div
-              class="flip-card-inner relative w-full h-full duration-700 transform-style-3d transition-transform ease-out-expo shadow-lg rounded-[24px]">
-              <div onclick="flipCard(this)" style="cursor: pointer;"
-                class="absolute inset-0 w-full h-full backface-hidden bg-[#2c1810] rounded-[24px] border border-white/10 flex flex-col justify-between overflow-hidden">
-                <div class="absolute inset-0 z-0 flex items-end justify-center">
-                  <img src="./Images/Solutions/calender.png" alt="Development constraints"
-                    class="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105 pointer-events-none drop-shadow-2xl opacity-90 translate-y-2">
-                  <div class="absolute inset-0 bg-gradient-to-b from-transparent via-[#2c1810]/10 to-[#2c1810]"></div>
-                </div>
-                <div class="flex flex-col md:p-8 h-full z-10 pt-6 pr-6 pb-6 pl-6 relative justify-between">
-                  <div class="flex flex-col items-center text-center md:items-start md:text-left">
-                    <span
-                      class="inline-flex items-center gap-1 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 px-2.5 py-0.5 text-[10px] font-bold text-orange-200 tracking-wide mb-3">
-                      PROBLEM 01
-                    </span>
-                    <h3
-                      class="text-xl md:text-2xl font-semibold tracking-tight text-white leading-tight drop-shadow-md">
-                      Development Takes Forever
-                    </h3>
-                    <p class="text-xs font-medium text-orange-100/80 mt-2 hidden md:block drop-shadow-sm">
-                      Months of building, and still no momentum.
-                    </p>
-                  </div>
-                  <button onclick="event.stopPropagation(); flipCard(this)"
-                    class="absolute bottom-5 right-5 z-20 w-[48px] h-[48px] bg-white border border-white/80 rounded-full shadow-lg flex items-center justify-center text-slate-900 hover:bg-slate-100 transition-colors"
-                    aria-label="Flip Card">
-                    <iconify-icon icon="lucide:plus" width="27" stroke-width="1.5"></iconify-icon>
-                  </button>
-                </div>
-              </div>
-              <div
-                class="absolute inset-0 w-full h-full backface-hidden rotate-y-180 bg-[#1d1d1f] rounded-[24px] border border-white/10 p-6 md:p-8 flex flex-col overflow-hidden">
-                <div class="flex flex-col items-center text-center md:items-start md:text-left flex-shrink-0 mb-2">
-                  <span
-                    class="inline-flex items-center gap-1 w-fit rounded-full bg-white/10 border border-white/10 px-2.5 py-0.5 text-[10px] font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-violet-400 tracking-wide mb-3 badge-animated">
-                    PROBLEM 01
-                  </span>
-                  <h3 class="text-xl md:text-2xl font-semibold tracking-tight text-white leading-tight">
-                    Development Takes Forever
-                  </h3>
-                </div>
-                <div class="overflow-y-auto custom-scrollbar flex-grow pr-1 pb-10">
-                  <p class="text-sm text-slate-300 leading-relaxed font-medium mb-3">
-                    Traditional agencies quote $50,000-$100,000 and take 6+
-                    months to build your MVP. By the time they deliver, your
-                    competitors have already launched.
-                  </p>
-                  <p class="text-sm text-slate-300 leading-relaxed font-medium mb-3">
-                    Weeks of discovery calls. Months waiting for designs.
-                    Meanwhile, you're burning runway.
-                  </p>
-                </div>
-                <button onclick="event.stopPropagation(); unflipCard(this)"
-                  class="absolute bottom-5 right-5 z-20 w-8 h-8 bg-white/10 rounded-full shadow-lg flex items-center justify-center text-white hover:bg-white/20 transition-colors"
-                  aria-label="Flip Back">
-                  <iconify-icon icon="lucide:x" width="16" stroke-width="1.5"></iconify-icon>
-                </button>
-              </div>
-            </div>
-          </div>
-          <!-- Card 2 -->
-          <div
-            class="group h-[320px] md:h-[340px] min-w-[78vw] md:min-w-[45vw] lg:min-w-0 lg:max-w-none w-full lg:w-auto perspective-1000 flex-shrink-0 select-none snap-center transition-transform duration-300 hover:-translate-y-2">
-            <div
-              class="flip-card-inner relative w-full h-full duration-700 transform-style-3d transition-transform ease-out-expo shadow-lg rounded-[24px]">
-              <div
-                class="absolute inset-0 w-full h-full backface-hidden bg-[#0A0A0B] rounded-[24px] border border-white/10 p-6 md:p-8 flex flex-col justify-between overflow-hidden">
-                <div class="z-10 flex flex-col items-center text-center md:items-start md:text-left">
-                  <span
-                    class="inline-flex items-center gap-1 rounded-full bg-white/5 border border-blue-500/20 px-2.5 py-0.5 text-[10px] font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-violet-600 tracking-wide mb-3 badge-animated">
-                    PROBLEM 02
-                  </span>
-                  <h3 class="text-xl md:text-2xl font-semibold tracking-tight text-white leading-tight">
-                    Manual Work Drains Team
-                  </h3>
-                  <p class="text-xs font-medium text-slate-500 mt-2 hidden md:block">
-                    Your team spends time on work that shouldn’t exist.
-                  </p>
-                </div>
-                <div class="absolute bottom-0 left-0 right-0 h-[60%] overflow-hidden rounded-b-[24px]">
-                  <img
-                    src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/468521cb-bdaf-45e5-a32c-1892c6dde73b_1600w.png"
-                    alt="Manual work dashboard"
-                    class="object-top transition-transform duration-700 group-hover:scale-105 w-full h-full object-cover pointer-events-none">
-                </div>
-                <button onclick="event.stopPropagation(); flipCard(this)"
-                  class="absolute bottom-5 right-5 z-20 w-[48px] h-[48px] bg-white border border-white/80 rounded-full shadow-lg flex items-center justify-center text-slate-900 hover:bg-slate-100 transition-colors"
-                  aria-label="Flip Card">
-                  <iconify-icon icon="lucide:plus" width="27" stroke-width="1.5"></iconify-icon>
-                </button>
-              </div>
-              <div
-                class="absolute inset-0 w-full h-full backface-hidden rotate-y-180 bg-[#1d1d1f] rounded-[24px] border border-white/10 p-6 md:p-8 flex flex-col overflow-hidden">
-                <div class="flex flex-col items-center text-center md:items-start md:text-left flex-shrink-0 mb-2">
-                  <span
-                    class="inline-flex items-center gap-1 w-fit rounded-full bg-white/10 border border-white/10 px-2.5 py-0.5 text-[10px] font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-violet-400 tracking-wide mb-3 badge-animated">
-                    PROBLEM 02
-                  </span>
-                  <h3 class="text-xl md:text-2xl font-semibold tracking-tight text-white leading-tight">
-                    Manual Work Drains Team
-                  </h3>
-                </div>
-                <div class="overflow-y-auto custom-scrollbar flex-grow pr-1 pb-10">
-                  <p class="text-sm text-slate-300 leading-relaxed font-medium mb-3">
-                    Your team spends 20+ hours every week on repetitive tasks.
-                    That's $4,000-$8,000 per month in wasted labor.
-                  </p>
-                  <p class="text-sm text-slate-300 leading-relaxed font-medium mb-3">
-                    Manually copying leads into your CRM. Answering the same
-                    questions repeatedly. Automation frees humans to do human
-                    work.
-                  </p>
-                </div>
-                <button onclick="event.stopPropagation(); unflipCard(this)"
-                  class="absolute bottom-5 right-5 z-20 w-8 h-8 bg-white/10 rounded-full shadow-lg flex items-center justify-center text-white hover:bg-white/20 transition-colors"
-                  aria-label="Flip Back">
-                  <iconify-icon icon="lucide:x" width="16" stroke-width="1.5"></iconify-icon>
-                </button>
-              </div>
-            </div>
-          </div>
-          <!-- Card 3 -->
-          <div
-            class="group h-[320px] md:h-[340px] min-w-[78vw] md:min-w-[45vw] lg:min-w-0 lg:max-w-none w-full lg:w-auto perspective-1000 flex-shrink-0 select-none snap-center transition-transform duration-300 hover:-translate-y-2">
-            <div
-              class="flip-card-inner relative w-full h-full duration-700 transform-style-3d transition-transform ease-out-expo shadow-lg rounded-[24px]">
-              <div
-                class="absolute inset-0 w-full h-full backface-hidden bg-stone-900 rounded-[24px] border border-black/5 flex flex-col justify-between overflow-hidden">
-                <div class="absolute inset-0 z-0">
-                  <img
-                    src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/dd4f3d66-119e-4390-b012-07c1df683c78_1600w.png"
-                    alt="Inflexible tools"
-                    class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 brightness-[0.8] pointer-events-none">
-                </div>
-                <div class="relative z-10 flex flex-col justify-between h-full p-6 md:p-8">
-                  <div class="flex flex-col md:items-start md:text-left text-center items-center">
-                    <span
-                      class="inline-flex items-center gap-1 rounded-full bg-black/20 backdrop-blur-md border border-white/20 px-2.5 py-0.5 text-[10px] font-bold text-white uppercase tracking-wide mb-3">
-                      Problem 03
-                    </span>
-                    <h3
-                      class="text-xl md:text-2xl font-semibold tracking-tight text-white leading-tight drop-shadow-sm">
-                      Generic Tools Don't Fit
-                    </h3>
-                    <p class="hidden md:block text-xs font-semibold text-white/90 mt-2 drop-shadow-sm">
-                      Off-the-shelf tools never quite match how you work.
-                    </p>
-                  </div>
-                  <button onclick="event.stopPropagation(); flipCard(this)"
-                    class="absolute bottom-5 right-5 z-20 w-[60px] h-[60px] bg-white border border-white/80 rounded-full shadow-lg flex items-center justify-center text-slate-900 hover:bg-slate-100 transition-colors"
-                    aria-label="Flip Card">
-                    <iconify-icon icon="lucide:plus" width="30" stroke-width="1.5"></iconify-icon>
-                  </button>
-                </div>
-              </div>
-              <div
-                class="absolute inset-0 w-full h-full backface-hidden rotate-y-180 bg-[#1d1d1f] rounded-[24px] border border-white/10 p-6 md:p-8 flex flex-col overflow-hidden">
-                <div class="flex flex-col items-center text-center md:items-start md:text-left flex-shrink-0 mb-2">
-                  <span
-                    class="inline-flex items-center gap-1 w-fit rounded-full bg-white/10 border border-white/10 px-2.5 py-0.5 text-[10px] font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-violet-400 tracking-wide mb-3 badge-animated">
-                    PROBLEM 03
-                  </span>
-                  <h3 class="text-xl md:text-2xl font-semibold tracking-tight text-white leading-tight">
-                    Generic Tools Don't Fit
-                  </h3>
-                </div>
-                <div class="overflow-y-auto custom-scrollbar flex-grow pr-1 pb-10">
-                  <p class="text-sm text-slate-500 leading-relaxed font-medium mb-3">
-                    Off-the-shelf platforms are limited. You need custom
-                    solutions that actually match your unique business
-                    processes.
-                  </p>
-                  <p class="text-sm text-slate-500 leading-relaxed font-medium mb-3">
-                    You've tried the popular all-in-one platforms. Within weeks
-                    you hit limitations. "That workflow isn't supported."
-                  </p>
-                </div>
-                <button onclick="event.stopPropagation(); unflipCard(this)"
-                  class="absolute bottom-5 right-5 z-20 w-8 h-8 bg-white/10 rounded-full shadow-lg flex items-center justify-center text-white hover:bg-white/20 transition-colors"
-                  aria-label="Flip Back">
-                  <iconify-icon icon="lucide:x" width="16" stroke-width="1.5"></iconify-icon>
-                </button>
-              </div>
-            </div>
-          </div>
-          <!-- Card 4 -->
-          <div
-            class="group h-[320px] md:h-[340px] min-w-[78vw] md:min-w-[45vw] lg:min-w-0 lg:max-w-none w-full lg:w-auto perspective-1000 flex-shrink-0 select-none snap-center transition-transform duration-300 hover:-translate-y-2">
-            <div
-              class="flip-card-inner relative w-full h-full duration-700 transform-style-3d transition-transform ease-out-expo shadow-lg rounded-[24px]">
-              <div
-                class="absolute inset-0 w-full h-full backface-hidden bg-[#0A0A0B] rounded-[24px] border border-white/10 p-6 md:p-8 flex flex-col justify-between overflow-hidden">
-                <div class="z-10 flex flex-col items-center text-center md:items-start md:text-left">
-                  <span
-                    class="inline-flex items-center gap-1 rounded-full bg-white/5 border border-blue-500/20 px-2.5 py-0.5 text-[10px] font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-violet-600 tracking-wide mb-3 badge-animated">
-                    PROBLEM 04
-                  </span>
-                  <h3 class="text-xl md:text-2xl font-semibold tracking-tight text-white leading-tight">
-                    Technical Debt Kills Momentum
-                  </h3>
-                  <p class="text-xs font-medium text-slate-500 mt-2 hidden md:block">
-                    Every new feature feels harder than the last.
-                  </p>
-                </div>
-                <div class="absolute bottom-0 left-0 right-0 h-[60%] overflow-hidden rounded-b-[24px]">
-                  <img
-                    src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/d038e0eb-c854-409c-8229-64c1a950b129_1600w.png"
-                    alt="Technical debt"
-                    class="object-center transition-transform duration-700 group-hover:scale-105 w-full h-full object-cover pointer-events-none">
-                </div>
-                <button onclick="event.stopPropagation(); flipCard(this)"
-                  class="absolute bottom-5 right-5 z-20 w-[48px] h-[48px] bg-white border border-white/80 rounded-full shadow-lg flex items-center justify-center text-slate-900 hover:bg-slate-100 transition-colors"
-                  aria-label="Flip Card">
-                  <iconify-icon icon="lucide:plus" width="27" stroke-width="1.5"></iconify-icon>
-                </button>
-              </div>
-              <div
-                class="absolute inset-0 w-full h-full backface-hidden rotate-y-180 bg-[#1d1d1f] rounded-[24px] border border-white/10 p-6 md:p-8 flex flex-col overflow-hidden">
-                <div class="flex flex-col items-center text-center md:items-start md:text-left flex-shrink-0 mb-2">
-                  <span
-                    class="inline-flex items-center gap-1 w-fit rounded-full bg-white/10 border border-white/10 px-2.5 py-0.5 text-[10px] font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-violet-400 tracking-wide mb-3 badge-animated">
-                    PROBLEM 04
-                  </span>
-                  <h3 class="text-xl md:text-2xl font-semibold tracking-tight text-white leading-tight">
-                    Technical Debt Kills Momentum
-                  </h3>
-                </div>
-                <div class="overflow-y-auto custom-scrollbar flex-grow pr-1 pb-10">
-                  <p class="text-sm text-slate-300 leading-relaxed font-medium mb-3">
-                    Quick fixes and rushed builds pile up, turning your system
-                    into a house of cards. Every new feature feels harder.
-                  </p>
-                  <p class="text-sm text-slate-300 leading-relaxed font-medium mb-3">
-                    That "temporary workaround" from 6 months ago is still
-                    there. Simple changes require touching 12 files because
-                    nothing was built to scale.
-                  </p>
-                </div>
-                <button onclick="event.stopPropagation(); unflipCard(this)"
-                  class="absolute bottom-5 right-5 z-20 w-8 h-8 bg-white/10 rounded-full shadow-lg flex items-center justify-center text-white hover:bg-white/20 transition-colors"
-                  aria-label="Flip Back">
-                  <iconify-icon icon="lucide:x" width="16" stroke-width="1.5"></iconify-icon>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="flex items-center justify-center gap-3 mt-4 w-full z-20 lg:hidden" id="challengeControls">
-          <button
-            class="prev-btn control-glass w-10 h-10 rounded-full flex items-center justify-center text-slate-900 hover:bg-white/40 transition-colors">
-            <iconify-icon icon="lucide:chevron-left" width="20" stroke-width="2"></iconify-icon>
-          </button>
-          <div class="flex items-center gap-2 control-glass px-4 py-2.5 rounded-full">
-            <button class="indicator-dot active h-2 rounded-full bg-slate-800" data-index="0"
-              style="width: 24px; background-color: rgb(29, 29, 31);"></button>
-            <button class="indicator-dot w-2 h-2 rounded-full bg-slate-400" data-index="1"
-              style="width: 6px; background-color: rgb(203, 213, 225);"></button>
-            <button class="indicator-dot w-2 h-2 rounded-full bg-slate-400" data-index="2"
-              style="width: 6px; background-color: rgb(203, 213, 225);"></button>
-            <button class="indicator-dot w-2 h-2 rounded-full bg-slate-400" data-index="3"
-              style="width: 6px; background-color: rgb(203, 213, 225);"></button>
-          </div>
-          <button
-            class="next-btn control-glass w-10 h-10 rounded-full flex items-center justify-center text-slate-900 hover:bg-white/40 transition-colors">
-            <iconify-icon icon="lucide:chevron-right" width="20" stroke-width="2"></iconify-icon>
-          </button>
-        </div>
-      </div>
-    </section>
-
     <!-- Comparison Table Section -->
     <section data-theme="dark" class="py-20 md:py-32 bg-[#060d1b] overflow-hidden">
       <div class="max-w-7xl mx-auto px-6 lg:px-20 xl:px-32">
@@ -3491,6 +3226,299 @@
           </a>
         </div>
 
+      </div>
+    </section>
+
+    <!-- Problem Section (Challenge) -->
+    <section data-theme="light"
+      class="flex flex-col overflow-hidden text-slate-900 bg-[#F6F6F7] z-10 py-12 md:py-20 pr-6 pl-6 relative justify-center"
+      id="results">
+      <div class="w-full max-w-7xl mx-auto h-full flex flex-col justify-center relative px-6 lg:px-20 xl:px-32">
+        <div class="text-center mb-10 max-w-3xl mx-auto flex-shrink-0">
+          <span
+            class="inline-flex items-center justify-center px-3 py-1 rounded-full bg-white border border-blue-100 shadow-sm text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-violet-600 text-[10px] font-bold uppercase tracking-wider mb-5 badge-animated">
+            The Challenge
+          </span>
+          <h2 class="text-[30px] md:text-[2.75rem] leading-tight font-medium text-slate-900 tracking-tight font-sf">
+            The Challenge Every
+            <br>
+            Founder Faces
+          </h2>
+        </div>
+
+        <div id="challengesContainer"
+          class="drag-scroll-container flex lg:grid lg:grid-cols-2 overflow-x-auto gap-4 md:gap-6 w-full pt-2 pb-12 cursor-grab scroll-smooth snap-x snap-mandatory lg:snap-none no-scrollbar">
+          <!-- Card 1 -->
+          <div
+            class="group h-[320px] md:h-[340px] min-w-[78vw] md:min-w-[45vw] lg:min-w-0 lg:max-w-none w-full lg:w-auto perspective-1000 flex-shrink-0 select-none snap-center transition-transform duration-300 hover:-translate-y-2">
+            <div
+              class="flip-card-inner relative w-full h-full duration-700 transform-style-3d transition-transform ease-out-expo shadow-lg rounded-[24px]">
+              <div onclick="flipCard(this)" style="cursor: pointer;"
+                class="absolute inset-0 w-full h-full backface-hidden bg-[#2c1810] rounded-[24px] border border-white/10 flex flex-col justify-between overflow-hidden">
+                <div class="absolute inset-0 z-0 flex items-end justify-center">
+                  <img src="./Images/Solutions/calender.png" alt="Development constraints"
+                    class="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105 pointer-events-none drop-shadow-2xl opacity-90 translate-y-2">
+                  <div class="absolute inset-0 bg-gradient-to-b from-transparent via-[#2c1810]/10 to-[#2c1810]"></div>
+                </div>
+                <div class="flex flex-col md:p-8 h-full z-10 pt-6 pr-6 pb-6 pl-6 relative justify-between">
+                  <div class="flex flex-col items-center text-center md:items-start md:text-left">
+                    <span
+                      class="inline-flex items-center gap-1 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 px-2.5 py-0.5 text-[10px] font-bold text-orange-200 tracking-wide mb-3">
+                      PROBLEM 01
+                    </span>
+                    <h3
+                      class="text-xl md:text-2xl font-semibold tracking-tight text-white leading-tight drop-shadow-md">
+                      Development Takes Forever
+                    </h3>
+                    <p class="text-xs font-medium text-orange-100/80 mt-2 hidden md:block drop-shadow-sm">
+                      Months of building, and still no momentum.
+                    </p>
+                  </div>
+                  <button onclick="event.stopPropagation(); flipCard(this)"
+                    class="absolute bottom-5 right-5 z-20 w-[48px] h-[48px] bg-white border border-white/80 rounded-full shadow-lg flex items-center justify-center text-slate-900 hover:bg-slate-100 transition-colors"
+                    aria-label="Flip Card">
+                    <iconify-icon icon="lucide:plus" width="27" stroke-width="1.5"></iconify-icon>
+                  </button>
+                </div>
+              </div>
+              <div
+                class="absolute inset-0 w-full h-full backface-hidden rotate-y-180 bg-[#1d1d1f] rounded-[24px] border border-white/10 p-6 md:p-8 flex flex-col overflow-hidden">
+                <div class="flex flex-col items-center text-center md:items-start md:text-left flex-shrink-0 mb-2">
+                  <span
+                    class="inline-flex items-center gap-1 w-fit rounded-full bg-white/10 border border-white/10 px-2.5 py-0.5 text-[10px] font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-violet-400 tracking-wide mb-3 badge-animated">
+                    PROBLEM 01
+                  </span>
+                  <h3 class="text-xl md:text-2xl font-semibold tracking-tight text-white leading-tight">
+                    Development Takes Forever
+                  </h3>
+                </div>
+                <div class="overflow-y-auto custom-scrollbar flex-grow pr-1 pb-10">
+                  <p class="text-sm text-slate-300 leading-relaxed font-medium mb-3">
+                    Traditional agencies quote $50,000-$100,000 and take 6+
+                    months to build your MVP. By the time they deliver, your
+                    competitors have already launched.
+                  </p>
+                  <p class="text-sm text-slate-300 leading-relaxed font-medium mb-3">
+                    Weeks of discovery calls. Months waiting for designs.
+                    Meanwhile, you're burning runway.
+                  </p>
+                </div>
+                <button onclick="event.stopPropagation(); unflipCard(this)"
+                  class="absolute bottom-5 right-5 z-20 w-8 h-8 bg-white/10 rounded-full shadow-lg flex items-center justify-center text-white hover:bg-white/20 transition-colors"
+                  aria-label="Flip Back">
+                  <iconify-icon icon="lucide:x" width="16" stroke-width="1.5"></iconify-icon>
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- Card 2 -->
+          <div
+            class="group h-[320px] md:h-[340px] min-w-[78vw] md:min-w-[45vw] lg:min-w-0 lg:max-w-none w-full lg:w-auto perspective-1000 flex-shrink-0 select-none snap-center transition-transform duration-300 hover:-translate-y-2">
+            <div
+              class="flip-card-inner relative w-full h-full duration-700 transform-style-3d transition-transform ease-out-expo shadow-lg rounded-[24px]">
+              <div
+                class="absolute inset-0 w-full h-full backface-hidden bg-[#0A0A0B] rounded-[24px] border border-white/10 p-6 md:p-8 flex flex-col justify-between overflow-hidden">
+                <div class="z-10 flex flex-col items-center text-center md:items-start md:text-left">
+                  <span
+                    class="inline-flex items-center gap-1 rounded-full bg-white/5 border border-blue-500/20 px-2.5 py-0.5 text-[10px] font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-violet-600 tracking-wide mb-3 badge-animated">
+                    PROBLEM 02
+                  </span>
+                  <h3 class="text-xl md:text-2xl font-semibold tracking-tight text-white leading-tight">
+                    Manual Work Drains Team
+                  </h3>
+                  <p class="text-xs font-medium text-slate-500 mt-2 hidden md:block">
+                    Your team spends time on work that shouldn't exist.
+                  </p>
+                </div>
+                <div class="absolute bottom-0 left-0 right-0 h-[60%] overflow-hidden rounded-b-[24px]">
+                  <img
+                    src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/468521cb-bdaf-45e5-a32c-1892c6dde73b_1600w.png"
+                    alt="Manual work dashboard"
+                    class="object-top transition-transform duration-700 group-hover:scale-105 w-full h-full object-cover pointer-events-none">
+                </div>
+                <button onclick="event.stopPropagation(); flipCard(this)"
+                  class="absolute bottom-5 right-5 z-20 w-[48px] h-[48px] bg-white border border-white/80 rounded-full shadow-lg flex items-center justify-center text-slate-900 hover:bg-slate-100 transition-colors"
+                  aria-label="Flip Card">
+                  <iconify-icon icon="lucide:plus" width="27" stroke-width="1.5"></iconify-icon>
+                </button>
+              </div>
+              <div
+                class="absolute inset-0 w-full h-full backface-hidden rotate-y-180 bg-[#1d1d1f] rounded-[24px] border border-white/10 p-6 md:p-8 flex flex-col overflow-hidden">
+                <div class="flex flex-col items-center text-center md:items-start md:text-left flex-shrink-0 mb-2">
+                  <span
+                    class="inline-flex items-center gap-1 w-fit rounded-full bg-white/10 border border-white/10 px-2.5 py-0.5 text-[10px] font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-violet-400 tracking-wide mb-3 badge-animated">
+                    PROBLEM 02
+                  </span>
+                  <h3 class="text-xl md:text-2xl font-semibold tracking-tight text-white leading-tight">
+                    Manual Work Drains Team
+                  </h3>
+                </div>
+                <div class="overflow-y-auto custom-scrollbar flex-grow pr-1 pb-10">
+                  <p class="text-sm text-slate-300 leading-relaxed font-medium mb-3">
+                    Your team spends 20+ hours every week on repetitive tasks.
+                    That's $4,000-$8,000 per month in wasted labor.
+                  </p>
+                  <p class="text-sm text-slate-300 leading-relaxed font-medium mb-3">
+                    Manually copying leads into your CRM. Answering the same
+                    questions repeatedly. Automation frees humans to do human
+                    work.
+                  </p>
+                </div>
+                <button onclick="event.stopPropagation(); unflipCard(this)"
+                  class="absolute bottom-5 right-5 z-20 w-8 h-8 bg-white/10 rounded-full shadow-lg flex items-center justify-center text-white hover:bg-white/20 transition-colors"
+                  aria-label="Flip Back">
+                  <iconify-icon icon="lucide:x" width="16" stroke-width="1.5"></iconify-icon>
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- Card 3 -->
+          <div
+            class="group h-[320px] md:h-[340px] min-w-[78vw] md:min-w-[45vw] lg:min-w-0 lg:max-w-none w-full lg:w-auto perspective-1000 flex-shrink-0 select-none snap-center transition-transform duration-300 hover:-translate-y-2">
+            <div
+              class="flip-card-inner relative w-full h-full duration-700 transform-style-3d transition-transform ease-out-expo shadow-lg rounded-[24px]">
+              <div
+                class="absolute inset-0 w-full h-full backface-hidden bg-stone-900 rounded-[24px] border border-black/5 flex flex-col justify-between overflow-hidden">
+                <div class="absolute inset-0 z-0">
+                  <img
+                    src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/dd4f3d66-119e-4390-b012-07c1df683c78_1600w.png"
+                    alt="Inflexible tools"
+                    class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 brightness-[0.8] pointer-events-none">
+                </div>
+                <div class="relative z-10 flex flex-col justify-between h-full p-6 md:p-8">
+                  <div class="flex flex-col md:items-start md:text-left text-center items-center">
+                    <span
+                      class="inline-flex items-center gap-1 rounded-full bg-black/20 backdrop-blur-md border border-white/20 px-2.5 py-0.5 text-[10px] font-bold text-white uppercase tracking-wide mb-3">
+                      Problem 03
+                    </span>
+                    <h3
+                      class="text-xl md:text-2xl font-semibold tracking-tight text-white leading-tight drop-shadow-sm">
+                      Generic Tools Don't Fit
+                    </h3>
+                    <p class="hidden md:block text-xs font-semibold text-white/90 mt-2 drop-shadow-sm">
+                      Off-the-shelf tools never quite match how you work.
+                    </p>
+                  </div>
+                  <button onclick="event.stopPropagation(); flipCard(this)"
+                    class="absolute bottom-5 right-5 z-20 w-[60px] h-[60px] bg-white border border-white/80 rounded-full shadow-lg flex items-center justify-center text-slate-900 hover:bg-slate-100 transition-colors"
+                    aria-label="Flip Card">
+                    <iconify-icon icon="lucide:plus" width="30" stroke-width="1.5"></iconify-icon>
+                  </button>
+                </div>
+              </div>
+              <div
+                class="absolute inset-0 w-full h-full backface-hidden rotate-y-180 bg-[#1d1d1f] rounded-[24px] border border-white/10 p-6 md:p-8 flex flex-col overflow-hidden">
+                <div class="flex flex-col items-center text-center md:items-start md:text-left flex-shrink-0 mb-2">
+                  <span
+                    class="inline-flex items-center gap-1 w-fit rounded-full bg-white/10 border border-white/10 px-2.5 py-0.5 text-[10px] font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-violet-400 tracking-wide mb-3 badge-animated">
+                    PROBLEM 03
+                  </span>
+                  <h3 class="text-xl md:text-2xl font-semibold tracking-tight text-white leading-tight">
+                    Generic Tools Don't Fit
+                  </h3>
+                </div>
+                <div class="overflow-y-auto custom-scrollbar flex-grow pr-1 pb-10">
+                  <p class="text-sm text-slate-500 leading-relaxed font-medium mb-3">
+                    Off-the-shelf platforms are limited. You need custom
+                    solutions that actually match your unique business
+                    processes.
+                  </p>
+                  <p class="text-sm text-slate-500 leading-relaxed font-medium mb-3">
+                    You've tried the popular all-in-one platforms. Within weeks
+                    you hit limitations. "That workflow isn't supported."
+                  </p>
+                </div>
+                <button onclick="event.stopPropagation(); unflipCard(this)"
+                  class="absolute bottom-5 right-5 z-20 w-8 h-8 bg-white/10 rounded-full shadow-lg flex items-center justify-center text-white hover:bg-white/20 transition-colors"
+                  aria-label="Flip Back">
+                  <iconify-icon icon="lucide:x" width="16" stroke-width="1.5"></iconify-icon>
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- Card 4 -->
+          <div
+            class="group h-[320px] md:h-[340px] min-w-[78vw] md:min-w-[45vw] lg:min-w-0 lg:max-w-none w-full lg:w-auto perspective-1000 flex-shrink-0 select-none snap-center transition-transform duration-300 hover:-translate-y-2">
+            <div
+              class="flip-card-inner relative w-full h-full duration-700 transform-style-3d transition-transform ease-out-expo shadow-lg rounded-[24px]">
+              <div
+                class="absolute inset-0 w-full h-full backface-hidden bg-[#0A0A0B] rounded-[24px] border border-white/10 p-6 md:p-8 flex flex-col justify-between overflow-hidden">
+                <div class="z-10 flex flex-col items-center text-center md:items-start md:text-left">
+                  <span
+                    class="inline-flex items-center gap-1 rounded-full bg-white/5 border border-blue-500/20 px-2.5 py-0.5 text-[10px] font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-violet-600 tracking-wide mb-3 badge-animated">
+                    PROBLEM 04
+                  </span>
+                  <h3 class="text-xl md:text-2xl font-semibold tracking-tight text-white leading-tight">
+                    Technical Debt Kills Momentum
+                  </h3>
+                  <p class="text-xs font-medium text-slate-500 mt-2 hidden md:block">
+                    Every new feature feels harder than the last.
+                  </p>
+                </div>
+                <div class="absolute bottom-0 left-0 right-0 h-[60%] overflow-hidden rounded-b-[24px]">
+                  <img
+                    src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/d038e0eb-c854-409c-8229-64c1a950b129_1600w.png"
+                    alt="Technical debt"
+                    class="object-center transition-transform duration-700 group-hover:scale-105 w-full h-full object-cover pointer-events-none">
+                </div>
+                <button onclick="event.stopPropagation(); flipCard(this)"
+                  class="absolute bottom-5 right-5 z-20 w-[48px] h-[48px] bg-white border border-white/80 rounded-full shadow-lg flex items-center justify-center text-slate-900 hover:bg-slate-100 transition-colors"
+                  aria-label="Flip Card">
+                  <iconify-icon icon="lucide:plus" width="27" stroke-width="1.5"></iconify-icon>
+                </button>
+              </div>
+              <div
+                class="absolute inset-0 w-full h-full backface-hidden rotate-y-180 bg-[#1d1d1f] rounded-[24px] border border-white/10 p-6 md:p-8 flex flex-col overflow-hidden">
+                <div class="flex flex-col items-center text-center md:items-start md:text-left flex-shrink-0 mb-2">
+                  <span
+                    class="inline-flex items-center gap-1 w-fit rounded-full bg-white/10 border border-white/10 px-2.5 py-0.5 text-[10px] font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-violet-400 tracking-wide mb-3 badge-animated">
+                    PROBLEM 04
+                  </span>
+                  <h3 class="text-xl md:text-2xl font-semibold tracking-tight text-white leading-tight">
+                    Technical Debt Kills Momentum
+                  </h3>
+                </div>
+                <div class="overflow-y-auto custom-scrollbar flex-grow pr-1 pb-10">
+                  <p class="text-sm text-slate-300 leading-relaxed font-medium mb-3">
+                    Quick fixes and rushed builds pile up, turning your system
+                    into a house of cards. Every new feature feels harder.
+                  </p>
+                  <p class="text-sm text-slate-300 leading-relaxed font-medium mb-3">
+                    That "temporary workaround" from 6 months ago is still
+                    there. Simple changes require touching 12 files because
+                    nothing was built to scale.
+                  </p>
+                </div>
+                <button onclick="event.stopPropagation(); unflipCard(this)"
+                  class="absolute bottom-5 right-5 z-20 w-8 h-8 bg-white/10 rounded-full shadow-lg flex items-center justify-center text-white hover:bg-white/20 transition-colors"
+                  aria-label="Flip Back">
+                  <iconify-icon icon="lucide:x" width="16" stroke-width="1.5"></iconify-icon>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex items-center justify-center gap-3 mt-4 w-full z-20 lg:hidden" id="challengeControls">
+          <button
+            class="prev-btn control-glass w-10 h-10 rounded-full flex items-center justify-center text-slate-900 hover:bg-white/40 transition-colors">
+            <iconify-icon icon="lucide:chevron-left" width="20" stroke-width="2"></iconify-icon>
+          </button>
+          <div class="flex items-center gap-2 control-glass px-4 py-2.5 rounded-full">
+            <button class="indicator-dot active h-2 rounded-full bg-slate-800" data-index="0"
+              style="width: 24px; background-color: rgb(29, 29, 31);"></button>
+            <button class="indicator-dot w-2 h-2 rounded-full bg-slate-400" data-index="1"
+              style="width: 6px; background-color: rgb(203, 213, 225);"></button>
+            <button class="indicator-dot w-2 h-2 rounded-full bg-slate-400" data-index="2"
+              style="width: 6px; background-color: rgb(203, 213, 225);"></button>
+            <button class="indicator-dot w-2 h-2 rounded-full bg-slate-400" data-index="3"
+              style="width: 6px; background-color: rgb(203, 213, 225);"></button>
+          </div>
+          <button
+            class="next-btn control-glass w-10 h-10 rounded-full flex items-center justify-center text-slate-900 hover:bg-white/40 transition-colors">
+            <iconify-icon icon="lucide:chevron-right" width="20" stroke-width="2"></iconify-icon>
+          </button>
+        </div>
       </div>
     </section>
 
@@ -5936,6 +5964,9 @@
       const group = stage?.querySelector('.solutions-carousel-group');
       const prevArrow = stage?.querySelector('#solutionsArrowPrev');
       const nextArrow = stage?.querySelector('#solutionsArrowNext');
+      const prevArrowBelow = stage?.querySelector('#solutionsArrowBelowPrev');
+      const nextArrowBelow = stage?.querySelector('#solutionsArrowBelowNext');
+      const dots = Array.from(stage?.querySelectorAll('.solutions-dot') || []);
 
       if (!stage || !carousel || !track || !group) return;
 
@@ -5981,9 +6012,18 @@
       };
 
       const updateArrowState = () => {
-        if (!prevArrow || !nextArrow) return;
-        prevArrow.disabled = currentSnapIndex <= 0;
-        nextArrow.disabled = currentSnapIndex >= snapPoints.length - 1;
+        const atStart = currentSnapIndex <= 0;
+        const atEnd = currentSnapIndex >= snapPoints.length - 1;
+        if (prevArrow) prevArrow.disabled = atStart;
+        if (nextArrow) nextArrow.disabled = atEnd;
+        if (prevArrowBelow) prevArrowBelow.disabled = atStart;
+        if (nextArrowBelow) nextArrowBelow.disabled = atEnd;
+        // Sync dot indicators
+        dots.forEach((dot, i) => {
+          const active = i === currentSnapIndex;
+          dot.classList.toggle('active', active);
+          dot.style.width = active ? '24px' : '8px';
+        });
       };
 
       const snapToIndex = (targetIndex) => {
@@ -6135,6 +6175,24 @@
       nextArrow?.addEventListener('click', () => {
         stopAutoScroll();
         snapToIndex(currentSnapIndex + 1);
+      });
+
+      prevArrowBelow?.addEventListener('click', () => {
+        stopAutoScroll();
+        snapToIndex(currentSnapIndex - 1);
+      });
+
+      nextArrowBelow?.addEventListener('click', () => {
+        stopAutoScroll();
+        snapToIndex(currentSnapIndex + 1);
+      });
+
+      // ── Dot clicks ────────────────────────────────────────────────────────
+      dots.forEach((dot, i) => {
+        dot.addEventListener('click', () => {
+          stopAutoScroll();
+          snapToIndex(i);
+        });
       });
 
       // ── Resize ────────────────────────────────────────────────────────────
@@ -6358,23 +6416,26 @@
 
       // Update these sources as you add files into /public/image - services carousel
       var svcMediaItems = [
-        { titleHTML: '<em>Motion</em> Design', type: 'video', src: './image - services carousel/motion-design.mp4', fallback: './assets/blog-media/article-2-banner.mp4' },
-        { titleHTML: '<em>Print</em> Design', type: 'image', src: './image - services carousel/print-design.jpg', fallback: './assets/blog-media/article-1-feature-1.jpg' },
-        { titleHTML: 'Immersive <em>Experiences</em>', type: 'image', src: './image - services carousel/immersive-experiences.jpg', fallback: './assets/blog-media/article-3-banner.jpg' },
-        { titleHTML: '<em>Email</em> Design &amp; Development', type: 'image', src: './image - services carousel/email-design-development.jpg', fallback: './assets/blog-media/article-4-feature-1.jpg' },
-        { titleHTML: 'Copywriting', type: 'image', src: './image - services carousel/copywriting.jpg', fallback: './assets/blog-media/article-5-feature-2.jpg' },
-        { titleHTML: 'Campaign Creative <em>Strategy</em>', type: 'image', src: './image - services carousel/campaign-creative-strategy.jpg', fallback: './assets/blog-media/article-7-feature-1.jpg' },
-        { titleHTML: 'Packaging &amp; Merch <em>Design</em>', type: 'image', src: './image - services carousel/packaging-merch-design.jpg', fallback: './assets/blog-media/article-2-feature-1.jpg' },
-        { titleHTML: 'AI Strategy <em>Consulting</em>', type: 'image', src: './image - services carousel/ai-strategy-consulting.jpg', fallback: './assets/blog-media/article-4-banner.jpg' },
-        { titleHTML: '<em>Illustration</em> Design', type: 'image', src: './image - services carousel/illustration-design.jpg', fallback: './assets/blog-media/article-6-feature-2.jpg' },
-        { titleHTML: '<em>Presentation</em> Design', type: 'image', src: './image - services carousel/presentation-design.jpg', fallback: './assets/blog-media/article-3-feature-2.jpg' },
-        { titleHTML: 'eBook &amp; <em>Digital Reports</em>', type: 'image', src: './image - services carousel/ebook-digital-reports.jpg', fallback: './assets/blog-media/article-1-banner.jpg' },
-        { titleHTML: '<em>Website Design</em> &amp; Development', type: 'video', src: './image - services carousel/website-design-development.mp4', fallback: './assets/blog-media/article-5-banner.mp4' },
-        { titleHTML: 'AI-Powered <em>Creative</em>', type: 'image', src: './image - services carousel/ai-powered-creative.jpg', fallback: './assets/blog-media/article-1-feature-2.jpg' },
-        { titleHTML: '<em>Marketing</em> Strategy', type: 'image', src: './image - services carousel/marketing-strategy.jpg', fallback: './assets/blog-media/article-2-feature-2.jpg' },
-        { titleHTML: '<em>Video</em> Production', type: 'image', src: './image - services carousel/video-production.jpg', fallback: './assets/blog-media/article-4-feature-2.jpg' },
-        { titleHTML: '<em>Brand</em> Identity', type: 'image', src: './image - services carousel/brand-identity.jpg', fallback: './assets/blog-media/article-3-feature-1.jpg' },
-        { titleHTML: '<em>Ad</em> Creative', type: 'image', src: './image - services carousel/ad-creative.jpg', fallback: './assets/blog-media/article-6-feature-1.jpg' }
+        { titleHTML: '<em>AI Chatbot</em> Automation', type: 'image', src: './image - services carousel/ai-chatbot-automation.jpg', fallback: './assets/blog-media/article-2-banner.jpg' },
+        { titleHTML: 'AI-Powered <em>Customer Support</em> Integration', type: 'image', src: './image - services carousel/ai-customer-support-integration.jpg', fallback: './assets/blog-media/article-1-feature-1.jpg' },
+        { titleHTML: '<em>CRM</em> Automation', type: 'image', src: './image - services carousel/crm-automation.jpg', fallback: './assets/blog-media/article-3-banner.jpg' },
+        { titleHTML: '<em>Design</em> System', type: 'image', src: './image - services carousel/design-system.jpg', fallback: './assets/blog-media/article-4-feature-1.jpg' },
+        { titleHTML: '<em>Email</em> &amp; Follow-Up Automation', type: 'image', src: './image - services carousel/email-followup-automation.jpg', fallback: './assets/blog-media/article-5-feature-2.jpg' },
+        { titleHTML: 'Full-Stack <em>MVP Build</em>', type: 'image', src: './image - services carousel/fullstack-mvp-build.jpg', fallback: './assets/blog-media/article-7-feature-1.jpg' },
+        { titleHTML: 'Internal <em>Operations AI</em> Workflows', type: 'image', src: './image - services carousel/internal-operations-ai-workflows.jpg', fallback: './assets/blog-media/article-2-feature-1.jpg' },
+        { titleHTML: 'Investor Ready <em>Product Demo</em>', type: 'image', src: './image - services carousel/investor-ready-product-demo.jpg', fallback: './assets/blog-media/article-4-banner.jpg' },
+        { titleHTML: '<em>Landing Page</em> Design', type: 'image', src: './image - services carousel/landing-page-design.jpg', fallback: './assets/blog-media/article-6-feature-2.jpg' },
+        { titleHTML: '<em>Lead Generation</em> Automation', type: 'image', src: './image - services carousel/lead-generation-automation.jpg', fallback: './assets/blog-media/article-3-feature-2.jpg' },
+        { titleHTML: '<em>LLM</em> Integration into Existing Tools', type: 'image', src: './image - services carousel/llm-integration-existing-tools.jpg', fallback: './assets/blog-media/article-1-banner.jpg' },
+        { titleHTML: '<em>Marketing Website</em> Design', type: 'image', src: './image - services carousel/marketing-website-design.jpg', fallback: './assets/blog-media/article-1-feature-2.jpg' },
+        { titleHTML: '<em>Mobile App</em> UI/UX Design', type: 'image', src: './image - services carousel/mobile-app-uiux-design.jpg', fallback: './assets/blog-media/article-2-feature-2.jpg' },
+        { titleHTML: '<em>Proposal</em> Automation', type: 'image', src: './image - services carousel/proposal-automation.jpg', fallback: './assets/blog-media/article-4-feature-2.jpg' },
+        { titleHTML: 'Rapid <em>MVP</em> Launch', type: 'image', src: './image - services carousel/rapid-mvp-launch.jpg', fallback: './assets/blog-media/article-3-feature-1.jpg' },
+        { titleHTML: '<em>SaaS Dashboard</em> Design', type: 'image', src: './image - services carousel/saas-dashboard-design.jpg', fallback: './assets/blog-media/article-6-feature-1.jpg' },
+        { titleHTML: '<em>SaaS Product</em> Design', type: 'image', src: './image - services carousel/saas-product-design.jpg', fallback: './assets/blog-media/article-5-feature-2.jpg' },
+        { titleHTML: '<em>SaaS Website</em> Design', type: 'image', src: './image - services carousel/saas-website-design.jpg', fallback: './assets/blog-media/article-1-feature-1.jpg' },
+        { titleHTML: '<em>Web App</em> Design', type: 'image', src: './image - services carousel/web-app-design.jpg', fallback: './assets/blog-media/article-3-banner.jpg' },
+        { titleHTML: '<em>Website</em> Graphics', type: 'image', src: './image - services carousel/website-graphics.jpg', fallback: './assets/blog-media/article-4-feature-1.jpg' }
       ];
 
       function makeServiceCard(item) {
@@ -6496,7 +6557,13 @@
       window.addEventListener('pointerup', endDrag);
       window.addEventListener('pointercancel', endDrag);
 
-      svcCarousel.addEventListener('mouseenter', function() { pauseAutoScroll(1400); });
+      svcCarousel.addEventListener('mouseenter', function() {
+        autoScrollEnabled = false;
+        if (resumeTimer) clearTimeout(resumeTimer);
+      });
+      svcCarousel.addEventListener('mouseleave', function() {
+        if (!reducedMotion && !dragActive) autoScrollEnabled = true;
+      });
       svcCarousel.addEventListener('wheel', function() { pauseAutoScroll(2200); }, { passive: true });
       svcCarousel.addEventListener('touchstart', function() { pauseAutoScroll(2400); }, { passive: true });
       svcCarousel.addEventListener('scroll', function() {
