@@ -6,7 +6,7 @@
 
 ## Company
 
-LoopSuit is a premium design and AI automation agency founded in 2023 by Jastej Singh Sehra, based in Vancouver, Canada. LoopSuit serves clients in the United States, Canada, and India.
+LoopSuit is a premium design and AI automation agency founded in 2023, based in Vancouver, Canada. LoopSuit serves clients in the United States, Canada, and India.
 
 LoopSuit specializes in:
 - App design (mobile app UI/UX design, web app design)
@@ -96,7 +96,7 @@ URL: https://loopsuitai.com/blog-ai-automation-workflows.html
 - Website: https://loopsuitai.com
 - Services: https://loopsuitai.com/services.html
 - Case Studies: https://loopsuitai.com/case-studies.html
-- Email: jastejsingh98@gmail.com
+- Email: support@loopsuitai.com
 - Location: Vancouver, BC, Canada
 - Service areas: United States, Canada, India
 

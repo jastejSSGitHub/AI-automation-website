@@ -1100,10 +1100,6 @@
     "logo": "https://loopsuitai.com/logos/favicon.svg",
     "description": "LoopSuit is a premium app design, website design, dashboard design, and AI automation agency. We build MVPs in 2 weeks and deploy intelligent AI agents for businesses across the USA, Canada, and India.",
     "foundingDate": "2023",
-    "founder": {
-      "@type": "Person",
-      "name": "Jastej Singh Sehra"
-    },
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Vancouver",
@@ -1508,10 +1504,15 @@
             We build beautiful apps that do the work for you. From stunning design to smart automation, we
             create custom software that grows your business on autopilot.
           </p>
-          <div class="flex gap-4 pt-2 md:pt-0">
-            <button onclick="openLeadGenModal()"
-              class="bg-white text-black px-6 py-3 md:px-8 md:py-4 rounded-full font-bold hover:scale-105 transition-transform text-xs md:text-base shadow-[0_0_20px_rgba(255,255,255,0.3)]">Start
-              Building</button>
+          <div class="flex flex-col items-center md:items-start gap-3 pt-2 md:pt-0">
+            <button onclick="openCalendly()"
+              class="bg-white text-black px-6 py-3 md:px-8 md:py-4 rounded-full font-bold hover:scale-105 transition-transform text-xs md:text-base shadow-[0_0_20px_rgba(255,255,255,0.3)]">
+              Book Free Strategy Call
+            </button>
+            <div class="flex items-center gap-1.5 text-xs text-emerald-400 font-semibold">
+              <iconify-icon icon="lucide:shield-check" width="14" class="flex-shrink-0"></iconify-icon>
+              <span>Love it — or we make it right. Full refund, no questions asked.</span>
+            </div>
           </div>
         </div>
 
@@ -1889,7 +1890,7 @@
     </style>
 
     <!-- overflow:clip prevents horiz scroll but does NOT create a scroll context, so sticky children work -->
-    <section data-theme="light" class="bg-white" style="overflow-x:clip; padding-top:0;">
+    <section data-theme="light" class="bg-white" style="overflow-x:clip; padding-top:0; padding-bottom:2rem;">
       <div class="mfc-grid">
 
         <!-- ── Card 1: Speed ── -->
@@ -2724,6 +2725,378 @@
       </div>
     </section>
 
+    <!-- Before / After Comparison Section -->
+    <section data-theme="dark" class="py-20 md:py-28 bg-[#060d1b] relative overflow-hidden" id="before-after">
+      <!-- Ambient glows -->
+      <div class="absolute top-0 right-1/3 w-[600px] h-[600px] bg-violet-700/6 rounded-full blur-[140px] pointer-events-none"></div>
+      <div class="absolute bottom-0 left-1/4 w-[500px] h-[500px] bg-blue-700/6 rounded-full blur-[120px] pointer-events-none"></div>
+
+      <div class="max-w-7xl mx-auto px-6 lg:px-20 xl:px-32 relative z-10">
+
+        <!-- Header -->
+        <div class="text-center mb-14">
+          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 border border-violet-500/30 text-violet-400 text-[10px] font-bold uppercase tracking-widest mb-5">
+            <iconify-icon icon="lucide:arrow-right-left" width="11"></iconify-icon>
+            The LoopSuit Difference
+          </span>
+          <h2 class="text-[1.9rem] md:text-[2.6rem] font-medium text-white tracking-tight font-sf leading-tight">
+            Before LoopSuit <span class="text-slate-600 font-light">vs.</span> After LoopSuit
+          </h2>
+          <p class="text-gray-500 text-base mt-4 max-w-xl mx-auto leading-relaxed">
+            The same challenges — completely different outcomes. Here's what our clients actually experienced.
+          </p>
+        </div>
+
+        <!-- Comparison Rows -->
+        <div class="flex flex-col gap-5">
+
+          <!-- Row 1: Development Speed -->
+          <div class="group grid md:grid-cols-[1fr_auto_1fr] gap-0 md:gap-4 items-stretch rounded-2xl overflow-hidden border border-white/5 hover:border-white/10 transition-all duration-300">
+
+            <!-- Before -->
+            <div class="relative bg-gradient-to-br from-red-950/40 via-[#0f0608] to-[#0a0a0b] border border-red-900/30 rounded-2xl md:rounded-r-none p-6 md:p-8 flex flex-col gap-4">
+              <div class="flex items-center gap-2 mb-1">
+                <span class="flex items-center justify-center w-6 h-6 rounded-full bg-red-500/15 border border-red-500/30">
+                  <iconify-icon icon="lucide:x" width="12" class="text-red-400"></iconify-icon>
+                </span>
+                <span class="text-[10px] font-bold uppercase tracking-widest text-red-400">Before</span>
+              </div>
+              <div>
+                <p class="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-2">Development Takes Forever</p>
+                <p class="text-white/90 text-sm leading-relaxed font-medium">Agency quoted <span class="text-red-300 font-semibold">$74,000 and a 6-month timeline.</span> Discovery phase alone took 5 weeks. First design review pushed delivery to month 8. Product still wasn't finished when the client ran out of runway.</p>
+              </div>
+              <div class="flex flex-wrap gap-2 mt-auto pt-2">
+                <span class="px-2.5 py-1 rounded-full bg-red-500/10 border border-red-500/20 text-red-300 text-[11px] font-semibold">8+ months</span>
+                <span class="px-2.5 py-1 rounded-full bg-red-500/10 border border-red-500/20 text-red-300 text-[11px] font-semibold">$74,000 spent</span>
+                <span class="px-2.5 py-1 rounded-full bg-red-500/10 border border-red-500/20 text-red-300 text-[11px] font-semibold">0 users at launch</span>
+              </div>
+            </div>
+
+            <!-- Arrow Divider -->
+            <div class="hidden md:flex items-center justify-center z-10 self-center shrink-0 my-auto">
+              <div class="flex flex-col items-center gap-1">
+                <div class="w-9 h-9 rounded-full bg-gradient-to-br from-blue-600 to-violet-600 flex items-center justify-center shadow-lg shadow-blue-500/25">
+                  <iconify-icon icon="lucide:arrow-right" width="16" class="text-white"></iconify-icon>
+                </div>
+              </div>
+            </div>
+            <div class="flex md:hidden items-center justify-center py-2">
+              <div class="w-8 h-8 rounded-full bg-gradient-to-br from-blue-600 to-violet-600 flex items-center justify-center shadow-lg">
+                <iconify-icon icon="lucide:arrow-down" width="14" class="text-white"></iconify-icon>
+              </div>
+            </div>
+
+            <!-- After -->
+            <div class="relative bg-gradient-to-br from-emerald-950/40 via-[#030f08] to-[#0a0a0b] border border-emerald-900/30 rounded-2xl md:rounded-l-none p-6 md:p-8 flex flex-col gap-4">
+              <div class="flex items-center gap-2 mb-1">
+                <span class="flex items-center justify-center w-6 h-6 rounded-full bg-emerald-500/15 border border-emerald-500/30">
+                  <iconify-icon icon="lucide:check" width="12" class="text-emerald-400"></iconify-icon>
+                </span>
+                <span class="text-[10px] font-bold uppercase tracking-widest text-emerald-400">After LoopSuit</span>
+              </div>
+              <div>
+                <p class="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-2">Development Takes Forever</p>
+                <p class="text-white/90 text-sm leading-relaxed font-medium">Full-stack MVP designed, built, and shipped in <span class="text-emerald-300 font-semibold">11 days for $9,800.</span> First paying customer signed up within 48 hours of going live. Three months later, the product had $22K MRR and a seed round in progress.</p>
+              </div>
+              <div class="flex flex-wrap gap-2 mt-auto pt-2">
+                <span class="px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 text-[11px] font-semibold">11-day launch</span>
+                <span class="px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 text-[11px] font-semibold">$9,800 total cost</span>
+                <span class="px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 text-[11px] font-semibold">$22K MRR in 90 days</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Row 2: Manual Work -->
+          <div class="group grid md:grid-cols-[1fr_auto_1fr] gap-0 md:gap-4 items-stretch rounded-2xl overflow-hidden border border-white/5 hover:border-white/10 transition-all duration-300">
+
+            <!-- Before -->
+            <div class="relative bg-gradient-to-br from-red-950/40 via-[#0f0608] to-[#0a0a0b] border border-red-900/30 rounded-2xl md:rounded-r-none p-6 md:p-8 flex flex-col gap-4">
+              <div class="flex items-center gap-2 mb-1">
+                <span class="flex items-center justify-center w-6 h-6 rounded-full bg-red-500/15 border border-red-500/30">
+                  <iconify-icon icon="lucide:x" width="12" class="text-red-400"></iconify-icon>
+                </span>
+                <span class="text-[10px] font-bold uppercase tracking-widest text-red-400">Before</span>
+              </div>
+              <div>
+                <p class="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-2">Manual Work Drains Team</p>
+                <p class="text-white/90 text-sm leading-relaxed font-medium">Sales team spent <span class="text-red-300 font-semibold">23 hours every week</span> manually transferring form submissions into the CRM, copy-pasting data into invoice templates, and sending individual follow-up emails. Two full-time staff doing the work of a spreadsheet.</p>
+              </div>
+              <div class="flex flex-wrap gap-2 mt-auto pt-2">
+                <span class="px-2.5 py-1 rounded-full bg-red-500/10 border border-red-500/20 text-red-300 text-[11px] font-semibold">23 hrs/week wasted</span>
+                <span class="px-2.5 py-1 rounded-full bg-red-500/10 border border-red-500/20 text-red-300 text-[11px] font-semibold">~$6,400/month in labour</span>
+                <span class="px-2.5 py-1 rounded-full bg-red-500/10 border border-red-500/20 text-red-300 text-[11px] font-semibold">48hr average follow-up delay</span>
+              </div>
+            </div>
+
+            <!-- Arrow Divider -->
+            <div class="hidden md:flex items-center justify-center z-10 self-center shrink-0 my-auto">
+              <div class="w-9 h-9 rounded-full bg-gradient-to-br from-blue-600 to-violet-600 flex items-center justify-center shadow-lg shadow-blue-500/25">
+                <iconify-icon icon="lucide:arrow-right" width="16" class="text-white"></iconify-icon>
+              </div>
+            </div>
+            <div class="flex md:hidden items-center justify-center py-2">
+              <div class="w-8 h-8 rounded-full bg-gradient-to-br from-blue-600 to-violet-600 flex items-center justify-center shadow-lg">
+                <iconify-icon icon="lucide:arrow-down" width="14" class="text-white"></iconify-icon>
+              </div>
+            </div>
+
+            <!-- After -->
+            <div class="relative bg-gradient-to-br from-emerald-950/40 via-[#030f08] to-[#0a0a0b] border border-emerald-900/30 rounded-2xl md:rounded-l-none p-6 md:p-8 flex flex-col gap-4">
+              <div class="flex items-center gap-2 mb-1">
+                <span class="flex items-center justify-center w-6 h-6 rounded-full bg-emerald-500/15 border border-emerald-500/30">
+                  <iconify-icon icon="lucide:check" width="12" class="text-emerald-400"></iconify-icon>
+                </span>
+                <span class="text-[10px] font-bold uppercase tracking-widest text-emerald-400">After LoopSuit</span>
+              </div>
+              <div>
+                <p class="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-2">Manual Work Drains Team</p>
+                <p class="text-white/90 text-sm leading-relaxed font-medium">End-to-end automation now handles lead capture, CRM entry, invoice generation, and a 5-step follow-up sequence — <span class="text-emerald-300 font-semibold">running 24/7 without a single human touch.</span> The team redirected those 20+ hours toward closing deals. Revenue up 31% in two months.</p>
+              </div>
+              <div class="flex flex-wrap gap-2 mt-auto pt-2">
+                <span class="px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 text-[11px] font-semibold">20+ hrs/week reclaimed</span>
+                <span class="px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 text-[11px] font-semibold">Follows up in &lt;4 min</span>
+                <span class="px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 text-[11px] font-semibold">+31% revenue in 60 days</span>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /visible rows -->
+
+        <!-- Expandable rows wrapper -->
+        <div id="extraComparisons" style="max-height:0;overflow:hidden;transition:max-height 0.55s cubic-bezier(0.4,0,0.2,1), opacity 0.4s ease;" class="opacity-0">
+          <div class="flex flex-col gap-5 pt-5">
+
+          <!-- Row 3: Generic Tools -->
+          <div class="group grid md:grid-cols-[1fr_auto_1fr] gap-0 md:gap-4 items-stretch rounded-2xl overflow-hidden border border-white/5 hover:border-white/10 transition-all duration-300">
+
+            <!-- Before -->
+            <div class="relative bg-gradient-to-br from-red-950/40 via-[#0f0608] to-[#0a0a0b] border border-red-900/30 rounded-2xl md:rounded-r-none p-6 md:p-8 flex flex-col gap-4">
+              <div class="flex items-center gap-2 mb-1">
+                <span class="flex items-center justify-center w-6 h-6 rounded-full bg-red-500/15 border border-red-500/30">
+                  <iconify-icon icon="lucide:x" width="12" class="text-red-400"></iconify-icon>
+                </span>
+                <span class="text-[10px] font-bold uppercase tracking-widest text-red-400">Before</span>
+              </div>
+              <div>
+                <p class="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-2">Generic Tools Don't Fit</p>
+                <p class="text-white/90 text-sm leading-relaxed font-medium">Seven disconnected SaaS tools — Zapier, Airtable, Typeform, Notion, Slack, HubSpot, and a custom Google Sheet — held together by <span class="text-red-300 font-semibold">duct-tape automations that broke weekly.</span> $1,340/month in subscriptions. Constant data gaps and manual error-fixing.</p>
+              </div>
+              <div class="flex flex-wrap gap-2 mt-auto pt-2">
+                <span class="px-2.5 py-1 rounded-full bg-red-500/10 border border-red-500/20 text-red-300 text-[11px] font-semibold">7 disconnected tools</span>
+                <span class="px-2.5 py-1 rounded-full bg-red-500/10 border border-red-500/20 text-red-300 text-[11px] font-semibold">$1,340/month in SaaS</span>
+                <span class="px-2.5 py-1 rounded-full bg-red-500/10 border border-red-500/20 text-red-300 text-[11px] font-semibold">Weekly breakages</span>
+              </div>
+            </div>
+
+            <!-- Arrow Divider -->
+            <div class="hidden md:flex items-center justify-center z-10 self-center shrink-0 my-auto">
+              <div class="w-9 h-9 rounded-full bg-gradient-to-br from-blue-600 to-violet-600 flex items-center justify-center shadow-lg shadow-blue-500/25">
+                <iconify-icon icon="lucide:arrow-right" width="16" class="text-white"></iconify-icon>
+              </div>
+            </div>
+            <div class="flex md:hidden items-center justify-center py-2">
+              <div class="w-8 h-8 rounded-full bg-gradient-to-br from-blue-600 to-violet-600 flex items-center justify-center shadow-lg">
+                <iconify-icon icon="lucide:arrow-down" width="14" class="text-white"></iconify-icon>
+              </div>
+            </div>
+
+            <!-- After -->
+            <div class="relative bg-gradient-to-br from-emerald-950/40 via-[#030f08] to-[#0a0a0b] border border-emerald-900/30 rounded-2xl md:rounded-l-none p-6 md:p-8 flex flex-col gap-4">
+              <div class="flex items-center gap-2 mb-1">
+                <span class="flex items-center justify-center w-6 h-6 rounded-full bg-emerald-500/15 border border-emerald-500/30">
+                  <iconify-icon icon="lucide:check" width="12" class="text-emerald-400"></iconify-icon>
+                </span>
+                <span class="text-[10px] font-bold uppercase tracking-widest text-emerald-400">After LoopSuit</span>
+              </div>
+              <div>
+                <p class="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-2">Generic Tools Don't Fit</p>
+                <p class="text-white/90 text-sm leading-relaxed font-medium">A single, <span class="text-emerald-300 font-semibold">purpose-built system replaced all seven tools.</span> One dashboard. Zero patchwork integrations. Every edge case in their workflow — the weird exceptions that Zapier couldn't handle — now works flawlessly. SaaS spend dropped to $290/month.</p>
+              </div>
+              <div class="flex flex-wrap gap-2 mt-auto pt-2">
+                <span class="px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 text-[11px] font-semibold">1 unified system</span>
+                <span class="px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 text-[11px] font-semibold">$290/month (saved $1,050)</span>
+                <span class="px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 text-[11px] font-semibold">Zero breakages since launch</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Row 4: Technical Debt -->
+          <div class="group grid md:grid-cols-[1fr_auto_1fr] gap-0 md:gap-4 items-stretch rounded-2xl overflow-hidden border border-white/5 hover:border-white/10 transition-all duration-300">
+
+            <!-- Before -->
+            <div class="relative bg-gradient-to-br from-red-950/40 via-[#0f0608] to-[#0a0a0b] border border-red-900/30 rounded-2xl md:rounded-r-none p-6 md:p-8 flex flex-col gap-4">
+              <div class="flex items-center gap-2 mb-1">
+                <span class="flex items-center justify-center w-6 h-6 rounded-full bg-red-500/15 border border-red-500/30">
+                  <iconify-icon icon="lucide:x" width="12" class="text-red-400"></iconify-icon>
+                </span>
+                <span class="text-[10px] font-bold uppercase tracking-widest text-red-400">Before</span>
+              </div>
+              <div>
+                <p class="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-2">Technical Debt Kills Momentum</p>
+                <p class="text-white/90 text-sm leading-relaxed font-medium">Every new feature required a 2-week sprint and risked breaking three other things. A "quick" onboarding flow change took <span class="text-red-300 font-semibold">6 weeks and introduced 4 regressions.</span> Engineers dreaded touching core files. Roadmap effectively frozen for 5 months.</p>
+              </div>
+              <div class="flex flex-wrap gap-2 mt-auto pt-2">
+                <span class="px-2.5 py-1 rounded-full bg-red-500/10 border border-red-500/20 text-red-300 text-[11px] font-semibold">2-week sprints per change</span>
+                <span class="px-2.5 py-1 rounded-full bg-red-500/10 border border-red-500/20 text-red-300 text-[11px] font-semibold">Constant regressions</span>
+                <span class="px-2.5 py-1 rounded-full bg-red-500/10 border border-red-500/20 text-red-300 text-[11px] font-semibold">5-month roadmap freeze</span>
+              </div>
+            </div>
+
+            <!-- Arrow Divider -->
+            <div class="hidden md:flex items-center justify-center z-10 self-center shrink-0 my-auto">
+              <div class="w-9 h-9 rounded-full bg-gradient-to-br from-blue-600 to-violet-600 flex items-center justify-center shadow-lg shadow-blue-500/25">
+                <iconify-icon icon="lucide:arrow-right" width="16" class="text-white"></iconify-icon>
+              </div>
+            </div>
+            <div class="flex md:hidden items-center justify-center py-2">
+              <div class="w-8 h-8 rounded-full bg-gradient-to-br from-blue-600 to-violet-600 flex items-center justify-center shadow-lg">
+                <iconify-icon icon="lucide:arrow-down" width="14" class="text-white"></iconify-icon>
+              </div>
+            </div>
+
+            <!-- After -->
+            <div class="relative bg-gradient-to-br from-emerald-950/40 via-[#030f08] to-[#0a0a0b] border border-emerald-900/30 rounded-2xl md:rounded-l-none p-6 md:p-8 flex flex-col gap-4">
+              <div class="flex items-center gap-2 mb-1">
+                <span class="flex items-center justify-center w-6 h-6 rounded-full bg-emerald-500/15 border border-emerald-500/30">
+                  <iconify-icon icon="lucide:check" width="12" class="text-emerald-400"></iconify-icon>
+                </span>
+                <span class="text-[10px] font-bold uppercase tracking-widest text-emerald-400">After LoopSuit</span>
+              </div>
+              <div>
+                <p class="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-2">Technical Debt Kills Momentum</p>
+                <p class="text-white/90 text-sm leading-relaxed font-medium">Rebuilt from the ground up with a modular, well-documented architecture. New features now ship in <span class="text-emerald-300 font-semibold">2–4 days with zero regressions.</span> The team shipped 11 features in the first 8 weeks post-rebuild — more than the previous 12 months combined.</p>
+              </div>
+              <div class="flex flex-wrap gap-2 mt-auto pt-2">
+                <span class="px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 text-[11px] font-semibold">2–4 day feature cycles</span>
+                <span class="px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 text-[11px] font-semibold">0 regressions in 3 months</span>
+                <span class="px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 text-[11px] font-semibold">11 features shipped in 8 wks</span>
+              </div>
+            </div>
+          </div>
+
+          </div>
+        </div><!-- /expandable rows -->
+
+        <!-- Expand / Collapse Toggle -->
+        <div class="flex justify-center mt-6">
+          <button
+            id="toggleComparisons"
+            onclick="(function(){
+              var el = document.getElementById('extraComparisons');
+              var btn = document.getElementById('toggleComparisons');
+              var icon = document.getElementById('toggleIcon');
+              var label = document.getElementById('toggleLabel');
+              var expanded = el.dataset.expanded === 'true';
+              if (!expanded) {
+                el.style.maxHeight = el.scrollHeight + 'px';
+                el.style.opacity = '1';
+                el.dataset.expanded = 'true';
+                label.textContent = 'Show less';
+                icon.style.transform = 'rotate(180deg)';
+              } else {
+                el.style.maxHeight = '0';
+                el.style.opacity = '0';
+                el.dataset.expanded = 'false';
+                label.textContent = '2 more comparisons';
+                icon.style.transform = 'rotate(0deg)';
+              }
+            })()"
+            class="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-200 group cursor-pointer">
+            <span id="toggleLabel" class="text-slate-400 text-sm font-medium group-hover:text-white transition-colors">2 more comparisons</span>
+            <span class="flex items-center justify-center w-5 h-5 rounded-full bg-white/10 group-hover:bg-white/20 transition-all">
+              <iconify-icon id="toggleIcon" icon="lucide:chevron-down" width="12" class="text-slate-400 group-hover:text-white transition-all" style="transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);"></iconify-icon>
+            </span>
+          </button>
+        </div>
+
+        <!-- Bottom CTA -->
+        <div class="text-center mt-12">
+          <p class="text-slate-500 text-sm mb-5">Ready to write your own before → after story?</p>
+          <button onclick="openCalendly()"
+            class="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-gradient-to-r from-blue-600 to-violet-600 text-white text-sm font-semibold hover:opacity-90 transition-opacity shadow-lg shadow-blue-500/20">
+            Book Free Strategy Call
+            <iconify-icon icon="lucide:arrow-right" width="15"></iconify-icon>
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Who This Is For / ICP Section -->
+    <section data-theme="dark" class="py-20 md:py-28 bg-[#060d1b] relative overflow-hidden">
+      <!-- Ambient glows -->
+      <div class="absolute top-0 left-1/4 w-[500px] h-[500px] bg-blue-600/8 rounded-full blur-[130px] pointer-events-none"></div>
+      <div class="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-violet-600/8 rounded-full blur-[110px] pointer-events-none"></div>
+
+      <div class="max-w-7xl mx-auto px-6 lg:px-20 xl:px-32 relative z-10">
+
+        <!-- Header -->
+        <div class="text-center mb-12">
+          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 border border-blue-500/30 text-blue-400 text-[10px] font-bold uppercase tracking-widest mb-5">
+            <iconify-icon icon="lucide:users" width="11"></iconify-icon>
+            Who This Is For
+          </span>
+          <h2 class="text-[1.9rem] md:text-[2.6rem] font-medium text-white tracking-tight font-sf leading-tight">
+            Built for builders who <em class="italic font-light text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-violet-400 to-pink-400">move fast.</em>
+          </h2>
+          <p class="text-gray-500 text-base mt-4 max-w-xl mx-auto leading-relaxed">
+            Not every agency is for everyone. Here's exactly who gets the most from working with us.
+          </p>
+        </div>
+
+        <!-- 3 ICP Cards -->
+        <div class="grid md:grid-cols-3 gap-5 md:gap-6">
+
+          <!-- Card 1: SaaS Founders -->
+          <div class="relative rounded-2xl p-7 bg-gradient-to-br from-blue-950/50 via-[#060d1b] to-blue-900/10 border border-blue-500/20 hover:border-blue-400/50 transition-all duration-300 group cursor-default">
+            <div class="absolute inset-0 rounded-2xl bg-gradient-to-br from-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+            <div class="w-11 h-11 rounded-xl bg-blue-500/15 flex items-center justify-center mb-5 group-hover:bg-blue-500/25 transition-colors border border-blue-500/20">
+              <iconify-icon icon="lucide:rocket" class="text-blue-400" width="20"></iconify-icon>
+            </div>
+            <h3 class="text-white font-bold text-lg mb-2 font-sf tracking-tight">SaaS Founders</h3>
+            <p class="text-gray-400 text-sm leading-relaxed">Building your first product and tired of agencies quoting 6 months? We design and launch MVPs in 2 weeks — so you can validate your idea before burning runway.</p>
+            <div class="mt-5 pt-4 border-t border-white/5 flex items-center gap-2">
+              <div class="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse flex-shrink-0"></div>
+              <span class="text-[10px] font-bold text-blue-400 uppercase tracking-widest">First SaaS · Early-Stage MVPs</span>
+            </div>
+          </div>
+
+          <!-- Card 2: Service Businesses -->
+          <div class="relative rounded-2xl p-7 bg-gradient-to-br from-violet-950/50 via-[#060d1b] to-purple-900/10 border border-violet-500/20 hover:border-violet-400/50 transition-all duration-300 group cursor-default">
+            <div class="absolute inset-0 rounded-2xl bg-gradient-to-br from-violet-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+            <div class="w-11 h-11 rounded-xl bg-violet-500/15 flex items-center justify-center mb-5 group-hover:bg-violet-500/25 transition-colors border border-violet-500/20">
+              <iconify-icon icon="lucide:zap" class="text-violet-400" width="20"></iconify-icon>
+            </div>
+            <h3 class="text-white font-bold text-lg mb-2 font-sf tracking-tight">Service Businesses</h3>
+            <p class="text-gray-400 text-sm leading-relaxed">Drowning in manual work — follow-ups, reports, intake forms? We automate your operations so your team stops firefighting and starts actually growing.</p>
+            <div class="mt-5 pt-4 border-t border-white/5 flex items-center gap-2">
+              <div class="w-1.5 h-1.5 rounded-full bg-violet-400 animate-pulse flex-shrink-0"></div>
+              <span class="text-[10px] font-bold text-violet-400 uppercase tracking-widest">Ops-Heavy · Manual Workflows</span>
+            </div>
+          </div>
+
+          <!-- Card 3: Agencies & Teams -->
+          <div class="relative rounded-2xl p-7 bg-gradient-to-br from-pink-950/50 via-[#060d1b] to-pink-900/10 border border-pink-500/20 hover:border-pink-400/50 transition-all duration-300 group cursor-default">
+            <div class="absolute inset-0 rounded-2xl bg-gradient-to-br from-pink-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+            <div class="w-11 h-11 rounded-xl bg-pink-500/15 flex items-center justify-center mb-5 group-hover:bg-pink-500/25 transition-colors border border-pink-500/20">
+              <iconify-icon icon="lucide:trending-up" class="text-pink-400" width="20"></iconify-icon>
+            </div>
+            <h3 class="text-white font-bold text-lg mb-2 font-sf tracking-tight">Agencies &amp; Teams</h3>
+            <p class="text-gray-400 text-sm leading-relaxed">Need to deliver faster without adding headcount? We extend your capacity with AI workflows and design systems that scale with your client base.</p>
+            <div class="mt-5 pt-4 border-t border-white/5 flex items-center gap-2">
+              <div class="w-1.5 h-1.5 rounded-full bg-pink-400 animate-pulse flex-shrink-0"></div>
+              <span class="text-[10px] font-bold text-pink-400 uppercase tracking-widest">Agencies · Scale &amp; Speed</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bottom quote -->
+        <p class="text-center text-gray-600 text-sm mt-10 italic max-w-xl mx-auto leading-relaxed">
+          "If you're tired of slow teams, expensive agencies, and tools that don't talk to each other — you're in the right place."
+        </p>
+      </div>
+    </section>
+
     <!-- Comparison Table Section -->
     <section data-theme="dark" class="py-20 md:py-32 bg-[#060d1b] overflow-hidden">
       <div class="max-w-7xl mx-auto px-6 lg:px-20 xl:px-32">
@@ -3535,9 +3908,13 @@
             </div>
 
             <button onclick="openCalendly()"
-              class="shiny-cta w-full focus:outline-none justify-center relative z-10 mb-8 max-w-xs mx-auto text-white bg-black shadow-lg group border border-orange-500/20">
-              <span>Book Your Strategy Call</span>
+              class="shiny-cta w-full focus:outline-none justify-center relative z-10 mb-3 max-w-xs mx-auto text-white bg-black shadow-lg group border border-orange-500/20">
+              <span>Book Free Strategy Call</span>
             </button>
+            <div class="flex items-center justify-center gap-1.5 mb-8 text-xs text-emerald-600 font-semibold">
+              <iconify-icon icon="lucide:shield-check" width="14" class="flex-shrink-0"></iconify-icon>
+              <span>Delivered on time — or your money back. Guaranteed.</span>
+            </div>
 
             <div class="space-y-0 text-left">
               <details class="group border-t border-slate-200/60">
@@ -3629,9 +4006,13 @@
             </div>
 
             <button onclick="openCalendly()"
-              class="shiny-cta shiny-cta-light w-full justify-center relative z-10 mb-8 max-w-xs mx-auto">
-              <span>Book Your Strategy Call</span>
+              class="shiny-cta shiny-cta-light w-full justify-center relative z-10 mb-3 max-w-xs mx-auto">
+              <span>Book Free Strategy Call</span>
             </button>
+            <div class="flex items-center justify-center gap-1.5 mb-8 text-xs text-emerald-400 font-semibold">
+              <iconify-icon icon="lucide:shield-check" width="14" class="flex-shrink-0"></iconify-icon>
+              <span>Delivered on time — or your money back. Guaranteed.</span>
+            </div>
 
             <div class="space-y-0 text-left">
               <details class="group border-t border-white/10">
@@ -3709,9 +4090,13 @@
             </div>
 
             <button onclick="openCalendly()"
-              class="shiny-cta w-full focus:outline-none justify-center relative z-10 mb-8 max-w-xs mx-auto text-white bg-black shadow-lg group border border-orange-500/20">
+              class="shiny-cta w-full focus:outline-none justify-center relative z-10 mb-3 max-w-xs mx-auto text-white bg-black shadow-lg group border border-orange-500/20">
               <span>Schedule Enterprise Call</span>
             </button>
+            <div class="flex items-center justify-center gap-1.5 mb-8 text-xs text-emerald-600 font-semibold">
+              <iconify-icon icon="lucide:shield-check" width="14" class="flex-shrink-0"></iconify-icon>
+              <span>Delivered on time — or your money back. Guaranteed.</span>
+            </div>
 
             <div class="space-y-0 text-left">
               <details class="group border-t border-slate-200/60">
@@ -4309,8 +4694,12 @@
 
         <!-- Shiny CTA -->
         <button class="shiny-cta hover:scale-105 transition-transform" onclick="openCalendly()">
-          <span>Book Free Call</span>
+          <span>Book Free Strategy Call</span>
         </button>
+        <div class="flex items-center justify-center gap-1.5 mt-4 text-xs text-emerald-400 font-semibold">
+          <iconify-icon icon="lucide:shield-check" width="14" class="flex-shrink-0"></iconify-icon>
+          <span>Delivered on time — or your money back. No risk, only results.</span>
+        </div>
       </div>
 
       <!-- Desk Setup (Relevant MVP Content) -->
@@ -4687,10 +5076,14 @@
 
             <!-- CTA Footer -->
             <div class="flex flex-col items-center justify-center pt-8 md:pt-16 pb-8 md:pb-4 text-center">
-              <button class="shiny-cta hover:scale-105 transition-transform duration-300 mb-4" onclick="openCalendly()">
-                <span>Book Your Strategy Call</span>
+              <button class="shiny-cta hover:scale-105 transition-transform duration-300 mb-3" onclick="openCalendly()">
+                <span>Book Free Strategy Call</span>
               </button>
-              <p class="text-sm text-slate-400">Fixed packages. No hidden fees.</p>
+              <div class="flex items-center justify-center gap-1.5 mb-2 text-xs text-emerald-600 font-semibold">
+                <iconify-icon icon="lucide:shield-check" width="14" class="flex-shrink-0"></iconify-icon>
+                <span>Delivered on time — or your money back. Guaranteed.</span>
+              </div>
+              <p class="text-xs text-slate-400">Fixed packages. No hidden fees.</p>
             </div>
 
           </div>
@@ -5107,9 +5500,6 @@
 
             <!-- Location & Service Area -->
             <div class="space-y-2 font-sf">
-              <p class="text-white font-semibold text-base">
-                Jastej Singh Sehra
-              </p>
               <div class="relative group w-max">
                 <button onclick="copyEmail(this)"
                   class="text-slate-400 text-sm hover:text-cyan-400 transition-all duration-200 cursor-pointer text-left flex items-center gap-2">
@@ -5126,14 +5516,18 @@
             </div>
 
             <!-- Book Free Call CTA - Aligned Left/Center on mobile -->
-            <div class="pt-4 flex justify-center lg:justify-start">
+            <div class="pt-4 flex flex-col items-center lg:items-start gap-2">
               <button onclick="openCalendly()"
                 class="shiny-cta shiny-cta-light focus:outline-none group relative overflow-hidden transition-all duration-300 hover:scale-105">
                 <div
                   class="absolute inset-0 bg-gradient-to-r from-transparent via-blue-200 to-transparent opacity-0 group-hover:opacity-100 animate-footer-beam"
                   style="animation-duration: 1.5s;"></div>
-                <span class="font-sf relative z-10">Book Free Call</span>
+                <span class="font-sf relative z-10">Book Free Strategy Call</span>
               </button>
+              <div class="flex items-center gap-1.5 text-xs text-emerald-400 font-semibold">
+                <iconify-icon icon="lucide:shield-check" width="13" class="flex-shrink-0"></iconify-icon>
+                <span>Delivered on time — or your money back.</span>
+              </div>
             </div>
           </div>
 
@@ -5240,78 +5634,6 @@
       </script>
     </footer>
 
-    <!-- Lead Gen Modal -->
-    <div id="lead-gen-modal"
-      class="fixed inset-0 z-[100] flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300">
-      <!-- Backdrop -->
-      <div id="lead-gen-backdrop"
-        class="absolute inset-0 bg-black/40 backdrop-blur-md transition-opacity duration-300 opacity-0"
-        onclick="closeLeadGenModal()"></div>
-
-      <!-- Modal Content Container -->
-      <div
-        class="relative w-full max-w-3xl mx-4 bg-white/90 backdrop-blur-2xl border border-white/40 shadow-2xl rounded-3xl overflow-hidden transform scale-95 -translate-y-4 transition-[transform,opacity] duration-300 flex flex-col md:flex-row">
-
-        <!-- Close Button -->
-        <button onclick="closeLeadGenModal()"
-          class="absolute top-4 right-4 p-2 rounded-full bg-black/5 hover:bg-black/10 transition-colors z-[110] cursor-pointer group">
-          <iconify-icon icon="lucide:x" width="20"
-            class="text-slate-900 group-hover:scale-110 transition-transform"></iconify-icon>
-        </button>
-
-        <!-- Left Column: Image Area -->
-        <!-- Left Column: Image Area -->
-        <div
-          class="h-64 md:h-auto md:w-5/12 relative overflow-hidden border-b md:border-b-0 md:border-r border-slate-100 bg-white">
-          <img src="assets/lead-gen-calorie.png" alt="AI Calorie Tracker" style="box-shadow: none; filter: none;"
-            class="absolute inset-0 w-full h-full object-cover">
-        </div>
-
-        <!-- Right Column: Content -->
-        <div class="flex-1 p-8 md:p-12 flex flex-col justify-center">
-          <div class="text-left">
-            <h3 class="text-2xl md:text-3xl font-sf font-bold text-slate-900 mb-2 tracking-tight">
-              Unlock the Challenge Playbook.
-            </h3>
-            <p class="text-sm font-medium text-blue-600 mb-6">
-              Join 2,400+ founders & builders
-            </p>
-            <p class="text-slate-600 mb-8 leading-relaxed text-[15px]">
-              Get the exact blueprint we use to scale agencies to $50k/mo.
-              Limited time access to our proprietary lead generation strategies.
-            </p>
-
-            <!-- Form -->
-            <form id="lead-gen-form" class="space-y-4" onsubmit="handleLeadGenSubmit(event)">
-              <!-- FormSubmit Configuration -->
-              <input type="hidden" name="_subject" value="New Lead: Challenge Playbook Request">
-              <input type="hidden" name="_captcha" value="false">
-              <!-- Helper to store simple txt file backup if needed, but mainly for email notification -->
-
-              <div class="relative">
-                <label for="email" class="sr-only">Email address</label>
-                <input type="email" id="email" name="email" required placeholder="Enter your best email"
-                  class="w-full px-4 py-3.5 bg-slate-50/50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 transition-all placeholder:text-slate-400 font-medium text-slate-900">
-              </div>
-              <button type="submit" id="lead-gen-submit-btn"
-                class="w-full py-4 px-6 rounded-xl bg-slate-900 hover:bg-slate-950 text-white font-bold shadow-xl shadow-slate-950/20 transition-all transform hover:-translate-y-0.5 active:translate-y-0 cursor-pointer flex items-center justify-center gap-2">
-                <span>Send Me The Playbook</span>
-              </button>
-              <!-- Success Message (Hidden by default) -->
-              <p id="lead-gen-success"
-                class="hidden text-green-600 text-sm font-semibold text-center bg-green-50 py-2 rounded-lg border border-green-100">
-                🎉 Success! Check your inbox soon.
-              </p>
-            </form>
-
-            <p class="mt-6 text-xs text-slate-600 font-semibold tracking-wide uppercase text-center">
-              No spam, unsubscribe at any time.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-
     <script>
       function openCalendly() {
         // TODO: Replace with your actual Calendly URL
@@ -5328,54 +5650,6 @@
         return false;
       }
 
-      function openLeadGenModal() {
-        // Only show on desktop — hidden on mobile and tablet (< 1024px)
-        if (window.innerWidth < 1024) return;
-
-        const modal = document.getElementById('lead-gen-modal');
-        const backdrop = document.getElementById('lead-gen-backdrop');
-        const content = modal.querySelector('.relative.w-full');
-
-        modal.classList.remove('opacity-0', 'pointer-events-none');
-        modal.classList.add('opacity-100');
-
-        backdrop.classList.remove('opacity-0');
-        backdrop.classList.add('opacity-100');
-
-        content.classList.remove('scale-95', '-translate-y-4');
-        content.classList.add('scale-100', 'translate-y-0');
-
-        // Disable body scroll
-        document.body.style.overflow = 'hidden';
-        // Set flag so it doesn't auto-popup again
-        localStorage.setItem('hasSeenLeadGenModal', 'true');
-      }
-
-      function closeLeadGenModal() {
-        const modal = document.getElementById('lead-gen-modal');
-        const backdrop = document.getElementById('lead-gen-backdrop');
-        const content = modal.querySelector('.relative.w-full');
-
-        modal.classList.add('opacity-0', 'pointer-events-none');
-        modal.classList.remove('opacity-100');
-
-        backdrop.classList.add('opacity-0');
-        backdrop.classList.remove('opacity-100');
-
-        content.classList.remove('scale-100', 'translate-y-0');
-        content.classList.add('scale-95', '-translate-y-4');
-
-        // Re-enable body scroll
-        document.body.style.overflow = '';
-      }
-
-      // Open after 5 seconds ONLY if they haven't seen it before
-      if (!localStorage.getItem('hasSeenLeadGenModal')) {
-        setTimeout(() => {
-          openLeadGenModal();
-          localStorage.setItem('hasSeenLeadGenModal', 'true');
-        }, 5000);
-      }
     </script>
   </main>
   <script type="module">
@@ -5709,57 +5983,6 @@
       document.body.style.overflow = '';
     }
 
-    // Lead Generation Form Handler (FormSubmit AJAX)
-    function handleLeadGenSubmit(e) {
-      e.preventDefault();
-
-      const form = document.getElementById('lead-gen-form');
-      const btn = document.getElementById('lead-gen-submit-btn');
-      const btnText = btn.querySelector('span');
-      const successMsg = document.getElementById('lead-gen-success');
-
-      // Set Loading State
-      const originalText = btnText.textContent;
-      btnText.textContent = "Sending...";
-      btn.disabled = true;
-      btn.classList.add('opacity-75', 'cursor-not-allowed');
-
-      const formData = new FormData(form);
-
-      fetch("https://formsubmit.co/ajax/jastejsingh98@gmail.com", {
-        method: "POST",
-        body: formData
-      })
-        .then(response => response.json())
-        .then(data => {
-          // Success
-          btnText.textContent = originalText;
-          btn.classList.add('hidden'); // Hide button
-          successMsg.classList.remove('hidden'); // Show success message
-          form.reset();
-
-          // Close modal after 3 seconds
-          setTimeout(() => {
-            closeLeadGenModal();
-            // Reset UI for next time
-            setTimeout(() => {
-              btn.classList.remove('hidden');
-              successMsg.classList.add('hidden');
-              btn.disabled = false;
-              btn.classList.remove('opacity-75', 'cursor-not-allowed');
-            }, 500);
-          }, 3000);
-        })
-        .catch(error => {
-          console.error('Error:', error);
-          btnText.textContent = "Error. Try again.";
-          setTimeout(() => {
-            btnText.textContent = originalText;
-            btn.disabled = false;
-            btn.classList.remove('opacity-75', 'cursor-not-allowed');
-          }, 3000);
-        });
-    }
   </script>
 
   <!-- Floating Showreel Component -->
@@ -6009,6 +6232,199 @@
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape') closeWorkOverlay();
     });
+  </script>
+
+  <!-- ===== STICKY CTA BAR ===== -->
+  <div id="sticky-cta-bar" style="
+    position: fixed;
+    bottom: -120px;
+    left: 0;
+    right: 0;
+    z-index: 9998;
+    transition: bottom 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    padding: 0 1rem;
+    pointer-events: none;
+  ">
+    <div style="
+      max-width: 960px;
+      margin: 0 auto 1.25rem;
+      background: linear-gradient(135deg, #0f0f14 0%, #1a1a2e 40%, #16213e 100%);
+      border: 1px solid rgba(99,102,241,0.35);
+      border-radius: 20px;
+      padding: 0.85rem 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.55), 0 0 0 1px rgba(99,102,241,0.12), inset 0 1px 0 rgba(255,255,255,0.06);
+      pointer-events: auto;
+      position: relative;
+      overflow: hidden;
+    ">
+      <!-- animated shimmer strip -->
+      <div style="
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(90deg, transparent 0%, rgba(99,102,241,0.08) 50%, transparent 100%);
+        animation: ctaShimmer 3s ease-in-out infinite;
+        border-radius: 20px;
+        pointer-events: none;
+      "></div>
+
+      <!-- pulse dot -->
+      <div style="flex-shrink:0; position:relative; width:10px; height:10px;">
+        <span style="
+          display: block;
+          width: 10px; height: 10px;
+          background: #22c55e;
+          border-radius: 50%;
+          position: relative;
+          z-index: 1;
+        "></span>
+        <span style="
+          display: block;
+          width: 10px; height: 10px;
+          background: #22c55e;
+          border-radius: 50%;
+          position: absolute;
+          top: 0; left: 0;
+          animation: ctaPulse 1.8s ease-out infinite;
+          opacity: 0.6;
+        "></span>
+      </div>
+
+      <!-- copy -->
+      <div style="flex: 1; min-width: 0;">
+        <p style="
+          margin: 0;
+          color: #fff;
+          font-size: 0.9rem;
+          font-weight: 600;
+          line-height: 1.35;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        ">
+          <span style="margin-right:0.4rem;">🚀</span>
+          <span style="color:#a5b4fc;">Still exploring?</span>
+          &nbsp;Let's turn your ideas into revenue — free 30-min strategy call, no fluff.
+          <span id="sticky-cta-spots" style="
+            display: inline-block;
+            margin-left: 0.5rem;
+            background: rgba(99,102,241,0.2);
+            color: #c7d2fe;
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 0.15rem 0.55rem;
+            border-radius: 99px;
+            border: 1px solid rgba(99,102,241,0.3);
+            vertical-align: middle;
+            letter-spacing: 0.02em;
+          ">⚡ 3 spots left this week</span>
+        </p>
+      </div>
+
+      <!-- CTA button -->
+      <button
+        onclick="openCalendly()"
+        style="
+          flex-shrink: 0;
+          display: flex;
+          align-items: center;
+          gap: 0.4rem;
+          background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+          color: #fff;
+          font-size: 0.875rem;
+          font-weight: 700;
+          padding: 0.6rem 1.25rem;
+          border-radius: 12px;
+          border: none;
+          cursor: pointer;
+          white-space: nowrap;
+          letter-spacing: 0.01em;
+          box-shadow: 0 4px 18px rgba(99,102,241,0.45);
+          transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
+          position: relative;
+          z-index: 1;
+        "
+        onmouseover="this.style.transform='translateY(-2px) scale(1.03)';this.style.boxShadow='0 8px 28px rgba(99,102,241,0.65)';this.style.filter='brightness(1.1)';"
+        onmouseout="this.style.transform='translateY(0) scale(1)';this.style.boxShadow='0 4px 18px rgba(99,102,241,0.45)';this.style.filter='brightness(1)';"
+      >
+        Book Free Strategy Call
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="transition: transform 0.2s ease;" class="cta-arrow"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+
+      <!-- close button -->
+      <button
+        onclick="document.getElementById('sticky-cta-bar').style.bottom='-120px'; document.getElementById('sticky-cta-bar').dataset.dismissed='true';"
+        aria-label="Dismiss"
+        style="
+          flex-shrink: 0;
+          background: none;
+          border: none;
+          cursor: pointer;
+          color: rgba(255,255,255,0.35);
+          padding: 0.25rem;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: color 0.18s ease;
+          position: relative;
+          z-index: 1;
+        "
+        onmouseover="this.style.color='rgba(255,255,255,0.8)'"
+        onmouseout="this.style.color='rgba(255,255,255,0.35)'"
+      >
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <style>
+    @keyframes ctaPulse {
+      0%   { transform: scale(1);   opacity: 0.6; }
+      100% { transform: scale(2.8); opacity: 0; }
+    }
+    @keyframes ctaShimmer {
+      0%   { transform: translateX(-100%); }
+      50%  { transform: translateX(100%); }
+      100% { transform: translateX(100%); }
+    }
+    /* Mobile adjustments */
+    @media (max-width: 640px) {
+      #sticky-cta-bar > div {
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        padding: 0.9rem 1rem !important;
+      }
+      #sticky-cta-bar > div > div:nth-child(3) p {
+        font-size: 0.82rem !important;
+        white-space: normal !important;
+      }
+      #sticky-cta-spots { display: none !important; }
+    }
+  </style>
+
+  <script>
+    (function () {
+      var bar = document.getElementById('sticky-cta-bar');
+      var shown = false;
+
+      function checkScroll() {
+        if (bar.dataset.dismissed === 'true') return;
+        var scrolled = window.scrollY + window.innerHeight;
+        var total = document.documentElement.scrollHeight;
+        var pct = scrolled / total;
+
+        if (!shown && pct >= 0.50) {
+          bar.style.bottom = '0';
+          shown = true;
+        }
+      }
+
+      window.addEventListener('scroll', checkScroll, { passive: true });
+      checkScroll(); // check on load in case page is short
+    })();
   </script>
 
 </body>

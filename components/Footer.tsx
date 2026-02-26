@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -9,7 +9,7 @@ export default function Footer() {
     const [emailCopied, setEmailCopied] = useState(false);
 
     const handleEmailClick = () => {
-        navigator.clipboard.writeText("jastejsingh98@gmail.com");
+        navigator.clipboard.writeText("support@loopsuitai.com");
         setEmailCopied(true);
         setTimeout(() => setEmailCopied(false), 2000);
     };
@@ -52,15 +52,12 @@ export default function Footer() {
 
                         {/* Location & Service Area */}
                         <div className="space-y-2">
-                            <p className="text-white font-semibold text-base">
-                                Jastej Singh Sehra
-                            </p>
                             <button
                                 onClick={handleEmailClick}
                                 className="group relative text-slate-400 text-sm hover:text-cyan-400 transition-all duration-200 cursor-pointer text-left flex items-center gap-2"
                             >
                                 <span className="flex items-center gap-2">
-                                    ✉️ jastejsingh98@gmail.com
+                                    ✉️ support@loopsuitai.com
                                 </span>
                                 {emailCopied && (
                                     <motion.span
@@ -84,7 +81,8 @@ export default function Footer() {
                             </p>
                         </div>
 
-                        <div className="flex items-center space-x-4">
+                        {/* Social links hidden until profiles are ready */}
+                        <div className="flex items-center space-x-4" style={{ display: 'none' }}>
                             <SocialIcon href="#" icon={<Twitter size={20} />} label="Twitter" />
                             <SocialIcon href="#" icon={<Linkedin size={20} />} label="LinkedIn" />
                             <SocialIcon href="#" icon={<Github size={20} />} label="GitHub" />
@@ -147,8 +145,16 @@ export default function Footer() {
                 <div className="border-t border-slate-800/50 mb-6 md:mb-8" />
 
                 {/* Bottom Section */}
-                <div className="flex flex-col md:flex-row items-center justify-between text-slate-500 text-sm">
+                <div className="flex flex-col md:flex-row items-center justify-between text-slate-500 text-sm gap-3">
                     <p>© {new Date().getFullYear()} LoopSuit. All rights reserved.</p>
+                    <div className="flex items-center gap-5">
+                        <Link href="/privacy-policy" className="hover:text-cyan-400 transition-colors duration-200">
+                            Privacy Policy
+                        </Link>
+                        <Link href="/terms" className="hover:text-cyan-400 transition-colors duration-200">
+                            Terms
+                        </Link>
+                    </div>
                 </div>
             </div>
         </footer>

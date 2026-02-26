@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How to Handle 10,000 Support Requests a Month Without Hiring Anyone | LoopSuit Blog</title>
+  <meta name="description" content="AI customer support systems using RAG, LLMs, and smart escalation triggers can resolve 80%+ of tickets automatically. Here's the exact stack and process we use at LoopSuit.">
+  <meta name="keywords" content="AI customer support, RAG support system, LLM customer service, automated support tickets, CSAT improvement AI, customer support automation, AI helpdesk, LoopSuit">
+  <meta name="author" content="LoopSuit">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+  <link rel="canonical" href="https://loopsuitai.com/blog-ai-customer-support.html">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://loopsuitai.com/blog-ai-customer-support.html">
+  <meta property="og:title" content="How to Handle 10,000 Support Requests a Month Without Hiring Anyone | LoopSuit">
+  <meta property="og:description" content="AI customer support systems using RAG and LLMs can resolve 80%+ of tickets automatically ? and improve CSAT at the same time.">
+  <meta property="og:image" content="https://loopsuitai.com/api/og">
+  <meta property="og:site_name" content="LoopSuit">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@loopsuitai">
+  <meta name="twitter:title" content="How to Handle 10,000 Support Requests a Month Without Hiring Anyone | LoopSuit">
+  <meta name="twitter:description" content="AI support stacks have matured enough to handle 80% of tickets automatically. Here's the stack, the process, and the results.">
+  <meta name="twitter:image" content="https://loopsuitai.com/api/og">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BlogPosting","headline":"How to Handle 10,000 Support Requests a Month Without Hiring Anyone","description":"AI customer support systems using RAG, LLMs, and smart escalation triggers can resolve 80%+ of tickets automatically.","author":{"@type":"Organization","name":"LoopSuit","url":"https://loopsuitai.com"},"publisher":{"@type":"Organization","name":"LoopSuit","url":"https://loopsuitai.com"},"datePublished":"2025-03-12","url":"https://loopsuitai.com/blog-ai-customer-support.html","keywords":["AI customer support","RAG","LLM","CSAT","support automation","customer service AI"],"breadcrumb":{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://loopsuitai.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://loopsuitai.com/blog.html"},{"@type":"ListItem","position":3,"name":"How to Handle 10,000 Support Requests a Month Without Hiring Anyone","item":"https://loopsuitai.com/blog-ai-customer-support.html"}]}}
+  </script>
+  <link rel="icon" type="image/svg+xml" href="/logos/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+  <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+  <style>
+    html { scroll-behavior: smooth; overflow-x: clip; } body { scrollbar-width: none; -ms-overflow-style: none; overflow-x: clip; }
+    ::-webkit-scrollbar { display: none; }
+    body { font-family: 'Inter', sans-serif; background-color: #F7F6F2; color: #1e293b; -webkit-font-smoothing: antialiased; }
+    .font-sf { font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; letter-spacing: -0.025em; }
+    .glass-nav { background: rgba(5,5,5,0.8); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.05); }
+    .glass-nav-scrolled { background: rgba(0,0,0,0.85) !important; backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.08); }
+    #main-navbar { transition: transform 0.3s cubic-bezier(0.4,0,0.2,1); }
+    #main-navbar.navbar-hidden { transform: translateY(-100%); }
+    #main-navbar.navbar-visible { transform: translateY(0); }
+    @property --gradient-angle { syntax: "<angle>"; initial-value: 0deg; inherits: false; }
+    @property --gradient-shine { syntax: "<color>"; initial-value: #f97316; inherits: false; }
+    .shiny-cta {
+      --gradient-angle: 0deg; --gradient-shine: #f97316;
+      position: relative; overflow: hidden; border-radius: 9999px;
+      padding: 0.75rem 1.5rem; font-size: 0.875rem; font-weight: 600; color: #fff;
+      background: linear-gradient(#000, #000) padding-box, conic-gradient(from var(--gradient-angle), transparent 0%, #ea580c 5%, var(--gradient-shine) 15%, #ea580c 30%, transparent 40%) border-box;
+      border: 2px solid transparent; cursor: pointer; isolation: isolate;
+      animation: border-spin 2.5s linear infinite; display: inline-flex; align-items: center; justify-content: center;
+    }
+    @keyframes border-spin { to { --gradient-angle: 360deg; } }
+    .shiny-cta span { position: relative; z-index: 2; }
+    .menu-closed { transform: translateX(100%); transition: transform 0.4s cubic-bezier(0.4,0,0.2,1); }
+    .menu-open { transform: translateX(0); transition: transform 0.4s cubic-bezier(0.4,0,0.2,1); }
+    .article-body h2 {
+      font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      letter-spacing: -0.03em; font-weight: 900; color: #0f172a;
+      font-size: clamp(1.6rem, 4vw, 2.25rem); line-height: 1.15; margin: 3rem 0 1.25rem;
+    }
+    .article-body h3 {
+      font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      letter-spacing: -0.02em; font-weight: 700; color: #1e293b;
+      font-size: clamp(1.2rem, 3vw, 1.5rem); line-height: 1.25; margin: 2rem 0 0.75rem;
+    }
+    .article-body p { color: #374151; line-height: 1.8; font-size: 1rem; margin-bottom: 1.25rem; }
+    .article-body ul { margin: 1rem 0 1.5rem 1.5rem; }
+    .article-body li { color: #374151; line-height: 1.7; margin-bottom: 0.5rem; list-style: disc; }
+    .article-body strong { color: #0f172a; font-weight: 700; }
+    .art-link { color: #2563eb; text-decoration: underline; text-underline-offset: 3px; font-weight: 500; }
+    .toc-link { display: block; font-size: 0.8rem; color: #64748b; line-height: 1.5; padding: 5px 0; transition: color 0.2s; }
+    .toc-link:hover { color: #0f172a; }
+    .toc-link.toc-active { color: #0f172a; font-weight: 600; }
+    #toc-body { transition: all 0.3s ease; overflow: hidden; }
+    #toc-body.toc-collapsed { max-height: 0 !important; opacity: 0; }
+    #reading-progress { position: fixed; top: 0; left: 0; height: 3px; background: linear-gradient(to right, #f97316, #ea580c); z-index: 9999; transition: width 0.1s linear; pointer-events: none; }
+    @keyframes footer-beam { 0% { left: -100%; } 100% { left: 200%; } }
+    .animate-footer-beam { animation: footer-beam 4s linear infinite; }
+    .rel-card { background: #fff; border-radius: 16px; overflow: hidden; border: 1px solid #e2e8f0; transition: box-shadow 0.2s, transform 0.2s; display: flex; flex-direction: column; }
+    .rel-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.10); transform: translateY(-2px); }
+    .rel-card-img-placeholder { width: 100%; aspect-ratio: 16/10; display: flex; align-items: center; justify-content: center; }
+    .share-btn { width: 42px; height: 42px; border-radius: 50%; border: 1.5px solid #cbd5e1; display: flex; align-items: center; justify-content: center; color: #64748b; transition: all 0.2s; background: transparent; }
+    .share-btn:hover { border-color: #475569; color: #0f172a; }
+    .tag-pill { display: inline-flex; align-items: center; padding: 4px 12px; border-radius: 9999px; border: 1.5px solid #e2e8f0; background: #fff; font-size: 0.75rem; color: #64748b; font-weight: 500; }
+      /* Blog sticky strategy CTA */
+    .blog-session-sticky {
+      position: sticky;
+      top: 6.5rem;
+      z-index: 35;
+      margin-bottom: 1.5rem;
+    }
+    .blog-session-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.9rem 1rem;
+      border-radius: 14px;
+      border: 1px solid #dbe4f5;
+      background: linear-gradient(135deg, rgba(255,255,255,0.98), rgba(248,250,255,0.98));
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+    }
+    .blog-session-copy { min-width: 0; }
+    .blog-session-eyebrow {
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #2563eb;
+      margin-bottom: 0.2rem;
+    }
+    .blog-session-text {
+      margin: 0;
+      font-size: 0.82rem;
+      line-height: 1.5;
+      color: #475569;
+    }
+    .blog-session-btn {
+      flex-shrink: 0;
+      border-radius: 9999px;
+      border: 1px solid #93c5fd;
+      background: #eff6ff;
+      color: #1d4ed8;
+      font-weight: 600;
+      font-size: 0.78rem;
+      padding: 0.62rem 0.95rem;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+    .blog-session-btn:hover {
+      background: #dbeafe;
+      border-color: #60a5fa;
+      color: #1e40af;
+      transform: translateY(-1px);
+    }
+    @media (max-width: 1024px) {
+      .blog-session-sticky { top: 5.2rem; }
+    }
+    @media (max-width: 640px) {
+      .blog-session-card {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0.9rem;
+      }
+      .blog-session-btn {
+        width: 100%;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="reading-progress" style="width: 0%"></div>
+
+  <!-- Mobile Menu -->
+  <nav id="mobile-menu" class="fixed inset-0 z-[150] bg-black/95 backdrop-blur-3xl menu-closed flex flex-col justify-center items-center">
+    <button onclick="closeMobileMenu()" class="absolute top-6 right-6 p-3 rounded-full bg-white/10 hover:bg-white/20 transition-colors z-[160]">
+      <iconify-icon icon="lucide:x" width="24" class="text-white"></iconify-icon>
+    </button>
+    <div class="flex flex-col gap-8 text-center">
+      <a href="index.html#solutions" class="text-4xl font-sf font-semibold text-white hover:text-blue-400 transition-colors" onclick="closeMobileMenu()">Solutions</a>
+      <a href="services.html" class="text-4xl font-sf font-semibold text-white hover:text-blue-400 transition-colors" onclick="closeMobileMenu()">Services</a>
+      <a href="case-studies.html" class="text-4xl font-sf font-semibold text-white hover:text-blue-400 transition-colors" onclick="closeMobileMenu()">Case Studies</a>
+      <a href="blog.html" class="text-4xl font-sf font-semibold text-blue-400">Blog</a>
+    </div>
+    <div class="mt-14 w-full px-12 max-w-sm">
+      <button class="shiny-cta w-full justify-center" onclick="closeMobileMenu(); openCalendly()"><span>Book Free Call</span></button>
+    </div>
+  </nav>
+
+  <!-- Navbar -->
+  <header id="main-navbar" class="fixed top-0 left-0 right-0 z-[100] pt-5 px-4 md:pt-6 md:px-6 transition-all duration-300">
+    <nav class="max-w-[95%] mx-auto rounded-full px-5 py-2.5 transition-all duration-300 glass-nav" id="inner-nav">
+      <div class="flex items-center justify-between relative">
+        <a href="index.html" class="flex items-center gap-3">
+          <div class="text-xl font-black italic tracking-tighter text-white">LOOPSUIT<sup class="text-[8px] not-italic text-gray-500">?</sup></div>
+          <div class="hidden sm:flex flex-col justify-center pl-3 border-l-2 border-white/10 h-7">
+            <span class="text-[7px] font-bold tracking-[0.3em] text-gray-400 uppercase leading-none mb-0.5">VISION</span>
+            <div class="bg-[#3b82f6] px-1.5 py-[1px] transform -skew-x-12 inline-block w-max">
+              <span class="block transform skew-x-12 text-[8px] font-black tracking-widest text-white uppercase leading-none">AUTOMATED</span>
+            </div>
+          </div>
+        </a>
+        <div class="hidden lg:flex items-center gap-8 text-sm font-medium text-gray-300 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+          <div class="relative group">
+            <button class="flex items-center gap-1 hover:text-white transition-colors py-2">
+              Solutions <iconify-icon icon="lucide:chevron-down" class="group-hover:rotate-180 transition-transform duration-300"></iconify-icon>
+            </button>
+            <div class="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[360px] p-2 bg-white rounded-2xl shadow-xl border border-slate-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible translate-y-2 group-hover:translate-y-0 transition-all duration-200 overflow-hidden z-50 ring-1 ring-black/5 whitespace-normal">
+              <div class="flex flex-col gap-1">
+                <a href="index.html#solution-sales" class="flex items-start gap-4 p-3 rounded-xl hover:bg-slate-50 transition-colors group/item">
+                  <div class="w-9 h-9 flex-shrink-0 flex items-center justify-center rounded-lg bg-slate-100 border border-slate-200/50 mt-0.5 transition-colors group-hover/item:bg-white group-hover/item:shadow-sm">
+                    <iconify-icon icon="lucide:workflow" width="16" stroke-width="1.5" class="text-slate-500 transition-colors duration-300 group-hover/item:text-blue-600"></iconify-icon>
+                  </div>
+                  <div class="flex flex-col">
+                    <span class="text-sm font-semibold text-slate-900 leading-tight">Automate Lead Generation &amp; Sales</span>
+                    <span class="text-[11px] text-slate-500 font-medium mt-1 leading-snug">200+ leads daily, personalized outreach, automatic proposals</span>
+                  </div>
+                </a>
+                <a href="index.html#solution-launch" class="flex items-start gap-4 p-3 rounded-xl hover:bg-slate-50 transition-colors group/item">
+                  <div class="w-9 h-9 flex-shrink-0 flex items-center justify-center rounded-lg bg-slate-100 border border-slate-200/50 mt-0.5 transition-colors group-hover/item:bg-white group-hover/item:shadow-sm">
+                    <iconify-icon icon="lucide:rocket" width="16" stroke-width="1.5" class="text-slate-500 transition-colors duration-300 group-hover/item:text-blue-600"></iconify-icon>
+                  </div>
+                  <div class="flex flex-col">
+                    <span class="text-sm font-semibold text-slate-900 leading-tight">Launch Your Product in 2 Weeks</span>
+                    <span class="text-[11px] text-slate-500 font-medium mt-1 leading-snug">Production-ready MVPs. No 6-month timelines. No $100K fees.</span>
+                  </div>
+                </a>
+                <a href="index.html#solution-operations" class="flex items-start gap-4 p-3 rounded-xl hover:bg-slate-50 transition-colors group/item">
+                  <div class="w-9 h-9 flex-shrink-0 flex items-center justify-center rounded-lg bg-slate-100 border border-slate-200/50 mt-0.5 transition-colors group-hover/item:bg-white group-hover/item:shadow-sm">
+                    <iconify-icon icon="lucide:headset" width="16" stroke-width="1.5" class="text-slate-500 transition-colors duration-300 group-hover/item:text-blue-600"></iconify-icon>
+                  </div>
+                  <div class="flex flex-col">
+                    <span class="text-sm font-semibold text-slate-900 leading-tight">Automate Customer Support</span>
+                    <span class="text-[11px] text-slate-500 font-medium mt-1 leading-snug">24/7 AI support handles 80% automatically?instant answers</span>
+                  </div>
+                </a>
+                <a href="index.html#package-premium" class="flex items-start gap-4 p-3 rounded-xl hover:bg-slate-50 transition-colors group/item">
+                  <div class="w-9 h-9 flex-shrink-0 flex items-center justify-center rounded-lg bg-slate-100 border border-slate-200/50 mt-0.5 transition-colors group-hover/item:bg-white group-hover/item:shadow-sm">
+                    <iconify-icon icon="lucide:sparkles" width="16" stroke-width="1.5" class="text-slate-500 transition-colors duration-300 group-hover/item:text-blue-600"></iconify-icon>
+                  </div>
+                  <div class="flex flex-col">
+                    <span class="text-sm font-semibold text-slate-900 leading-tight">Product + Automation Bundle</span>
+                    <span class="text-[11px] text-slate-500 font-medium mt-1 leading-snug">MVP + sales automation + support. Launch in 30 days. Save 20%.</span>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+          <a href="services.html" class="hover:text-white transition-colors">Services</a>
+          <a href="case-studies.html" class="hover:text-white transition-colors">Case Studies</a>
+          <a href="blog.html" class="text-white font-semibold">Blog</a>
+        </div>
+        <div class="flex items-center gap-3">
+          <button class="shiny-cta hidden lg:flex text-xs px-4 py-2" onclick="openCalendly()"><span>Book Free Call</span></button>
+          <button class="lg:hidden text-white p-2 rounded-full hover:bg-white/10 transition-colors" onclick="openMobileMenu()">
+            <iconify-icon icon="lucide:menu" width="22"></iconify-icon>
+          </button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Article Header -->
+  <header class="pt-28 md:pt-36 pb-8 px-6 text-center">
+    <div class="max-w-2xl mx-auto">
+      <p class="text-orange-500 text-[11px] font-bold uppercase tracking-[0.2em] mb-5">March 12, 2025</p>
+      <h1 class="font-sf font-black tracking-tight leading-[1.05] text-slate-900 mb-6" style="font-size: clamp(2rem, 6vw, 3.5rem);">
+        How to Handle <span class="underline decoration-orange-400 decoration-[3px] underline-offset-4">10,000 Support Requests</span> a Month Without Hiring Anyone
+      </h1>
+      <div class="flex items-center justify-center gap-3 mb-6 text-slate-600 text-sm flex-wrap">
+        <div class="w-9 h-9 rounded-full bg-gradient-to-br from-orange-500 to-red-600 flex items-center justify-center flex-shrink-0">
+          <span class="text-white text-xs font-bold">LS</span>
+        </div>
+        <span>By <span class="font-semibold text-slate-900">LoopSuit Team</span></span>
+        <span class="text-slate-300">?</span>
+        <span class="text-slate-400">AI Customer Support</span>
+        <span class="text-slate-300">?</span>
+        <span class="text-slate-400">9 min read</span>
+      </div>
+      <div class="flex items-center justify-center gap-2">
+        <a href="https://linkedin.com/company/loopsuit" target="_blank" class="share-btn"><iconify-icon icon="lucide:linkedin" width="15"></iconify-icon></a>
+        <a href="https://instagram.com/loopsuitai" target="_blank" class="share-btn"><iconify-icon icon="lucide:instagram" width="15"></iconify-icon></a>
+        <button onclick="copyPageLink(this)" class="share-btn" title="Copy link"><iconify-icon icon="lucide:link-2" width="15"></iconify-icon></button>
+        <a href="mailto:?subject=Interesting article from LoopSuit&body=Check this out: https://loopsuitai.com/blog-ai-customer-support.html" class="share-btn"><iconify-icon icon="lucide:mail" width="15"></iconify-icon></a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Banner -->
+  <div class="max-w-3xl mx-auto px-4 md:px-6 mb-10">
+    <div class="rounded-2xl overflow-hidden" style="height: clamp(220px, 40vw, 420px);">
+      <div class="w-full h-full bg-gradient-to-br from-orange-900 via-slate-800 to-slate-900 flex items-center justify-center relative">
+        <div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(#f97316 1px, transparent 1px); background-size: 24px 24px;"></div>
+        <div class="text-center relative z-10 space-y-3">
+          <div class="w-20 h-20 rounded-3xl bg-orange-500/20 border border-orange-500/30 flex items-center justify-center mx-auto">
+            <iconify-icon icon="lucide:headset" width="40" class="text-orange-300"></iconify-icon>
+          </div>
+          <p class="text-white/30 text-xs font-medium tracking-wider uppercase">Banner Image Placeholder</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Layout -->
+  <div class="max-w-[1200px] mx-auto px-4 md:px-6 pb-20">
+    <div class="lg:grid lg:grid-cols-[240px_1fr_260px] lg:gap-10 lg:items-start">
+
+      <!-- LEFT: TOC -->
+      <aside class="hidden lg:block">
+        <div class="sticky top-28 space-y-5" style="max-height:calc(100vh - 8rem);overflow-y:auto;scrollbar-width:none;">
+          <div class="border border-slate-200 rounded-xl bg-[#F7F6F2] overflow-hidden">
+            <div class="flex items-center justify-between px-4 py-3 border-b border-slate-200">
+              <span class="text-[10px] font-bold uppercase tracking-[0.18em] text-slate-500">Table of Contents</span>
+              <button id="toc-toggle" onclick="toggleToc()" class="text-slate-400 hover:text-slate-700 transition-colors text-lg leading-none font-light" title="Collapse">?</button>
+            </div>
+            <nav id="toc-body" class="px-4 py-3" style="max-height: 400px;">
+              <a href="#the-problem" class="toc-link toc-active">The scale problem</a>
+              <a href="#how-ai-support-works" class="toc-link">How AI support actually works</a>
+              <a href="#building-the-knowledge-base" class="toc-link">Building the knowledge base</a>
+              <a href="#rag-and-llm-layer" class="toc-link">The RAG + LLM layer</a>
+              <a href="#escalation-triggers" class="toc-link">Smart escalation triggers</a>
+              <a href="#csat-results" class="toc-link">CSAT &amp; real results</a>
+              <a href="#implementation-steps" class="toc-link">Implementation steps</a>
+              <a href="#faqs" class="toc-link">FAQs</a>
+            </nav>
+          </div>
+          <div>
+            <p class="text-[10px] font-bold uppercase tracking-[0.18em] text-slate-400 mb-3 px-1">Share</p>
+            <div class="flex gap-2">
+              <a href="https://linkedin.com/company/loopsuit" target="_blank" class="share-btn"><iconify-icon icon="lucide:linkedin" width="15"></iconify-icon></a>
+              <a href="https://instagram.com/loopsuitai" target="_blank" class="share-btn"><iconify-icon icon="lucide:instagram" width="15"></iconify-icon></a>
+              <button onclick="copyPageLink(this)" class="share-btn"><iconify-icon icon="lucide:link-2" width="15"></iconify-icon></button>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- CENTER: Article -->
+      <article class="article-body min-w-0">
+        <!-- Sticky Strategy Session CTA -->
+        <div class="blog-session-sticky">
+          <div class="blog-session-card">
+            <div class="blog-session-copy">
+              <p class="blog-session-eyebrow">Free Strategy Session</p>
+              <p class="blog-session-text">Get a clear automation roadmap in 30 minutes. No pressure, just practical next steps for your team.</p>
+            </div>
+            <button onclick="openCalendly()" class="blog-session-btn">Book Free Strategy Session</button>
+          </div>
+        </div>
+
+        <!-- TL;DR -->
+        <div class="mb-8 pb-8 border-b border-slate-200">
+          <p class="text-orange-500 text-[11px] font-bold uppercase tracking-[0.2em] mb-3">TL;DR</p>
+          <p class="text-slate-700 leading-relaxed text-base">A properly configured AI support system ? built on a RAG knowledge base, a fine-tuned LLM, and smart escalation triggers ? can resolve <strong>80?85% of support tickets automatically</strong>, reduce first-response time from hours to under 10 seconds, and actually <em>improve</em> CSAT scores. You don't need to hire a single additional support agent to scale from 1,000 to 10,000 requests a month.</p>
+        </div>
+
+        <!-- Mobile TOC -->
+        <div class="lg:hidden mb-10 border border-slate-200 rounded-xl overflow-hidden bg-[#F7F6F2]">
+          <div class="px-4 py-3 border-b border-slate-200">
+            <p class="text-[10px] font-bold uppercase tracking-[0.18em] text-slate-500">In This Article</p>
+          </div>
+          <ol class="px-4 py-3 space-y-2">
+            <li><a href="#the-problem" class="text-slate-700 text-sm hover:text-orange-600 transition-colors">1. The scale problem</a></li>
+            <li><a href="#how-ai-support-works" class="text-slate-700 text-sm hover:text-orange-600 transition-colors">2. How AI support actually works</a></li>
+            <li><a href="#building-the-knowledge-base" class="text-slate-700 text-sm hover:text-orange-600 transition-colors">3. Building the knowledge base</a></li>
+            <li><a href="#rag-and-llm-layer" class="text-slate-700 text-sm hover:text-orange-600 transition-colors">4. The RAG + LLM layer</a></li>
+            <li><a href="#escalation-triggers" class="text-slate-700 text-sm hover:text-orange-600 transition-colors">5. Smart escalation triggers</a></li>
+            <li><a href="#csat-results" class="text-slate-700 text-sm hover:text-orange-600 transition-colors">6. CSAT &amp; real results</a></li>
+            <li><a href="#implementation-steps" class="text-slate-700 text-sm hover:text-orange-600 transition-colors">7. Implementation steps</a></li>
+            <li><a href="#faqs" class="text-slate-700 text-sm hover:text-orange-600 transition-colors">8. FAQs</a></li>
+          </ol>
+        </div>
+
+        <section id="the-problem">
+          <h2>The Scale Problem No Hire Can Solve</h2>
+          <p>Support volume doesn't grow linearly. One successful product launch, a viral moment, or a seasonal spike can triple your inbound tickets overnight. The traditional response ? hire more agents ? fails on three fronts: it's slow (30?60 days to onboard), it's expensive (a fully-loaded support rep in Canada costs $55,000?$70,000/year), and it doesn't scale down when volume drops.</p>
+          <p>Here's the real breakdown for a team handling 10,000 tickets/month manually:</p>
+          <ul>
+            <li><strong>Average handle time</strong>: 8 minutes per ticket</li>
+            <li><strong>Total agent-hours required</strong>: ~1,333 hours/month</li>
+            <li><strong>FTE equivalent</strong>: 7?8 full-time agents (at 170 productive hours/month each)</li>
+            <li><strong>Annual labour cost</strong>: $385,000?$560,000</li>
+            <li><strong>AI system equivalent cost</strong>: $18,000?$36,000/year (build + run)</li>
+          </ul>
+          <p>The math is stark. But the bigger issue isn't cost ? it's <strong>quality and consistency</strong>. Human agents have bad days. They interpret policy differently. They miss context. An AI agent trained on your exact knowledge base gives the same accurate answer at 3am on a Sunday as it does at 9am on a Monday.</p>
+        </section>
+
+        <section id="how-ai-support-works">
+          <h2>How AI Support Actually Works in 2025</h2>
+          <p>There's a lot of confusion about what "AI support" means. It's not a chatbot that says "I didn't understand that, can you rephrase?" and loops forever. Modern AI support systems are architecturally different from what existed two years ago.</p>
+          <p>The core architecture has three layers:</p>
+
+          <h3>Layer 1: Intent Classification</h3>
+          <p>Every incoming message ? whether from email, chat, or a web form ? gets classified. What is this person trying to do? Refund request, shipping question, technical issue, account access, billing dispute? This classification determines which knowledge cluster to search and which response template to anchor on.</p>
+          <p>Modern classifiers (fine-tuned on your historical ticket data) achieve <strong>94?97% classification accuracy</strong>. That's better than the average human agent who's been on the job for three months.</p>
+
+          <h3>Layer 2: RAG Knowledge Retrieval</h3>
+          <p>Once intent is classified, the system performs a <strong>semantic search</strong> across your knowledge base ? not keyword matching, but meaning matching. A customer asking "where's my package?" retrieves the same shipping policy docs as "I ordered five days ago and nothing's arrived."</p>
+          <p>The retrieval system pulls the top 3?5 most relevant document chunks, which become the context window for the LLM response generator.</p>
+
+          <h3>Layer 3: LLM Response Generation</h3>
+          <p>The LLM ? typically Claude or GPT-4 with a system prompt encoding your brand voice, escalation rules, and policy constraints ? generates a response. It's not improvising from general knowledge. It's synthesising your specific documents into a coherent, on-brand reply.</p>
+        </section>
+
+        <!-- Inline CTA -->
+        <div class="my-12 rounded-2xl overflow-hidden bg-slate-900 text-white">
+          <div style="height: 160px;" class="relative overflow-hidden">
+            <div class="w-full h-full bg-gradient-to-br from-orange-900 via-slate-900 to-black flex items-center justify-center">
+              <div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(#f97316 1px, transparent 1px); background-size: 20px 20px;"></div>
+              <div class="text-center relative z-10">
+                <iconify-icon icon="lucide:headset" width="40" class="text-orange-300 mb-2"></iconify-icon>
+              </div>
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-black font-sf tracking-tight mb-2">Handle 10x the volume. <em class="italic font-light">Without 10x the staff.</em></h3>
+            <p class="text-slate-300 text-sm leading-relaxed mb-5">We build AI support systems that resolve 80%+ of tickets automatically ? trained on your knowledge base, configured to your escalation rules.</p>
+            <button onclick="openCalendly()" class="w-full bg-orange-500 hover:bg-orange-400 text-white font-bold py-3.5 px-6 rounded-xl transition-all text-sm tracking-wide">
+              Book a Free Strategy Call
+            </button>
+          </div>
+        </div>
+
+        <section id="building-the-knowledge-base">
+          <h2>Building a Knowledge Base That Actually Works</h2>
+          <p>The quality of your AI support system is directly proportional to the quality of your knowledge base. This is where most implementations fail. They throw in a few FAQ pages and wonder why the AI hallucinates.</p>
+          <p>A properly structured knowledge base for a 10,000-ticket/month operation requires:</p>
+          <ul>
+            <li><strong>Product documentation</strong> ? every feature, configuration option, and limitation documented clearly</li>
+            <li><strong>Policy documents</strong> ? returns, refunds, warranties, SLAs, terms ? written in plain language, not legalese</li>
+            <li><strong>Historical ticket resolutions</strong> ? your top 200 most common ticket types, with the correct resolution for each, written as the AI should respond</li>
+            <li><strong>Edge case playbook</strong> ? what to do in the 50 most common scenarios that don't fit standard categories</li>
+            <li><strong>Brand voice guide</strong> ? tone of voice, words to use/avoid, how formal to be, emoji policy</li>
+          </ul>
+          <p>Building this takes 2?4 weeks the first time. But once it exists, updating it is trivial. Every time your product changes, you update the relevant doc. The AI immediately reflects the change ? no retraining required.</p>
+
+          <h3>Chunking Strategy Matters</h3>
+          <p>How you split your documents into retrievable chunks dramatically affects retrieval quality. A chunk that's too large dilutes the relevant signal. Too small and you lose context. The sweet spot for most support use cases is <strong>300?500 tokens per chunk</strong>, with 50-token overlaps to preserve context across boundaries.</p>
+          <p>Documents should be chunked by semantic unit ? complete answers to complete questions ? not by arbitrary character count.</p>
+        </section>
+
+        <section id="rag-and-llm-layer">
+          <h2>The RAG + LLM Layer: What to Use and Why</h2>
+          <p>You have choices at every level of the stack. Here's what we use at LoopSuit and why:</p>
+
+          <h3>Vector Database</h3>
+          <p><strong>Pinecone</strong> or <strong>Weaviate</strong> for production deployments. Both support hybrid search (semantic + keyword), which dramatically improves retrieval on product names, SKUs, and other specific identifiers that pure semantic search can miss.</p>
+
+          <h3>Embedding Model</h3>
+          <p><strong>OpenAI text-embedding-3-large</strong> for English-primary deployments. For multilingual support, Cohere's multilingual embeddings outperform significantly. The embedding model determines how well synonyms and paraphrases retrieve the same documents.</p>
+
+          <h3>LLM for Generation</h3>
+          <p><strong>Claude 3.5 Sonnet</strong> is our default for support generation. It follows instructions reliably, rarely hallucinates when given strong context, and produces natural-sounding prose. GPT-4o is a strong alternative. Do not use smaller models for support ? the instruction-following degradation at smaller sizes creates unpredictable behaviour.</p>
+
+          <h3>Orchestration</h3>
+          <p><strong>n8n</strong> for the overall workflow ? routing incoming tickets, calling the retrieval API, generating the response, and pushing back to your helpdesk (Intercom, Zendesk, Freshdesk). This keeps the logic visual and auditable.</p>
+        </section>
+
+        <section id="escalation-triggers">
+          <h2>Smart Escalation Triggers: When AI Hands Off to Humans</h2>
+          <p>An AI support system without good escalation logic is a liability. The goal isn't to replace every human interaction ? it's to reserve human attention for situations where it genuinely matters.</p>
+          <p>Configure automatic escalation when:</p>
+          <ul>
+            <li><strong>Sentiment score below threshold</strong> ? any message with a frustration score above 0.7 goes to a human queue immediately</li>
+            <li><strong>Monetary disputes</strong> ? chargebacks, refund amounts above your defined threshold, billing errors</li>
+            <li><strong>Legal or compliance language</strong> ? any message mentioning lawyers, regulators, or threatening formal action</li>
+            <li><strong>Low confidence retrieval</strong> ? if the top retrieved chunk has a cosine similarity score below 0.75, the AI doesn't have good enough information to answer confidently</li>
+            <li><strong>Repeated contacts</strong> ? if the same user has contacted support 3+ times in 7 days on the same issue, escalate</li>
+            <li><strong>VIP accounts</strong> ? enterprise or high-value accounts can be tagged for human-first handling</li>
+          </ul>
+          <p>Escalation should be seamless. When the AI hands off a ticket, it writes a <strong>context summary</strong> for the human agent: what the customer asked, what documents were retrieved, what response was drafted, and why it escalated. The human picks up the conversation in seconds with full context ? no re-reading the thread.</p>
+        </section>
+
+        <section id="csat-results">
+          <h2>CSAT Results: What the Data Actually Shows</h2>
+          <p>The counterintuitive finding in every AI support implementation we've shipped is this: <strong>CSAT scores improve</strong>. Not despite AI handling tickets ? because of it.</p>
+          <p>Here's why. The CSAT drivers customers care about most are:</p>
+          <ul>
+            <li><strong>Speed of first response</strong> ? humans average 4?8 hours; AI responds in under 10 seconds, 24/7</li>
+            <li><strong>Accuracy of the answer</strong> ? AI trained on correct policy documents is more accurate than a new hire who's been on the job for 6 weeks</li>
+            <li><strong>Consistency</strong> ? the same question gets the same correct answer every time, regardless of which "agent" handles it</li>
+          </ul>
+          <p>Across implementations we've built, the average CSAT movement is <strong>+0.4 to +0.8 points on a 5-point scale</strong>. First-response time drops from an average of 5.2 hours to 8 seconds. Ticket resolution rate for AI-handled queries sits between 78% and 87%, depending on product complexity.</p>
+          <p>The human agents who remain focus exclusively on complex, high-value interactions ? and that focus shows. Their individual CSAT scores typically go up as well, because they're not fatigued from handling "where's my order?" for the 40th time that day.</p>
+        </section>
+
+        <section id="implementation-steps">
+          <h2>Implementation Steps: From Zero to Live in 3 Weeks</h2>
+          <p>Here's the exact sequence we follow when building an AI support system for a client:</p>
+
+          <h3>Week 1: Knowledge Architecture</h3>
+          <ul>
+            <li>Audit existing docs, FAQs, and policy pages ? identify gaps</li>
+            <li>Pull last 6 months of ticket data ? identify top 200 ticket types by volume</li>
+            <li>Write resolution documents for each ticket type</li>
+            <li>Define escalation rules with client stakeholders</li>
+            <li>Write system prompt and brand voice instructions</li>
+          </ul>
+
+          <h3>Week 2: Build and Connect</h3>
+          <ul>
+            <li>Set up vector database, ingest all knowledge base documents</li>
+            <li>Configure intent classifier (fine-tune on historical ticket data)</li>
+            <li>Build n8n orchestration workflow</li>
+            <li>Connect to helpdesk via API (Intercom/Zendesk/Freshdesk)</li>
+            <li>Configure escalation routing to human queue</li>
+          </ul>
+
+          <h3>Week 3: Test, Measure, Launch</h3>
+          <ul>
+            <li>Shadow mode testing ? AI generates responses but humans review before sending</li>
+            <li>Measure accuracy on 200 test cases across all ticket types</li>
+            <li>Iterate on system prompt, chunking strategy, and escalation thresholds</li>
+            <li>Gradual traffic rollout: 20% ? 50% ? 80% ? 100%</li>
+            <li>Monitor CSAT, resolution rate, and escalation volume in real time</li>
+          </ul>
+
+          <p>Ongoing maintenance is minimal ? roughly 2 hours/week to review escalation logs, update docs when policies change, and audit any responses flagged by the monitoring system.</p>
+        </section>
+
+        <!-- FAQ -->
+        <section id="faqs">
+          <h2>FAQs</h2>
+
+          <details class="border-b border-slate-200 py-4 group">
+            <summary class="flex justify-between items-center cursor-pointer font-semibold text-slate-900 font-sf text-base list-none">
+              What if a customer can tell they're talking to an AI?
+              <iconify-icon icon="lucide:chevron-down" class="text-slate-400 flex-shrink-0 group-open:rotate-180 transition-transform"></iconify-icon>
+            </summary>
+            <p class="mt-3 text-slate-600 text-sm leading-relaxed">Transparency is the right approach. We recommend configuring the system to identify itself as an AI assistant ? "Hi, I'm the LoopSuit support assistant" ? rather than pretending to be human. Most customers don't care if the answer is accurate and fast. The ones who do can always be escalated to a human with one click.</p>
+          </details>
+
+          <details class="border-b border-slate-200 py-4 group">
+            <summary class="flex justify-between items-center cursor-pointer font-semibold text-slate-900 font-sf text-base list-none">
+              What happens when the AI doesn't know the answer?
+              <iconify-icon icon="lucide:chevron-down" class="text-slate-400 flex-shrink-0 group-open:rotate-180 transition-transform"></iconify-icon>
+            </summary>
+            <p class="mt-3 text-slate-600 text-sm leading-relaxed">The system is configured to escalate rather than guess. If retrieval confidence is below threshold, the AI responds: "This is a great question ? I want to make sure you get the most accurate answer. Let me connect you with a specialist." The ticket is then immediately routed to a human queue with a context summary. The AI never makes up information.</p>
+          </details>
+
+          <details class="border-b border-slate-200 py-4 group">
+            <summary class="flex justify-between items-center cursor-pointer font-semibold text-slate-900 font-sf text-base list-none">
+              How do you keep the knowledge base current as products change?
+              <iconify-icon icon="lucide:chevron-down" class="text-slate-400 flex-shrink-0 group-open:rotate-180 transition-transform"></iconify-icon>
+            </summary>
+            <p class="mt-3 text-slate-600 text-sm leading-relaxed">We build a content management layer on top of the vector database. When a policy changes or a product is updated, you edit the relevant document in a CMS (usually Notion or Confluence), and a webhook triggers automatic re-indexing. The AI reflects the change within minutes ? no redeployment required. We also set up a monthly audit workflow that reviews the 50 most common recent tickets and flags any that reveal knowledge gaps.</p>
+          </details>
+
+          <details class="py-4 group">
+            <summary class="flex justify-between items-center cursor-pointer font-semibold text-slate-900 font-sf text-base list-none">
+              What's the minimum ticket volume to justify building this?
+              <iconify-icon icon="lucide:chevron-down" class="text-slate-400 flex-shrink-0 group-open:rotate-180 transition-transform"></iconify-icon>
+            </summary>
+            <p class="mt-3 text-slate-600 text-sm leading-relaxed">We typically recommend this for teams handling 500+ tickets/month. Below that threshold, the build cost takes too long to amortise. At 500 tickets/month, payback is around 8?10 months. At 2,000 tickets/month, payback is typically under 3 months. At 10,000 tickets/month, you're saving $30,000?$50,000 per month from day one.</p>
+          </details>
+        </section>
+
+      </article>
+
+      <!-- RIGHT: CTA -->
+      <aside class="hidden lg:block">
+        <div class="sticky top-28 space-y-5" style="max-height:calc(100vh - 8rem);overflow-y:auto;scrollbar-width:none;">
+          <div class="rounded-2xl overflow-hidden bg-slate-900 text-white">
+            <div class="relative overflow-hidden" style="height: 180px;">
+              <div class="w-full h-full bg-gradient-to-br from-orange-900 via-slate-900 to-black flex items-center justify-center relative">
+                <div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(#f97316 1px, transparent 1px); background-size: 18px 18px;"></div>
+                <div class="text-center relative z-10 px-4">
+                  <div class="w-16 h-16 rounded-2xl bg-orange-500/20 border border-orange-500/30 flex items-center justify-center mx-auto mb-3">
+                    <iconify-icon icon="lucide:headset" width="28" class="text-orange-300"></iconify-icon>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="p-5">
+              <p class="text-[9px] font-bold uppercase tracking-[0.2em] text-slate-400 mb-1.5">Book a call</p>
+              <h4 class="font-sf font-bold text-base leading-snug mb-2">Scale your support.<br><em class="italic font-light text-slate-300">Without scaling your team.</em></h4>
+              <p class="text-slate-400 text-xs leading-relaxed mb-4">We'll audit your current support setup and show you exactly what an AI system would save.</p>
+              <button onclick="openCalendly()" class="w-full bg-orange-500 hover:bg-orange-400 text-white font-bold py-3 rounded-xl text-sm transition-all">
+                Book Free Call
+              </button>
+              <p class="text-slate-500 text-[10px] text-center mt-3">No commitment. Just a conversation.</p>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+
+  <!-- Tags -->
+  <div class="border-t border-slate-200">
+    <div class="max-w-[1200px] mx-auto px-4 md:px-6 py-10">
+      <nav class="flex items-center gap-1.5 text-xs text-slate-400 mb-8 flex-wrap">
+        <a href="index.html" class="hover:text-slate-700 transition-colors">Home</a>
+        <iconify-icon icon="lucide:chevron-right" width="12" class="text-slate-300"></iconify-icon>
+        <a href="blog.html" class="hover:text-slate-700 transition-colors">Blog</a>
+        <iconify-icon icon="lucide:chevron-right" width="12" class="text-slate-300"></iconify-icon>
+        <span class="text-slate-600">How to Handle 10,000 Support Requests...</span>
+      </nav>
+      <div>
+        <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400 mb-4">Tags in this article</p>
+        <div class="flex gap-2 flex-wrap">
+          <span class="tag-pill">#AI Automation</span>
+          <span class="tag-pill">#Customer Support</span>
+          <span class="tag-pill">#AI Tools</span>
+          <span class="tag-pill">#ROI</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Related Articles -->
+  <section class="bg-[#F0EFE9] py-16 px-4 md:px-6">
+    <div class="max-w-[1200px] mx-auto">
+      <div class="text-center mb-10">
+        <p class="text-[10px] font-bold uppercase tracking-[0.25em] text-orange-500 mb-3">Related Articles</p>
+        <h2 class="font-sf font-black text-slate-900 tracking-tight" style="font-size: clamp(1.75rem, 4vw, 2.5rem);">You may also like these</h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <a href="blog-ai-automation-workflows.html" class="rel-card group">
+          <div class="rel-card-img-placeholder bg-gradient-to-br from-blue-100 to-blue-200"><iconify-icon icon="lucide:cpu" width="36" class="text-blue-400"></iconify-icon></div>
+          <div class="p-4 flex flex-col flex-1">
+            <p class="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-2">AI Automation ? 8 min read</p>
+            <h3 class="font-sf font-bold text-slate-900 text-sm leading-snug mb-2 group-hover:text-blue-600 transition-colors">How AI Automation is Replacing $50K+/Year Tasks in Your Business</h3>
+            <div class="flex gap-1.5 mt-auto pt-4 flex-wrap"><span class="tag-pill text-[10px] px-2 py-0.5">#AI Automation</span></div>
+          </div>
+        </a>
+        <a href="blog-ai-automation-failures.html" class="rel-card group">
+          <div class="rel-card-img-placeholder bg-gradient-to-br from-red-100 to-red-200"><iconify-icon icon="lucide:alert-triangle" width="36" class="text-red-400"></iconify-icon></div>
+          <div class="p-4 flex flex-col flex-1">
+            <p class="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-2">Expert Insights ? 8 min read</p>
+            <h3 class="font-sf font-bold text-slate-900 text-sm leading-snug mb-2 group-hover:text-blue-600 transition-colors">Why Most AI Automation Projects Fail (And How to Fix Them)</h3>
+            <div class="flex gap-1.5 mt-auto pt-4 flex-wrap"><span class="tag-pill text-[10px] px-2 py-0.5">#Expert Insights</span></div>
+          </div>
+        </a>
+        <a href="blog-hiring-vs-automating.html" class="rel-card group">
+          <div class="rel-card-img-placeholder bg-gradient-to-br from-green-100 to-green-200"><iconify-icon icon="lucide:trending-up" width="36" class="text-green-400"></iconify-icon></div>
+          <div class="p-4 flex flex-col flex-1">
+            <p class="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-2">ROI ? 7 min read</p>
+            <h3 class="font-sf font-bold text-slate-900 text-sm leading-snug mb-2 group-hover:text-blue-600 transition-colors">The Real Cost of Hiring vs. Automating in 2025</h3>
+            <div class="flex gap-1.5 mt-auto pt-4 flex-wrap"><span class="tag-pill text-[10px] px-2 py-0.5">#ROI</span></div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="relative bg-gradient-to-b from-slate-950 via-slate-950 to-black text-slate-300 overflow-hidden py-12 md:py-16">
+    <div class="absolute top-0 left-0 h-1 w-1/2 bg-gradient-to-r from-transparent via-cyan-500 to-transparent opacity-75 z-20 animate-footer-beam"></div>
+    <div class="absolute top-0 inset-x-0 h-px bg-slate-800 z-10"></div>
+    <div class="max-w-7xl mx-auto px-6 lg:px-20 xl:px-32 relative z-10">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 mb-10">
+        <div class="md:col-span-2 lg:col-span-5 space-y-5 flex flex-col items-center lg:items-start text-center lg:text-left">
+          <a href="index.html"><div class="text-2xl font-black italic tracking-tighter text-white">LOOPSUIT<sup class="text-[9px] not-italic text-gray-500">?</sup></div></a>
+          <p class="text-slate-400 leading-relaxed max-w-sm font-sf text-sm">Empowering forward-thinking businesses with intelligent automation systems that scale.</p>
+          <div class="space-y-1.5 font-sf">
+            <p class="text-slate-400 text-sm">support@loopsuitai.com</p>
+            <p class="text-slate-400 text-sm">Vancouver, Canada</p>
+          </div>
+          <button onclick="openCalendly()" class="shiny-cta mt-2"><span>Book Free Call</span></button>
+        </div>
+        <div class="md:col-span-1 lg:col-span-2 lg:col-start-9 text-center">
+          <h3 class="text-white font-semibold mb-4 font-sf">Navigation</h3>
+          <ul class="space-y-3">
+            <li><a href="index.html" class="text-slate-400 hover:text-cyan-400 transition-colors font-sf text-sm">Home</a></li>
+            <li><a href="services.html" class="text-slate-400 hover:text-cyan-400 transition-colors font-sf text-sm">Services</a></li>
+            <li><a href="case-studies.html" class="text-slate-400 hover:text-cyan-400 transition-colors font-sf text-sm">Case Studies</a></li>
+            <li><a href="blog.html" class="text-cyan-400 font-sf text-sm font-medium">Blog</a></li>
+          </ul>
+        </div>
+        <div class="md:col-span-1 lg:col-span-2 text-center">
+          <h3 class="text-white font-semibold mb-4 font-sf">Connect</h3>
+          <ul class="space-y-3">
+            <li><a href="https://instagram.com/loopsuitai" class="text-slate-400 hover:text-cyan-400 transition-colors font-sf text-sm">Instagram</a></li>
+            <li><a href="https://linkedin.com/company/loopsuit" class="text-slate-400 hover:text-cyan-400 transition-colors font-sf text-sm">LinkedIn</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-slate-800/50 pt-6">
+        <div class="flex flex-col-reverse md:flex-row justify-between items-center gap-4">
+          <p class="text-slate-500 text-xs font-sf">&copy; <span id="year"></span> LoopSuit. All rights reserved.</p>
+          <p class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400 font-semibold text-sm">Serving clients across US, Canada &amp; EU</p>
+        </div>
+      </div>
+    </div>
+    <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  </footer>
+
+  <script>
+    const navbar = document.getElementById('main-navbar');
+    const innerNav = document.getElementById('inner-nav');
+    let lastScrollY = window.scrollY;
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY;
+      const docH = document.documentElement.scrollHeight - window.innerHeight;
+      document.getElementById('reading-progress').style.width = (y / docH * 100) + '%';
+      if (y > 20) { innerNav.classList.add('glass-nav-scrolled'); } else { innerNav.classList.remove('glass-nav-scrolled'); }
+      if (y <= 50 || y < lastScrollY) { navbar.classList.remove('navbar-hidden'); navbar.classList.add('navbar-visible'); }
+      else if (y > lastScrollY && y > 50) { navbar.classList.remove('navbar-visible'); navbar.classList.add('navbar-hidden'); }
+      lastScrollY = y;
+    });
+    const tocObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          document.querySelectorAll('.toc-link').forEach(l => l.classList.remove('toc-active'));
+          const link = document.querySelector(`.toc-link[href="#${entry.target.id}"]`);
+          if (link) link.classList.add('toc-active');
+        }
+      });
+    }, { rootMargin: '-20% 0% -60% 0%' });
+    document.querySelectorAll('section[id]').forEach(s => tocObserver.observe(s));
+    let tocOpen = true;
+    function toggleToc() {
+      const body = document.getElementById('toc-body');
+      const btn = document.getElementById('toc-toggle');
+      tocOpen = !tocOpen;
+      if (tocOpen) { body.classList.remove('toc-collapsed'); btn.textContent = '?'; }
+      else { body.classList.add('toc-collapsed'); btn.textContent = '+'; }
+    }
+    function openMobileMenu() { document.getElementById('mobile-menu').classList.replace('menu-closed','menu-open'); }
+    function closeMobileMenu() { document.getElementById('mobile-menu').classList.replace('menu-open','menu-closed'); }
+    function openCalendly() {
+      const url = 'https://calendly.com/jastejsehra/chat-about-ai-automation';
+      if (typeof Calendly !== 'undefined') { Calendly.initPopupWidget({ url }); } else { window.open(url, '_blank'); }
+    }
+    function copyPageLink(btn) {
+      navigator.clipboard.writeText(window.location.href).then(() => {
+        const orig = btn.innerHTML;
+        btn.innerHTML = '<iconify-icon icon="lucide:check" width="16" style="color:#22c55e;"></iconify-icon>';
+        setTimeout(() => { btn.innerHTML = orig; }, 2000);
+      });
+    }
+  </script>
+</body>
+</html>

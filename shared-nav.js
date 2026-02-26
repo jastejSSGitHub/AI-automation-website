@@ -142,7 +142,8 @@ function highlightActivePage() {
             (currentPage === '' && href === 'index.html') ||
             (currentPage === 'index.html' && href === 'index.html') ||
             (currentPage === 'services.html' && href === 'services.html') ||
-            (currentPage === 'case-studies.html' && href === 'case-studies.html')) {
+            (currentPage === 'case-studies.html' && href === 'case-studies.html') ||
+            (currentPage === 'contact.html' && href === 'contact.html')) {
 
             // Add active styling
             link.classList.add('text-blue-500');

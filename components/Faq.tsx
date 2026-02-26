@@ -3,33 +3,32 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ChevronDown } from 'lucide-react'
-import { cn } from '@/lib/utils'
 import AppleResponsiveImage from './ui/AppleResponsiveImage'
 
 const FAQS = [
     {
-        question: "What industries do you work with?",
-        answer: "We work with SaaS companies, startups, agencies, e-commerce businesses, and B2B service companies across all industries. If you have repetitive processes to automate or need a custom product built, we can help. Our solutions are industry-agnostic and customized to your specific business needs."
+        question: "Who do you typically work with?",
+        answer: "We primarily work with founders and small teams in SaaS, agencies, e-commerce, and B2B services. If your team is losing time to repetitive work or needs to launch a product fast, we're a strong fit."
     },
     {
-        question: "Do I own the code you write?",
-        answer: "Yes, 100%. You receive full source code access and complete ownership of everything we build. There's no vendor lock-in, no ongoing licensing fees, and you're free to modify, host, or transfer your product anywhere you choose."
+        question: "How fast can you deliver?",
+        answer: "Most automation systems ship in 1-3 weeks, and most MVP builds ship in 3-4 weeks. We move quickly by using proven frameworks, AI-assisted workflows, and a focused build process with clear milestones."
     },
     {
-        question: "Do you offer ongoing support?",
-        answer: "All projects include 30 days of post-launch support for bug fixes. For ongoing changes or optimization, we offer flexible retainer packages or project-based pricing depending on your needs."
+        question: "Can you work with our existing tools and stack?",
+        answer: "Yes. We regularly integrate with tools like HubSpot, Salesforce, Stripe, Notion, Slack, and custom APIs. We design around your current workflow so you can improve operations without rebuilding everything."
     },
     {
-        question: "How do you deliver so fast?",
-        answer: "We use AI-assisted development tools (Claude, Cursor, Make.com) combined with productized processes and reusable component libraries. We leverage proven frameworks to accelerate delivery without compromising quality."
+        question: "Do we own the code and automations?",
+        answer: "Yes, 100%. You get full ownership of all source code, workflows, and deliverables. No lock-in, no hidden licensing, and full control over your product and systems."
     },
     {
-        question: "Can you integrate with my existing tools?",
-        answer: "Absolutely. We integrate with CRMs (HubSpot, Salesforce), payment processors (Stripe), project management tools (Notion, Asana), and 1,000+ other platforms via APIs and automation tools."
+        question: "What does support look like after launch?",
+        answer: "Every project includes a post-launch support window for fixes and handoff. If you want continued optimization or feature development, you can add ongoing support on a monthly retainer."
     },
     {
-        question: "What's your refund policy?",
-        answer: "If we don't deliver what we promised within the agreed timeline, you get a full refund. We stand behind our work and our commitments. Your success is our success."
+        question: "How do pricing and payments work?",
+        answer: "Pricing is fixed based on scope, timeline, and complexity. We agree on outcomes before kickoff, then use milestone-based payments so expectations stay clear from day one."
     }
 ]
 
@@ -81,13 +80,13 @@ export default function FAQ() {
                             <span className="inline-flex items-center justify-center px-3 py-1 rounded-full bg-white border border-blue-100 shadow-sm text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-violet-600 bg-[length:200%_auto] text-[10px] font-bold uppercase tracking-wider mb-6" style={{ animation: 'gradient-flow-badge 3s linear infinite' }}>
                                 FAQ
                             </span>
-                            <h3 className="text-xl md:text-2xl font-semibold text-[#1d1d1f] mb-2">Designed for the future.</h3>
+                            <h3 className="text-xl md:text-2xl font-semibold text-[#1d1d1f] mb-2">Answers before we build.</h3>
                             <h2 className="text-4xl md:text-[3.5rem] leading-[1.05] font-semibold tracking-tight mb-8">
-                                <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 bg-[length:200%_auto] animate-gradient bg-clip-text text-transparent block">Power player.</span>
-                                <span className="bg-gradient-to-r from-purple-600 via-blue-600 to-purple-600 bg-[length:200%_auto] animate-gradient bg-clip-text text-transparent block">Energy expert.</span>
+                                <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 bg-[length:200%_auto] animate-gradient bg-clip-text text-transparent block">Clear process.</span>
+                                <span className="bg-gradient-to-r from-purple-600 via-blue-600 to-purple-600 bg-[length:200%_auto] animate-gradient bg-clip-text text-transparent block">No surprises.</span>
                             </h2>
                             <p className="text-lg text-[#86868b] font-medium leading-relaxed max-w-xl">
-                                We build AI systems that aren't just fast—they're incredibly efficient. Everything you need to know about our technology and process.
+                                From timelines and integrations to ownership and support, here are the most common questions before we start.
                             </p>
                         </div>
 

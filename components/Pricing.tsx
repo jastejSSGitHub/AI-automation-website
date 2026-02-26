@@ -8,8 +8,10 @@ const TIERS = [
     {
         name: "AI Workflow Automation",
         subtitle: "Save 15+ Hours Per Week",
-        description: "Transform your operations with intelligent automation that works 24/7.",
-        price: "Custom",
+        description: "Replace expensive, repetitive manual work with intelligent automation that runs 24/7 — and pays for itself fast.",
+        price: "From $2,500",
+        priceRange: "Most projects: $2,500–$8,000",
+        valueProof: "Replaces $3,000+/mo in manual labour costs",
         features: [
             "Lead Generation & Enrichment",
             "Sales Pipeline Automation",
@@ -19,6 +21,7 @@ const TIERS = [
             "Automated Reporting Dashboards"
         ],
         cta: "Book Strategy Call",
+        scarcity: "Next available slot: March 10",
         highlight: false,
         colorClass: "text-blue-600",
         checkColor: "text-blue-500",
@@ -26,9 +29,11 @@ const TIERS = [
     },
     {
         name: "Rapid MVP Development",
-        subtitle: "Launch in 3-4 Weeks",
-        description: "Go from idea to investor-ready product. Designer-quality UI, production code, full ownership.",
-        price: "Custom",
+        subtitle: "Launch in 3–4 Weeks",
+        description: "Investor-ready product, designer-quality UI, production code — shipped in weeks, not months. You keep 100% ownership.",
+        price: "From $8,000",
+        priceRange: "Most projects: $8,000–$20,000",
+        valueProof: "Traditional agencies quote $40,000+ for the same",
         features: [
             "Designer-Quality UI/UX & Mobile",
             "Production-Ready Code",
@@ -39,6 +44,7 @@ const TIERS = [
             "100% Code Ownership"
         ],
         cta: "Book Your Strategy Call",
+        scarcity: "Only 2 spots left for March",
         highlight: true,
         colorClass: "text-white",
         checkColor: "text-emerald-500", // Green icons for center
@@ -46,9 +52,11 @@ const TIERS = [
     },
     {
         name: "Complete AI Solution",
-        subtitle: "Product + Operations",
-        description: "The comprehensive package. Rapid MVP development combined with intelligent business automation.",
-        price: "Custom",
+        subtitle: "Product + Full Automation Stack",
+        description: "Your entire digital operation, built and automated by one team on one deadline — no hand-off chaos, no gaps.",
+        price: "From $15,000",
+        priceRange: "Complete packages: $15,000–$35,000",
+        valueProof: "Replaces 2 full-time hires + an entire dev team",
         features: [
             "Everything in Rapid MVP",
             "Everything in AI Automation",
@@ -58,6 +66,7 @@ const TIERS = [
             "Monthly Optimization Calls"
         ],
         cta: "Book Strategy Call",
+        scarcity: "1 enterprise slot open in March",
         highlight: false,
         colorClass: "text-purple-600",
         checkColor: "text-purple-500", // Purple icons for tier 3
@@ -65,16 +74,25 @@ const TIERS = [
     }
 ];
 
+const openCalendly = () => {
+    const url = 'https://calendly.com/jastejsehra/chat-about-ai-automation';
+    if (typeof window !== 'undefined' && (window as any).Calendly) {
+        (window as any).Calendly.initPopupWidget({ url });
+    } else {
+        window.open(url, '_blank');
+    }
+};
+
 export default function Pricing() {
     return (
         <section className="py-24 md:py-32 bg-slate-50 relative overflow-hidden" id="pricing">
             <div className="container mx-auto px-6 max-w-7xl">
                 <div className="text-center mb-16 md:mb-20 max-w-3xl mx-auto">
                     <h2 className="text-4xl md:text-5xl lg:text-6xl font-medium text-slate-900 mb-6 font-sf tracking-tight leading-[1.1]">
-                        Simple, Transparent Solutions
+                        Straightforward Pricing.<br className="hidden md:block" /> No Surprises.
                     </h2>
                     <p className="text-lg text-slate-600">
-                        Choose the path that fits your growth stage. Whether you need efficiency, speed, or a complete transformation.
+                        Every project starts with a free 30-minute strategy call. Exact scope and price confirmed before we touch a single line of code.
                     </p>
                 </div>
 
@@ -114,6 +132,27 @@ export default function Pricing() {
                                 <p className={cn("mt-4 text-sm leading-relaxed", tier.highlight ? "text-slate-400" : "text-slate-500")}>
                                     {tier.description}
                                 </p>
+
+                                {/* Price anchor block */}
+                                <div className={cn(
+                                    "mt-5 rounded-xl px-4 py-3 border",
+                                    tier.highlight
+                                        ? "bg-white/5 border-white/10"
+                                        : "bg-slate-50 border-slate-200"
+                                )}>
+                                    <p className={cn("text-3xl font-bold tracking-tight", tier.highlight ? "text-white" : "text-slate-900")}>
+                                        {tier.price}
+                                    </p>
+                                    <p className={cn("text-xs mt-0.5", tier.highlight ? "text-slate-400" : "text-slate-500")}>
+                                        {tier.priceRange}
+                                    </p>
+                                    <p className={cn(
+                                        "text-xs font-semibold mt-2 flex items-center gap-1",
+                                        tier.highlight ? "text-emerald-400" : "text-emerald-600"
+                                    )}>
+                                        <span>✦</span> {tier.valueProof}
+                                    </p>
+                                </div>
                             </div>
 
                             <div className="flex-grow mb-8 space-y-4">
@@ -132,20 +171,39 @@ export default function Pricing() {
 
                             <div className="mt-auto pt-6">
                                 {tier.buttonVariant === "beam" ? (
-                                    <button className="relative w-full inline-flex h-12 overflow-hidden rounded-full p-[1px] focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50">
+                                    <button
+                                        onClick={openCalendly}
+                                        className="relative w-full inline-flex h-12 overflow-hidden rounded-full p-[1px] focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50"
+                                    >
                                         <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]" />
                                         <span className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-slate-950 px-3 py-1 text-sm font-medium text-white backdrop-blur-3xl">
                                             {tier.cta}
                                         </span>
                                     </button>
                                 ) : (
-                                    <button className={cn(
-                                        "w-full py-3 rounded-full font-medium text-sm transition-all duration-200",
-                                        "border border-slate-200 hover:border-slate-300 hover:bg-slate-50 bg-white text-slate-900"
-                                    )}>
+                                    <button
+                                        onClick={openCalendly}
+                                        className={cn(
+                                            "w-full py-3 rounded-full font-medium text-sm transition-all duration-200",
+                                            "border border-slate-200 hover:border-slate-300 hover:bg-slate-50 bg-white text-slate-900"
+                                        )}
+                                    >
                                         {tier.cta}
                                     </button>
                                 )}
+                                {/* Scarcity / availability indicator */}
+                                <div className="mt-3 flex items-center justify-center gap-1.5">
+                                    <span className="relative flex h-1.5 w-1.5 flex-shrink-0">
+                                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                                        <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500"></span>
+                                    </span>
+                                    <p className={cn(
+                                        "text-xs font-medium",
+                                        tier.highlight ? "text-slate-400" : "text-slate-500"
+                                    )}>
+                                        {tier.scarcity}
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     ))}

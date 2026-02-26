@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -1654,13 +1654,10 @@
 
           <!-- Location & Service Area -->
           <div class="space-y-2 font-sf">
-            <p class="text-white font-semibold text-base">
-              Jastej Singh Sehra
-            </p>
             <div class="relative group w-max">
               <button onclick="copyEmail(this)"
                 class="text-slate-400 text-sm hover:text-cyan-400 transition-all duration-200 cursor-pointer text-left flex items-center gap-2">
-                <span>✉️ jastejsingh98@gmail.com</span>
+                <span>✉️ support@loopsuitai.com</span>
               </button>
               <span
                 class="copy-feedback absolute left-full ml-2 top-1/2 -translate-y-1/2 text-green-400 text-xs font-semibold opacity-0 transition-opacity duration-300 pointer-events-none whitespace-nowrap">
@@ -1757,7 +1754,7 @@
           </div>
 
           <!-- Social Icons -->
-          <div class="flex items-center space-x-4 pt-1">
+          <div class="flex items-center space-x-4 pt-1" style="display:none">
             <!-- Twitter -->
             <a href="#" aria-label="Twitter"
               class="w-9 h-9 flex items-center justify-center rounded-full bg-slate-900 border border-slate-800 text-slate-400 hover:text-white hover:border-cyan-500/50 hover:bg-cyan-950/30 transition-all duration-300 group">
@@ -1894,7 +1891,7 @@
   <script>
     // Copy Email Functionality
     function copyEmail(button) {
-      navigator.clipboard.writeText("jastejsingh98@gmail.com").then(() => {
+      navigator.clipboard.writeText("support@loopsuitai.com").then(() => {
         const feedback = button.nextElementSibling;
         feedback.classList.remove('opacity-0');
         setTimeout(() => {
@@ -1948,7 +1945,7 @@
 
       const formData = new FormData(form);
 
-      fetch("https://formsubmit.co/ajax/jastejsingh98@gmail.com", {
+      fetch("https://formsubmit.co/ajax/support@loopsuitai.com", {
         method: "POST",
         body: formData
       })
