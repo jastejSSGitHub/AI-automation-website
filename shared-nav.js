@@ -143,7 +143,10 @@ function highlightActivePage() {
             (currentPage === 'index.html' && href === 'index.html') ||
             (currentPage === 'services.html' && href === 'services.html') ||
             (currentPage === 'case-studies.html' && href === 'case-studies.html') ||
-            (currentPage === 'contact.html' && href === 'contact.html')) {
+            (currentPage === 'contact.html' && href === 'contact.html') ||
+            (currentPage === 'blog.html' && href === 'blog.html') ||
+            (currentPage === 'privacy-policy' && href === '/privacy-policy') ||
+            (currentPage === 'terms' && href === '/terms')) {
 
             // Add active styling
             link.classList.add('text-blue-500');

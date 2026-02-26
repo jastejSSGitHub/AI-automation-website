@@ -227,13 +227,8 @@
 
   <div class="max-w-3xl mx-auto px-4 md:px-6 mb-10">
     <div class="rounded-2xl overflow-hidden" style="height: clamp(220px, 40vw, 420px);">
-      <div class="w-full h-full bg-gradient-to-br from-red-900 via-slate-800 to-slate-900 flex items-center justify-center relative">
-        <div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(#ef4444 1px, transparent 1px); background-size: 24px 24px;"></div>
-        <div class="text-center relative z-10 space-y-3">
-          <div class="w-20 h-20 rounded-3xl bg-red-500/20 border border-red-500/30 flex items-center justify-center mx-auto"><iconify-icon icon="lucide:alert-triangle" width="40" class="text-red-300"></iconify-icon></div>
-          <p class="text-white/30 text-xs font-medium tracking-wider uppercase">Banner Image Placeholder</p>
-        </div>
-      </div>
+      <video class="w-full h-full object-cover" autoplay muted loop playsinline preload="metadata" aria-label="AI automation failures banner animation"><source src="assets/blog-media/article-5-banner.mp4" type="video/mp4"></video>
+    </div>
     </div>
   </div>
 
@@ -339,6 +334,10 @@
             <p class="font-semibold text-green-800 text-sm mb-1">The fix:</p>
             <p class="text-green-700 text-sm">Instrument every automation at build time ? not as an afterthought. Every workflow should have a logging layer that records: inputs, outputs, processing time, and any errors. Build a simple dashboard (a Notion database or Google Sheet connected to your workflow tool is fine) that shows health metrics at a glance. Set up automated alerts for anomalies. Schedule a 30-minute monthly review of output quality and business impact metrics. Automate cannot be passive investments ? they require active, lightweight stewardship.</p>
           </div>
+        
+          <figure class="my-8 rounded-xl overflow-hidden">
+            <img src="assets/blog-media/article-5-feature-1.jpg" alt="Failure modes monitoring dashboard" class="w-full h-full object-cover" loading="lazy" decoding="async">
+          </figure>
         </section>
 
         <section id="failure-4">
@@ -354,6 +353,10 @@
             <p class="font-semibold text-green-800 text-sm mb-1">The fix:</p>
             <p class="text-green-700 text-sm">Adopt a "minimum viable stack" philosophy. Pick one workflow orchestration tool (n8n or Make.com ? pick one, not both). Pick one LLM provider and stick to it. Pick one vector database. Pick one monitoring platform. Document every tool in your stack: what it does, what connects to it, how much it costs, who is responsible for it. Any new tool must replace an existing tool or solve a problem the existing stack provably cannot solve. Consolidation reviews quarterly.</p>
           </div>
+        
+          <figure class="my-8 rounded-xl overflow-hidden">
+            <img src="assets/blog-media/article-5-feature-2.jpg" alt="Tangled tool ecosystem visual" class="w-full h-full object-cover" loading="lazy" decoding="async">
+          </figure>
         </section>
 
         <section id="the-framework">

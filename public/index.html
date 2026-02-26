@@ -1336,6 +1336,21 @@
         onclick="closeMenuAndNavigate()">
         Case Studies
       </a>
+      <a href="blog.html"
+        class="text-4xl font-sf font-semibold text-white tracking-tight hover:text-blue-500 transition-colors"
+        onclick="closeMenuAndNavigate()">
+        Blog
+      </a>
+      <a href="/privacy-policy"
+        class="text-2xl font-sf font-semibold text-slate-300 tracking-tight hover:text-blue-500 transition-colors"
+        onclick="closeMenuAndNavigate()">
+        Privacy Policy
+      </a>
+      <a href="/terms"
+        class="text-2xl font-sf font-semibold text-slate-300 tracking-tight hover:text-blue-500 transition-colors"
+        onclick="closeMenuAndNavigate()">
+        Terms
+      </a>
     </div>
     <div class="mt-14 w-full px-12 max-w-sm relative z-10">
       <button class="shiny-cta w-full focus:outline-none justify-center"
@@ -1450,6 +1465,9 @@
           </div>
           <a href="services.html" class="hover:text-white transition-colors">Services</a>
           <a href="case-studies.html" class="hover:text-white transition-colors">Case Studies</a>
+          <a href="blog.html" class="hover:text-white transition-colors">Blog</a>
+          <a href="/privacy-policy" class="hover:text-white transition-colors">Privacy Policy</a>
+          <a href="/terms" class="hover:text-white transition-colors">Terms</a>
         </div>
 
         <!-- CTA & Hamburger -->
@@ -2186,6 +2204,378 @@
 
     </section>
 
+    <!-- Before / After Comparison Section -->
+    <section data-theme="dark" class="py-20 md:py-28 bg-[#060d1b] relative overflow-hidden" id="before-after">
+      <!-- Ambient glows -->
+      <div class="absolute top-0 right-1/3 w-[600px] h-[600px] bg-violet-700/6 rounded-full blur-[140px] pointer-events-none"></div>
+      <div class="absolute bottom-0 left-1/4 w-[500px] h-[500px] bg-blue-700/6 rounded-full blur-[120px] pointer-events-none"></div>
+
+      <div class="max-w-7xl mx-auto px-6 lg:px-20 xl:px-32 relative z-10">
+
+        <!-- Header -->
+        <div class="text-center mb-14">
+          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 border border-violet-500/30 text-violet-400 text-[10px] font-bold uppercase tracking-widest mb-5">
+            <iconify-icon icon="lucide:arrow-right-left" width="11"></iconify-icon>
+            The LoopSuit Difference
+          </span>
+          <h2 class="text-[1.9rem] md:text-[2.6rem] font-medium text-white tracking-tight font-sf leading-tight">
+            Before LoopSuit <span class="text-slate-600 font-light">vs.</span> After LoopSuit
+          </h2>
+          <p class="text-gray-500 text-base mt-4 max-w-xl mx-auto leading-relaxed">
+            The same challenges — completely different outcomes. Here's what our clients actually experienced.
+          </p>
+        </div>
+
+        <!-- Comparison Rows -->
+        <div class="flex flex-col gap-5">
+
+          <!-- Row 1: Development Speed -->
+          <div class="group grid md:grid-cols-[1fr_auto_1fr] gap-0 md:gap-4 items-stretch rounded-2xl overflow-hidden border border-white/5 hover:border-white/10 transition-all duration-300">
+
+            <!-- Before -->
+            <div class="relative bg-gradient-to-br from-red-950/40 via-[#0f0608] to-[#0a0a0b] border border-red-900/30 rounded-2xl md:rounded-r-none p-6 md:p-8 flex flex-col gap-4">
+              <div class="flex items-center gap-2 mb-1">
+                <span class="flex items-center justify-center w-6 h-6 rounded-full bg-red-500/15 border border-red-500/30">
+                  <iconify-icon icon="lucide:x" width="12" class="text-red-400"></iconify-icon>
+                </span>
+                <span class="text-[10px] font-bold uppercase tracking-widest text-red-400">Before</span>
+              </div>
+              <div>
+                <p class="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-2">Development Takes Forever</p>
+                <p class="text-white/90 text-sm leading-relaxed font-medium">Agency quoted <span class="text-red-300 font-semibold">$74,000 and a 6-month timeline.</span> Discovery phase alone took 5 weeks. First design review pushed delivery to month 8. Product still wasn't finished when the client ran out of runway.</p>
+              </div>
+              <div class="flex flex-wrap gap-2 mt-auto pt-2">
+                <span class="px-2.5 py-1 rounded-full bg-red-500/10 border border-red-500/20 text-red-300 text-[11px] font-semibold">8+ months</span>
+                <span class="px-2.5 py-1 rounded-full bg-red-500/10 border border-red-500/20 text-red-300 text-[11px] font-semibold">$74,000 spent</span>
+                <span class="px-2.5 py-1 rounded-full bg-red-500/10 border border-red-500/20 text-red-300 text-[11px] font-semibold">0 users at launch</span>
+              </div>
+            </div>
+
+            <!-- Arrow Divider -->
+            <div class="hidden md:flex items-center justify-center z-10 self-center shrink-0 my-auto">
+              <div class="flex flex-col items-center gap-1">
+                <div class="w-9 h-9 rounded-full bg-gradient-to-br from-blue-600 to-violet-600 flex items-center justify-center shadow-lg shadow-blue-500/25">
+                  <iconify-icon icon="lucide:arrow-right" width="16" class="text-white"></iconify-icon>
+                </div>
+              </div>
+            </div>
+            <div class="flex md:hidden items-center justify-center py-2">
+              <div class="w-8 h-8 rounded-full bg-gradient-to-br from-blue-600 to-violet-600 flex items-center justify-center shadow-lg">
+                <iconify-icon icon="lucide:arrow-down" width="14" class="text-white"></iconify-icon>
+              </div>
+            </div>
+
+            <!-- After -->
+            <div class="relative bg-gradient-to-br from-emerald-950/40 via-[#030f08] to-[#0a0a0b] border border-emerald-900/30 rounded-2xl md:rounded-l-none p-6 md:p-8 flex flex-col gap-4">
+              <div class="flex items-center gap-2 mb-1">
+                <span class="flex items-center justify-center w-6 h-6 rounded-full bg-emerald-500/15 border border-emerald-500/30">
+                  <iconify-icon icon="lucide:check" width="12" class="text-emerald-400"></iconify-icon>
+                </span>
+                <span class="text-[10px] font-bold uppercase tracking-widest text-emerald-400">After LoopSuit</span>
+              </div>
+              <div>
+                <p class="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-2">Development Takes Forever</p>
+                <p class="text-white/90 text-sm leading-relaxed font-medium">Full-stack MVP designed, built, and shipped in <span class="text-emerald-300 font-semibold">11 days for $9,800.</span> First paying customer signed up within 48 hours of going live. Three months later, the product had $22K MRR and a seed round in progress.</p>
+              </div>
+              <div class="flex flex-wrap gap-2 mt-auto pt-2">
+                <span class="px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 text-[11px] font-semibold">11-day launch</span>
+                <span class="px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 text-[11px] font-semibold">$9,800 total cost</span>
+                <span class="px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 text-[11px] font-semibold">$22K MRR in 90 days</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Row 2: Manual Work -->
+          <div class="group grid md:grid-cols-[1fr_auto_1fr] gap-0 md:gap-4 items-stretch rounded-2xl overflow-hidden border border-white/5 hover:border-white/10 transition-all duration-300">
+
+            <!-- Before -->
+            <div class="relative bg-gradient-to-br from-red-950/40 via-[#0f0608] to-[#0a0a0b] border border-red-900/30 rounded-2xl md:rounded-r-none p-6 md:p-8 flex flex-col gap-4">
+              <div class="flex items-center gap-2 mb-1">
+                <span class="flex items-center justify-center w-6 h-6 rounded-full bg-red-500/15 border border-red-500/30">
+                  <iconify-icon icon="lucide:x" width="12" class="text-red-400"></iconify-icon>
+                </span>
+                <span class="text-[10px] font-bold uppercase tracking-widest text-red-400">Before</span>
+              </div>
+              <div>
+                <p class="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-2">Manual Work Drains Team</p>
+                <p class="text-white/90 text-sm leading-relaxed font-medium">Sales team spent <span class="text-red-300 font-semibold">23 hours every week</span> manually transferring form submissions into the CRM, copy-pasting data into invoice templates, and sending individual follow-up emails. Two full-time staff doing the work of a spreadsheet.</p>
+              </div>
+              <div class="flex flex-wrap gap-2 mt-auto pt-2">
+                <span class="px-2.5 py-1 rounded-full bg-red-500/10 border border-red-500/20 text-red-300 text-[11px] font-semibold">23 hrs/week wasted</span>
+                <span class="px-2.5 py-1 rounded-full bg-red-500/10 border border-red-500/20 text-red-300 text-[11px] font-semibold">~$6,400/month in labour</span>
+                <span class="px-2.5 py-1 rounded-full bg-red-500/10 border border-red-500/20 text-red-300 text-[11px] font-semibold">48hr average follow-up delay</span>
+              </div>
+            </div>
+
+            <!-- Arrow Divider -->
+            <div class="hidden md:flex items-center justify-center z-10 self-center shrink-0 my-auto">
+              <div class="w-9 h-9 rounded-full bg-gradient-to-br from-blue-600 to-violet-600 flex items-center justify-center shadow-lg shadow-blue-500/25">
+                <iconify-icon icon="lucide:arrow-right" width="16" class="text-white"></iconify-icon>
+              </div>
+            </div>
+            <div class="flex md:hidden items-center justify-center py-2">
+              <div class="w-8 h-8 rounded-full bg-gradient-to-br from-blue-600 to-violet-600 flex items-center justify-center shadow-lg">
+                <iconify-icon icon="lucide:arrow-down" width="14" class="text-white"></iconify-icon>
+              </div>
+            </div>
+
+            <!-- After -->
+            <div class="relative bg-gradient-to-br from-emerald-950/40 via-[#030f08] to-[#0a0a0b] border border-emerald-900/30 rounded-2xl md:rounded-l-none p-6 md:p-8 flex flex-col gap-4">
+              <div class="flex items-center gap-2 mb-1">
+                <span class="flex items-center justify-center w-6 h-6 rounded-full bg-emerald-500/15 border border-emerald-500/30">
+                  <iconify-icon icon="lucide:check" width="12" class="text-emerald-400"></iconify-icon>
+                </span>
+                <span class="text-[10px] font-bold uppercase tracking-widest text-emerald-400">After LoopSuit</span>
+              </div>
+              <div>
+                <p class="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-2">Manual Work Drains Team</p>
+                <p class="text-white/90 text-sm leading-relaxed font-medium">End-to-end automation now handles lead capture, CRM entry, invoice generation, and a 5-step follow-up sequence — <span class="text-emerald-300 font-semibold">running 24/7 without a single human touch.</span> The team redirected those 20+ hours toward closing deals. Revenue up 31% in two months.</p>
+              </div>
+              <div class="flex flex-wrap gap-2 mt-auto pt-2">
+                <span class="px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 text-[11px] font-semibold">20+ hrs/week reclaimed</span>
+                <span class="px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 text-[11px] font-semibold">Follows up in &lt;4 min</span>
+                <span class="px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 text-[11px] font-semibold">+31% revenue in 60 days</span>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /visible rows -->
+
+        <!-- Expandable rows wrapper -->
+        <div id="extraComparisons" style="max-height:0;overflow:hidden;transition:max-height 0.55s cubic-bezier(0.4,0,0.2,1), opacity 0.4s ease;" class="opacity-0">
+          <div class="flex flex-col gap-5 pt-5">
+
+          <!-- Row 3: Generic Tools -->
+          <div class="group grid md:grid-cols-[1fr_auto_1fr] gap-0 md:gap-4 items-stretch rounded-2xl overflow-hidden border border-white/5 hover:border-white/10 transition-all duration-300">
+
+            <!-- Before -->
+            <div class="relative bg-gradient-to-br from-red-950/40 via-[#0f0608] to-[#0a0a0b] border border-red-900/30 rounded-2xl md:rounded-r-none p-6 md:p-8 flex flex-col gap-4">
+              <div class="flex items-center gap-2 mb-1">
+                <span class="flex items-center justify-center w-6 h-6 rounded-full bg-red-500/15 border border-red-500/30">
+                  <iconify-icon icon="lucide:x" width="12" class="text-red-400"></iconify-icon>
+                </span>
+                <span class="text-[10px] font-bold uppercase tracking-widest text-red-400">Before</span>
+              </div>
+              <div>
+                <p class="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-2">Generic Tools Don't Fit</p>
+                <p class="text-white/90 text-sm leading-relaxed font-medium">Seven disconnected SaaS tools — Zapier, Airtable, Typeform, Notion, Slack, HubSpot, and a custom Google Sheet — held together by <span class="text-red-300 font-semibold">duct-tape automations that broke weekly.</span> $1,340/month in subscriptions. Constant data gaps and manual error-fixing.</p>
+              </div>
+              <div class="flex flex-wrap gap-2 mt-auto pt-2">
+                <span class="px-2.5 py-1 rounded-full bg-red-500/10 border border-red-500/20 text-red-300 text-[11px] font-semibold">7 disconnected tools</span>
+                <span class="px-2.5 py-1 rounded-full bg-red-500/10 border border-red-500/20 text-red-300 text-[11px] font-semibold">$1,340/month in SaaS</span>
+                <span class="px-2.5 py-1 rounded-full bg-red-500/10 border border-red-500/20 text-red-300 text-[11px] font-semibold">Weekly breakages</span>
+              </div>
+            </div>
+
+            <!-- Arrow Divider -->
+            <div class="hidden md:flex items-center justify-center z-10 self-center shrink-0 my-auto">
+              <div class="w-9 h-9 rounded-full bg-gradient-to-br from-blue-600 to-violet-600 flex items-center justify-center shadow-lg shadow-blue-500/25">
+                <iconify-icon icon="lucide:arrow-right" width="16" class="text-white"></iconify-icon>
+              </div>
+            </div>
+            <div class="flex md:hidden items-center justify-center py-2">
+              <div class="w-8 h-8 rounded-full bg-gradient-to-br from-blue-600 to-violet-600 flex items-center justify-center shadow-lg">
+                <iconify-icon icon="lucide:arrow-down" width="14" class="text-white"></iconify-icon>
+              </div>
+            </div>
+
+            <!-- After -->
+            <div class="relative bg-gradient-to-br from-emerald-950/40 via-[#030f08] to-[#0a0a0b] border border-emerald-900/30 rounded-2xl md:rounded-l-none p-6 md:p-8 flex flex-col gap-4">
+              <div class="flex items-center gap-2 mb-1">
+                <span class="flex items-center justify-center w-6 h-6 rounded-full bg-emerald-500/15 border border-emerald-500/30">
+                  <iconify-icon icon="lucide:check" width="12" class="text-emerald-400"></iconify-icon>
+                </span>
+                <span class="text-[10px] font-bold uppercase tracking-widest text-emerald-400">After LoopSuit</span>
+              </div>
+              <div>
+                <p class="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-2">Generic Tools Don't Fit</p>
+                <p class="text-white/90 text-sm leading-relaxed font-medium">A single, <span class="text-emerald-300 font-semibold">purpose-built system replaced all seven tools.</span> One dashboard. Zero patchwork integrations. Every edge case in their workflow — the weird exceptions that Zapier couldn't handle — now works flawlessly. SaaS spend dropped to $290/month.</p>
+              </div>
+              <div class="flex flex-wrap gap-2 mt-auto pt-2">
+                <span class="px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 text-[11px] font-semibold">1 unified system</span>
+                <span class="px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 text-[11px] font-semibold">$290/month (saved $1,050)</span>
+                <span class="px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 text-[11px] font-semibold">Zero breakages since launch</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Row 4: Technical Debt -->
+          <div class="group grid md:grid-cols-[1fr_auto_1fr] gap-0 md:gap-4 items-stretch rounded-2xl overflow-hidden border border-white/5 hover:border-white/10 transition-all duration-300">
+
+            <!-- Before -->
+            <div class="relative bg-gradient-to-br from-red-950/40 via-[#0f0608] to-[#0a0a0b] border border-red-900/30 rounded-2xl md:rounded-r-none p-6 md:p-8 flex flex-col gap-4">
+              <div class="flex items-center gap-2 mb-1">
+                <span class="flex items-center justify-center w-6 h-6 rounded-full bg-red-500/15 border border-red-500/30">
+                  <iconify-icon icon="lucide:x" width="12" class="text-red-400"></iconify-icon>
+                </span>
+                <span class="text-[10px] font-bold uppercase tracking-widest text-red-400">Before</span>
+              </div>
+              <div>
+                <p class="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-2">Technical Debt Kills Momentum</p>
+                <p class="text-white/90 text-sm leading-relaxed font-medium">Every new feature required a 2-week sprint and risked breaking three other things. A "quick" onboarding flow change took <span class="text-red-300 font-semibold">6 weeks and introduced 4 regressions.</span> Engineers dreaded touching core files. Roadmap effectively frozen for 5 months.</p>
+              </div>
+              <div class="flex flex-wrap gap-2 mt-auto pt-2">
+                <span class="px-2.5 py-1 rounded-full bg-red-500/10 border border-red-500/20 text-red-300 text-[11px] font-semibold">2-week sprints per change</span>
+                <span class="px-2.5 py-1 rounded-full bg-red-500/10 border border-red-500/20 text-red-300 text-[11px] font-semibold">Constant regressions</span>
+                <span class="px-2.5 py-1 rounded-full bg-red-500/10 border border-red-500/20 text-red-300 text-[11px] font-semibold">5-month roadmap freeze</span>
+              </div>
+            </div>
+
+            <!-- Arrow Divider -->
+            <div class="hidden md:flex items-center justify-center z-10 self-center shrink-0 my-auto">
+              <div class="w-9 h-9 rounded-full bg-gradient-to-br from-blue-600 to-violet-600 flex items-center justify-center shadow-lg shadow-blue-500/25">
+                <iconify-icon icon="lucide:arrow-right" width="16" class="text-white"></iconify-icon>
+              </div>
+            </div>
+            <div class="flex md:hidden items-center justify-center py-2">
+              <div class="w-8 h-8 rounded-full bg-gradient-to-br from-blue-600 to-violet-600 flex items-center justify-center shadow-lg">
+                <iconify-icon icon="lucide:arrow-down" width="14" class="text-white"></iconify-icon>
+              </div>
+            </div>
+
+            <!-- After -->
+            <div class="relative bg-gradient-to-br from-emerald-950/40 via-[#030f08] to-[#0a0a0b] border border-emerald-900/30 rounded-2xl md:rounded-l-none p-6 md:p-8 flex flex-col gap-4">
+              <div class="flex items-center gap-2 mb-1">
+                <span class="flex items-center justify-center w-6 h-6 rounded-full bg-emerald-500/15 border border-emerald-500/30">
+                  <iconify-icon icon="lucide:check" width="12" class="text-emerald-400"></iconify-icon>
+                </span>
+                <span class="text-[10px] font-bold uppercase tracking-widest text-emerald-400">After LoopSuit</span>
+              </div>
+              <div>
+                <p class="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-2">Technical Debt Kills Momentum</p>
+                <p class="text-white/90 text-sm leading-relaxed font-medium">Rebuilt from the ground up with a modular, well-documented architecture. New features now ship in <span class="text-emerald-300 font-semibold">2–4 days with zero regressions.</span> The team shipped 11 features in the first 8 weeks post-rebuild — more than the previous 12 months combined.</p>
+              </div>
+              <div class="flex flex-wrap gap-2 mt-auto pt-2">
+                <span class="px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 text-[11px] font-semibold">2–4 day feature cycles</span>
+                <span class="px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 text-[11px] font-semibold">0 regressions in 3 months</span>
+                <span class="px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 text-[11px] font-semibold">11 features shipped in 8 wks</span>
+              </div>
+            </div>
+          </div>
+
+          </div>
+        </div><!-- /expandable rows -->
+
+        <!-- Expand / Collapse Toggle -->
+        <div class="flex justify-center mt-6">
+          <button
+            id="toggleComparisons"
+            onclick="(function(){
+              var el = document.getElementById('extraComparisons');
+              var btn = document.getElementById('toggleComparisons');
+              var icon = document.getElementById('toggleIcon');
+              var label = document.getElementById('toggleLabel');
+              var expanded = el.dataset.expanded === 'true';
+              if (!expanded) {
+                el.style.maxHeight = el.scrollHeight + 'px';
+                el.style.opacity = '1';
+                el.dataset.expanded = 'true';
+                label.textContent = 'Show less';
+                icon.style.transform = 'rotate(180deg)';
+              } else {
+                el.style.maxHeight = '0';
+                el.style.opacity = '0';
+                el.dataset.expanded = 'false';
+                label.textContent = '2 more comparisons';
+                icon.style.transform = 'rotate(0deg)';
+              }
+            })()"
+            class="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-200 group cursor-pointer">
+            <span id="toggleLabel" class="text-slate-400 text-sm font-medium group-hover:text-white transition-colors">2 more comparisons</span>
+            <span class="flex items-center justify-center w-5 h-5 rounded-full bg-white/10 group-hover:bg-white/20 transition-all">
+              <iconify-icon id="toggleIcon" icon="lucide:chevron-down" width="12" class="text-slate-400 group-hover:text-white transition-all" style="transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);"></iconify-icon>
+            </span>
+          </button>
+        </div>
+
+        <!-- Bottom CTA -->
+        <div class="text-center mt-12">
+          <p class="text-slate-500 text-sm mb-5">Ready to write your own before → after story?</p>
+          <button onclick="openCalendly()"
+            class="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-gradient-to-r from-blue-600 to-violet-600 text-white text-sm font-semibold hover:opacity-90 transition-opacity shadow-lg shadow-blue-500/20">
+            Book Free Strategy Call
+            <iconify-icon icon="lucide:arrow-right" width="15"></iconify-icon>
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Who This Is For / ICP Section -->
+    <section data-theme="dark" class="py-20 md:py-28 bg-[#060d1b] relative overflow-hidden">
+      <!-- Ambient glows -->
+      <div class="absolute top-0 left-1/4 w-[500px] h-[500px] bg-blue-600/8 rounded-full blur-[130px] pointer-events-none"></div>
+      <div class="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-violet-600/8 rounded-full blur-[110px] pointer-events-none"></div>
+
+      <div class="max-w-7xl mx-auto px-6 lg:px-20 xl:px-32 relative z-10">
+
+        <!-- Header -->
+        <div class="text-center mb-12">
+          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 border border-blue-500/30 text-blue-400 text-[10px] font-bold uppercase tracking-widest mb-5">
+            <iconify-icon icon="lucide:users" width="11"></iconify-icon>
+            Who This Is For
+          </span>
+          <h2 class="text-[1.9rem] md:text-[2.6rem] font-medium text-white tracking-tight font-sf leading-tight">
+            Built for builders who <em class="italic font-light text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-violet-400 to-pink-400">move fast.</em>
+          </h2>
+          <p class="text-gray-500 text-base mt-4 max-w-xl mx-auto leading-relaxed">
+            Not every agency is for everyone. Here's exactly who gets the most from working with us.
+          </p>
+        </div>
+
+        <!-- 3 ICP Cards -->
+        <div class="grid md:grid-cols-3 gap-5 md:gap-6">
+
+          <!-- Card 1: SaaS Founders -->
+          <div class="relative rounded-2xl p-7 bg-gradient-to-br from-blue-950/50 via-[#060d1b] to-blue-900/10 border border-blue-500/20 hover:border-blue-400/50 transition-all duration-300 group cursor-default">
+            <div class="absolute inset-0 rounded-2xl bg-gradient-to-br from-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+            <div class="w-11 h-11 rounded-xl bg-blue-500/15 flex items-center justify-center mb-5 group-hover:bg-blue-500/25 transition-colors border border-blue-500/20">
+              <iconify-icon icon="lucide:rocket" class="text-blue-400" width="20"></iconify-icon>
+            </div>
+            <h3 class="text-white font-bold text-lg mb-2 font-sf tracking-tight">SaaS Founders</h3>
+            <p class="text-gray-400 text-sm leading-relaxed">Building your first product and tired of agencies quoting 6 months? We design and launch MVPs in 2 weeks — so you can validate your idea before burning runway.</p>
+            <div class="mt-5 pt-4 border-t border-white/5 flex items-center gap-2">
+              <div class="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse flex-shrink-0"></div>
+              <span class="text-[10px] font-bold text-blue-400 uppercase tracking-widest">First SaaS · Early-Stage MVPs</span>
+            </div>
+          </div>
+
+          <!-- Card 2: Service Businesses -->
+          <div class="relative rounded-2xl p-7 bg-gradient-to-br from-violet-950/50 via-[#060d1b] to-purple-900/10 border border-violet-500/20 hover:border-violet-400/50 transition-all duration-300 group cursor-default">
+            <div class="absolute inset-0 rounded-2xl bg-gradient-to-br from-violet-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+            <div class="w-11 h-11 rounded-xl bg-violet-500/15 flex items-center justify-center mb-5 group-hover:bg-violet-500/25 transition-colors border border-violet-500/20">
+              <iconify-icon icon="lucide:zap" class="text-violet-400" width="20"></iconify-icon>
+            </div>
+            <h3 class="text-white font-bold text-lg mb-2 font-sf tracking-tight">Service Businesses</h3>
+            <p class="text-gray-400 text-sm leading-relaxed">Drowning in manual work — follow-ups, reports, intake forms? We automate your operations so your team stops firefighting and starts actually growing.</p>
+            <div class="mt-5 pt-4 border-t border-white/5 flex items-center gap-2">
+              <div class="w-1.5 h-1.5 rounded-full bg-violet-400 animate-pulse flex-shrink-0"></div>
+              <span class="text-[10px] font-bold text-violet-400 uppercase tracking-widest">Ops-Heavy · Manual Workflows</span>
+            </div>
+          </div>
+
+          <!-- Card 3: Agencies & Teams -->
+          <div class="relative rounded-2xl p-7 bg-gradient-to-br from-pink-950/50 via-[#060d1b] to-pink-900/10 border border-pink-500/20 hover:border-pink-400/50 transition-all duration-300 group cursor-default">
+            <div class="absolute inset-0 rounded-2xl bg-gradient-to-br from-pink-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+            <div class="w-11 h-11 rounded-xl bg-pink-500/15 flex items-center justify-center mb-5 group-hover:bg-pink-500/25 transition-colors border border-pink-500/20">
+              <iconify-icon icon="lucide:trending-up" class="text-pink-400" width="20"></iconify-icon>
+            </div>
+            <h3 class="text-white font-bold text-lg mb-2 font-sf tracking-tight">Agencies &amp; Teams</h3>
+            <p class="text-gray-400 text-sm leading-relaxed">Need to deliver faster without adding headcount? We extend your capacity with AI workflows and design systems that scale with your client base.</p>
+            <div class="mt-5 pt-4 border-t border-white/5 flex items-center gap-2">
+              <div class="w-1.5 h-1.5 rounded-full bg-pink-400 animate-pulse flex-shrink-0"></div>
+              <span class="text-[10px] font-bold text-pink-400 uppercase tracking-widest">Agencies · Scale &amp; Speed</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bottom quote -->
+        <p class="text-center text-gray-600 text-sm mt-10 italic max-w-xl mx-auto leading-relaxed">
+          "If you're tired of slow teams, expensive agencies, and tools that don't talk to each other — you're in the right place."
+        </p>
+      </div>
+    </section>
+
     <!-- More Capabilities Section -->
     <section id="more-capabilities" data-theme="light" class="py-16 md:py-24 bg-slate-50 overflow-hidden relative">
       <div class="w-full max-w-7xl mx-auto px-6 lg:px-20 xl:px-32 mb-10 text-center md:text-left">
@@ -2722,378 +3112,6 @@
             <iconify-icon icon="lucide:chevron-right" width="20" stroke-width="2"></iconify-icon>
           </button>
         </div>
-      </div>
-    </section>
-
-    <!-- Before / After Comparison Section -->
-    <section data-theme="dark" class="py-20 md:py-28 bg-[#060d1b] relative overflow-hidden" id="before-after">
-      <!-- Ambient glows -->
-      <div class="absolute top-0 right-1/3 w-[600px] h-[600px] bg-violet-700/6 rounded-full blur-[140px] pointer-events-none"></div>
-      <div class="absolute bottom-0 left-1/4 w-[500px] h-[500px] bg-blue-700/6 rounded-full blur-[120px] pointer-events-none"></div>
-
-      <div class="max-w-7xl mx-auto px-6 lg:px-20 xl:px-32 relative z-10">
-
-        <!-- Header -->
-        <div class="text-center mb-14">
-          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 border border-violet-500/30 text-violet-400 text-[10px] font-bold uppercase tracking-widest mb-5">
-            <iconify-icon icon="lucide:arrow-right-left" width="11"></iconify-icon>
-            The LoopSuit Difference
-          </span>
-          <h2 class="text-[1.9rem] md:text-[2.6rem] font-medium text-white tracking-tight font-sf leading-tight">
-            Before LoopSuit <span class="text-slate-600 font-light">vs.</span> After LoopSuit
-          </h2>
-          <p class="text-gray-500 text-base mt-4 max-w-xl mx-auto leading-relaxed">
-            The same challenges — completely different outcomes. Here's what our clients actually experienced.
-          </p>
-        </div>
-
-        <!-- Comparison Rows -->
-        <div class="flex flex-col gap-5">
-
-          <!-- Row 1: Development Speed -->
-          <div class="group grid md:grid-cols-[1fr_auto_1fr] gap-0 md:gap-4 items-stretch rounded-2xl overflow-hidden border border-white/5 hover:border-white/10 transition-all duration-300">
-
-            <!-- Before -->
-            <div class="relative bg-gradient-to-br from-red-950/40 via-[#0f0608] to-[#0a0a0b] border border-red-900/30 rounded-2xl md:rounded-r-none p-6 md:p-8 flex flex-col gap-4">
-              <div class="flex items-center gap-2 mb-1">
-                <span class="flex items-center justify-center w-6 h-6 rounded-full bg-red-500/15 border border-red-500/30">
-                  <iconify-icon icon="lucide:x" width="12" class="text-red-400"></iconify-icon>
-                </span>
-                <span class="text-[10px] font-bold uppercase tracking-widest text-red-400">Before</span>
-              </div>
-              <div>
-                <p class="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-2">Development Takes Forever</p>
-                <p class="text-white/90 text-sm leading-relaxed font-medium">Agency quoted <span class="text-red-300 font-semibold">$74,000 and a 6-month timeline.</span> Discovery phase alone took 5 weeks. First design review pushed delivery to month 8. Product still wasn't finished when the client ran out of runway.</p>
-              </div>
-              <div class="flex flex-wrap gap-2 mt-auto pt-2">
-                <span class="px-2.5 py-1 rounded-full bg-red-500/10 border border-red-500/20 text-red-300 text-[11px] font-semibold">8+ months</span>
-                <span class="px-2.5 py-1 rounded-full bg-red-500/10 border border-red-500/20 text-red-300 text-[11px] font-semibold">$74,000 spent</span>
-                <span class="px-2.5 py-1 rounded-full bg-red-500/10 border border-red-500/20 text-red-300 text-[11px] font-semibold">0 users at launch</span>
-              </div>
-            </div>
-
-            <!-- Arrow Divider -->
-            <div class="hidden md:flex items-center justify-center z-10 self-center shrink-0 my-auto">
-              <div class="flex flex-col items-center gap-1">
-                <div class="w-9 h-9 rounded-full bg-gradient-to-br from-blue-600 to-violet-600 flex items-center justify-center shadow-lg shadow-blue-500/25">
-                  <iconify-icon icon="lucide:arrow-right" width="16" class="text-white"></iconify-icon>
-                </div>
-              </div>
-            </div>
-            <div class="flex md:hidden items-center justify-center py-2">
-              <div class="w-8 h-8 rounded-full bg-gradient-to-br from-blue-600 to-violet-600 flex items-center justify-center shadow-lg">
-                <iconify-icon icon="lucide:arrow-down" width="14" class="text-white"></iconify-icon>
-              </div>
-            </div>
-
-            <!-- After -->
-            <div class="relative bg-gradient-to-br from-emerald-950/40 via-[#030f08] to-[#0a0a0b] border border-emerald-900/30 rounded-2xl md:rounded-l-none p-6 md:p-8 flex flex-col gap-4">
-              <div class="flex items-center gap-2 mb-1">
-                <span class="flex items-center justify-center w-6 h-6 rounded-full bg-emerald-500/15 border border-emerald-500/30">
-                  <iconify-icon icon="lucide:check" width="12" class="text-emerald-400"></iconify-icon>
-                </span>
-                <span class="text-[10px] font-bold uppercase tracking-widest text-emerald-400">After LoopSuit</span>
-              </div>
-              <div>
-                <p class="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-2">Development Takes Forever</p>
-                <p class="text-white/90 text-sm leading-relaxed font-medium">Full-stack MVP designed, built, and shipped in <span class="text-emerald-300 font-semibold">11 days for $9,800.</span> First paying customer signed up within 48 hours of going live. Three months later, the product had $22K MRR and a seed round in progress.</p>
-              </div>
-              <div class="flex flex-wrap gap-2 mt-auto pt-2">
-                <span class="px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 text-[11px] font-semibold">11-day launch</span>
-                <span class="px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 text-[11px] font-semibold">$9,800 total cost</span>
-                <span class="px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 text-[11px] font-semibold">$22K MRR in 90 days</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Row 2: Manual Work -->
-          <div class="group grid md:grid-cols-[1fr_auto_1fr] gap-0 md:gap-4 items-stretch rounded-2xl overflow-hidden border border-white/5 hover:border-white/10 transition-all duration-300">
-
-            <!-- Before -->
-            <div class="relative bg-gradient-to-br from-red-950/40 via-[#0f0608] to-[#0a0a0b] border border-red-900/30 rounded-2xl md:rounded-r-none p-6 md:p-8 flex flex-col gap-4">
-              <div class="flex items-center gap-2 mb-1">
-                <span class="flex items-center justify-center w-6 h-6 rounded-full bg-red-500/15 border border-red-500/30">
-                  <iconify-icon icon="lucide:x" width="12" class="text-red-400"></iconify-icon>
-                </span>
-                <span class="text-[10px] font-bold uppercase tracking-widest text-red-400">Before</span>
-              </div>
-              <div>
-                <p class="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-2">Manual Work Drains Team</p>
-                <p class="text-white/90 text-sm leading-relaxed font-medium">Sales team spent <span class="text-red-300 font-semibold">23 hours every week</span> manually transferring form submissions into the CRM, copy-pasting data into invoice templates, and sending individual follow-up emails. Two full-time staff doing the work of a spreadsheet.</p>
-              </div>
-              <div class="flex flex-wrap gap-2 mt-auto pt-2">
-                <span class="px-2.5 py-1 rounded-full bg-red-500/10 border border-red-500/20 text-red-300 text-[11px] font-semibold">23 hrs/week wasted</span>
-                <span class="px-2.5 py-1 rounded-full bg-red-500/10 border border-red-500/20 text-red-300 text-[11px] font-semibold">~$6,400/month in labour</span>
-                <span class="px-2.5 py-1 rounded-full bg-red-500/10 border border-red-500/20 text-red-300 text-[11px] font-semibold">48hr average follow-up delay</span>
-              </div>
-            </div>
-
-            <!-- Arrow Divider -->
-            <div class="hidden md:flex items-center justify-center z-10 self-center shrink-0 my-auto">
-              <div class="w-9 h-9 rounded-full bg-gradient-to-br from-blue-600 to-violet-600 flex items-center justify-center shadow-lg shadow-blue-500/25">
-                <iconify-icon icon="lucide:arrow-right" width="16" class="text-white"></iconify-icon>
-              </div>
-            </div>
-            <div class="flex md:hidden items-center justify-center py-2">
-              <div class="w-8 h-8 rounded-full bg-gradient-to-br from-blue-600 to-violet-600 flex items-center justify-center shadow-lg">
-                <iconify-icon icon="lucide:arrow-down" width="14" class="text-white"></iconify-icon>
-              </div>
-            </div>
-
-            <!-- After -->
-            <div class="relative bg-gradient-to-br from-emerald-950/40 via-[#030f08] to-[#0a0a0b] border border-emerald-900/30 rounded-2xl md:rounded-l-none p-6 md:p-8 flex flex-col gap-4">
-              <div class="flex items-center gap-2 mb-1">
-                <span class="flex items-center justify-center w-6 h-6 rounded-full bg-emerald-500/15 border border-emerald-500/30">
-                  <iconify-icon icon="lucide:check" width="12" class="text-emerald-400"></iconify-icon>
-                </span>
-                <span class="text-[10px] font-bold uppercase tracking-widest text-emerald-400">After LoopSuit</span>
-              </div>
-              <div>
-                <p class="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-2">Manual Work Drains Team</p>
-                <p class="text-white/90 text-sm leading-relaxed font-medium">End-to-end automation now handles lead capture, CRM entry, invoice generation, and a 5-step follow-up sequence — <span class="text-emerald-300 font-semibold">running 24/7 without a single human touch.</span> The team redirected those 20+ hours toward closing deals. Revenue up 31% in two months.</p>
-              </div>
-              <div class="flex flex-wrap gap-2 mt-auto pt-2">
-                <span class="px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 text-[11px] font-semibold">20+ hrs/week reclaimed</span>
-                <span class="px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 text-[11px] font-semibold">Follows up in &lt;4 min</span>
-                <span class="px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 text-[11px] font-semibold">+31% revenue in 60 days</span>
-              </div>
-            </div>
-          </div>
-
-        </div><!-- /visible rows -->
-
-        <!-- Expandable rows wrapper -->
-        <div id="extraComparisons" style="max-height:0;overflow:hidden;transition:max-height 0.55s cubic-bezier(0.4,0,0.2,1), opacity 0.4s ease;" class="opacity-0">
-          <div class="flex flex-col gap-5 pt-5">
-
-          <!-- Row 3: Generic Tools -->
-          <div class="group grid md:grid-cols-[1fr_auto_1fr] gap-0 md:gap-4 items-stretch rounded-2xl overflow-hidden border border-white/5 hover:border-white/10 transition-all duration-300">
-
-            <!-- Before -->
-            <div class="relative bg-gradient-to-br from-red-950/40 via-[#0f0608] to-[#0a0a0b] border border-red-900/30 rounded-2xl md:rounded-r-none p-6 md:p-8 flex flex-col gap-4">
-              <div class="flex items-center gap-2 mb-1">
-                <span class="flex items-center justify-center w-6 h-6 rounded-full bg-red-500/15 border border-red-500/30">
-                  <iconify-icon icon="lucide:x" width="12" class="text-red-400"></iconify-icon>
-                </span>
-                <span class="text-[10px] font-bold uppercase tracking-widest text-red-400">Before</span>
-              </div>
-              <div>
-                <p class="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-2">Generic Tools Don't Fit</p>
-                <p class="text-white/90 text-sm leading-relaxed font-medium">Seven disconnected SaaS tools — Zapier, Airtable, Typeform, Notion, Slack, HubSpot, and a custom Google Sheet — held together by <span class="text-red-300 font-semibold">duct-tape automations that broke weekly.</span> $1,340/month in subscriptions. Constant data gaps and manual error-fixing.</p>
-              </div>
-              <div class="flex flex-wrap gap-2 mt-auto pt-2">
-                <span class="px-2.5 py-1 rounded-full bg-red-500/10 border border-red-500/20 text-red-300 text-[11px] font-semibold">7 disconnected tools</span>
-                <span class="px-2.5 py-1 rounded-full bg-red-500/10 border border-red-500/20 text-red-300 text-[11px] font-semibold">$1,340/month in SaaS</span>
-                <span class="px-2.5 py-1 rounded-full bg-red-500/10 border border-red-500/20 text-red-300 text-[11px] font-semibold">Weekly breakages</span>
-              </div>
-            </div>
-
-            <!-- Arrow Divider -->
-            <div class="hidden md:flex items-center justify-center z-10 self-center shrink-0 my-auto">
-              <div class="w-9 h-9 rounded-full bg-gradient-to-br from-blue-600 to-violet-600 flex items-center justify-center shadow-lg shadow-blue-500/25">
-                <iconify-icon icon="lucide:arrow-right" width="16" class="text-white"></iconify-icon>
-              </div>
-            </div>
-            <div class="flex md:hidden items-center justify-center py-2">
-              <div class="w-8 h-8 rounded-full bg-gradient-to-br from-blue-600 to-violet-600 flex items-center justify-center shadow-lg">
-                <iconify-icon icon="lucide:arrow-down" width="14" class="text-white"></iconify-icon>
-              </div>
-            </div>
-
-            <!-- After -->
-            <div class="relative bg-gradient-to-br from-emerald-950/40 via-[#030f08] to-[#0a0a0b] border border-emerald-900/30 rounded-2xl md:rounded-l-none p-6 md:p-8 flex flex-col gap-4">
-              <div class="flex items-center gap-2 mb-1">
-                <span class="flex items-center justify-center w-6 h-6 rounded-full bg-emerald-500/15 border border-emerald-500/30">
-                  <iconify-icon icon="lucide:check" width="12" class="text-emerald-400"></iconify-icon>
-                </span>
-                <span class="text-[10px] font-bold uppercase tracking-widest text-emerald-400">After LoopSuit</span>
-              </div>
-              <div>
-                <p class="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-2">Generic Tools Don't Fit</p>
-                <p class="text-white/90 text-sm leading-relaxed font-medium">A single, <span class="text-emerald-300 font-semibold">purpose-built system replaced all seven tools.</span> One dashboard. Zero patchwork integrations. Every edge case in their workflow — the weird exceptions that Zapier couldn't handle — now works flawlessly. SaaS spend dropped to $290/month.</p>
-              </div>
-              <div class="flex flex-wrap gap-2 mt-auto pt-2">
-                <span class="px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 text-[11px] font-semibold">1 unified system</span>
-                <span class="px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 text-[11px] font-semibold">$290/month (saved $1,050)</span>
-                <span class="px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 text-[11px] font-semibold">Zero breakages since launch</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Row 4: Technical Debt -->
-          <div class="group grid md:grid-cols-[1fr_auto_1fr] gap-0 md:gap-4 items-stretch rounded-2xl overflow-hidden border border-white/5 hover:border-white/10 transition-all duration-300">
-
-            <!-- Before -->
-            <div class="relative bg-gradient-to-br from-red-950/40 via-[#0f0608] to-[#0a0a0b] border border-red-900/30 rounded-2xl md:rounded-r-none p-6 md:p-8 flex flex-col gap-4">
-              <div class="flex items-center gap-2 mb-1">
-                <span class="flex items-center justify-center w-6 h-6 rounded-full bg-red-500/15 border border-red-500/30">
-                  <iconify-icon icon="lucide:x" width="12" class="text-red-400"></iconify-icon>
-                </span>
-                <span class="text-[10px] font-bold uppercase tracking-widest text-red-400">Before</span>
-              </div>
-              <div>
-                <p class="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-2">Technical Debt Kills Momentum</p>
-                <p class="text-white/90 text-sm leading-relaxed font-medium">Every new feature required a 2-week sprint and risked breaking three other things. A "quick" onboarding flow change took <span class="text-red-300 font-semibold">6 weeks and introduced 4 regressions.</span> Engineers dreaded touching core files. Roadmap effectively frozen for 5 months.</p>
-              </div>
-              <div class="flex flex-wrap gap-2 mt-auto pt-2">
-                <span class="px-2.5 py-1 rounded-full bg-red-500/10 border border-red-500/20 text-red-300 text-[11px] font-semibold">2-week sprints per change</span>
-                <span class="px-2.5 py-1 rounded-full bg-red-500/10 border border-red-500/20 text-red-300 text-[11px] font-semibold">Constant regressions</span>
-                <span class="px-2.5 py-1 rounded-full bg-red-500/10 border border-red-500/20 text-red-300 text-[11px] font-semibold">5-month roadmap freeze</span>
-              </div>
-            </div>
-
-            <!-- Arrow Divider -->
-            <div class="hidden md:flex items-center justify-center z-10 self-center shrink-0 my-auto">
-              <div class="w-9 h-9 rounded-full bg-gradient-to-br from-blue-600 to-violet-600 flex items-center justify-center shadow-lg shadow-blue-500/25">
-                <iconify-icon icon="lucide:arrow-right" width="16" class="text-white"></iconify-icon>
-              </div>
-            </div>
-            <div class="flex md:hidden items-center justify-center py-2">
-              <div class="w-8 h-8 rounded-full bg-gradient-to-br from-blue-600 to-violet-600 flex items-center justify-center shadow-lg">
-                <iconify-icon icon="lucide:arrow-down" width="14" class="text-white"></iconify-icon>
-              </div>
-            </div>
-
-            <!-- After -->
-            <div class="relative bg-gradient-to-br from-emerald-950/40 via-[#030f08] to-[#0a0a0b] border border-emerald-900/30 rounded-2xl md:rounded-l-none p-6 md:p-8 flex flex-col gap-4">
-              <div class="flex items-center gap-2 mb-1">
-                <span class="flex items-center justify-center w-6 h-6 rounded-full bg-emerald-500/15 border border-emerald-500/30">
-                  <iconify-icon icon="lucide:check" width="12" class="text-emerald-400"></iconify-icon>
-                </span>
-                <span class="text-[10px] font-bold uppercase tracking-widest text-emerald-400">After LoopSuit</span>
-              </div>
-              <div>
-                <p class="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-2">Technical Debt Kills Momentum</p>
-                <p class="text-white/90 text-sm leading-relaxed font-medium">Rebuilt from the ground up with a modular, well-documented architecture. New features now ship in <span class="text-emerald-300 font-semibold">2–4 days with zero regressions.</span> The team shipped 11 features in the first 8 weeks post-rebuild — more than the previous 12 months combined.</p>
-              </div>
-              <div class="flex flex-wrap gap-2 mt-auto pt-2">
-                <span class="px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 text-[11px] font-semibold">2–4 day feature cycles</span>
-                <span class="px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 text-[11px] font-semibold">0 regressions in 3 months</span>
-                <span class="px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 text-[11px] font-semibold">11 features shipped in 8 wks</span>
-              </div>
-            </div>
-          </div>
-
-          </div>
-        </div><!-- /expandable rows -->
-
-        <!-- Expand / Collapse Toggle -->
-        <div class="flex justify-center mt-6">
-          <button
-            id="toggleComparisons"
-            onclick="(function(){
-              var el = document.getElementById('extraComparisons');
-              var btn = document.getElementById('toggleComparisons');
-              var icon = document.getElementById('toggleIcon');
-              var label = document.getElementById('toggleLabel');
-              var expanded = el.dataset.expanded === 'true';
-              if (!expanded) {
-                el.style.maxHeight = el.scrollHeight + 'px';
-                el.style.opacity = '1';
-                el.dataset.expanded = 'true';
-                label.textContent = 'Show less';
-                icon.style.transform = 'rotate(180deg)';
-              } else {
-                el.style.maxHeight = '0';
-                el.style.opacity = '0';
-                el.dataset.expanded = 'false';
-                label.textContent = '2 more comparisons';
-                icon.style.transform = 'rotate(0deg)';
-              }
-            })()"
-            class="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-200 group cursor-pointer">
-            <span id="toggleLabel" class="text-slate-400 text-sm font-medium group-hover:text-white transition-colors">2 more comparisons</span>
-            <span class="flex items-center justify-center w-5 h-5 rounded-full bg-white/10 group-hover:bg-white/20 transition-all">
-              <iconify-icon id="toggleIcon" icon="lucide:chevron-down" width="12" class="text-slate-400 group-hover:text-white transition-all" style="transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);"></iconify-icon>
-            </span>
-          </button>
-        </div>
-
-        <!-- Bottom CTA -->
-        <div class="text-center mt-12">
-          <p class="text-slate-500 text-sm mb-5">Ready to write your own before → after story?</p>
-          <button onclick="openCalendly()"
-            class="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-gradient-to-r from-blue-600 to-violet-600 text-white text-sm font-semibold hover:opacity-90 transition-opacity shadow-lg shadow-blue-500/20">
-            Book Free Strategy Call
-            <iconify-icon icon="lucide:arrow-right" width="15"></iconify-icon>
-          </button>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- Who This Is For / ICP Section -->
-    <section data-theme="dark" class="py-20 md:py-28 bg-[#060d1b] relative overflow-hidden">
-      <!-- Ambient glows -->
-      <div class="absolute top-0 left-1/4 w-[500px] h-[500px] bg-blue-600/8 rounded-full blur-[130px] pointer-events-none"></div>
-      <div class="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-violet-600/8 rounded-full blur-[110px] pointer-events-none"></div>
-
-      <div class="max-w-7xl mx-auto px-6 lg:px-20 xl:px-32 relative z-10">
-
-        <!-- Header -->
-        <div class="text-center mb-12">
-          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 border border-blue-500/30 text-blue-400 text-[10px] font-bold uppercase tracking-widest mb-5">
-            <iconify-icon icon="lucide:users" width="11"></iconify-icon>
-            Who This Is For
-          </span>
-          <h2 class="text-[1.9rem] md:text-[2.6rem] font-medium text-white tracking-tight font-sf leading-tight">
-            Built for builders who <em class="italic font-light text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-violet-400 to-pink-400">move fast.</em>
-          </h2>
-          <p class="text-gray-500 text-base mt-4 max-w-xl mx-auto leading-relaxed">
-            Not every agency is for everyone. Here's exactly who gets the most from working with us.
-          </p>
-        </div>
-
-        <!-- 3 ICP Cards -->
-        <div class="grid md:grid-cols-3 gap-5 md:gap-6">
-
-          <!-- Card 1: SaaS Founders -->
-          <div class="relative rounded-2xl p-7 bg-gradient-to-br from-blue-950/50 via-[#060d1b] to-blue-900/10 border border-blue-500/20 hover:border-blue-400/50 transition-all duration-300 group cursor-default">
-            <div class="absolute inset-0 rounded-2xl bg-gradient-to-br from-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
-            <div class="w-11 h-11 rounded-xl bg-blue-500/15 flex items-center justify-center mb-5 group-hover:bg-blue-500/25 transition-colors border border-blue-500/20">
-              <iconify-icon icon="lucide:rocket" class="text-blue-400" width="20"></iconify-icon>
-            </div>
-            <h3 class="text-white font-bold text-lg mb-2 font-sf tracking-tight">SaaS Founders</h3>
-            <p class="text-gray-400 text-sm leading-relaxed">Building your first product and tired of agencies quoting 6 months? We design and launch MVPs in 2 weeks — so you can validate your idea before burning runway.</p>
-            <div class="mt-5 pt-4 border-t border-white/5 flex items-center gap-2">
-              <div class="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse flex-shrink-0"></div>
-              <span class="text-[10px] font-bold text-blue-400 uppercase tracking-widest">First SaaS · Early-Stage MVPs</span>
-            </div>
-          </div>
-
-          <!-- Card 2: Service Businesses -->
-          <div class="relative rounded-2xl p-7 bg-gradient-to-br from-violet-950/50 via-[#060d1b] to-purple-900/10 border border-violet-500/20 hover:border-violet-400/50 transition-all duration-300 group cursor-default">
-            <div class="absolute inset-0 rounded-2xl bg-gradient-to-br from-violet-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
-            <div class="w-11 h-11 rounded-xl bg-violet-500/15 flex items-center justify-center mb-5 group-hover:bg-violet-500/25 transition-colors border border-violet-500/20">
-              <iconify-icon icon="lucide:zap" class="text-violet-400" width="20"></iconify-icon>
-            </div>
-            <h3 class="text-white font-bold text-lg mb-2 font-sf tracking-tight">Service Businesses</h3>
-            <p class="text-gray-400 text-sm leading-relaxed">Drowning in manual work — follow-ups, reports, intake forms? We automate your operations so your team stops firefighting and starts actually growing.</p>
-            <div class="mt-5 pt-4 border-t border-white/5 flex items-center gap-2">
-              <div class="w-1.5 h-1.5 rounded-full bg-violet-400 animate-pulse flex-shrink-0"></div>
-              <span class="text-[10px] font-bold text-violet-400 uppercase tracking-widest">Ops-Heavy · Manual Workflows</span>
-            </div>
-          </div>
-
-          <!-- Card 3: Agencies & Teams -->
-          <div class="relative rounded-2xl p-7 bg-gradient-to-br from-pink-950/50 via-[#060d1b] to-pink-900/10 border border-pink-500/20 hover:border-pink-400/50 transition-all duration-300 group cursor-default">
-            <div class="absolute inset-0 rounded-2xl bg-gradient-to-br from-pink-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
-            <div class="w-11 h-11 rounded-xl bg-pink-500/15 flex items-center justify-center mb-5 group-hover:bg-pink-500/25 transition-colors border border-pink-500/20">
-              <iconify-icon icon="lucide:trending-up" class="text-pink-400" width="20"></iconify-icon>
-            </div>
-            <h3 class="text-white font-bold text-lg mb-2 font-sf tracking-tight">Agencies &amp; Teams</h3>
-            <p class="text-gray-400 text-sm leading-relaxed">Need to deliver faster without adding headcount? We extend your capacity with AI workflows and design systems that scale with your client base.</p>
-            <div class="mt-5 pt-4 border-t border-white/5 flex items-center gap-2">
-              <div class="w-1.5 h-1.5 rounded-full bg-pink-400 animate-pulse flex-shrink-0"></div>
-              <span class="text-[10px] font-bold text-pink-400 uppercase tracking-widest">Agencies · Scale &amp; Speed</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Bottom quote -->
-        <p class="text-center text-gray-600 text-sm mt-10 italic max-w-xl mx-auto leading-relaxed">
-          "If you're tired of slow teams, expensive agencies, and tools that don't talk to each other — you're in the right place."
-        </p>
       </div>
     </section>
 
