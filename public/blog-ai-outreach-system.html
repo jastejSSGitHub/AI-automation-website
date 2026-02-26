@@ -12,7 +12,7 @@
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://loopsuitai.com/blog-ai-outreach-system.html">
   <meta property="og:title" content="The AI Outreach System That Books 150+ Demos Per Month on Autopilot | LoopSuit">
-  <meta property="og:description" content="Data enrichment, LLM personalisation, multi-touch sequences, and automated reply handling ? the complete outreach stack.">
+  <meta property="og:description" content="Data enrichment, LLM personalisation, multi-touch sequences, and automated reply handling &mdash; the complete outreach stack.">
   <meta property="og:image" content="https://loopsuitai.com/api/og">
   <meta property="og:site_name" content="LoopSuit">
   <meta name="twitter:card" content="summary_large_image">
@@ -63,72 +63,7 @@
     .share-btn { width: 42px; height: 42px; border-radius: 50%; border: 1.5px solid #cbd5e1; display: flex; align-items: center; justify-content: center; color: #64748b; transition: all 0.2s; background: transparent; }
     .share-btn:hover { border-color: #475569; color: #0f172a; }
     .tag-pill { display: inline-flex; align-items: center; padding: 4px 12px; border-radius: 9999px; border: 1.5px solid #e2e8f0; background: #fff; font-size: 0.75rem; color: #64748b; font-weight: 500; }
-      /* Blog sticky strategy CTA */
-    .blog-session-sticky {
-      position: sticky;
-      top: 6.5rem;
-      z-index: 35;
-      margin-bottom: 1.5rem;
-    }
-    .blog-session-card {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      padding: 0.9rem 1rem;
-      border-radius: 14px;
-      border: 1px solid #dbe4f5;
-      background: linear-gradient(135deg, rgba(255,255,255,0.98), rgba(248,250,255,0.98));
-      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
-    }
-    .blog-session-copy { min-width: 0; }
-    .blog-session-eyebrow {
-      font-size: 0.62rem;
-      font-weight: 700;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: #2563eb;
-      margin-bottom: 0.2rem;
-    }
-    .blog-session-text {
-      margin: 0;
-      font-size: 0.82rem;
-      line-height: 1.5;
-      color: #475569;
-    }
-    .blog-session-btn {
-      flex-shrink: 0;
-      border-radius: 9999px;
-      border: 1px solid #93c5fd;
-      background: #eff6ff;
-      color: #1d4ed8;
-      font-weight: 600;
-      font-size: 0.78rem;
-      padding: 0.62rem 0.95rem;
-      transition: all 0.2s ease;
-      white-space: nowrap;
-    }
-    .blog-session-btn:hover {
-      background: #dbeafe;
-      border-color: #60a5fa;
-      color: #1e40af;
-      transform: translateY(-1px);
-    }
-    @media (max-width: 1024px) {
-      .blog-session-sticky { top: 5.2rem; }
-    }
-    @media (max-width: 640px) {
-      .blog-session-card {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 0.9rem;
-      }
-      .blog-session-btn {
-        width: 100%;
-        text-align: center;
-      }
-    }
-  </style>
+</style>
 </head>
 <body>
   <div id="reading-progress" style="width: 0%"></div>
@@ -139,13 +74,14 @@
       <a href="services.html" class="text-4xl font-sf font-semibold text-white hover:text-blue-400 transition-colors" onclick="closeMobileMenu()">Services</a>
       <a href="case-studies.html" class="text-4xl font-sf font-semibold text-white hover:text-blue-400 transition-colors" onclick="closeMobileMenu()">Case Studies</a>
       <a href="blog.html" class="text-4xl font-sf font-semibold text-blue-400">Blog</a>
+      <a href="contact.html" class="text-4xl font-sf font-semibold text-white tracking-tight hover:text-blue-500 transition-colors">Contact</a>
     </div>
     <div class="mt-14 w-full px-12 max-w-sm"><button class="shiny-cta w-full justify-center" onclick="closeMobileMenu(); openCalendly()"><span>Book Free Call</span></button></div>
   </nav>
   <header id="main-navbar" class="fixed top-0 left-0 right-0 z-[100] pt-5 px-4 md:pt-6 md:px-6 transition-all duration-300">
     <nav class="max-w-[95%] mx-auto rounded-full px-5 py-2.5 transition-all duration-300 glass-nav" id="inner-nav">
       <div class="flex items-center justify-between relative">
-        <a href="index.html" class="flex items-center gap-3"><div class="text-xl font-black italic tracking-tighter text-white">LOOPSUIT<sup class="text-[8px] not-italic text-gray-500">?</sup></div></a>
+        <a href="index.html" class="flex items-center gap-3"><div class="text-xl font-black italic tracking-tighter text-white">LOOPSUIT<sup class="text-[8px] not-italic text-gray-500">&reg;</sup></div></a>
         <div class="hidden lg:flex items-center gap-8 text-sm font-medium text-gray-300 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
           <div class="relative group">
             <button class="flex items-center gap-1 hover:text-white transition-colors py-2">
@@ -177,7 +113,7 @@
                   </div>
                   <div class="flex flex-col">
                     <span class="text-sm font-semibold text-slate-900 leading-tight">Automate Customer Support</span>
-                    <span class="text-[11px] text-slate-500 font-medium mt-1 leading-snug">24/7 AI support handles 80% automatically?instant answers</span>
+                    <span class="text-[11px] text-slate-500 font-medium mt-1 leading-snug">24/7 AI support handles 80% automatically&mdash;instant answers</span>
                   </div>
                 </a>
                 <a href="index.html#package-premium" class="flex items-start gap-4 p-3 rounded-xl hover:bg-slate-50 transition-colors group/item">
@@ -195,6 +131,7 @@
           <a href="services.html" class="hover:text-white transition-colors">Services</a>
           <a href="case-studies.html" class="hover:text-white transition-colors">Case Studies</a>
           <a href="blog.html" class="text-white font-semibold">Blog</a>
+          <a href="contact.html" class="hover:text-white transition-colors">Contact</a>
         </div>
         <div class="flex items-center gap-3">
           <button class="shiny-cta hidden lg:flex text-xs px-4 py-2" onclick="openCalendly()"><span>Book Free Call</span></button>
@@ -237,7 +174,7 @@
           <div class="border border-slate-200 rounded-xl bg-[#F7F6F2] overflow-hidden">
             <div class="flex items-center justify-between px-4 py-3 border-b border-slate-200">
               <span class="text-[10px] font-bold uppercase tracking-[0.18em] text-slate-500">Table of Contents</span>
-              <button id="toc-toggle" onclick="toggleToc()" class="text-slate-400 hover:text-slate-700 transition-colors text-lg leading-none font-light">?</button>
+              <button id="toc-toggle" onclick="toggleToc()" class="text-slate-400 hover:text-slate-700 transition-colors text-lg leading-none font-light">-</button>
             </div>
             <nav id="toc-body" class="px-4 py-3" style="max-height: 400px;">
               <a href="#why-cold-outreach-fails" class="toc-link toc-active">Why cold outreach fails</a>
@@ -254,63 +191,53 @@
       </aside>
 
       <article class="article-body min-w-0">
-        <!-- Sticky Strategy Session CTA -->
-        <div class="blog-session-sticky">
-          <div class="blog-session-card">
-            <div class="blog-session-copy">
-              <p class="blog-session-eyebrow">Free Strategy Session</p>
-              <p class="blog-session-text">Get a clear automation roadmap in 30 minutes. No pressure, just practical next steps for your team.</p>
-            </div>
-            <button onclick="openCalendly()" class="blog-session-btn">Book Free Strategy Session</button>
-          </div>
-        </div>
-        <div class="mb-8 pb-8 border-b border-slate-200">
+<div class="mb-8 pb-8 border-b border-slate-200">
           <p class="text-blue-600 text-[11px] font-bold uppercase tracking-[0.2em] mb-3">TL;DR</p>
           <p class="text-slate-700 leading-relaxed text-base">The gap between a manual SDR and an AI outreach system is 10x in volume and 3x in consistency. The system has four parts: <strong>data enrichment</strong> (who to contact and why), <strong>LLM personalisation</strong> (what to say), <strong>multi-touch sequences</strong> (when and how to follow up), and <strong>automated reply handling</strong> (what happens when someone says yes). Here's how to build each layer.</p>
         </div>
 
         <section id="why-cold-outreach-fails">
           <h2>Why Cold Outreach Fails at Scale (And Why AI Changes That)</h2>
-          <p>Cold outreach has a volume-quality trade-off baked into the traditional model. A human SDR can send personalised emails to 40?60 prospects per day ? any more and quality collapses into copy-paste templates that get ignored. But 50 emails/day into a market of 50,000 addressable accounts means it takes three years to work through your list once.</p>
+          <p>Cold outreach has a volume-quality trade-off baked into the traditional model. A human SDR can send personalised emails to 40&ndash;60 prospects per day &mdash; any more and quality collapses into copy-paste templates that get ignored. But 50 emails/day into a market of 50,000 addressable accounts means it takes three years to work through your list once.</p>
           <p>The three failure modes of traditional cold outreach:</p>
           <ul>
-            <li><strong>Generic personalisation</strong> ? "Hi [First Name], I noticed you're in the [Industry] space" isn't personalisation. It's a mail merge. Recipients have been trained to delete it.</li>
-            <li><strong>Inconsistent follow-up</strong> ? most buyers need 4?7 touches before they respond. Human SDRs lose track after touch 2. The majority of deals are lost in the follow-up gap, not the first email.</li>
-            <li><strong>No reply intelligence</strong> ? when someone replies "not right now," that lead gets dropped. An intelligent system captures that signal and re-engages at the right time.</li>
+            <li><strong>Generic personalisation</strong> &mdash; "Hi [First Name], I noticed you're in the [Industry] space" isn't personalisation. It's a mail merge. Recipients have been trained to delete it.</li>
+            <li><strong>Inconsistent follow-up</strong> &mdash; most buyers need 4&ndash;7 touches before they respond. Human SDRs lose track after touch 2. The majority of deals are lost in the follow-up gap, not the first email.</li>
+            <li><strong>No reply intelligence</strong> &mdash; when someone replies "not right now," that lead gets dropped. An intelligent system captures that signal and re-engages at the right time.</li>
           </ul>
           <p>AI resolves all three, at 500+ emails per day, without degradation in quality.</p>
         </section>
 
         <section id="data-enrichment">
-          <h2>Layer 1: Data Enrichment ? Knowing Who to Contact and Why</h2>
-          <p>The quality of your outreach is entirely determined by the quality of your lead data. Not just name and email ? <strong>contextual signals</strong> that make personalisation meaningful and timing relevant.</p>
+          <h2>Layer 1: Data Enrichment &mdash; Knowing Who to Contact and Why</h2>
+          <p>The quality of your outreach is entirely determined by the quality of your lead data. Not just name and email &mdash; <strong>contextual signals</strong> that make personalisation meaningful and timing relevant.</p>
           <p>Our enrichment stack pulls from multiple sources via API:</p>
           <ul>
-            <li><strong>Apollo or Clay</strong> for base contact data ? company, role, email, LinkedIn URL</li>
+            <li><strong>Apollo or Clay</strong> for base contact data &mdash; company, role, email, LinkedIn URL</li>
             <li><strong>LinkedIn Sales Navigator API</strong> for recent activity, posts, and career history</li>
-            <li><strong>Clearbit / ZoomInfo</strong> for company technographics ? what tools they use (Salesforce, HubSpot, Intercom), funding round, headcount growth</li>
-            <li><strong>Job posting scrapers</strong> ? active job postings reveal priority initiatives. A company hiring 10 SDRs is investing in outbound. That's a buying signal for your outreach automation platform.</li>
+            <li><strong>Clearbit / ZoomInfo</strong> for company technographics &mdash; what tools they use (Salesforce, HubSpot, Intercom), funding round, headcount growth</li>
+            <li><strong>Job posting scrapers</strong> &mdash; active job postings reveal priority initiatives. A company hiring 10 SDRs is investing in outbound. That's a buying signal for your outreach automation platform.</li>
             <li><strong>Intent data providers</strong> (Bombora, G2 Intent) for accounts actively researching in your category</li>
           </ul>
-          <p>The enrichment workflow runs automatically: new leads enter a webhook, enrichment APIs fire in sequence, the output is a structured JSON record for each prospect with 20?30 data points. This record feeds the personalisation layer.</p>
+          <p>The enrichment workflow runs automatically: new leads enter a webhook, enrichment APIs fire in sequence, the output is a structured JSON record for each prospect with 20&ndash;30 data points. This record feeds the personalisation layer.</p>
 
           <h3>The ICP Filter</h3>
           <p>Not all enriched leads get contacted. An automated scoring model filters against your Ideal Customer Profile before any email is generated. Score based on: company size, industry, tech stack fit, funding recency, headcount trajectory, and job title seniority. Only leads above a threshold score enter the sequence. This keeps your reply rate high and your unsubscribe rate low.</p>
         </section>
 
         <section id="llm-personalisation">
-          <h2>Layer 2: LLM Personalisation ? What to Actually Say</h2>
+          <h2>Layer 2: LLM Personalisation &mdash; What to Actually Say</h2>
           <p>This is where the leverage lives. An LLM with access to the enriched prospect record can generate a genuinely personalised opening line that no copy-paste template can replicate.</p>
           <p>The prompt structure that works:</p>
           <ul>
             <li><strong>Context injection</strong>: Company name, prospect name, their role, a recent LinkedIn post they wrote, their tech stack, their current headcount</li>
             <li><strong>Personalisation instruction</strong>: "Write a 2-sentence opening that references something specific about [Prospect Name]'s recent work or their company's current situation. Do not be generic. Do not mention their industry unless you have a specific insight about it."</li>
             <li><strong>Value proposition</strong>: One specific benefit relevant to their situation (not a generic pitch)</li>
-            <li><strong>CTA</strong>: A low-friction ask ? "Worth a 15-minute call?" ? not "Book a demo of our enterprise platform"</li>
+            <li><strong>CTA</strong>: A low-friction ask &mdash; "Worth a 15-minute call?" &mdash; not "Book a demo of our enterprise platform"</li>
           </ul>
-          <p>The email is assembled in layers: personalised opening (LLM-generated) + value proposition (template with variable injection) + CTA (fixed). Total length: 80?120 words. Subject line: generated separately with the instruction to be curiosity-provoking and specific, never vague.</p>
+          <p>The email is assembled in layers: personalised opening (LLM-generated) + value proposition (template with variable injection) + CTA (fixed). Total length: 80&ndash;120 words. Subject line: generated separately with the instruction to be curiosity-provoking and specific, never vague.</p>
           <p>Example output for a SaaS tool targeting ops leaders at Series B companies:</p>
-          <p><em>"Saw your post on the challenges of scaling your support team without proportional headcount growth ? that's exactly the problem we solve. [Company] has helped 40 ops leaders at Series B companies like yours reduce support ticket volume by 70% using AI triage, without adding headcount. Worth 15 minutes to see if it fits?"</em></p>
+          <p><em>"Saw your post on the challenges of scaling your support team without proportional headcount growth &mdash; that's exactly the problem we solve. [Company] has helped 40 ops leaders at Series B companies like yours reduce support ticket volume by 70% using AI triage, without adding headcount. Worth 15 minutes to see if it fits?"</em></p>
           <p>That email took 0.4 seconds to generate. It could not have been written by a template.</p>
         
           <figure class="my-8 rounded-xl overflow-hidden">
@@ -320,24 +247,24 @@
 
         <div class="my-12 rounded-2xl overflow-hidden bg-slate-900 text-white p-6">
           <h3 class="text-xl font-black font-sf tracking-tight mb-2">We build outreach systems that book 150+ demos/month.</h3>
-          <p class="text-slate-300 text-sm leading-relaxed mb-5">Data enrichment, AI personalisation, multi-touch sequences ? the complete stack, built and running in 10 business days.</p>
+          <p class="text-slate-300 text-sm leading-relaxed mb-5">Data enrichment, AI personalisation, multi-touch sequences &mdash; the complete stack, built and running in 10 business days.</p>
           <button onclick="openCalendly()" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-bold py-3.5 px-6 rounded-xl transition-all text-sm">Book a Free Strategy Call</button>
         </div>
 
         <section id="multi-touch-sequences">
-          <h2>Layer 3: Multi-Touch Sequences ? When to Follow Up</h2>
+          <h2>Layer 3: Multi-Touch Sequences &mdash; When to Follow Up</h2>
           <p>Sequence architecture matters as much as the initial email. The data is clear: <strong>47% of replies come after the third touch</strong>. If your sequence stops after one follow-up, you're losing nearly half your potential conversations.</p>
           <p>Our default 7-touch sequence structure:</p>
           <ul>
             <li><strong>Day 1</strong>: Personalised cold email (as above)</li>
-            <li><strong>Day 3</strong>: Short follow-up ? adds a new piece of value (a relevant case study, a data point specific to their industry)</li>
+            <li><strong>Day 3</strong>: Short follow-up &mdash; adds a new piece of value (a relevant case study, a data point specific to their industry)</li>
             <li><strong>Day 7</strong>: LinkedIn connection request + personalised note (no pitch, just connection)</li>
-            <li><strong>Day 10</strong>: Email follow-up ? references the LinkedIn connection. Changes angle from product to problem.</li>
-            <li><strong>Day 14</strong>: Pattern interrupt ? a different format (a one-question email: "Quick question: is [specific pain point] something you're actively trying to solve?")</li>
-            <li><strong>Day 21</strong>: The bump ? just replies to the original email thread with "Bumping this to the top ? any chance this is relevant?"</li>
-            <li><strong>Day 35</strong>: Break-up email ? "I'll take this off my list. But if [specific trigger event] ever changes, I'm here." No hard feelings, no pressure.</li>
+            <li><strong>Day 10</strong>: Email follow-up &mdash; references the LinkedIn connection. Changes angle from product to problem.</li>
+            <li><strong>Day 14</strong>: Pattern interrupt &mdash; a different format (a one-question email: "Quick question: is [specific pain point] something you're actively trying to solve?")</li>
+            <li><strong>Day 21</strong>: The bump &mdash; just replies to the original email thread with "Bumping this to the top &mdash; any chance this is relevant?"</li>
+            <li><strong>Day 35</strong>: Break-up email &mdash; "I'll take this off my list. But if [specific trigger event] ever changes, I'm here." No hard feelings, no pressure.</li>
           </ul>
-          <p>Each touch is personalised at generation time ? the sequence engine doesn't use static templates, it regenerates each email with the current context, so follow-ups reference the initial email and any new information about the prospect that's emerged.</p>
+          <p>Each touch is personalised at generation time &mdash; the sequence engine doesn't use static templates, it regenerates each email with the current context, so follow-ups reference the initial email and any new information about the prospect that's emerged.</p>
         </section>
 
         <section id="reply-handling">
@@ -345,11 +272,11 @@
           <p>Most outreach systems stop at sending. The highest-leverage part of the system is what happens after someone replies.</p>
           <p>The reply classifier categorises every inbound response:</p>
           <ul>
-            <li><strong>Positive interest</strong> ? "Yes, let's chat" ? auto-books a calendar slot from your Calendly/Cal.com link with a confirmation email and LinkedIn connection request</li>
-            <li><strong>Not now</strong> ? "Busy this quarter, try in March" ? tagged for re-engagement, auto-scheduled to re-enter the sequence 8 weeks later</li>
-            <li><strong>Wrong person</strong> ? "You should talk to Sarah in ops" ? Sarah's contact is enriched and she enters the sequence with context about the referral</li>
-            <li><strong>Objection</strong> ? "We already have a solution for this" ? AI generates a targeted objection-handling response based on what solution they named and your differentiation against it</li>
-            <li><strong>Unsubscribe</strong> ? suppressed immediately, GDPR-compliant opt-out logged</li>
+            <li><strong>Positive interest</strong> &mdash; "Yes, let's chat" &mdash; auto-books a calendar slot from your Calendly/Cal.com link with a confirmation email and LinkedIn connection request</li>
+            <li><strong>Not now</strong> &mdash; "Busy this quarter, try in March" &mdash; tagged for re-engagement, auto-scheduled to re-enter the sequence 8 weeks later</li>
+            <li><strong>Wrong person</strong> &mdash; "You should talk to Sarah in ops" &mdash; Sarah's contact is enriched and she enters the sequence with context about the referral</li>
+            <li><strong>Objection</strong> &mdash; "We already have a solution for this" &mdash; AI generates a targeted objection-handling response based on what solution they named and your differentiation against it</li>
+            <li><strong>Unsubscribe</strong> &mdash; suppressed immediately, GDPR-compliant opt-out logged</li>
           </ul>
           <p>Positive responses that trigger calendar booking don't need a human in the loop at all. The booking confirmation, the pre-call reminder, and the post-call follow-up are all automated. The first time a human gets involved is when they join the actual call.</p>
         </section>
@@ -358,26 +285,26 @@
           <h2>Deliverability Infrastructure: Emails That Actually Land in Inboxes</h2>
           <p>Volume outreach is useless if your emails land in spam. Deliverability is its own discipline:</p>
           <ul>
-            <li><strong>Dedicated sending domains</strong> ? never send from your primary domain. Use subdomain variants (mail.yourcompany.com, outreach.yourcompany.com) that are separate from your transactional email</li>
-            <li><strong>Domain warm-up</strong> ? new sending domains start at 20 emails/day and ramp over 4?6 weeks. Skip this and your domain gets blacklisted in 72 hours.</li>
-            <li><strong>SPF, DKIM, DMARC</strong> ? all three, configured correctly, on every sending domain. Non-negotiable.</li>
-            <li><strong>Sending caps</strong> ? hard cap of 50?80 emails per inbox per day. Spread volume across multiple inboxes and domains to avoid triggering rate limits.</li>
-            <li><strong>Bounce management</strong> ? automated removal of hard bounces within 24 hours. Bounce rate above 3% damages sender reputation permanently.</li>
+            <li><strong>Dedicated sending domains</strong> &mdash; never send from your primary domain. Use subdomain variants (mail.yourcompany.com, outreach.yourcompany.com) that are separate from your transactional email</li>
+            <li><strong>Domain warm-up</strong> &mdash; new sending domains start at 20 emails/day and ramp over 4&ndash;6 weeks. Skip this and your domain gets blacklisted in 72 hours.</li>
+            <li><strong>SPF, DKIM, DMARC</strong> &mdash; all three, configured correctly, on every sending domain. Non-negotiable.</li>
+            <li><strong>Sending caps</strong> &mdash; hard cap of 50&ndash;80 emails per inbox per day. Spread volume across multiple inboxes and domains to avoid triggering rate limits.</li>
+            <li><strong>Bounce management</strong> &mdash; automated removal of hard bounces within 24 hours. Bounce rate above 3% damages sender reputation permanently.</li>
           </ul>
-          <p>We use Instantly or Smartlead for sending infrastructure ? both include built-in warm-up networks, rotation across multiple inboxes, and deliverability monitoring dashboards.</p>
+          <p>We use Instantly or Smartlead for sending infrastructure &mdash; both include built-in warm-up networks, rotation across multiple inboxes, and deliverability monitoring dashboards.</p>
         </section>
 
         <section id="results">
           <h2>Real Results: What This System Produces</h2>
           <p>Across the outreach systems we've built for clients, here are the consistent benchmarks:</p>
           <ul>
-            <li><strong>Open rate</strong>: 42?58% (vs. 18?22% industry average for cold email)</li>
-            <li><strong>Reply rate</strong>: 8?14% (vs. 2?4% average)</li>
-            <li><strong>Positive reply rate</strong>: 2.5?4.5% of total contacts</li>
-            <li><strong>Demos booked per month</strong>: 120?180, depending on market size and ICP precision</li>
-            <li><strong>Cost per booked demo</strong>: $18?$45 (vs. $150?$400 for paid acquisition in most B2B markets)</li>
+            <li><strong>Open rate</strong>: 42&ndash;58% (vs. 18&ndash;22% industry average for cold email)</li>
+            <li><strong>Reply rate</strong>: 8&ndash;14% (vs. 2&ndash;4% average)</li>
+            <li><strong>Positive reply rate</strong>: 2.5&ndash;4.5% of total contacts</li>
+            <li><strong>Demos booked per month</strong>: 120&ndash;180, depending on market size and ICP precision</li>
+            <li><strong>Cost per booked demo</strong>: $18&ndash;$45 (vs. $150&ndash;$400 for paid acquisition in most B2B markets)</li>
           </ul>
-          <p>One client ? a revenue intelligence SaaS targeting VP Sales at US companies with 50?500 employees ? went from 22 demos/month (manual SDR team of 2) to 163 demos/month (1 SDR managing the AI system) within 60 days of launch. Their cost per demo dropped from $380 to $31.</p>
+          <p>One client &mdash; a revenue intelligence SaaS targeting VP Sales at US companies with 50&ndash;500 employees &mdash; went from 22 demos/month (manual SDR team of 2) to 163 demos/month (1 SDR managing the AI system) within 60 days of launch. Their cost per demo dropped from $380 to $31.</p>
         
           <figure class="my-8 rounded-xl overflow-hidden">
             <img src="assets/blog-media/article-3-feature-1.jpg" alt="Sales dashboard showing outreach performance" class="w-full h-full object-cover" loading="lazy" decoding="async">
@@ -388,19 +315,19 @@
           <h2>FAQs</h2>
           <details class="border-b border-slate-200 py-4 group">
             <summary class="flex justify-between items-center cursor-pointer font-semibold text-slate-900 font-sf text-base list-none">Is automated cold outreach legal? What about GDPR and CAN-SPAM?<iconify-icon icon="lucide:chevron-down" class="text-slate-400 flex-shrink-0 group-open:rotate-180 transition-transform"></iconify-icon></summary>
-            <p class="mt-3 text-slate-600 text-sm leading-relaxed">B2B cold email is legal under CAN-SPAM (US), CASL (Canada), and GDPR (EU) provided you comply with the rules: include a physical address, provide a clear unsubscribe mechanism, honour opt-outs within 10 business days (24 hours in our systems), and only contact people for whom you have a legitimate business interest. We build compliance into every system ? every email includes an unsubscribe link, and the suppress list is updated in real time. Always consult a lawyer for your specific situation and markets.</p>
+            <p class="mt-3 text-slate-600 text-sm leading-relaxed">B2B cold email is legal under CAN-SPAM (US), CASL (Canada), and GDPR (EU) provided you comply with the rules: include a physical address, provide a clear unsubscribe mechanism, honour opt-outs within 10 business days (24 hours in our systems), and only contact people for whom you have a legitimate business interest. We build compliance into every system &mdash; every email includes an unsubscribe link, and the suppress list is updated in real time. Always consult a lawyer for your specific situation and markets.</p>
           </details>
           <details class="border-b border-slate-200 py-4 group">
             <summary class="flex justify-between items-center cursor-pointer font-semibold text-slate-900 font-sf text-base list-none">How long does it take to build this system?<iconify-icon icon="lucide:chevron-down" class="text-slate-400 flex-shrink-0 group-open:rotate-180 transition-transform"></iconify-icon></summary>
-            <p class="mt-3 text-slate-600 text-sm leading-relaxed">10?14 business days for a complete, running system including domain setup and warm-up, enrichment stack, sequence build, reply handling, and calendar integration. Domain warm-up runs in parallel ? by the time the system is built, you're ready to start sending at volume. First demos typically book in week 3.</p>
+            <p class="mt-3 text-slate-600 text-sm leading-relaxed">10&ndash;14 business days for a complete, running system including domain setup and warm-up, enrichment stack, sequence build, reply handling, and calendar integration. Domain warm-up runs in parallel &mdash; by the time the system is built, you're ready to start sending at volume. First demos typically book in week 3.</p>
           </details>
           <details class="border-b border-slate-200 py-4 group">
             <summary class="flex justify-between items-center cursor-pointer font-semibold text-slate-900 font-sf text-base list-none">Does this work for every industry?<iconify-icon icon="lucide:chevron-down" class="text-slate-400 flex-shrink-0 group-open:rotate-180 transition-transform"></iconify-icon></summary>
-            <p class="mt-3 text-slate-600 text-sm leading-relaxed">Best results are in B2B SaaS, professional services, agencies, and enterprise software. Consumer products, regulated industries (healthcare providers, financial advisors), and local services are less suited to this approach. The key variable is whether your buyer segment is addressable via LinkedIn data and corporate email ? if yes, this works.</p>
+            <p class="mt-3 text-slate-600 text-sm leading-relaxed">Best results are in B2B SaaS, professional services, agencies, and enterprise software. Consumer products, regulated industries (healthcare providers, financial advisors), and local services are less suited to this approach. The key variable is whether your buyer segment is addressable via LinkedIn data and corporate email &mdash; if yes, this works.</p>
           </details>
           <details class="py-4 group">
             <summary class="flex justify-between items-center cursor-pointer font-semibold text-slate-900 font-sf text-base list-none">What ongoing management does this require?<iconify-icon icon="lucide:chevron-down" class="text-slate-400 flex-shrink-0 group-open:rotate-180 transition-transform"></iconify-icon></summary>
-            <p class="mt-3 text-slate-600 text-sm leading-relaxed">2?4 hours per week for monitoring, list hygiene, and sequence optimisation. Someone needs to review the reply classifications weekly (to catch any misrouted responses), update the ICP filter as you learn more about who converts, and refresh the lead data source monthly. The system handles the volume and consistency; a human handles the judgement calls.</p>
+            <p class="mt-3 text-slate-600 text-sm leading-relaxed">2&ndash;4 hours per week for monitoring, list hygiene, and sequence optimisation. Someone needs to review the reply classifications weekly (to catch any misrouted responses), update the ICP filter as you learn more about who converts, and refresh the lead data source monthly. The system handles the volume and consistency; a human handles the judgement calls.</p>
           </details>
         </section>
       </article>
@@ -456,7 +383,7 @@
         <a href="blog-ai-automation-workflows.html" class="rel-card group">
           <div class="rel-card-img-placeholder bg-gradient-to-br from-blue-100 to-blue-200"><iconify-icon icon="lucide:cpu" width="36" class="text-blue-400"></iconify-icon></div>
           <div class="p-4 flex flex-col flex-1">
-            <p class="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-2">AI Automation ? 8 min read</p>
+            <p class="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-2">AI Automation &bull; 8 min read</p>
             <h3 class="font-sf font-bold text-slate-900 text-sm leading-snug mb-2 group-hover:text-blue-600 transition-colors">How AI Automation is Replacing $50K+/Year Tasks in Your Business</h3>
             <div class="flex gap-1.5 mt-auto pt-4 flex-wrap"><span class="tag-pill text-[10px] px-2 py-0.5">#AI Automation</span></div>
           </div>
@@ -464,7 +391,7 @@
         <a href="blog-5-workflows-to-automate.html" class="rel-card group">
           <div class="rel-card-img-placeholder bg-gradient-to-br from-yellow-100 to-yellow-200"><iconify-icon icon="lucide:zap" width="36" class="text-yellow-500"></iconify-icon></div>
           <div class="p-4 flex flex-col flex-1">
-            <p class="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-2">Workflow ? 7 min read</p>
+            <p class="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-2">Workflow &bull; 7 min read</p>
             <h3 class="font-sf font-bold text-slate-900 text-sm leading-snug mb-2 group-hover:text-blue-600 transition-colors">5 Business Workflows You Can Automate This Week (With ROI Estimates)</h3>
             <div class="flex gap-1.5 mt-auto pt-4 flex-wrap"><span class="tag-pill text-[10px] px-2 py-0.5">#Workflow</span></div>
           </div>
@@ -472,7 +399,7 @@
         <a href="blog-hiring-vs-automating.html" class="rel-card group">
           <div class="rel-card-img-placeholder bg-gradient-to-br from-green-100 to-green-200"><iconify-icon icon="lucide:trending-up" width="36" class="text-green-400"></iconify-icon></div>
           <div class="p-4 flex flex-col flex-1">
-            <p class="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-2">ROI ? 7 min read</p>
+            <p class="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-2">ROI &bull; 7 min read</p>
             <h3 class="font-sf font-bold text-slate-900 text-sm leading-snug mb-2 group-hover:text-blue-600 transition-colors">The Real Cost of Hiring vs. Automating in 2025</h3>
             <div class="flex gap-1.5 mt-auto pt-4 flex-wrap"><span class="tag-pill text-[10px] px-2 py-0.5">#ROI</span></div>
           </div>
@@ -481,47 +408,241 @@
     </div>
   </section>
 
-  <footer class="relative bg-gradient-to-b from-slate-950 via-slate-950 to-black text-slate-300 overflow-hidden py-12 md:py-16">
-    <div class="absolute top-0 left-0 h-1 w-1/2 bg-gradient-to-r from-transparent via-cyan-500 to-transparent opacity-75 z-20 animate-footer-beam"></div>
-    <div class="absolute top-0 inset-x-0 h-px bg-slate-800 z-10"></div>
-    <div class="max-w-7xl mx-auto px-6 lg:px-20 xl:px-32 relative z-10">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 mb-10">
-        <div class="md:col-span-2 lg:col-span-5 space-y-5 flex flex-col items-center lg:items-start text-center lg:text-left">
-          <a href="index.html"><div class="text-2xl font-black italic tracking-tighter text-white">LOOPSUIT<sup class="text-[9px] not-italic text-gray-500">?</sup></div></a>
-          <p class="text-slate-400 leading-relaxed max-w-sm font-sf text-sm">Empowering forward-thinking businesses with intelligent automation systems that scale.</p>
-          <div class="space-y-1.5 font-sf"><p class="text-slate-400 text-sm">support@loopsuitai.com</p><p class="text-slate-400 text-sm">Vancouver, Canada</p></div>
-          <button onclick="openCalendly()" class="shiny-cta mt-2"><span>Book Free Call</span></button>
+  <footer data-theme="dark"
+      class="relative bg-gradient-to-b from-slate-950 via-slate-950 to-black text-slate-300 overflow-hidden py-12 md:py-16">
+      <style>
+        @keyframes footer-beam {
+          0% {
+            left: -100%;
+          }
+
+          100% {
+            left: 200%;
+          }
+        }
+
+        .animate-footer-beam {
+          animation: footer-beam 4s linear infinite;
+        }
+
+        .footer-futuristic {
+          background: #020617;
+          position: relative;
+          overflow: hidden;
+        }
+
+        .footer-futuristic::before {
+          content: "";
+          position: absolute;
+          inset: 0;
+          background: radial-gradient(circle at 50% 100%, rgba(6, 182, 212, 0.15) 0%, transparent 60%);
+          pointer-events: none;
+        }
+
+        .footer-futuristic::after {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 1px;
+          background: linear-gradient(90deg, transparent, rgba(6, 182, 212, 0.3), transparent);
+        }
+      </style>
+
+
+      <!-- Gradient Overlay -->
+      <div class="absolute inset-0 footer-futuristic pointer-events-none">
+      </div>
+
+      <!-- Futuristic Beam / Glow Effect -->
+      <div
+        class="absolute top-0 left-0 h-1 w-1/2 bg-gradient-to-r from-transparent via-cyan-500 to-transparent opacity-75 shadow-[0_0_15px_rgba(6,182,212,0.5)] z-20 animate-footer-beam">
+      </div>
+      <div class="absolute top-0 inset-x-0 h-px bg-slate-800 z-10"></div>
+
+      <!-- Animated Gradient Orb Background (Reduced Opacity) -->
+      <div
+        class="absolute top-[-20%] right-[-10%] w-[500px] h-[500px] bg-purple-900/10 rounded-full blur-[100px] pointer-events-none">
+      </div>
+      <div
+        class="absolute bottom-[-20%] left-[-10%] w-[500px] h-[500px] bg-blue-900/10 rounded-full blur-[100px] pointer-events-none">
+      </div>
+
+      <div class="max-w-7xl mx-auto px-6 lg:px-20 xl:px-32 relative z-10">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 md:gap-12 mb-8 md:mb-12">
+
+          <!-- Brand & Mission & Location -->
+          <div
+            class="md:col-span-2 lg:col-span-5 space-y-5 flex flex-col items-center lg:items-start text-center lg:text-left">
+            <a href="index.html" class="inline-block">
+              <div class="flex items-center gap-4 group/logo">
+                <div
+                  class="text-2xl font-black italic tracking-tighter text-white transition-transform duration-500 group-hover/logo:scale-105">
+                  LOOPSUIT<sup class="text-[9px] not-italic text-gray-500 ml-0.5">Â®</sup>
+                </div>
+                <div
+                  class="hidden sm:flex flex-col justify-center pl-4 border-l-2 border-white/10 h-8 transition-transform duration-500 group-hover/logo:scale-105 text-left">
+                  <span
+                    class="text-[8px] font-bold tracking-[0.3em] text-gray-400 uppercase leading-none mb-0.5">VISION</span>
+                  <div class="bg-[#3b82f6] px-1.5 py-[1px] transform -skew-x-12 inline-block w-max">
+                    <span
+                      class="block transform skew-x-12 text-[9px] font-black tracking-widest text-white uppercase leading-none">AUTOMATED</span>
+                  </div>
+                </div>
+              </div>
+            </a>
+            <p class="text-slate-400 leading-relaxed max-w-sm font-sf text-base">
+              Empowering forward-thinking businesses with intelligent automation systems.
+              We blend cutting-edge AI with seamless workflows to help you scale faster.
+            </p>
+
+            <!-- Location & Service Area -->
+            <div class="space-y-2 font-sf">
+              <div class="relative group w-max">
+                <button onclick="copyEmail(this)"
+                  class="text-slate-400 text-sm hover:text-cyan-400 transition-all duration-200 cursor-pointer text-left flex items-center gap-2">
+                  <span>âœ‰ï¸ jastejsingh98@gmail.com</span>
+                </button>
+                <span
+                  class="copy-feedback absolute left-full ml-2 top-1/2 -translate-y-1/2 text-green-400 text-xs font-semibold opacity-0 transition-opacity duration-300 pointer-events-none whitespace-nowrap">
+                  Email copied
+                </span>
+              </div>
+              <p class="text-slate-400 text-sm">
+                ðŸ“ Vancouver, Canada
+              </p>
+            </div>
+
+            <!-- Book Free Call CTA - Aligned Left/Center on mobile -->
+            <div class="pt-4 flex flex-col items-center lg:items-start gap-2">
+              <button onclick="openCalendly()"
+                class="shiny-cta shiny-cta-light focus:outline-none group relative overflow-hidden transition-all duration-300 hover:scale-105">
+                <div
+                  class="absolute inset-0 bg-gradient-to-r from-transparent via-blue-200 to-transparent opacity-0 group-hover:opacity-100 animate-footer-beam"
+                  style="animation-duration: 1.5s;"></div>
+                <span class="font-sf relative z-10">Book Free Strategy Call</span>
+              </button>
+              <div class="flex items-center gap-1.5 text-xs text-emerald-400 font-semibold">
+                <iconify-icon icon="lucide:shield-check" width="13" class="flex-shrink-0"></iconify-icon>
+                <span>Delivered on time â€” or your money back.</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Navigation Column -->
+          <div class="md:col-span-1 lg:col-span-2 lg:col-start-8 text-left">
+            <h3 class="text-white font-semibold mb-4 text-lg font-sf">Navigation</h3>
+            <ul class="space-y-3">
+              <li><a href="index.html"
+                  class="text-slate-400 hover:text-cyan-400 transition-colors duration-200 flex items-center justify-start group font-sf"><span
+                    class="w-0 group-hover:w-2 h-[1px] bg-cyan-400 mr-0 group-hover:mr-2 transition-all duration-300 opacity-0 group-hover:opacity-100"></span>Home</a>
+              </li>
+              <li><a href="index.html#how-it-works"
+                  class="text-slate-400 hover:text-cyan-400 transition-colors duration-200 flex items-center justify-start group font-sf"><span
+                    class="w-0 group-hover:w-2 h-[1px] bg-cyan-400 mr-0 group-hover:mr-2 transition-all duration-300 opacity-0 group-hover:opacity-100"></span>How
+                  It Works</a></li>
+              <li><a href="services.html"
+                  class="text-slate-400 hover:text-cyan-400 transition-colors duration-200 flex items-center justify-start group font-sf"><span
+                    class="w-0 group-hover:w-2 h-[1px] bg-cyan-400 mr-0 group-hover:mr-2 transition-all duration-300 opacity-0 group-hover:opacity-100"></span>Services</a>
+              </li>
+              <li><a href="case-studies.html"
+                  class="text-slate-400 hover:text-cyan-400 transition-colors duration-200 flex items-center justify-start group font-sf"><span
+                    class="w-0 group-hover:w-2 h-[1px] bg-cyan-400 mr-0 group-hover:mr-2 transition-all duration-300 opacity-0 group-hover:opacity-100"></span>Case
+                  Studies</a></li>
+            </ul>
+          </div>
+
+          <!-- Solutions Column -->
+          <div class="md:col-span-1 lg:col-span-3 text-left lg:pl-4">
+            <h3 class="text-white font-semibold mb-4 text-lg font-sf">Solutions</h3>
+            <ul class="space-y-3">
+              <li><a href="index.html#workflow-automation"
+                  class="text-slate-400 hover:text-cyan-400 transition-colors duration-200 flex items-center justify-start group font-sf"><span
+                    class="w-0 group-hover:w-2 h-[1px] bg-cyan-400 mr-0 group-hover:mr-2 transition-all duration-300 opacity-0 group-hover:opacity-100"></span>AI
+                  Workflow Automation</a></li>
+              <li><a href="index.html#mvp-development"
+                  class="text-slate-400 hover:text-cyan-400 transition-colors duration-200 flex items-center justify-start group font-sf"><span
+                    class="w-0 group-hover:w-2 h-[1px] bg-cyan-400 mr-0 group-hover:mr-2 transition-all duration-300 opacity-0 group-hover:opacity-100"></span>Rapid
+                  MVP Development</a>
+              </li>
+              <li><a href="index.html#ai-support"
+                  class="text-slate-400 hover:text-cyan-400 transition-colors duration-200 flex items-center justify-start group font-sf"><span
+                    class="w-0 group-hover:w-2 h-[1px] bg-cyan-400 mr-0 group-hover:mr-2 transition-all duration-300 opacity-0 group-hover:opacity-100"></span>AI-Powered
+                  Support</a>
+              </li>
+              <li><a href="index.html#complete-solution"
+                  class="text-slate-400 hover:text-cyan-400 transition-colors duration-200 flex items-center justify-start group font-sf"><span
+                    class="w-0 group-hover:w-2 h-[1px] bg-cyan-400 mr-0 group-hover:mr-2 transition-all duration-300 opacity-0 group-hover:opacity-100"></span>Complete
+                  AI Solution</a></li>
+            </ul>
+          </div>
+
         </div>
-        <div class="md:col-span-1 lg:col-span-2 lg:col-start-9 text-center">
-          <h3 class="text-white font-semibold mb-4 font-sf">Navigation</h3>
-          <ul class="space-y-3">
-            <li><a href="index.html" class="text-slate-400 hover:text-cyan-400 transition-colors font-sf text-sm">Home</a></li>
-            <li><a href="services.html" class="text-slate-400 hover:text-cyan-400 transition-colors font-sf text-sm">Services</a></li>
-            <li><a href="case-studies.html" class="text-slate-400 hover:text-cyan-400 transition-colors font-sf text-sm">Case Studies</a></li>
-            <li><a href="blog.html" class="text-cyan-400 font-sf text-sm font-medium">Blog</a></li>
-          </ul>
-        </div>
-        <div class="md:col-span-1 lg:col-span-2 text-center">
-          <h3 class="text-white font-semibold mb-4 font-sf">Connect</h3>
-          <ul class="space-y-3"><li><a href="https://instagram.com/loopsuitai" class="text-slate-400 hover:text-cyan-400 transition-colors font-sf text-sm">Instagram</a></li><li><a href="https://linkedin.com/company/loopsuit" class="text-slate-400 hover:text-cyan-400 transition-colors font-sf text-sm">LinkedIn</a></li></ul>
+
+        <!-- Separator -->
+        <div class="border-t border-slate-800/50 mb-6 md:mb-8"></div>
+
+        <!-- Bottom Section: Flex Container for Responsive Layout -->
+        <div class="flex flex-col-reverse md:flex-row justify-between items-center gap-6">
+
+          <!-- Left: Copyright -->
+          <div class="text-slate-500 text-sm font-sf text-center md:text-left">
+            <p>&copy; <span id="year"></span> LoopSuit. All rights reserved.</p>
+            <div class="flex items-center justify-center md:justify-start gap-4 mt-2">
+              <a href="/privacy-policy" class="hover:text-cyan-400 transition-colors">Privacy Policy</a>
+              <a href="/terms" class="hover:text-cyan-400 transition-colors">Terms</a>
+            </div>
+          </div>
+
+          <!-- Right: Moved Content (Socials & Info) -->
+          <div class="flex flex-col items-center md:items-end gap-3 text-center md:text-right">
+            <div class="space-y-1">
+              <p
+                class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400 font-semibold text-sm">
+                Serving clients across US, Canada & EU
+              </p>
+              <p
+                class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400 font-semibold text-sm">
+                6+ Years of Industry Experience
+              </p>
+            </div>
+
+            <!-- Social Icons -->
+            <div class="flex items-center space-x-4 pt-1">
+              <!-- Twitter -->
+              <a href="#" aria-label="Twitter"
+                class="w-9 h-9 flex items-center justify-center rounded-full bg-slate-900 border border-slate-800 text-slate-400 hover:text-white hover:border-cyan-500/50 hover:bg-cyan-950/30 transition-all duration-300 group">
+                <iconify-icon icon="lucide:twitter" width="18"
+                  class="group-hover:scale-110 transition-transform duration-300"></iconify-icon>
+              </a>
+              <!-- LinkedIn -->
+              <a href="#" aria-label="LinkedIn"
+                class="w-9 h-9 flex items-center justify-center rounded-full bg-slate-900 border border-slate-800 text-slate-400 hover:text-white hover:border-cyan-500/50 hover:bg-cyan-950/30 transition-all duration-300 group">
+                <iconify-icon icon="lucide:linkedin" width="18"
+                  class="group-hover:scale-110 transition-transform duration-300"></iconify-icon>
+              </a>
+              <!-- GitHub -->
+              <a href="#" aria-label="GitHub"
+                class="w-9 h-9 flex items-center justify-center rounded-full bg-slate-900 border border-slate-800 text-slate-400 hover:text-white hover:border-cyan-500/50 hover:bg-cyan-950/30 transition-all duration-300 group">
+                <iconify-icon icon="lucide:github" width="18"
+                  class="group-hover:scale-110 transition-transform duration-300"></iconify-icon>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="border-t border-slate-800/50 pt-6">
-        <div class="flex flex-col-reverse md:flex-row justify-between items-center gap-4">
-          <p class="text-slate-500 text-xs font-sf">&copy; <span id="year"></span> LoopSuit. All rights reserved.</p>
-          <p class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400 font-semibold text-sm">Serving clients across US, Canada &amp; EU</p>
-        </div>
-      </div>
-    </div>
-    <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
-  </footer>
+      <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+      </script>
+    </footer>
   <script>
     const navbar = document.getElementById('main-navbar'); const innerNav = document.getElementById('inner-nav'); let lastScrollY = window.scrollY;
     window.addEventListener('scroll', () => { const y = window.scrollY; const docH = document.documentElement.scrollHeight - window.innerHeight; document.getElementById('reading-progress').style.width = (y / docH * 100) + '%'; if (y > 20) { innerNav.classList.add('glass-nav-scrolled'); } else { innerNav.classList.remove('glass-nav-scrolled'); } if (y <= 50 || y < lastScrollY) { navbar.classList.remove('navbar-hidden'); navbar.classList.add('navbar-visible'); } else if (y > lastScrollY && y > 50) { navbar.classList.remove('navbar-visible'); navbar.classList.add('navbar-hidden'); } lastScrollY = y; });
     const tocObserver = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) { document.querySelectorAll('.toc-link').forEach(l => l.classList.remove('toc-active')); const link = document.querySelector(`.toc-link[href="#${entry.target.id}"]`); if (link) link.classList.add('toc-active'); } }); }, { rootMargin: '-20% 0% -60% 0%' });
     document.querySelectorAll('section[id]').forEach(s => tocObserver.observe(s));
     let tocOpen = true;
-    function toggleToc() { const body = document.getElementById('toc-body'); const btn = document.getElementById('toc-toggle'); tocOpen = !tocOpen; if (tocOpen) { body.classList.remove('toc-collapsed'); btn.textContent = '?'; } else { body.classList.add('toc-collapsed'); btn.textContent = '+'; } }
+    function toggleToc() { const body = document.getElementById('toc-body'); const btn = document.getElementById('toc-toggle'); tocOpen = !tocOpen; if (tocOpen) { body.classList.remove('toc-collapsed'); btn.textContent = '-'; } else { body.classList.add('toc-collapsed'); btn.textContent = '+'; } }
     function openMobileMenu() { document.getElementById('mobile-menu').classList.replace('menu-closed','menu-open'); }
     function closeMobileMenu() { document.getElementById('mobile-menu').classList.replace('menu-open','menu-closed'); }
     function openCalendly() { const url = 'https://calendly.com/jastejsehra/chat-about-ai-automation'; if (typeof Calendly !== 'undefined') { Calendly.initPopupWidget({ url }); } else { window.open(url, '_blank'); } }
@@ -529,3 +650,4 @@
   </script>
 </body>
 </html>
+
