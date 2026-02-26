@@ -1341,16 +1341,7 @@
         onclick="closeMenuAndNavigate()">
         Blog
       </a>
-      <a href="/privacy-policy"
-        class="text-2xl font-sf font-semibold text-slate-300 tracking-tight hover:text-blue-500 transition-colors"
-        onclick="closeMenuAndNavigate()">
-        Privacy Policy
-      </a>
-      <a href="/terms"
-        class="text-2xl font-sf font-semibold text-slate-300 tracking-tight hover:text-blue-500 transition-colors"
-        onclick="closeMenuAndNavigate()">
-        Terms
-      </a>
+      <a href="contact.html" class="text-4xl font-sf font-semibold text-white tracking-tight hover:text-blue-500 transition-colors">Contact</a>
     </div>
     <div class="mt-14 w-full px-12 max-w-sm relative z-10">
       <button class="shiny-cta w-full focus:outline-none justify-center"
@@ -1466,8 +1457,7 @@
           <a href="services.html" class="hover:text-white transition-colors">Services</a>
           <a href="case-studies.html" class="hover:text-white transition-colors">Case Studies</a>
           <a href="blog.html" class="hover:text-white transition-colors">Blog</a>
-          <a href="/privacy-policy" class="hover:text-white transition-colors">Privacy Policy</a>
-          <a href="/terms" class="hover:text-white transition-colors">Terms</a>
+          <a href="contact.html" class="hover:text-white transition-colors">Contact</a>
         </div>
 
         <!-- CTA & Hamburger -->
@@ -1873,33 +1863,19 @@
         .mfc-text { padding: 1.75rem 2rem; min-height: auto; }
       }
 
-      /* Mobile: sticky stacking — each card slides in from below and overlaps the previous */
+      /* Mobile: simple vertical stack — no sticky scroll animation */
       @media (max-width: 767px) {
         .mfc-grid {
           display: flex;
           flex-direction: column;
-          gap: 0;
-          padding: 0 14px;
+          gap: 16px;
+          padding: 0 14px 2rem;
           margin: 0;
         }
         .mfc-card {
-          position: sticky;
-          top: 80px;
           border-radius: 1.5rem;
-          /* margin-bottom creates the scroll space so card 2 rises from below card 1 */
-          margin-bottom: 46vh;
           box-shadow: 0 8px 48px rgba(0,0,0,0.14);
-          transform-origin: top center;
-          transition: transform 0.1s linear;
-          will-change: transform;
         }
-        .mfc-card:last-child {
-          border-radius: 1.5rem;
-          margin-bottom: 32px;
-        }
-        .mfc-card:nth-child(1) { z-index: 10; }
-        .mfc-card:nth-child(2) { z-index: 20; }
-        .mfc-card:nth-child(3) { z-index: 30; }
         .mfc-visual { height: 240px; }
         .mfc-text { padding: 1.5rem; min-height: auto; }
         .mfc-text h3 { font-size: 1.3rem; }
@@ -2048,6 +2024,106 @@
           background: linear-gradient(90deg, transparent, #22d3ee, #60a5fa, transparent);
         }
 
+        .solutions-horizontal-stage {
+          position: relative;
+          min-height: auto;
+        }
+
+        .solutions-horizontal-sticky {
+          position: relative;
+          top: auto;
+        }
+
+        .solutions-carousel-controls {
+          position: absolute;
+          top: 50%;
+          left: 0;
+          right: 0;
+          display: flex;
+          justify-content: space-between;
+          pointer-events: none;
+          transform: translateY(-50%);
+          padding-inline: 0;
+          z-index: 20;
+        }
+
+        .solutions-carousel-arrow {
+          width: 46px;
+          height: 46px;
+          border-radius: 9999px;
+          border: 1px solid rgba(255, 255, 255, 0.42);
+          background: rgba(255, 255, 255, 0.24);
+          backdrop-filter: blur(10px);
+          -webkit-backdrop-filter: blur(10px);
+          color: #0f172a;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          pointer-events: auto;
+          transition: opacity 220ms ease, transform 220ms ease, background-color 220ms ease;
+        }
+
+        .solutions-carousel-arrow[data-direction="prev"] {
+          margin-left: 0.3rem;
+        }
+
+        .solutions-carousel-arrow[data-direction="next"] {
+          margin-right: 0.3rem;
+        }
+
+        .solutions-carousel-arrow:hover {
+          background: rgba(255, 255, 255, 0.34);
+          transform: scale(1.04);
+        }
+
+        .solutions-carousel-arrow:disabled {
+          opacity: 0.45;
+          cursor: default;
+          transform: none;
+        }
+
+        .solutions-carousel {
+          --solution-card-gap: 1.25rem;
+          width: 100vw;
+          margin-left: calc(50% - 50vw);
+          padding-inline: clamp(1.5rem, 6vw, 5rem);
+          padding-block: clamp(2rem, 4.4vw, 4rem);
+          overflow-x: hidden;
+          overflow-y: visible;
+          touch-action: pan-y;
+          cursor: grab;
+        }
+
+        .solutions-carousel.is-dragging {
+          cursor: grabbing;
+        }
+
+        .solutions-carousel-track {
+          display: flex;
+          will-change: transform;
+          user-select: none;
+        }
+
+        .solutions-carousel-group {
+          display: flex;
+          gap: var(--solution-card-gap);
+          padding-right: clamp(1rem, 4vw, 4rem);
+          flex-shrink: 0;
+        }
+
+        @media (max-width: 767px) {
+          .solutions-carousel-arrow {
+            width: 38px;
+            height: 38px;
+          }
+
+          .solutions-carousel {
+            --solution-card-gap: 0.9rem;
+            padding-inline: 1.3rem;
+            padding-block: 2rem 2.5rem;
+          }
+        }
+
         /* Fix for iPad Pro/Tablet Portrait extra whitespace */
         @media only screen and (min-width: 768px) and (max-width: 1100px) and (orientation: portrait) {
           #showreel-section {
@@ -2107,95 +2183,104 @@
             </div>
           </div>
 
-          <!-- Row 1: Left Text, Right Image -->
-          <div id="solution-launch"
-            class="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-24 group scroll-mt-32">
-            <div
-              class="w-full md:w-1/2 flex flex-col items-center md:items-start text-center md:text-left order-1 md:order-1">
+          <div class="solutions-horizontal-stage">
+            <div class="solutions-horizontal-sticky">
+              <div class="solutions-carousel-controls" aria-label="Solutions carousel controls">
+                <button id="solutionsArrowPrev" type="button" class="solutions-carousel-arrow" data-direction="prev"
+                  aria-label="Show previous solution">
+                  <iconify-icon icon="lucide:chevron-left" width="20"></iconify-icon>
+                </button>
+                <button id="solutionsArrowNext" type="button" class="solutions-carousel-arrow" data-direction="next"
+                  aria-label="Show next solution">
+                  <iconify-icon icon="lucide:chevron-right" width="20"></iconify-icon>
+                </button>
+              </div>
+              <div class="solutions-carousel">
+                <div class="solutions-carousel-track">
+                  <div class="solutions-carousel-group">
+                <article id="solution-launch"
+                  class="scroll-mt-32 w-[88vw] sm:w-[80vw] md:w-[68vw] lg:w-[60vw] xl:w-[54vw] max-w-[1040px] rounded-[28px] border border-slate-200/70 bg-white/95 shadow-[0_25px_70px_-35px_rgba(15,23,42,0.45)] p-5 md:p-9">
+                  <div class="flex flex-col lg:flex-row items-center gap-6 md:gap-10">
+                    <div class="w-full lg:w-1/2 flex flex-col items-center lg:items-start text-center lg:text-left">
               <span
-                class="inline-flex items-center gap-1 rounded-full bg-slate-50 border border-slate-200/60 px-3 py-1 text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-6">
+                        class="inline-flex items-center gap-1 rounded-full bg-slate-50 border border-slate-200/60 px-3 py-1 text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-4 md:mb-6">
                 1. Production-Ready
               </span>
               <h3
-                class="text-[28px] md:text-5xl font-semibold text-slate-900 tracking-tight font-sf mb-6 leading-tight">
+                        class="text-[28px] md:text-5xl font-semibold text-slate-900 tracking-tight font-sf mb-5 md:mb-6 leading-tight">
                 Launch your product <br> in <span
                   class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">2 weeks.</span>
               </h3>
-              <p class="text-base md:text-xl text-slate-500 font-medium leading-relaxed max-w-md">
-                Get a fully functional, scalable product—not just a prototype. We use modern frameworks to ensure your
-                app is robust, secure, and ready for growth.
+                      <p class="text-base md:text-xl text-slate-500 font-medium leading-relaxed max-w-xl">
+                        Get a fully functional, scalable product-not just a prototype. We use modern frameworks to
+                        ensure your app is robust, secure, and ready for growth.
               </p>
             </div>
-
-            <div class="w-full md:w-1/2 relative order-2 md:order-2 perspective-1000" style="overflow: visible;">
-              <div class="relative w-full aspect-square md:aspect-[4/3] flex items-center justify-center lg:scale-110"
-                style="transform-origin: center; overflow: visible;">
+                    <div class="w-full lg:w-1/2">
+                      <div class="relative w-full aspect-square md:aspect-[4/3] flex items-center justify-center">
                 <img src="./Images/Solutions/capability1-newupdated.png"
                   alt="Launch Product in 2 Weeks - Fintech and Note Taking App"
-                  class="w-full h-auto object-contain hover:scale-105 transition-transform duration-700 ease-out transform will-change-transform scroll-rotate-image"
-                  style="transition: transform 0.1s linear; /* Smooth but responsive for scroll */">
+                          class="w-full h-auto object-contain transition-transform duration-500 ease-out hover:scale-[1.02]">
               </div>
             </div>
           </div>
+                </article>
 
-
-
-          <!-- Row 2: Left Image, Right Text -->
-          <div id="solution-sales"
-            class="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-24 group scroll-mt-32">
-            <div class="w-full md:w-1/2 relative order-2 md:order-1 perspective-1000" style="overflow: visible;">
-              <div class="relative w-full aspect-square md:aspect-[4/3] flex items-center justify-center lg:scale-110"
-                style="transform-origin: center; overflow: visible;">
-                <img src="./Images/Solutions/solution2 alt.png" alt="Automated Sales Workflows"
-                  class="w-full h-auto object-contain hover:scale-105 transition-transform duration-700 ease-out transform will-change-transform scroll-rotate-image-reverse"
-                  style="transition: transform 0.1s linear;">
-              </div>
-            </div>
-
-            <div
-              class="w-full md:w-1/2 flex flex-col items-center md:items-start text-center md:text-left order-1 md:order-2 pl-0 md:pl-10">
+                <article id="solution-sales"
+                  class="scroll-mt-32 w-[88vw] sm:w-[80vw] md:w-[68vw] lg:w-[60vw] xl:w-[54vw] max-w-[1040px] rounded-[28px] border border-slate-200/70 bg-white/95 shadow-[0_25px_70px_-35px_rgba(15,23,42,0.45)] p-5 md:p-9">
+                  <div class="flex flex-col lg:flex-row-reverse items-center gap-6 md:gap-10">
+                    <div class="w-full lg:w-1/2 flex flex-col items-center lg:items-start text-center lg:text-left">
               <span
-                class="inline-flex items-center gap-1 rounded-full bg-slate-50 border border-slate-200/60 px-3 py-1 text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-6">
+                        class="inline-flex items-center gap-1 rounded-full bg-slate-50 border border-slate-200/60 px-3 py-1 text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-4 md:mb-6">
                 2. Fully Autonomous
               </span>
               <h3
-                class="text-[28px] md:text-5xl font-semibold text-slate-900 tracking-tight font-sf mb-6 leading-tight">
+                        class="text-[28px] md:text-5xl font-semibold text-slate-900 tracking-tight font-sf mb-5 md:mb-6 leading-tight">
                 Sales running on <br> <span
                   class="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600">Autopilot.</span>
               </h3>
-              <p class="text-base md:text-xl text-slate-500 font-medium leading-relaxed max-w-md">
-                Deploy AI agents that scout 200+ leads daily, personalize cold outreach, and land meetings on your
-                calendar. It's like hiring a sales team overnight.
+                      <p class="text-base md:text-xl text-slate-500 font-medium leading-relaxed max-w-xl">
+                        Deploy AI agents that scout 200+ leads daily, personalize cold outreach, and land meetings on
+                        your calendar. It's like hiring a sales team overnight.
               </p>
             </div>
+                    <div class="w-full lg:w-1/2">
+                      <div class="relative w-full aspect-square md:aspect-[4/3] flex items-center justify-center">
+                        <img src="./Images/Solutions/solution2 alt.png" alt="Automated Sales Workflows"
+                          class="w-full h-auto object-contain transition-transform duration-500 ease-out hover:scale-[1.02]">
           </div>
+                    </div>
+                  </div>
+                </article>
 
-          <!-- Row 3: Left Text, Right Image -->
-          <div id="solution-operations"
-            class="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-24 group scroll-mt-32">
-            <div
-              class="w-full md:w-1/2 flex flex-col items-center md:items-start text-center md:text-left order-1 md:order-1">
+                <article id="solution-operations"
+                  class="scroll-mt-32 w-[88vw] sm:w-[80vw] md:w-[68vw] lg:w-[60vw] xl:w-[54vw] max-w-[1040px] rounded-[28px] border border-slate-200/70 bg-white/95 shadow-[0_25px_70px_-35px_rgba(15,23,42,0.45)] p-5 md:p-9">
+                  <div class="flex flex-col lg:flex-row items-center gap-6 md:gap-10">
+                    <div class="w-full lg:w-1/2 flex flex-col items-center lg:items-start text-center lg:text-left">
               <span
-                class="inline-flex items-center gap-1 rounded-full bg-slate-50 border border-slate-200/60 px-3 py-1 text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-6">
+                        class="inline-flex items-center gap-1 rounded-full bg-slate-50 border border-slate-200/60 px-3 py-1 text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-4 md:mb-6">
                 3. Infinite Scale
               </span>
               <h3
-                class="text-[28px] md:text-5xl font-semibold text-slate-900 tracking-tight font-sf mb-6 leading-tight">
+                        class="text-[28px] md:text-5xl font-semibold text-slate-900 tracking-tight font-sf mb-5 md:mb-6 leading-tight">
                 Operations at <br> <span
                   class="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-cyan-500">Light Speed.</span>
               </h3>
-              <p class="text-base md:text-xl text-slate-500 font-medium leading-relaxed max-w-md">
-                From customer support to internal workflows—automate the busywork. Save 15+ hours a week and focus on
-                high-impact strategy while AI handles the rest.
+                      <p class="text-base md:text-xl text-slate-500 font-medium leading-relaxed max-w-xl">
+                        From customer support to internal workflows-automate the busywork. Save 15+ hours a week and
+                        focus on high-impact strategy while AI handles the rest.
               </p>
             </div>
-
-            <div class="w-full md:w-1/2 relative order-2 md:order-2 perspective-1000" style="overflow: visible;">
-              <div class="relative w-full aspect-square md:aspect-[4/3] flex items-center justify-center lg:scale-110"
-                style="transform-origin: center; overflow: visible;">
+                    <div class="w-full lg:w-1/2">
+                      <div class="relative w-full aspect-square md:aspect-[4/3] flex items-center justify-center">
                 <img src="./Images/Solutions/solution3 alt.png" alt="Operations at Light Speed"
-                  class="w-full h-auto object-contain hover:scale-105 transition-transform duration-700 ease-out transform will-change-transform scroll-rotate-image"
-                  style="transition: transform 0.1s linear;">
+                          class="w-full h-auto object-contain transition-transform duration-500 ease-out hover:scale-[1.02]">
+                      </div>
+                    </div>
+                  </div>
+                </article>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -2610,8 +2695,8 @@
                 </p>
               </div>
               <button onclick="openModal('rapid_mvp')"
-                class="absolute bottom-8 right-8 w-10 h-10 rounded-full bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all duration-300 group-hover:scale-110 shadow-lg">
-                <iconify-icon icon="lucide:plus" width="20" stroke-width="1.5"></iconify-icon>
+                class="absolute bottom-8 right-8 w-[3.75rem] h-[3.75rem] rounded-full bg-white border border-gray-200 flex items-center justify-center text-gray-500 hover:bg-gray-50 hover:text-gray-600 transition-all duration-300 group-hover:scale-110 shadow-lg">
+                <iconify-icon icon="lucide:plus" width="30" stroke-width="1.5"></iconify-icon>
               </button>
             </div>
           </div>
@@ -2637,8 +2722,8 @@
                 </p>
               </div>
               <button onclick="openModal('ai_automation')"
-                class="absolute bottom-8 right-8 w-10 h-10 rounded-full bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all duration-300 group-hover:scale-110 shadow-lg">
-                <iconify-icon icon="lucide:plus" width="20" stroke-width="1.5"></iconify-icon>
+                class="absolute bottom-8 right-8 w-[3.75rem] h-[3.75rem] rounded-full bg-white border border-gray-200 flex items-center justify-center text-gray-500 hover:bg-gray-50 hover:text-gray-600 transition-all duration-300 group-hover:scale-110 shadow-lg">
+                <iconify-icon icon="lucide:plus" width="30" stroke-width="1.5"></iconify-icon>
               </button>
             </div>
           </div>
@@ -2664,8 +2749,8 @@
                 </p>
               </div>
               <button onclick="openModal('customer_support')"
-                class="absolute bottom-8 right-8 w-10 h-10 rounded-full bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all duration-300 group-hover:scale-110 shadow-lg">
-                <iconify-icon icon="lucide:plus" width="20" stroke-width="1.5"></iconify-icon>
+                class="absolute bottom-8 right-8 w-[3.75rem] h-[3.75rem] rounded-full bg-white border border-gray-200 flex items-center justify-center text-gray-500 hover:bg-gray-50 hover:text-gray-600 transition-all duration-300 group-hover:scale-110 shadow-lg">
+                <iconify-icon icon="lucide:plus" width="30" stroke-width="1.5"></iconify-icon>
               </button>
             </div>
           </div>
@@ -2692,8 +2777,8 @@
                 </p>
               </div>
               <button onclick="openModal('complete_solution')"
-                class="absolute bottom-8 right-8 w-10 h-10 rounded-full bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all duration-300 group-hover:scale-110 shadow-lg">
-                <iconify-icon icon="lucide:plus" width="20" stroke-width="1.5"></iconify-icon>
+                class="absolute bottom-8 right-8 w-[3.75rem] h-[3.75rem] rounded-full bg-white border border-gray-200 flex items-center justify-center text-gray-500 hover:bg-gray-50 hover:text-gray-600 transition-all duration-300 group-hover:scale-110 shadow-lg">
+                <iconify-icon icon="lucide:plus" width="30" stroke-width="1.5"></iconify-icon>
               </button>
             </div>
           </div>
@@ -2840,7 +2925,7 @@
         </div>
 
         <div id="challengesContainer"
-          class="drag-scroll-container flex lg:grid lg:grid-cols-2 overflow-x-auto gap-4 md:gap-6 w-full pb-12 cursor-grab scroll-smooth snap-x snap-mandatory lg:snap-none no-scrollbar">
+          class="drag-scroll-container flex lg:grid lg:grid-cols-2 overflow-x-auto gap-4 md:gap-6 w-full pt-2 pb-12 cursor-grab scroll-smooth snap-x snap-mandatory lg:snap-none no-scrollbar">
           <!-- Card 1 -->
           <div
             class="group h-[320px] md:h-[340px] min-w-[78vw] md:min-w-[45vw] lg:min-w-0 lg:max-w-none w-full lg:w-auto perspective-1000 flex-shrink-0 select-none snap-center transition-transform duration-300 hover:-translate-y-2">
@@ -2868,9 +2953,9 @@
                     </p>
                   </div>
                   <button onclick="event.stopPropagation(); flipCard(this)"
-                    class="absolute bottom-5 right-5 z-20 w-8 h-8 bg-white/20 backdrop-blur-md border border-white/30 rounded-full shadow-lg flex items-center justify-center text-white hover:bg-white hover:text-[#2c1810] transition-all"
+                    class="absolute bottom-5 right-5 z-20 w-[48px] h-[48px] bg-white border border-white/80 rounded-full shadow-lg flex items-center justify-center text-slate-900 hover:bg-slate-100 transition-colors"
                     aria-label="Flip Card">
-                    <iconify-icon icon="lucide:plus" width="18" stroke-width="1.5"></iconify-icon>
+                    <iconify-icon icon="lucide:plus" width="27" stroke-width="1.5"></iconify-icon>
                   </button>
                 </div>
               </div>
@@ -2930,9 +3015,9 @@
                     class="object-top transition-transform duration-700 group-hover:scale-105 w-full h-full object-cover pointer-events-none">
                 </div>
                 <button onclick="event.stopPropagation(); flipCard(this)"
-                  class="absolute bottom-5 right-5 z-20 w-8 h-8 bg-slate-900 rounded-full shadow-lg flex items-center justify-center text-white hover:bg-slate-800 transition-colors"
+                  class="absolute bottom-5 right-5 z-20 w-[48px] h-[48px] bg-white border border-white/80 rounded-full shadow-lg flex items-center justify-center text-slate-900 hover:bg-slate-100 transition-colors"
                   aria-label="Flip Card">
-                  <iconify-icon icon="lucide:plus" width="18" stroke-width="1.5"></iconify-icon>
+                  <iconify-icon icon="lucide:plus" width="27" stroke-width="1.5"></iconify-icon>
                 </button>
               </div>
               <div
@@ -2993,9 +3078,9 @@
                     </p>
                   </div>
                   <button onclick="event.stopPropagation(); flipCard(this)"
-                    class="absolute bottom-5 right-5 z-20 w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center text-slate-900 hover:bg-slate-100 transition-colors"
+                    class="absolute bottom-5 right-5 z-20 w-[60px] h-[60px] bg-white border border-white/80 rounded-full shadow-lg flex items-center justify-center text-slate-900 hover:bg-slate-100 transition-colors"
                     aria-label="Flip Card">
-                    <iconify-icon icon="lucide:plus" width="20" stroke-width="1.5"></iconify-icon>
+                    <iconify-icon icon="lucide:plus" width="30" stroke-width="1.5"></iconify-icon>
                   </button>
                 </div>
               </div>
@@ -3055,9 +3140,9 @@
                     class="object-center transition-transform duration-700 group-hover:scale-105 w-full h-full object-cover pointer-events-none">
                 </div>
                 <button onclick="event.stopPropagation(); flipCard(this)"
-                  class="absolute bottom-5 right-5 z-20 w-8 h-8 bg-slate-900 rounded-full shadow-lg flex items-center justify-center text-white hover:bg-slate-800 transition-colors"
+                  class="absolute bottom-5 right-5 z-20 w-[48px] h-[48px] bg-white border border-white/80 rounded-full shadow-lg flex items-center justify-center text-slate-900 hover:bg-slate-100 transition-colors"
                   aria-label="Flip Card">
-                  <iconify-icon icon="lucide:plus" width="18" stroke-width="1.5"></iconify-icon>
+                  <iconify-icon icon="lucide:plus" width="27" stroke-width="1.5"></iconify-icon>
                 </button>
               </div>
               <div
@@ -3250,50 +3335,8 @@
         </p>
       </div>
 
-      <div class="svc-carousel-wrap space-y-3">
-        <!-- Row 1: scrolls left -->
-        <div class="svc-row-outer">
-          <div class="svc-track-left gap-3 py-1 pl-3">
-            <div class="flex-shrink-0 flex items-center gap-2.5 px-5 py-3 bg-white border border-slate-200 rounded-xl text-slate-700 font-medium text-sm hover:border-blue-300 hover:bg-blue-50/40 transition-all select-none whitespace-nowrap mx-1.5"><iconify-icon icon="lucide:share-2" width="15" class="text-slate-400 flex-shrink-0"></iconify-icon> Social Media Creative</div>
-            <div class="flex-shrink-0 flex items-center gap-2.5 px-5 py-3 bg-white border border-slate-200 rounded-xl text-slate-700 font-medium text-sm hover:border-blue-300 hover:bg-blue-50/40 transition-all select-none whitespace-nowrap mx-1.5"><iconify-icon icon="lucide:sparkles" width="15" class="text-slate-400 flex-shrink-0"></iconify-icon> AI Creative</div>
-            <div class="flex-shrink-0 flex items-center gap-2.5 px-5 py-3 bg-white border border-slate-200 rounded-xl text-slate-700 font-medium text-sm hover:border-blue-300 hover:bg-blue-50/40 transition-all select-none whitespace-nowrap mx-1.5"><iconify-icon icon="lucide:globe" width="15" class="text-slate-400 flex-shrink-0"></iconify-icon> Website Design</div>
-            <div class="flex-shrink-0 flex items-center gap-2.5 px-5 py-3 bg-white border border-slate-200 rounded-xl text-slate-700 font-medium text-sm hover:border-blue-300 hover:bg-blue-50/40 transition-all select-none whitespace-nowrap mx-1.5"><iconify-icon icon="lucide:megaphone" width="15" class="text-slate-400 flex-shrink-0"></iconify-icon> Ad Creative</div>
-            <div class="flex-shrink-0 flex items-center gap-2.5 px-5 py-3 bg-white border border-slate-200 rounded-xl text-slate-700 font-medium text-sm hover:border-blue-300 hover:bg-blue-50/40 transition-all select-none whitespace-nowrap mx-1.5"><iconify-icon icon="lucide:box" width="15" class="text-slate-400 flex-shrink-0"></iconify-icon> 3D &amp; AR Design</div>
-            <div class="flex-shrink-0 flex items-center gap-2.5 px-5 py-3 bg-white border border-slate-200 rounded-xl text-slate-700 font-medium text-sm hover:border-blue-300 hover:bg-blue-50/40 transition-all select-none whitespace-nowrap mx-1.5"><iconify-icon icon="lucide:printer" width="15" class="text-slate-400 flex-shrink-0"></iconify-icon> Print Design</div>
-            <div class="flex-shrink-0 flex items-center gap-2.5 px-5 py-3 bg-white border border-slate-200 rounded-xl text-slate-700 font-medium text-sm hover:border-blue-300 hover:bg-blue-50/40 transition-all select-none whitespace-nowrap mx-1.5"><iconify-icon icon="lucide:lightbulb" width="15" class="text-slate-400 flex-shrink-0"></iconify-icon> Concept Creation</div>
-            <div class="flex-shrink-0 flex items-center gap-2.5 px-5 py-3 bg-white border border-slate-200 rounded-xl text-slate-700 font-medium text-sm hover:border-blue-300 hover:bg-blue-50/40 transition-all select-none whitespace-nowrap mx-1.5"><iconify-icon icon="lucide:book-open" width="15" class="text-slate-400 flex-shrink-0"></iconify-icon> eBook &amp; Digital Reports</div>
-            <div class="flex-shrink-0 flex items-center gap-2.5 px-5 py-3 bg-white border border-slate-200 rounded-xl text-slate-700 font-medium text-sm hover:border-blue-300 hover:bg-blue-50/40 transition-all select-none whitespace-nowrap mx-1.5" aria-hidden="true"><iconify-icon icon="lucide:share-2" width="15" class="text-slate-400 flex-shrink-0"></iconify-icon> Social Media Creative</div>
-            <div class="flex-shrink-0 flex items-center gap-2.5 px-5 py-3 bg-white border border-slate-200 rounded-xl text-slate-700 font-medium text-sm hover:border-blue-300 hover:bg-blue-50/40 transition-all select-none whitespace-nowrap mx-1.5" aria-hidden="true"><iconify-icon icon="lucide:sparkles" width="15" class="text-slate-400 flex-shrink-0"></iconify-icon> AI Creative</div>
-            <div class="flex-shrink-0 flex items-center gap-2.5 px-5 py-3 bg-white border border-slate-200 rounded-xl text-slate-700 font-medium text-sm hover:border-blue-300 hover:bg-blue-50/40 transition-all select-none whitespace-nowrap mx-1.5" aria-hidden="true"><iconify-icon icon="lucide:globe" width="15" class="text-slate-400 flex-shrink-0"></iconify-icon> Website Design</div>
-            <div class="flex-shrink-0 flex items-center gap-2.5 px-5 py-3 bg-white border border-slate-200 rounded-xl text-slate-700 font-medium text-sm hover:border-blue-300 hover:bg-blue-50/40 transition-all select-none whitespace-nowrap mx-1.5" aria-hidden="true"><iconify-icon icon="lucide:megaphone" width="15" class="text-slate-400 flex-shrink-0"></iconify-icon> Ad Creative</div>
-            <div class="flex-shrink-0 flex items-center gap-2.5 px-5 py-3 bg-white border border-slate-200 rounded-xl text-slate-700 font-medium text-sm hover:border-blue-300 hover:bg-blue-50/40 transition-all select-none whitespace-nowrap mx-1.5" aria-hidden="true"><iconify-icon icon="lucide:box" width="15" class="text-slate-400 flex-shrink-0"></iconify-icon> 3D &amp; AR Design</div>
-            <div class="flex-shrink-0 flex items-center gap-2.5 px-5 py-3 bg-white border border-slate-200 rounded-xl text-slate-700 font-medium text-sm hover:border-blue-300 hover:bg-blue-50/40 transition-all select-none whitespace-nowrap mx-1.5" aria-hidden="true"><iconify-icon icon="lucide:printer" width="15" class="text-slate-400 flex-shrink-0"></iconify-icon> Print Design</div>
-            <div class="flex-shrink-0 flex items-center gap-2.5 px-5 py-3 bg-white border border-slate-200 rounded-xl text-slate-700 font-medium text-sm hover:border-blue-300 hover:bg-blue-50/40 transition-all select-none whitespace-nowrap mx-1.5" aria-hidden="true"><iconify-icon icon="lucide:lightbulb" width="15" class="text-slate-400 flex-shrink-0"></iconify-icon> Concept Creation</div>
-            <div class="flex-shrink-0 flex items-center gap-2.5 px-5 py-3 bg-white border border-slate-200 rounded-xl text-slate-700 font-medium text-sm hover:border-blue-300 hover:bg-blue-50/40 transition-all select-none whitespace-nowrap mx-1.5" aria-hidden="true"><iconify-icon icon="lucide:book-open" width="15" class="text-slate-400 flex-shrink-0"></iconify-icon> eBook &amp; Digital Reports</div>
-          </div>
-        </div>
-
-        <!-- Row 2: scrolls right -->
-        <div class="svc-row-outer">
-          <div class="svc-track-right gap-3 py-1 pl-3">
-            <div class="flex-shrink-0 flex items-center gap-2.5 px-5 py-3 bg-white border border-slate-200 rounded-xl text-slate-700 font-medium text-sm hover:border-violet-300 hover:bg-violet-50/40 transition-all select-none whitespace-nowrap mx-1.5"><iconify-icon icon="lucide:cpu" width="15" class="text-slate-400 flex-shrink-0"></iconify-icon> AI Strategy &amp; Consulting</div>
-            <div class="flex-shrink-0 flex items-center gap-2.5 px-5 py-3 bg-white border border-slate-200 rounded-xl text-slate-700 font-medium text-sm hover:border-violet-300 hover:bg-violet-50/40 transition-all select-none whitespace-nowrap mx-1.5"><iconify-icon icon="lucide:fingerprint" width="15" class="text-slate-400 flex-shrink-0"></iconify-icon> Brand Identity</div>
-            <div class="flex-shrink-0 flex items-center gap-2.5 px-5 py-3 bg-white border border-slate-200 rounded-xl text-slate-700 font-medium text-sm hover:border-violet-300 hover:bg-violet-50/40 transition-all select-none whitespace-nowrap mx-1.5"><iconify-icon icon="lucide:package" width="15" class="text-slate-400 flex-shrink-0"></iconify-icon> Packaging &amp; Merch Design</div>
-            <div class="flex-shrink-0 flex items-center gap-2.5 px-5 py-3 bg-white border border-slate-200 rounded-xl text-slate-700 font-medium text-sm hover:border-violet-300 hover:bg-violet-50/40 transition-all select-none whitespace-nowrap mx-1.5"><iconify-icon icon="lucide:zap" width="15" class="text-slate-400 flex-shrink-0"></iconify-icon> AI-Powered Creative</div>
-            <div class="flex-shrink-0 flex items-center gap-2.5 px-5 py-3 bg-white border border-slate-200 rounded-xl text-slate-700 font-medium text-sm hover:border-violet-300 hover:bg-violet-50/40 transition-all select-none whitespace-nowrap mx-1.5"><iconify-icon icon="lucide:pen-tool" width="15" class="text-slate-400 flex-shrink-0"></iconify-icon> Illustration Design</div>
-            <div class="flex-shrink-0 flex items-center gap-2.5 px-5 py-3 bg-white border border-slate-200 rounded-xl text-slate-700 font-medium text-sm hover:border-violet-300 hover:bg-violet-50/40 transition-all select-none whitespace-nowrap mx-1.5"><iconify-icon icon="lucide:monitor" width="15" class="text-slate-400 flex-shrink-0"></iconify-icon> Presentation Design</div>
-            <div class="flex-shrink-0 flex items-center gap-2.5 px-5 py-3 bg-white border border-slate-200 rounded-xl text-slate-700 font-medium text-sm hover:border-violet-300 hover:bg-violet-50/40 transition-all select-none whitespace-nowrap mx-1.5"><iconify-icon icon="lucide:target" width="15" class="text-slate-400 flex-shrink-0"></iconify-icon> Marketing Strategy</div>
-            <div class="flex-shrink-0 flex items-center gap-2.5 px-5 py-3 bg-white border border-slate-200 rounded-xl text-slate-700 font-medium text-sm hover:border-violet-300 hover:bg-violet-50/40 transition-all select-none whitespace-nowrap mx-1.5"><iconify-icon icon="lucide:mail" width="15" class="text-slate-400 flex-shrink-0"></iconify-icon> Email Design</div>
-            <div class="flex-shrink-0 flex items-center gap-2.5 px-5 py-3 bg-white border border-slate-200 rounded-xl text-slate-700 font-medium text-sm hover:border-violet-300 hover:bg-violet-50/40 transition-all select-none whitespace-nowrap mx-1.5" aria-hidden="true"><iconify-icon icon="lucide:cpu" width="15" class="text-slate-400 flex-shrink-0"></iconify-icon> AI Strategy &amp; Consulting</div>
-            <div class="flex-shrink-0 flex items-center gap-2.5 px-5 py-3 bg-white border border-slate-200 rounded-xl text-slate-700 font-medium text-sm hover:border-violet-300 hover:bg-violet-50/40 transition-all select-none whitespace-nowrap mx-1.5" aria-hidden="true"><iconify-icon icon="lucide:fingerprint" width="15" class="text-slate-400 flex-shrink-0"></iconify-icon> Brand Identity</div>
-            <div class="flex-shrink-0 flex items-center gap-2.5 px-5 py-3 bg-white border border-slate-200 rounded-xl text-slate-700 font-medium text-sm hover:border-violet-300 hover:bg-violet-50/40 transition-all select-none whitespace-nowrap mx-1.5" aria-hidden="true"><iconify-icon icon="lucide:package" width="15" class="text-slate-400 flex-shrink-0"></iconify-icon> Packaging &amp; Merch Design</div>
-            <div class="flex-shrink-0 flex items-center gap-2.5 px-5 py-3 bg-white border border-slate-200 rounded-xl text-slate-700 font-medium text-sm hover:border-violet-300 hover:bg-violet-50/40 transition-all select-none whitespace-nowrap mx-1.5" aria-hidden="true"><iconify-icon icon="lucide:zap" width="15" class="text-slate-400 flex-shrink-0"></iconify-icon> AI-Powered Creative</div>
-            <div class="flex-shrink-0 flex items-center gap-2.5 px-5 py-3 bg-white border border-slate-200 rounded-xl text-slate-700 font-medium text-sm hover:border-violet-300 hover:bg-violet-50/40 transition-all select-none whitespace-nowrap mx-1.5" aria-hidden="true"><iconify-icon icon="lucide:pen-tool" width="15" class="text-slate-400 flex-shrink-0"></iconify-icon> Illustration Design</div>
-            <div class="flex-shrink-0 flex items-center gap-2.5 px-5 py-3 bg-white border border-slate-200 rounded-xl text-slate-700 font-medium text-sm hover:border-violet-300 hover:bg-violet-50/40 transition-all select-none whitespace-nowrap mx-1.5" aria-hidden="true"><iconify-icon icon="lucide:monitor" width="15" class="text-slate-400 flex-shrink-0"></iconify-icon> Presentation Design</div>
-            <div class="flex-shrink-0 flex items-center gap-2.5 px-5 py-3 bg-white border border-slate-200 rounded-xl text-slate-700 font-medium text-sm hover:border-violet-300 hover:bg-violet-50/40 transition-all select-none whitespace-nowrap mx-1.5" aria-hidden="true"><iconify-icon icon="lucide:target" width="15" class="text-slate-400 flex-shrink-0"></iconify-icon> Marketing Strategy</div>
-            <div class="flex-shrink-0 flex items-center gap-2.5 px-5 py-3 bg-white border border-slate-200 rounded-xl text-slate-700 font-medium text-sm hover:border-violet-300 hover:bg-violet-50/40 transition-all select-none whitespace-nowrap mx-1.5" aria-hidden="true"><iconify-icon icon="lucide:mail" width="15" class="text-slate-400 flex-shrink-0"></iconify-icon> Email Design</div>
-          </div>
-        </div>
+      <div class="svc-media-shell">
+        <div id="svc-media-carousel" class="svc-media-carousel" aria-label="Service cards carousel. Swipe, drag, or scroll."></div>
       </div>
     </section>
 
@@ -3449,24 +3492,92 @@
 
     <!-- Scroll/animation styles for svc carousel + profile testimonials -->
     <style>
-      @keyframes svc-scroll-left {
-        from { transform: translateX(0); }
-        to   { transform: translateX(-50%); }
+      .svc-media-shell {
+        position: relative;
       }
-      @keyframes svc-scroll-right {
-        from { transform: translateX(-50%); }
-        to   { transform: translateX(0); }
+      .svc-media-carousel {
+        display: flex;
+        gap: 14px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        padding: 4px 14px 12px;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        scroll-snap-type: x mandatory;
+        scroll-padding-left: 14px;
+        cursor: grab;
+        user-select: none;
+        -webkit-overflow-scrolling: touch;
       }
-      .svc-track-left  { display:flex; width:max-content; animation: svc-scroll-left  42s linear infinite; }
-      .svc-track-right { display:flex; width:max-content; animation: svc-scroll-right 42s linear infinite; }
-      .svc-carousel-wrap:hover .svc-track-left,
-      .svc-carousel-wrap:hover .svc-track-right { animation-play-state: paused; }
-      .svc-row-outer { overflow:hidden; position:relative; }
-      .svc-row-outer::before, .svc-row-outer::after {
-        content:''; position:absolute; top:0; bottom:0; width:80px; z-index:10; pointer-events:none;
+      .svc-media-carousel::-webkit-scrollbar {
+        display: none;
       }
-      .svc-row-outer::before { left:0;  background:linear-gradient(to right, #fff, transparent); }
-      .svc-row-outer::after  { right:0; background:linear-gradient(to left,  #fff, transparent); }
+      .svc-media-carousel.svc-dragging { cursor: grabbing; scroll-snap-type: none; }
+      .svc-media-card {
+        flex: 0 0 clamp(220px, 24vw, 340px);
+        aspect-ratio: 3 / 4.45;
+        position: relative;
+        border-radius: 14px;
+        overflow: hidden;
+        scroll-snap-align: start;
+        background: #111827;
+        border: 1px solid rgba(148, 163, 184, 0.26);
+      }
+      .svc-media-visual {
+        position: absolute;
+        inset: 0;
+      }
+      .svc-media-visual img,
+      .svc-media-visual video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+      .svc-media-visual::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to top, rgba(2, 6, 23, 0.52) 8%, rgba(2, 6, 23, 0.18) 28%, rgba(2, 6, 23, 0.08) 45%, rgba(2, 6, 23, 0.06) 100%);
+        pointer-events: none;
+      }
+      .svc-media-title {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        right: 18px;
+        z-index: 2;
+        color: rgba(255,255,255,0.94);
+        text-shadow: 0 2px 8px rgba(0,0,0,0.24);
+        font-size: clamp(1.05rem, 1.65vw, 1.1rem);
+        line-height: 1.12;
+        letter-spacing: -0.02em;
+        font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        font-weight: 500;
+      }
+      .svc-media-title em {
+        font-family: "Times New Roman", Georgia, serif;
+        font-style: italic;
+        font-weight: 500;
+      }
+      .svc-media-placeholder {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 1.25rem;
+        color: rgba(255,255,255,0.82);
+        font-size: 0.8rem;
+        line-height: 1.35;
+        z-index: 1;
+        background: radial-gradient(120% 70% at 40% 25%, rgba(99,102,241,0.48), rgba(30,41,59,0.96));
+      }
+      @media (max-width: 768px) {
+        .svc-media-card { flex-basis: min(74vw, 300px); }
+        .svc-media-title { top: 16px; left: 16px; right: 16px; }
+      }
       /* Profile testimonials — SVG progress ring */
       @keyframes avatar-ring-fill {
         from { stroke-dashoffset: 232.5; }
@@ -5350,29 +5461,9 @@
         }, true);
       }
 
-      // ── Mobile sticky card stack: scale-down effect ──
+      // ── Mobile card stack: disabled (cards are now simple vertical stack on mobile) ──
       (function initMobileCardStack() {
-        if (window.innerWidth > 767) return;
-        var cards = Array.from(document.querySelectorAll('.mfc-card'));
-        if (!cards.length) return;
-        var stickyTop = 80;
-
-        function updateCardScales() {
-          for (var i = 0; i < cards.length - 1; i++) {
-            var card = cards[i];
-            var nextCard = cards[i + 1];
-            var nextTop = nextCard.getBoundingClientRect().top;
-            var cardBottom = stickyTop + card.offsetHeight;
-            // overlap: how many px of this card are hidden under the next one
-            var overlap = Math.max(0, Math.min(card.offsetHeight, cardBottom - nextTop));
-            var progress = overlap / card.offsetHeight; // 0 → 1
-            var scale = 1 - progress * 0.06;  // 1.0 → 0.94
-            card.style.transform = 'scale(' + scale + ') translateZ(0)';
-          }
-        }
-
-        window.addEventListener('scroll', updateCardScales, { passive: true });
-        updateCardScales();
+        // Sticky scroll animation removed on mobile — cards stack normally
       })();
 
       // Initialize Carousels
@@ -5550,48 +5641,48 @@
           </div>
 
           <!-- Navigation Column -->
-          <div class="md:col-span-1 lg:col-span-2 lg:col-start-9 text-center">
+          <div class="md:col-span-1 lg:col-span-2 lg:col-start-8 text-left">
             <h3 class="text-white font-semibold mb-4 text-lg font-sf">Navigation</h3>
             <ul class="space-y-3">
               <li><a href="index.html"
-                  class="text-slate-400 hover:text-cyan-400 transition-colors duration-200 flex items-center justify-center group font-sf"><span
+                  class="text-slate-400 hover:text-cyan-400 transition-colors duration-200 flex items-center justify-start group font-sf"><span
                     class="w-0 group-hover:w-2 h-[1px] bg-cyan-400 mr-0 group-hover:mr-2 transition-all duration-300 opacity-0 group-hover:opacity-100"></span>Home</a>
               </li>
               <li><a href="index.html#how-it-works"
-                  class="text-slate-400 hover:text-cyan-400 transition-colors duration-200 flex items-center justify-center group font-sf"><span
+                  class="text-slate-400 hover:text-cyan-400 transition-colors duration-200 flex items-center justify-start group font-sf"><span
                     class="w-0 group-hover:w-2 h-[1px] bg-cyan-400 mr-0 group-hover:mr-2 transition-all duration-300 opacity-0 group-hover:opacity-100"></span>How
                   It Works</a></li>
               <li><a href="services.html"
-                  class="text-slate-400 hover:text-cyan-400 transition-colors duration-200 flex items-center justify-center group font-sf"><span
+                  class="text-slate-400 hover:text-cyan-400 transition-colors duration-200 flex items-center justify-start group font-sf"><span
                     class="w-0 group-hover:w-2 h-[1px] bg-cyan-400 mr-0 group-hover:mr-2 transition-all duration-300 opacity-0 group-hover:opacity-100"></span>Services</a>
               </li>
               <li><a href="case-studies.html"
-                  class="text-slate-400 hover:text-cyan-400 transition-colors duration-200 flex items-center justify-center group font-sf"><span
+                  class="text-slate-400 hover:text-cyan-400 transition-colors duration-200 flex items-center justify-start group font-sf"><span
                     class="w-0 group-hover:w-2 h-[1px] bg-cyan-400 mr-0 group-hover:mr-2 transition-all duration-300 opacity-0 group-hover:opacity-100"></span>Case
                   Studies</a></li>
             </ul>
           </div>
 
           <!-- Solutions Column -->
-          <div class="md:col-span-1 lg:col-span-2 text-center">
+          <div class="md:col-span-1 lg:col-span-3 text-left lg:pl-4">
             <h3 class="text-white font-semibold mb-4 text-lg font-sf">Solutions</h3>
             <ul class="space-y-3">
               <li><a href="index.html#workflow-automation"
-                  class="text-slate-400 hover:text-cyan-400 transition-colors duration-200 flex items-center justify-center group font-sf"><span
+                  class="text-slate-400 hover:text-cyan-400 transition-colors duration-200 flex items-center justify-start group font-sf"><span
                     class="w-0 group-hover:w-2 h-[1px] bg-cyan-400 mr-0 group-hover:mr-2 transition-all duration-300 opacity-0 group-hover:opacity-100"></span>AI
                   Workflow Automation</a></li>
               <li><a href="index.html#mvp-development"
-                  class="text-slate-400 hover:text-cyan-400 transition-colors duration-200 flex items-center justify-center group font-sf"><span
+                  class="text-slate-400 hover:text-cyan-400 transition-colors duration-200 flex items-center justify-start group font-sf"><span
                     class="w-0 group-hover:w-2 h-[1px] bg-cyan-400 mr-0 group-hover:mr-2 transition-all duration-300 opacity-0 group-hover:opacity-100"></span>Rapid
                   MVP Development</a>
               </li>
               <li><a href="index.html#ai-support"
-                  class="text-slate-400 hover:text-cyan-400 transition-colors duration-200 flex items-center justify-center group font-sf"><span
+                  class="text-slate-400 hover:text-cyan-400 transition-colors duration-200 flex items-center justify-start group font-sf"><span
                     class="w-0 group-hover:w-2 h-[1px] bg-cyan-400 mr-0 group-hover:mr-2 transition-all duration-300 opacity-0 group-hover:opacity-100"></span>AI-Powered
                   Support</a>
               </li>
               <li><a href="index.html#complete-solution"
-                  class="text-slate-400 hover:text-cyan-400 transition-colors duration-200 flex items-center justify-center group font-sf"><span
+                  class="text-slate-400 hover:text-cyan-400 transition-colors duration-200 flex items-center justify-start group font-sf"><span
                     class="w-0 group-hover:w-2 h-[1px] bg-cyan-400 mr-0 group-hover:mr-2 transition-all duration-300 opacity-0 group-hover:opacity-100"></span>Complete
                   AI Solution</a></li>
             </ul>
@@ -5608,6 +5699,10 @@
           <!-- Left: Copyright -->
           <div class="text-slate-500 text-sm font-sf text-center md:text-left">
             <p>&copy; <span id="year"></span> LoopSuit. All rights reserved.</p>
+            <div class="flex items-center justify-center md:justify-start gap-4 mt-2">
+              <a href="/privacy-policy" class="hover:text-cyan-400 transition-colors">Privacy Policy</a>
+              <a href="/terms" class="hover:text-cyan-400 transition-colors">Terms</a>
+            </div>
           </div>
 
           <!-- Right: Moved Content (Socials & Info) -->
@@ -5829,85 +5924,155 @@
   </script>
 
   <script>
-    // Scroll Rotation Animation for Solutions Section
+    // Scroll-driven horizontal solutions carousel with drag/swipe support
     document.addEventListener('DOMContentLoaded', () => {
-      // Select elements
-      const rotateImages = document.querySelectorAll('.scroll-rotate-image');
-      const rotateImagesReverse = document.querySelectorAll('.scroll-rotate-image-reverse');
+      const stage = document.querySelector('.solutions-horizontal-stage');
+      const carousel = stage?.querySelector('.solutions-carousel');
+      const track = stage?.querySelector('.solutions-carousel-track');
+      const group = stage?.querySelector('.solutions-carousel-group');
+      const prevArrow = stage?.querySelector('#solutionsArrowPrev');
+      const nextArrow = stage?.querySelector('#solutionsArrowNext');
 
-      // Configuration
-      const ROTATION_RANGE = 4; // Degrees of max rotation (+/-)
-      const SCALE_MIN = 1.0;
+      if (!stage || !carousel || !track || !group) return;
 
-      const updateRotation = () => {
-        const viewportHeight = window.innerHeight;
+      let isDragging = false;
+      let startClientX = 0;
+      let startTranslate = 0;
+      let translateX = 0;
+      let maxTranslate = 0;
+      let snapPoints = [];
+      let currentSnapIndex = 0;
 
-        // Process standard rotating images (rotate based on scroll)
-        rotateImages.forEach(img => {
-          const rect = img.getBoundingClientRect();
-          // Check if in view
-          if (rect.top < viewportHeight && rect.bottom > 0) {
-            // Calculate center position relative to viewport center
-            const center = rect.top + rect.height / 2;
-            const viewportCenter = viewportHeight / 2;
+      const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
 
-            // Normalize: -1 (top) to 1 (bottom) roughly
-            const percent = (center - viewportCenter) / viewportHeight;
-
-            // Calculate rotation: smooth transition
-            // When element is higher (scrolled down), percent is negative -> rotate one way
-            // When element is lower, percent is positive -> rotate other way
-            const rotation = percent * ROTATION_RANGE * 2;
-
-            // Apply using CSS variable to avoid interfering with hover scale
-            img.style.setProperty('--scroll-rotate', `${rotation}deg`);
-          }
-        });
-
-        // Process reverse rotating images
-        rotateImagesReverse.forEach(img => {
-          const rect = img.getBoundingClientRect();
-          if (rect.top < viewportHeight && rect.bottom > 0) {
-            const center = rect.top + rect.height / 2;
-            const percent = (center - viewportHeight / 2) / viewportHeight;
-            // Opposite direction
-            const rotation = percent * -ROTATION_RANGE * 2;
-            img.style.setProperty('--scroll-rotate', `${rotation}deg`);
-          }
-        });
-
-        requestAnimationFrame(updateRotation);
+      const paint = () => {
+        track.style.transform = `translate3d(${-translateX}px, 0, 0)`;
       };
 
-      // Start loop
-      requestAnimationFrame(updateRotation);
+      const findClosestSnapIndex = (value) => {
+        if (!snapPoints.length) return 0;
+        let closestIndex = 0;
+        let smallestDiff = Number.POSITIVE_INFINITY;
+        snapPoints.forEach((point, index) => {
+          const diff = Math.abs(point - value);
+          if (diff < smallestDiff) {
+            smallestDiff = diff;
+            closestIndex = index;
+          }
+        });
+        return closestIndex;
+      };
+
+      const updateArrowState = () => {
+        if (!prevArrow || !nextArrow) return;
+        prevArrow.disabled = currentSnapIndex <= 0;
+        nextArrow.disabled = currentSnapIndex >= snapPoints.length - 1;
+      };
+
+      const snapToIndex = (targetIndex) => {
+        if (!snapPoints.length) return;
+        const safeIndex = clamp(targetIndex, 0, snapPoints.length - 1);
+        currentSnapIndex = safeIndex;
+        const targetTranslate = snapPoints[safeIndex];
+        translateX = targetTranslate;
+        paint();
+        updateArrowState();
+      };
+
+      const updateMetrics = () => {
+        const groupWidth = group.getBoundingClientRect().width;
+        const viewportWidth = carousel.clientWidth;
+        maxTranslate = Math.max(0, groupWidth - viewportWidth);
+        snapPoints = Array.from(group.querySelectorAll('article')).map((card) =>
+          clamp(card.offsetLeft, 0, maxTranslate)
+        );
+        if (!snapPoints.length) snapPoints = [0];
+      };
+
+      carousel.addEventListener('pointerdown', (event) => {
+        if (event.pointerType === 'mouse' && event.button !== 0) return;
+        isDragging = true;
+        startClientX = event.clientX;
+        startTranslate = translateX;
+        carousel.classList.add('is-dragging');
+        carousel.setPointerCapture(event.pointerId);
+      });
+
+      carousel.addEventListener('pointermove', (event) => {
+        if (!isDragging) return;
+        const deltaX = event.clientX - startClientX;
+        translateX = clamp(startTranslate - deltaX, 0, maxTranslate);
+        paint();
+      });
+
+      carousel.addEventListener('pointerup', (event) => {
+        if (!isDragging) return;
+        isDragging = false;
+        carousel.classList.remove('is-dragging');
+        if (carousel.hasPointerCapture(event.pointerId)) {
+          carousel.releasePointerCapture(event.pointerId);
+        }
+        snapToIndex(findClosestSnapIndex(translateX));
+      });
+
+      carousel.addEventListener('pointercancel', (event) => {
+        if (!isDragging) return;
+        isDragging = false;
+        carousel.classList.remove('is-dragging');
+        if (carousel.hasPointerCapture(event.pointerId)) {
+          carousel.releasePointerCapture(event.pointerId);
+        }
+      });
+
+      const handleResize = () => {
+        updateMetrics();
+        currentSnapIndex = findClosestSnapIndex(translateX);
+        updateArrowState();
+        paint();
+      };
+
+      const handleWheel = (event) => {
+        const rect = stage.getBoundingClientRect();
+        const isStageVisible = rect.top < window.innerHeight && rect.bottom > 0;
+        if (!isStageVisible || maxTranslate <= 0 || isDragging) return;
+
+        const primaryDelta = Math.abs(event.deltaY) >= Math.abs(event.deltaX) ? event.deltaY : event.deltaX;
+        if (primaryDelta === 0) return;
+
+        const atStart = translateX <= 0;
+        const atEnd = translateX >= maxTranslate;
+        const scrollingForward = primaryDelta > 0;
+        const scrollingBackward = primaryDelta < 0;
+
+        if ((scrollingForward && atEnd) || (scrollingBackward && atStart)) {
+          return;
+        }
+
+        event.preventDefault();
+        translateX = clamp(translateX + primaryDelta, 0, maxTranslate);
+        currentSnapIndex = findClosestSnapIndex(translateX);
+        updateArrowState();
+        paint();
+      };
+
+      prevArrow?.addEventListener('click', () => {
+        snapToIndex(currentSnapIndex - 1);
+      });
+
+      nextArrow?.addEventListener('click', () => {
+        snapToIndex(currentSnapIndex + 1);
+      });
+
+      window.addEventListener('resize', handleResize);
+      carousel.addEventListener('wheel', handleWheel, { passive: false });
+
+      updateMetrics();
+      currentSnapIndex = findClosestSnapIndex(translateX);
+      paint();
+      updateArrowState();
     });
   </script>
 
-  <style>
-    /* 
-      Scroll Rotation Classes
-      Uses CSS variable to allow hover scale to compose with rotation
-    */
-    .scroll-rotate-image,
-    .scroll-rotate-image-reverse {
-      --scroll-rotate: 0deg;
-      transform: rotate(var(--scroll-rotate));
-      /* We use a very short linear transition for scroll updates to smooth out small jitters 
-         while keeping it responsive. */
-      transition: transform 0.1s linear;
-      will-change: transform;
-    }
-
-    /* Hover Effect: Scale up while maintaining current scroll rotation */
-    .scroll-rotate-image:hover,
-    .scroll-rotate-image-reverse:hover {
-      /* IMPORTANT: We must include the variable here to persist the scroll rotation */
-      transform: rotate(var(--scroll-rotate)) scale(1.05);
-      /* Slower easing for the scale effect feels more premium */
-      transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
-    }
-  </style>
   <script>
     // Showreel Auto-Play on Scroll Into View
     document.addEventListener('DOMContentLoaded', () => {
@@ -6102,6 +6267,170 @@
 
   <script>
     // =====================================================
+    // Services Media Carousel (auto-scroll + swipe/drag/scroll)
+    // =====================================================
+    document.addEventListener('DOMContentLoaded', function() {
+      var svcCarousel = document.getElementById('svc-media-carousel');
+      if (!svcCarousel) return;
+
+      // Update these sources as you add files into /public/image - services carousel
+      var svcMediaItems = [
+        { titleHTML: '<em>Motion</em> Design', type: 'video', src: './image - services carousel/motion-design.mp4', fallback: './assets/blog-media/article-2-banner.mp4' },
+        { titleHTML: '<em>Print</em> Design', type: 'image', src: './image - services carousel/print-design.jpg', fallback: './assets/blog-media/article-1-feature-1.jpg' },
+        { titleHTML: 'Immersive <em>Experiences</em>', type: 'image', src: './image - services carousel/immersive-experiences.jpg', fallback: './assets/blog-media/article-3-banner.jpg' },
+        { titleHTML: '<em>Email</em> Design &amp; Development', type: 'image', src: './image - services carousel/email-design-development.jpg', fallback: './assets/blog-media/article-4-feature-1.jpg' },
+        { titleHTML: 'Copywriting', type: 'image', src: './image - services carousel/copywriting.jpg', fallback: './assets/blog-media/article-5-feature-2.jpg' },
+        { titleHTML: 'Campaign Creative <em>Strategy</em>', type: 'image', src: './image - services carousel/campaign-creative-strategy.jpg', fallback: './assets/blog-media/article-7-feature-1.jpg' },
+        { titleHTML: 'Packaging &amp; Merch <em>Design</em>', type: 'image', src: './image - services carousel/packaging-merch-design.jpg', fallback: './assets/blog-media/article-2-feature-1.jpg' },
+        { titleHTML: 'AI Strategy <em>Consulting</em>', type: 'image', src: './image - services carousel/ai-strategy-consulting.jpg', fallback: './assets/blog-media/article-4-banner.jpg' },
+        { titleHTML: '<em>Illustration</em> Design', type: 'image', src: './image - services carousel/illustration-design.jpg', fallback: './assets/blog-media/article-6-feature-2.jpg' },
+        { titleHTML: '<em>Presentation</em> Design', type: 'image', src: './image - services carousel/presentation-design.jpg', fallback: './assets/blog-media/article-3-feature-2.jpg' },
+        { titleHTML: 'eBook &amp; <em>Digital Reports</em>', type: 'image', src: './image - services carousel/ebook-digital-reports.jpg', fallback: './assets/blog-media/article-1-banner.jpg' },
+        { titleHTML: '<em>Website Design</em> &amp; Development', type: 'video', src: './image - services carousel/website-design-development.mp4', fallback: './assets/blog-media/article-5-banner.mp4' },
+        { titleHTML: 'AI-Powered <em>Creative</em>', type: 'image', src: './image - services carousel/ai-powered-creative.jpg', fallback: './assets/blog-media/article-1-feature-2.jpg' },
+        { titleHTML: '<em>Marketing</em> Strategy', type: 'image', src: './image - services carousel/marketing-strategy.jpg', fallback: './assets/blog-media/article-2-feature-2.jpg' },
+        { titleHTML: '<em>Video</em> Production', type: 'image', src: './image - services carousel/video-production.jpg', fallback: './assets/blog-media/article-4-feature-2.jpg' },
+        { titleHTML: '<em>Brand</em> Identity', type: 'image', src: './image - services carousel/brand-identity.jpg', fallback: './assets/blog-media/article-3-feature-1.jpg' },
+        { titleHTML: '<em>Ad</em> Creative', type: 'image', src: './image - services carousel/ad-creative.jpg', fallback: './assets/blog-media/article-6-feature-1.jpg' }
+      ];
+
+      function makeServiceCard(item) {
+        var card = document.createElement('article');
+        card.className = 'svc-media-card';
+
+        var visual = document.createElement('div');
+        visual.className = 'svc-media-visual';
+        var title = document.createElement('h3');
+        title.className = 'svc-media-title';
+        title.innerHTML = item.titleHTML;
+
+        function showPlaceholder() {
+          if (visual.querySelector('.svc-media-placeholder')) return;
+          var ph = document.createElement('div');
+          ph.className = 'svc-media-placeholder';
+          ph.textContent = 'Placeholder: add this media in /public/image - services carousel';
+          visual.appendChild(ph);
+        }
+
+        if (item.type === 'video') {
+          var video = document.createElement('video');
+          video.src = item.src;
+          video.autoplay = true;
+          video.loop = true;
+          video.muted = true;
+          video.playsInline = true;
+          video.preload = 'metadata';
+          video.setAttribute('aria-label', item.titleHTML.replace(/<[^>]*>/g, '') + ' preview');
+          var fellBackToVideo = false;
+          video.addEventListener('error', function() {
+            if (!fellBackToVideo && item.fallback) {
+              fellBackToVideo = true;
+              video.src = item.fallback;
+              video.load();
+              return;
+            }
+            showPlaceholder();
+          });
+          visual.appendChild(video);
+        } else {
+          var image = document.createElement('img');
+          image.src = item.src;
+          image.alt = item.titleHTML.replace(/<[^>]*>/g, '') + ' service';
+          image.loading = 'lazy';
+          var fellBackToImage = false;
+          image.addEventListener('error', function() {
+            if (!fellBackToImage && item.fallback) {
+              fellBackToImage = true;
+              image.src = item.fallback;
+              return;
+            }
+            showPlaceholder();
+          });
+          visual.appendChild(image);
+        }
+
+        card.appendChild(visual);
+        card.appendChild(title);
+        return card;
+      }
+
+      var loopItems = svcMediaItems.concat(svcMediaItems);
+      loopItems.forEach(function(item) { svcCarousel.appendChild(makeServiceCard(item)); });
+
+      var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var loopWidth = Math.max(1, svcCarousel.scrollWidth / 2);
+      var rafId = 0;
+      var lastTs = 0;
+      var autoScrollEnabled = !reducedMotion;
+      var dragActive = false;
+      var downX = 0;
+      var downScroll = 0;
+      var resumeTimer = null;
+
+      function pauseAutoScroll(ms) {
+        autoScrollEnabled = false;
+        if (resumeTimer) clearTimeout(resumeTimer);
+        if (!reducedMotion) {
+          resumeTimer = setTimeout(function() {
+            if (!dragActive) autoScrollEnabled = true;
+          }, ms || 1800);
+        }
+      }
+
+      function animate(ts) {
+        if (!lastTs) lastTs = ts;
+        var dt = ts - lastTs;
+        lastTs = ts;
+
+        if (autoScrollEnabled) {
+          svcCarousel.scrollLeft += dt * 0.03;
+          if (svcCarousel.scrollLeft >= loopWidth) {
+            svcCarousel.scrollLeft -= loopWidth;
+          }
+        }
+        rafId = window.requestAnimationFrame(animate);
+      }
+
+      svcCarousel.addEventListener('pointerdown', function(e) {
+        dragActive = true;
+        downX = e.clientX;
+        downScroll = svcCarousel.scrollLeft;
+        svcCarousel.classList.add('svc-dragging');
+        pauseAutoScroll(2400);
+      });
+
+      window.addEventListener('pointermove', function(e) {
+        if (!dragActive) return;
+        svcCarousel.scrollLeft = downScroll - (e.clientX - downX);
+      });
+
+      function endDrag() {
+        if (!dragActive) return;
+        dragActive = false;
+        svcCarousel.classList.remove('svc-dragging');
+        pauseAutoScroll(1600);
+      }
+      window.addEventListener('pointerup', endDrag);
+      window.addEventListener('pointercancel', endDrag);
+
+      svcCarousel.addEventListener('mouseenter', function() { pauseAutoScroll(1400); });
+      svcCarousel.addEventListener('wheel', function() { pauseAutoScroll(2200); }, { passive: true });
+      svcCarousel.addEventListener('touchstart', function() { pauseAutoScroll(2400); }, { passive: true });
+      svcCarousel.addEventListener('scroll', function() {
+        if (svcCarousel.scrollLeft >= loopWidth * 2) {
+          svcCarousel.scrollLeft -= loopWidth;
+        }
+      }, { passive: true });
+
+      window.addEventListener('resize', function() {
+        loopWidth = Math.max(1, svcCarousel.scrollWidth / 2);
+      });
+
+      rafId = window.requestAnimationFrame(animate);
+      window.addEventListener('beforeunload', function() { if (rafId) cancelAnimationFrame(rafId); });
+    });
+
+    // =====================================================
     // Profile Testimonials Carousel
     // =====================================================
     var _testimonials = [
@@ -6255,7 +6584,7 @@
   <!-- ===== STICKY CTA BAR ===== -->
   <div id="sticky-cta-bar" style="
     position: fixed;
-    bottom: -120px;
+    bottom: -140px;
     left: 0;
     right: 0;
     z-index: 9998;
@@ -6265,7 +6594,7 @@
   ">
     <div style="
       max-width: 960px;
-      margin: 0 auto 1.25rem;
+      margin: 0 auto 0.5rem;
       background: linear-gradient(135deg, #0f0f14 0%, #1a1a2e 40%, #16213e 100%);
       border: 1px solid rgba(99,102,241,0.35);
       border-radius: 20px;
@@ -6373,7 +6702,7 @@
 
       <!-- close button -->
       <button
-        onclick="document.getElementById('sticky-cta-bar').style.bottom='-120px'; document.getElementById('sticky-cta-bar').dataset.dismissed='true';"
+        onclick="document.getElementById('sticky-cta-bar').style.bottom='-140px'; document.getElementById('sticky-cta-bar').dataset.dismissed='true';"
         aria-label="Dismiss"
         style="
           flex-shrink: 0;
@@ -6410,14 +6739,31 @@
     }
     /* Mobile adjustments */
     @media (max-width: 640px) {
+      #sticky-cta-bar {
+        padding: 0 0.5rem !important;
+      }
       #sticky-cta-bar > div {
         flex-wrap: wrap;
-        gap: 0.75rem;
-        padding: 0.9rem 1rem !important;
+        align-items: center;
+        gap: 0.4rem 0.5rem;
+        padding: 0.7rem 0.875rem !important;
+        border-radius: 14px !important;
       }
+      /* Row 1: dot + truncated text (flex:1, nowrap+ellipsis) + close button */
       #sticky-cta-bar > div > div:nth-child(3) p {
-        font-size: 0.82rem !important;
-        white-space: normal !important;
+        font-size: 0.78rem !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+      }
+      /* Row 2: full-width CTA button (order pushes it below row 1 items) */
+      #sticky-cta-bar > div > button:first-of-type {
+        order: 10;
+        flex: 0 0 100%;
+        justify-content: center !important;
+        border-radius: 9px !important;
+        padding: 0.55rem 1rem !important;
+        font-size: 0.8rem !important;
       }
       #sticky-cta-spots { display: none !important; }
     }
@@ -6435,7 +6781,7 @@
         var pct = scrolled / total;
 
         if (!shown && pct >= 0.50) {
-          bar.style.bottom = '0';
+          bar.style.bottom = '-12px';
           shown = true;
         }
       }
